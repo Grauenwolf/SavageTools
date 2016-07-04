@@ -105,8 +105,13 @@ namespace SavageTools
                     var table = new Table<SettingEdge>();
                     foreach (var item in Edges)
                     {
+                        //TODO: Some edges allow duplicates
                         if (result.Edges.Any(e => e.Name == item.Name))
                             continue; //no dups
+
+                        if (!string.IsNullOrEmpty(item.UniqueGroup))
+                            if (result.Edges.Any(e => e.UniqueGroup == item.UniqueGroup))
+                                continue; //can't have multiple from a unique group (i.e. arcane background)
 
                         var checks = item.Requires.Split(',').Select(e => e.Trim());
                         if (checks.All(c => result.HasFeature(c)))
@@ -120,8 +125,29 @@ namespace SavageTools
                     {
                         Debug.WriteLine($"Found {table.Count} edges");
                         var edge = table.RandomChoose(dice);
-                        result.Edges.Add(new Edge() { Name = edge.Name, Description = edge.Description });
-                        //TODO: edge effects
+                        result.Edges.Add(new Edge() { Name = edge.Name, Description = edge.Description, UniqueGroup = edge.UniqueGroup });
+
+                        if (edge.Trait != null)
+                            foreach (var item in edge.Trait)
+                                result.Increment(item.Name, item.Bonus);
+
+                        if (edge.Feature != null)
+                            foreach (var item in edge.Feature)
+                                result.Features.Add(item.Name);
+
+                        if (edge.Skill != null)
+                            foreach (var item in edge.Skill)
+                            {
+                                var skill = result.Skills.FirstOrDefault(s => s.Name == item.Name);
+                                if (skill == null)
+                                {
+                                    result.Skills.Add(new Skill() { Name = item.Name, Attribute = item.Attribute, Trait = item.Level });
+                                }
+                                else if (skill.Trait < item.Level)
+                                {
+                                    skill.Trait = item.Level;
+                                }
+                            }
 
                         result.UnusedEdges -= 1;
                     }
@@ -131,60 +157,66 @@ namespace SavageTools
                     result.UnusedHindrances -= 1; //TODO
 
                 //only apply an advance when everything else has been used
-                if (result.UnusedAdvances > 0 && result.UnusedAttributes == 0 && result.UnusedSkills == 0 && result.UnusedEdges == 0 && result.UnusedHindrances == 0)
+                if (result.UnusedAdvances > 0 && result.UnusedAttributes <= 0 && result.UnusedSkills <= 0 && result.UnusedEdges <= 0 && result.UnusedHindrances <= 0)
                 {
                     result.UnusedAdvances -= 1;
-                    switch (dice.Next(5))
+
+                    if (result.UnusedSkills < 0)
+                        result.UnusedSkills += 2; //pay back the skill point loan
+                    else
                     {
-                        case 0:
-                            result.UnusedEdges += 1;
-                            break;
-                        case 1: //increase a high skill
-
-                            {
-                                var table = new Table<Skill>();
-                                foreach (var skill in result.Skills)
-                                {
-                                    if (skill.Trait >= result.GetAttribute(skill.Attribute) && skill.Trait < 12)
-                                        table.Add(skill, skill.Trait.Score);
-                                }
-                                if (table.Count == 0)
-                                    goto case 2;
-                                table.RandomChoose(dice).Trait += 1;
+                        switch (dice.Next(5))
+                        {
+                            case 0:
+                                result.UnusedEdges += 1;
                                 break;
-                            }
-                        case 2: //increase a low skill
+                            case 1: //increase a high skill
 
-                            {
-                                var table = new Table<Skill>();
-                                foreach (var skill in result.Skills)
                                 {
-                                    if (skill.Trait < result.GetAttribute(skill.Attribute) && skill.Trait < 12)
-                                        table.Add(skill, skill.Trait.Score);
+                                    var table = new Table<Skill>();
+                                    foreach (var skill in result.Skills)
+                                    {
+                                        if (skill.Trait >= result.GetAttribute(skill.Attribute) && skill.Trait < 12)
+                                            table.Add(skill, skill.Trait.Score);
+                                    }
+                                    if (table.Count == 0)
+                                        goto case 2;
+                                    table.RandomChoose(dice).Trait += 1;
+                                    break;
                                 }
-                                if (table.Count >= 2)
-                                    goto case 3;
-                                table.RandomPick(dice).Trait += 1;
-                                table.RandomPick(dice).Trait += 1; //use Pick so we get 2 different skills
-                                break;
-                            }
-                        case 3: //add a new skill
+                            case 2: //increase a low skill
 
-                            {
-                                var table = new Table<Skill>();
-                                foreach (var skill in result.Skills)
                                 {
-                                    if (skill.Trait == 0)
-                                        table.Add(skill, result.GetAttribute(skill.Attribute).Score);
+                                    var table = new Table<Skill>();
+                                    foreach (var skill in result.Skills)
+                                    {
+                                        if (skill.Trait < result.GetAttribute(skill.Attribute) && skill.Trait < 12)
+                                            table.Add(skill, skill.Trait.Score);
+                                    }
+                                    if (table.Count >= 2)
+                                        goto case 3;
+                                    table.RandomPick(dice).Trait += 1;
+                                    table.RandomPick(dice).Trait += 1; //use Pick so we get 2 different skills
+                                    break;
                                 }
-                                if (table.Count == 0)
-                                    break; //really?
-                                table.RandomChoose(dice).Trait = 4;
+                            case 3: //add a new skill
+
+                                {
+                                    var table = new Table<Skill>();
+                                    foreach (var skill in result.Skills)
+                                    {
+                                        if (skill.Trait == 0)
+                                            table.Add(skill, result.GetAttribute(skill.Attribute).Score);
+                                    }
+                                    if (table.Count == 0)
+                                        break; //really?
+                                    table.RandomChoose(dice).Trait = 4;
+                                    break;
+                                }
+                            case 4:
+                                result.UnusedAttributes += 1;
                                 break;
-                            }
-                        case 4:
-                            result.UnusedAttributes += 1;
-                            break;
+                        }
                     }
                 }
 

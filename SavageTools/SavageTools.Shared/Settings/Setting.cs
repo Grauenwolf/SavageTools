@@ -169,11 +169,61 @@
     public partial class SettingEdge
     {
 
+        private SettingEdgeSkill[] skillField;
+
+        private SettingEdgeTrait[] traitField;
+
+        private SettingEdgeFeature[] featureField;
+
         private string nameField;
 
         private string requiresField;
 
         private string descriptionField;
+
+        private string uniqueGroupField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Skill")]
+        public SettingEdgeSkill[] Skill
+        {
+            get
+            {
+                return this.skillField;
+            }
+            set
+            {
+                this.skillField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Trait")]
+        public SettingEdgeTrait[] Trait
+        {
+            get
+            {
+                return this.traitField;
+            }
+            set
+            {
+                this.traitField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Feature")]
+        public SettingEdgeFeature[] Feature
+        {
+            get
+            {
+                return this.featureField;
+            }
+            set
+            {
+                this.featureField = value;
+            }
+        }
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -214,6 +264,134 @@
             set
             {
                 this.descriptionField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string UniqueGroup
+        {
+            get
+            {
+                return this.uniqueGroupField;
+            }
+            set
+            {
+                this.uniqueGroupField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class SettingEdgeSkill
+    {
+
+        private string nameField;
+
+        private string attributeField;
+
+        private byte levelField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Attribute
+        {
+            get
+            {
+                return this.attributeField;
+            }
+            set
+            {
+                this.attributeField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public byte Level
+        {
+            get
+            {
+                return this.levelField;
+            }
+            set
+            {
+                this.levelField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class SettingEdgeTrait
+    {
+
+        private string nameField;
+
+        private sbyte bonusField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public sbyte Bonus
+        {
+            get
+            {
+                return this.bonusField;
+            }
+            set
+            {
+                this.bonusField = value;
+            }
+        }
+    }
+
+    /// <remarks/>
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    public partial class SettingEdgeFeature
+    {
+
+        private string nameField;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Name
+        {
+            get
+            {
+                return this.nameField;
+            }
+            set
+            {
+                this.nameField = value;
             }
         }
     }
@@ -351,6 +529,7 @@
             }
         }
     }
+
 
 
 }

@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting>
+<!-- This is not a real setting file and won't be kept up to date. It is used for code generation only. -->
+  <Skills>
+    <Skill Name="Boating" Attribute="Agility"/>
+    <Skill Name="Climbing" Attribute="Strength"/>
+    <Skill Name="Driving" Attribute="Agility"/>
+    <Skill Name="Fighting" Attribute="Agility"/>
+    <Skill Name="Gambling" Attribute="Smarts"/>
+    <Skill Name="Guts" Attribute="Spirit"/>
+    <Skill Name="Healing" Attribute="Smarts"/>
+    <Skill Name="Intimidation" Attribute="Spirit"/>
+    <Skill Name="Investigation" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Area)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Battle)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Copmuters)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Electronics)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (History)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Journalism)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Law)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Medicine)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Science)" Attribute="Smarts"/>
+    <Skill Name="Lockpicking" Attribute="Agility"/>
+    <Skill Name="Notice" Attribute="Smarts"/>
+    <Skill Name="Persuasion" Attribute="Spirit"/>
+    <Skill Name="Piloting" Attribute="Agility"/>
+    <Skill Name="Repair" Attribute="Smarts"/>
+    <Skill Name="Riding" Attribute="Agility"/>
+    <Skill Name="Shooting" Attribute="Agility"/>
+    <Skill Name="Stealth" Attribute="Agility"/>
+    <Skill Name="Streetwise" Attribute="Smarts"/>
+    <Skill Name="Survival" Attribute="Smarts"/>
+    <Skill Name="Swimming" Attribute="Agility"/>
+    <Skill Name="Taunt" Attribute="Smarts"/>
+    <Skill Name="Throwing" Attribute="Agility"/>
+    <Skill Name="Tracking" Attribute="Smarts"/>
+  </Skills>
+  <Hindrances>
+    <Hindrance Name="All Thumbs" Type="Minor" Description="-2 Repair; Roll of 1 on a mechanical or electronic device causes malfunction" />
+    <Hindrance Name="Anemic" Type="Minor" Description="-2 Vigor to resist sickness, disease, poison, or environment" />
+    <Hindrance Name="Arrogant" Type="Major" Description="Must humiliate opponent, challenge the ‘leader’" />
+    <Hindrance Name="Bad Eyes" Type="Minor/Major" Description="-2 to attack or notice something more than 5” distant" />
+    <Hindrance Name="Bad Luck" Type="Major" Description="One less benny per session" />
+    <Hindrance Name="Big Mouth" Type="Minor" Description="Unable to keep secret, blabs at wrong time" />
+    <Hindrance Name="Blind" Type="Major" Description="-6 on all actions that require vision; -2 on social rolls, gain additional Edge" />
+    <Hindrance Name="Bloodthirsty" Type="Major" Description="Never takes prisoners; -4 Charisma if known" />
+    <Hindrance Name="Cautious" Type="Minor" Description="Character is overly careful" />
+    <Hindrance Name="Clueless" Type="Major" Description="-2 to most Common Knowledge rolls" />
+    <Hindrance Name="Code of Honor" Type="Major" Description="The character keeps his word and acts like a gentleman" />
+    <Hindrance Name="Curious" Type="Major" Description="Character wants to know about everything" />
+    <Hindrance Name="Death Wish" Type="Minor" Description="Character wants to die after completing some task" />
+    <Hindrance Name="Delusional" Type="Minor/Major" Description="Character suffers from grave delusions" />
+    <Hindrance Name="Doubting Thomas" Type="Minor" Description="Character doesn’t believe in the supernatural" />
+    <Hindrance Name="Elderly" Type="Major" Description="Pace -1, -1 to Strength and Vigor die types; 5 extra skill points for any skill linked to Smarts" />
+    <Hindrance Name="Enemy" Type="Minor/Major" Description="The character has a recurring nemesis of some sort" />
+    <Hindrance Name="Greedy" Type="Minor/Major" Description="The character is obsessed with wealth" />
+    <Hindrance Name="Habit" Type="Minor/Major" Description="Charisma -1; must make Fatigue rolls when deprived of Major Habits" />
+    <Hindrance Name="Hard of Hearing" Type="Minor/Major" Description="-2 to Notice sounds; automatic failure if completely deaf" />
+    <Hindrance Name="Heroic" Type="Major" Description="The character is a true hero and always helps those in need" />
+    <Hindrance Name="Illiterate" Type="Major" Description="The character cannot read or write." />
+    <Hindrance Name="Lame" Type="Major" Description="-2 Pace and running die is a d4" />
+    <Hindrance Name="Loyal" Type="Minor" Description="The hero tries to never betray or disappoint his friends" />
+    <Hindrance Name="Mean" Type="Minor" Description="The character suffers -2 to his Charisma for his ill-temper and surliness" />
+    <Hindrance Name="Obese" Type="Minor" Description="+1 Toughness, -1 Pace, d4 running die" />
+    <Hindrance Name="One Arm" Type="Major" Description="-4 to tasks requiring two arms" />
+    <Hindrance Name="One Eye" Type="Major" Description="-1 Charisma, -2 to rolls requiring depth perception" />
+    <Hindrance Name="One Leg" Type="Major" Description="Pace –2, d4 running die, -2 to rolls requiring mobility, -2 to Swimming skill" />
+    <Hindrance Name="Outsider" Type="Minor" Description="-2 Charisma, treated badly by those of the more dominant society" />
+    <Hindrance Name="Overconfident" Type="Major" Description="The hero believes he can do anything" />
+    <Hindrance Name="Pacifist" Type="Minor/Major" Description="The character fights only in self-defense as a Minor Hindrance, and won’t fight living creatures under any circumstance as a major Hindrance"/>
+    <Hindrance Name="Phobia" Type="Minor/Major" Description="-2 or –4 to trait tests when near the phobia" />
+    <Hindrance Name="Poverty" Type="Minor" Description="Half starting funds, general inability to hang onto future income" />
+    <Hindrance Name="Quirk" Type="Minor" Description="The character has some minor but persistent foible, such as bragging, elitism, or the pursuit of fame" />
+    <Hindrance Name="Small" Type="Major" Description="-1 Toughness" />
+    <Hindrance Name="Stubborn" Type="Minor" Description="The character always wants his way" />
+    <Hindrance Name="Ugly" Type="Minor" Description="-2 Charisma due to the character’s less-than average appearance" />
+    <Hindrance Name="Vengeful" Type="Minor/Major" Description="Character holds a grudge, will kill to settle the score as a Major Hindrance" />
+    <Hindrance Name="Vow" Type="Minor/Major" Description="The hero has a pledge to himself, a group, a deity, or a religion" />
+    <Hindrance Name="Wanted" Type="Minor/Major" Description="The character is a criminal of some sort" />
+    <Hindrance Name="Yellow" Type="Major" Description="The character is cowardly and suffers -2 to his Guts rolls" />
+    <Hindrance Name="Young" Type="Major" Description="3 points for Attributes (instead of 5); 10 skill points (instead of 15), +1 benny per session" />
+  </Hindrances>
+  <Edges>
+    <Edge Name="Ace" Requires="Novice, Agility d8" Description="+2 to Boating, Driving, Piloting; may make soak rolls for vehicle at -2"/>
+    <Edge Name="Acrobat" Requires="Novice, Agility d8, Strength d6" Description="+2 to Agility tricks; +1 Parry if unencumbered"/>
+    <Edge Name="Alertness" Requires="Novice" Description="+2 Notice"/>
+    <Edge Name="Ambidextrous" Requires="Novice, Agility d8" Description="Ignore -2 penalty for using off-hand"/>
+
+
+
+    <Edge Name="Attractive" Requires="Novice, Vigor d6" Description="Charisma +2">
+      <Trait Name="Charisma" Bonus="2" />
+    </Edge>
+    <Edge Name="Very Attractive" Requires="Novice, Attractive" Description="Charisma +4">
+      <Trait Name="Charisma" Bonus="2" />
+    </Edge>
+    <Edge Name="Beast Bond" Requires="Novice" Description="Character may spend bennies for his animals"/>
+    <Edge Name="Beast Master" Requires="Novice, Spirit d8" Description="You gain an animal companion"/>
+    <Edge Name="Berserk" Requires="Novice" Description="Smarts roll or go Berserk after being wounded; +2 Fighting and Strength rolls, -2 Parry, +2 Toughness; Roll of 1 on Fighting die hits random adjacent target"/>
+    <Edge Name="Block" Requires="Seasoned, Fighting d8" Description="Parry +1">
+      <Trait Name="Parry" Bonus="1" />
+    </Edge>
+    <Edge Name="Improved Block" Requires="Veteran, Block" Description="Parry +2">
+      <Trait Name="Parry" Bonus="1" />
+    </Edge>
+    <Edge Name="Brawny" Requires="Novice, Strength d6, Vigor d6" Description="Toughness +1; load limit is 8xStr instead of 5xStr">
+      <Trait Name="Toughness" Bonus="1" />
+    </Edge>
+    <Edge Name="Charismatic" Requires="Novice, Spirit d8" Description="Charisma +2">
+      <Trait Name="Charisma" Bonus="2" />
+    </Edge>
+    <Edge Name="Combat Reflexes" Requires="Seasoned" Description="+2 to recover from being Shaken"/>
+    <Edge Name="Command" Requires="Novice, Smarts d6" Description="+1 to troops recovering from being Shaken within 5”"/>
+    <Edge Name="Common Bond" Requires="Novice, Wild Card, Spirit d8" Description="May give bennies to companions in communication"/>
+    <Edge Name="Connections" Requires="Novice" Description="Call upon powerful friends with Persuasion roll"/>
+    <Edge Name="Danger Sense" Requires="Novice" Description="Notice-2 to detect surprise attacks/danger"/>
+    <Edge Name="Dead Shot" Requires="Wild Card, Seasoned, Shooting d10 or Throwing d10" Description="Double ranged damage when dealt Joker"/>
+    <Edge Name="Dodge" Requires="Seasoned, Agility d8" Description="-1 to be hit with ranged attacks"/>
+    <Edge Name="Improved Dodge" Requires="Veteran, Dodge" Description="-2 to be hit with ranged attacks"/>
+    <Edge Name="Fast Healer" Requires="Novice, Vigor d8" Description="+2 to natural healing rolls"/>
+    <Edge Name="Fervor" Requires="Veteran, Spirit d8, Command" Description="+1 melee damage to troops in command"/>
+    <Edge Name="First Strike" Requires="Novice, Agility d8" Description="Automatically attack one foe who moves adjacent per round"/>
+    <Edge Name="Improved First Strike" Requires="Heroic, First Strike" Description="Automatically attack all foes who move adjacent"/>
+    <Edge Name="Fleet-Footed" Requires="Novice, Agility d6" Description="+2 Pace, d10 running die instead of d6">
+      <Trait Name="Pace" Bonus="2" />
+      <Trait Name="Running" Bonus="2" />
+    </Edge>
+    <Edge Name="Florentine" Requires="Novice, Agility d8, Fighting d8" Description="+1 vs. foes with single weapon and no shield, ignore 1 point of gang up bonus"/>
+    <Edge Name="Followers" Requires="Legendary, Wild Card" Description="Attract 5 henchmen"/>
+    <Edge Name="Frenzy" Requires="Seasoned, Fighting d10" Description="1 extra Fighting attack at -2"/>
+    <Edge Name="Improved Frenzy" Requires="Veteran, Frenzy" Description="As above but no penalty"/>
+
+    <Edge Name="Giant Killer" Requires="Veteran" Description="+1d6 damage when attacking large creatures"/>
+    <Edge Name="Hard to Kill" Requires="Novice, Wild Card, Spirit d8" Description="Ignore wound penalties for Vigor rolls made on the Knockout or Injury tables"/>
+    <Edge Name="Harder to Kill" Requires="Veteran, Hard to Kill" Description="50% chance of surviving “death” by some unlikely means"/>
+    <Edge Name="Healer" Requires="Novice, Spirit d8" Description="+2 to all Healing rolls and the healing power if applicable."/>
+    <Edge Name="Hold the Line!" Requires="Seasoned, Smarts d8, Command" Description="Troops have +1 Toughness"/>
+
+    <Edge Name="Inspire" Requires="Seasoned, Command" Description="+1 to Spirit rolls of all troops in command"/>
+    <Edge Name="Investigator" Requires="Novice, Smarts d8, Investigation d8, Streetwise d8" Description="+2 Investigation and Streetwise"/>
+    <Edge Name="Jack of All Trades" Requires="Novice, Smarts d10" Description="Ignore -2 untrained penalty for skills linked to Smarts"/>
+    <Edge Name="Level Headed" Requires="Seasoned, Smarts d8" Description="Act on best of two cards in combat"/>
+    <Edge Name="Improved Level Headed" Requires="Seasoned, Level Headed" Description="Act on best of three cards in combat"/>
+    <Edge Name="Luck" Requires="Novice" Description="+1 benny per session"/>
+    <Edge Name="Great Luck" Requires="Novice, Luck" Description="+2 bennies per session"/>
+    <Edge Name="Marksman" Requires="Seasoned" Description="Character gets the aim maneuver (+2 Shooting) if he does not move"/>
+    <Edge Name="McGyver" Requires="Novice, Smarts d6, Repair d6, Notice d8" Description="No penalties due to lack of equipment"/>
+    <Edge Name="Mighty Blow" Requires="Seasoned, Wild Card, Fighting d10" Description="Double melee damage when dealt Joker"/>
+    <Edge Name="Natural Leader" Requires="Novice, Spirit d8, Command" Description="Leader may give bennies to troops in command"/>
+    <Edge Name="Nerves of Steel" Requires="Novice, Wild Card, Vigor d8" Description="Ignore 1 point of wound penalties"/>
+    <Edge Name="Improved Nerves of Steel" Requires="Novice, Nerves of Steel" Description="Ignore 2 points of wound penalties"/>
+    <Edge Name="Noble" Requires="Novice" Description="+2 Charisma; Character is noble born with status and wealth">
+      <Trait Name="Charisma" Bonus="2" />
+    </Edge>
+
+
+    <Edge Name="No Mercy" Requires="Seasoned" Description="May spend bennies on damage rolls"/>
+    <Edge Name="Power Surge" Requires="Seasoned, arcane skill d10" Description="+2d6 Power Points when dealt a Joker"/>
+
+
+    <Edge Name="Quick" Requires="Novice, Agility d8" Description="Discard draw of 5 or less for new card"/>
+    <Edge Name="Quick Draw" Requires="Novice, Agility d8" Description="May automatically draw weapon as a free action"/>
+    <Edge Name="Rich" Requires="Novice" Description="3x starting funds, $75K annual salary"/>
+    <Edge Name="Filthy Rich" Requires="Novice, Noble or Rich" Description="5x starting funds, $250K annual salary"/>
+    <Edge Name="Rock and Roll!" Requires="Seasoned, Shooting d8" Description="Full-auto penalty is -1 instead of -2"/>
+    <Edge Name="Scholar" Requires="Novice, d8 in affected skills" Description="+2 to two different Knowledge skills"/>
+    <Edge Name="Sidekick" Requires="Legendary, Wild Card" Description="Characters gains a Novice Wild Card sidekick"/>
+    <Edge Name="Soul Drain" Requires="Seasoned, Special" Description="Special"/>
+    <Edge Name="Steady Hands" Requires="Novice, Agility d8" Description="Ignore unstable platform penalty for mounts or vehicles"/>
+    <Edge Name="Sweep" Requires="Novice, Strength d8, Fighting d8" Description="Attack all adjacent foes at -2"/>
+    <Edge Name="Improved Sweep" Requires="Veteran, Sweep" Description="As above but with no penalty"/>
+    <Edge Name="Strong Willed" Requires="Novice, Intimidate d6, Taunt d6" Description="+2 Intimidate and Taunt, +2 to resist"/>
+    <Edge Name="Thief" Requires="Novice, Agility d8, Climb d6, Lockpick d6, Stealth d8" Description="+2 Climb, Lockpick, Stealth, rolls made to trick or deceive, detecting or disarming traps"/>
+    <Edge Name="Tough as Nails" Requires="Legendary" Description="Toughness +1">
+      <Trait Name="Toughness" Bonus="1" />
+    </Edge>
+    <Edge Name="Improved Tough as Nails" Requires="Legendary, Tough as Nails" Description="Toughness +2">
+      <Trait Name="Toughness" Bonus="1" />
+    </Edge>
+    <Edge Name="Trademark Weapon" Requires="Novice, Fighting d10 or Shooting d10" Description="+1 Fighting or Shooting with one particular weapon"/>
+    <Edge Name="Improved Trademark Weapon" Requires="Veteran, Trademark Weapon" Description="+2 Fighting or Shooting with one particular weapon"/>
+    <Edge Name="Two-Fisted" Requires="Novice, Agility d8" Description="May attack with a weapon in each hand without multi-action penalty."/>
+    <Edge Name="Weapon Master" Requires="Legendary, Fighting d12" Description="Parry +1">
+      <Trait Name="Parry" Bonus="1" />
+    </Edge>
+    <Edge Name="Master of Arms" Requires="Legendary, Weapon Master" Description="Parry +2">
+      <Trait Name="Parry" Bonus="1" />
+    </Edge>
+    <Edge Name="Woodsman" Requires="Novice, Spirit d6, Survival d8, Tracking d8" Description="+2 Tracking, Survival, and Stealth (while in Wilderness)"/>
+    <Edge Name="Ace" Requires="Novice, Agility d8" Description="+2 to Boating, Driving, Piloting; may make soak rolls for vehicle at -2"/>
+    <Edge Name="Acrobat" Requires="Novice, Agility d8, Strength d6" Description="+2 to Agility tricks; +1 Parry if unencumbered"/>
+    <Edge Name="Alertness" Requires="Novice" Description="+2 Notice"/>
+    <Edge Name="Ambidextrous" Requires="Novice, Agility d8" Description="Ignore -2 penalty for using off-hand"/>
+
+    <Edge Name="Arcane Background (Magic)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+      <Skill Name="Spellcasting" Attribute="Smarts" Level="4"/>
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints" Bonus="10" />
+      <Trait Name="UnusedPowers" Bonus="3" />
+    </Edge>
+    <Edge Name="Arcane Background (Miracles)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+      <Skill Name="Faith" Attribute="Spirit" Level="4"/>
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints" Bonus="10" />
+      <Trait Name="UnusedPowers" Bonus="2" />
+    </Edge>
+    <Edge Name="Arcane Background (Psionics)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+      <Skill Name="Psionics" Attribute="Smarts" Level="4"/>
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints" Bonus="10" />
+      <Trait Name="UnusedPowers" Bonus="3" />
+    </Edge>
+    <!--
+    TODO: This one is going to be hard. 
+    * Need to support duplicate edges.
+    * Need to support skills without a controlling attribute
+    * Need to auto-pick powers
+    <Edge Name="Arcane Background (Super Powers)" Requires="Novice" Description="Allows access to supernatural powers">
+       <Skill Name="Investigation" Attribute="" Level="4"/>
+       <Statistic Name="UnusedSkills" Bonus="-1" />
+    </Edge>-->
+    <Edge Name="Arcane Background (Weird Science)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+      <Skill Name="Weird Science" Attribute="Smarts" Level="4"/>
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints" Bonus="10" />
+      <Trait Name="UnusedPowers" Bonus="1" />
+    </Edge>
+
+    <Edge Name="Arcane Background (Magic)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+      <Skill Name="Spellcasting" Attribute="Smarts" Level="4"/>
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints" Bonus="10" />
+      <Trait Name="UnusedPowers" Bonus="3" />
+      <Feature Name="Arcane Background" />
+    </Edge>
+    <Edge Name="Wizard" Requires="Novice, Arcane Background (Magic), Smarts d8, Knowledge (arcana) d8, Spellcasting d6" Description="Each Spellcasting raise reduces cost of spell by 1 point"/>
+
+
+    <Edge Name="Arcane Background (Miracles)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+      <Skill Name="Faith" Attribute="Spirit" Level="4"/>
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints" Bonus="10" />
+      <Trait Name="UnusedPowers" Bonus="2" />
+      <Feature Name="Arcane Background" />
+    </Edge>
+    <Edge Name="Holy/Unholy Warrior" Requires="Novice, Arcane Background (Miracles), Spirit d8, Faith d6" Description="Spend 1 Power Point to make evil creatures make Spirit check or be Shaken; roll of 1 kills Extras, wounds Wild Cards; cost is 1 Power Point per creature affected"/>
+
+
+    <Edge Name="Arcane Background (Psionics)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+      <Skill Name="Psionics" Attribute="Smarts" Level="4"/>
+      <Skill Name="Psionics" Attribute="Smarts" Level="4"/>
+      <Skill Name="Psionics" Attribute="Smarts" Level="4"/>
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints" Bonus="10" />
+      <Trait Name="UnusedPowers" Bonus="3" />
+      <Feature Name="Arcane Background" />
+    </Edge>
+    <Edge Name="Mentalist" Requires="Novice, Arcane Background (Psionics), Smarts d8, Psionics d6" Description="+2 to any opposed Psionics roll"/>
+
+
+
+    <!--
+    TODO: This one is going to be hard. 
+    * Need to support duplicate edges.
+    * Need to support skills without a controlling attribute
+    * Need to auto-pick powers
+    <Edge Name="Arcane Background (Super Powers)" Requires="Novice" Description="Allows access to supernatural powers">
+       <Skill Name="Investigation" Attribute="" Level="4"/>
+       <Statistic Name="UnusedSkills" Bonus="-1" />
+      <Feature Name="Arcane Background" />
+    </Edge>-->
+    <Edge Name="Arcane Background (Weird Science)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+      <Skill Name="Weird Science" Attribute="Smarts" Level="4"/>
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints" Bonus="10" />
+      <Trait Name="UnusedPowers" Bonus="1" />
+      <Feature Name="Arcane Background" />
+      <Feature Name="Arcane Background" />
+      <Feature Name="Arcane Background" />
+    </Edge>
+    <Edge Name="Gadgeteer" Requires="Novice, Arcane Background (Weird Science), Smarts d8, Repair d8 Weird Science d8, two scientific Knowledge skills d6" Description="May “jury-rig” a device with any available power once per game session"/>
+    <Edge Name="Mr. Fix It" Requires="Novice, Arcane Background (Weird Science), Smarts d10, Repair d8, Weird Science d8, two scientific Knowledge skills at d6" Description="+2 to Repair rolls, halve normal Repair time with raise"/>
+
+    <Edge Name="Arcane Resistance" Requires="Novice, Spirit d8" Description="Armor 2 vs. magic, +2 to resist magic effects"/>
+    <Edge Name="Improved Arcane Resistance" Requires="Novice, Arcane Resistance" Description="Armor 4 vs. magic, +4 to resist magic effects"/>
+
+
+
+    <Edge Name="Power Points" Requires="Novice, Arcane Background" Description="+5 Power Points, once per rank only">
+      <Trait Name="PowerPoints" Bonus="5" />
+    </Edge>
+    <Edge Name="Rapid Recharge" Requires="Seasoned, Spirit d6, Arcane Background" Description="Regain 1 Power Point every 30 minutes"/>
+    <Edge Name="Improved Rapid Recharge" Requires="Veteran, Rapid Recharge" Description="Regain 1 Power Point every 15 minutes"/>
+    <Edge Name="New Power" Requires="Novice, Arcane Background" Description="Character gains one new power">
+      <Trait Name="UnusedPowers" Bonus="1" />
+    </Edge>
+
+    <Edge Name="Arcane Resistance" Requires="Novice, Spirit d8" Description="Armor 2 vs. magic, +2 to resist magic effects"/>
+    <Edge Name="Improved Arcane Resistance" Requires="Novice, Arcane Resistance" Description="Armor 4 vs. magic, +4 to resist magic effects"/>
+    
+    
+    <Edge Name="Attractive" Requires="Novice, Vigor d6" Description="Charisma +2"/>
+    <Edge Name="Very Attractive" Requires="Novice, Attractive" Description="Charisma +4"/>
+    <Edge Name="Beast Bond" Requires="Novice" Description="Character may spend bennies for his animals"/>
+    <Edge Name="Beast Master" Requires="Novice, Spirit d8" Description="You gain an animal companion"/>
+    <Edge Name="Berserk" Requires="Novice" Description="Smarts roll or go Berserk after being wounded; +2 Fighting and Strength rolls, -2 Parry, +2 Toughness; Roll of 1 on Fighting die hits random adjacent target"/>
+    <Edge Name="Block" Requires="Seasoned, Fighting d8" Description="Parry +1"/>
+    <Edge Name="Improved Block" Requires="Veteran, Block" Description="Parry +2"/>
+    <Edge Name="Brawny" Requires="Novice, Strength d6, Vigor d6" Description="Toughness +1; load limit is 8xStr instead of 5xStr"/>
+    <Edge Name="Champion" Requires="Novice, AB (Miracles), Spirit d8, Strength d6, Vigor d8, Faith d6, Fighting d8" Description="+2 damage and Toughness vs. supernatural evil"/>
+    <Edge Name="Charismatic" Requires="Novice, Spirit d8" Description="Charisma +2"/>
+    <Edge Name="Combat Reflexes" Requires="Seasoned" Description="+2 to recover from being Shaken"/>
+    <Edge Name="Command" Requires="Novice, Smarts d6" Description="+1 to troops recovering from being Shaken within 5”"/>
+    <Edge Name="Common Bond" Requires="Novice, Wild Card, Spirit d8" Description="May give bennies to companions in communication"/>
+    <Edge Name="Connections" Requires="Novice" Description="Call upon powerful friends with Persuasion roll"/>
+    <Edge Name="Danger Sense" Requires="Novice" Description="Notice-2 to detect surprise attacks/danger"/>
+    <Edge Name="Dead Shot" Requires="Wild Card, Seasoned, Shoot/Throw d10" Description="Double ranged damage when dealt Joker"/>
+    <Edge Name="Dodge" Requires="Seasoned, Agility d8" Description="-1 to be hit with ranged attacks"/>
+    <Edge Name="Improved Dodge" Requires="Veteran, Dodge" Description="-2 to be hit with ranged attacks"/>
+    <Edge Name="Fast Healer" Requires="Novice, Vigor d8" Description="+2 to natural healing rolls"/>
+    <Edge Name="Fervor" Requires="Veteran, Spirit d8, Command" Description="+1 melee damage to troops in command"/>
+    <Edge Name="First Strike" Requires="Novice, Agility d8" Description="Automatically attack one foe who moves adjacent per round"/>
+    <Edge Name="Improved First Strike" Requires="Heroic, First Strike" Description="Automatically attack all foes who move adjacent"/>
+    <Edge Name="Fleet-Footed" Requires="Novice, Agility d6" Description="+2 Pace, d10 running die instead of d6"/>
+    <Edge Name="Florentine" Requires="Novice, Agility d8, Fighting d8" Description="+1 vs. foes with single weapon and no shield, ignore 1 point of gang up bonus"/>
+    <Edge Name="Followers" Requires="Legendary, Wild Card" Description="Attract 5 henchmen"/>
+    <Edge Name="Frenzy" Requires="Seasoned, Fighting d10" Description="1 extra Fighting attack at -2"/>
+    <Edge Name="Improved Frenzy" Requires="Veteran, Frenzy" Description="As above but no penalty"/>
+    <Edge Name="Gadgeteer" Requires="Novice, AB (Weird Science), Smarts d8, Repair d8 Weird Science d8, two scientific Knowledge skills d6" Description="May “jury-rig” a device with any available power once per game session"/>
+    <Edge Name="Giant Killer" Requires="Veteran" Description="+1d6 damage when attacking large creatures"/>
+    <Edge Name="Hard to Kill" Requires="Novice, Wild Card, Spirit d8" Description="Ignore wound penalties for Vigor rolls made on the Knockout or Injury tables"/>
+    <Edge Name="Harder to Kill" Requires="Veteran, Hard to Kill" Description="50% chance of surviving “death” by some unlikely means"/>
+    <Edge Name="Healer" Requires="Novice, Spirit d8" Description="+2 to all Healing rolls and the healing power if applicable."/>
+    <Edge Name="Hold the Line!" Requires="Seasoned, Smarts d8, Command" Description="Troops have +1 Toughness"/>
+    <Edge Name="Holy/Unholy Warrior" Requires="Novice, AB (Miracles), Spirit d8, Faith d6" Description="Spend 1 Power Point to make evil creatures make Spirit check or be Shaken; roll of 1 kills Extras, wounds Wild Cards; cost is 1 Power Point per creature affected"/>
+    <Edge Name="Inspire" Requires="Seasoned, Command" Description="+1 to Spirit rolls of all troops in command"/>
+    <Edge Name="Investigator" Requires="Novice, Smarts d8, Investigation d8, Streetwise d8" Description="+2 Investigation and Streetwise"/>
+    <Edge Name="Jack of All Trades" Requires="Novice, Smarts d10" Description="Ignore -2 untrained penalty for skills linked to Smarts"/>
+    <Edge Name="Level Headed" Requires="Seasoned, Smarts d8" Description="Act on best of two cards in combat"/>
+    <Edge Name="Improved Level Headed" Requires="Seasoned, Level Headed" Description="Act on best of three cards in combat"/>
+    <Edge Name="Luck" Requires="Novice" Description="+1 benny per session"/>
+    <Edge Name="Great Luck" Requires="Novice, Luck" Description="+2 bennies per session"/>
+    <Edge Name="Marksman" Requires="Seasoned" Description="Character gets the aim maneuver (+2 Shooting) if he does not move"/>
+    <Edge Name="McGyver" Requires="Novice, Smarts d6, Repair d6, Notice d8" Description="No penalties due to lack of equipment"/>
+    <Edge Name="Mentalist" Requires="Novice, AB (Psionics), Smarts d8, Psionics d6" Description="+2 to any opposed Psionics roll"/>
+    <Edge Name="Mighty Blow" Requires="Seasoned, Wild Card, Fighting d10" Description="Double melee damage when dealt Joker"/>
+    <Edge Name="Mr. Fix It" Requires="Novice, AB (Weird Science), Smarts d10, Repair d8, Weird Science d8, two scientific Knowledge skills at d6" Description="+2 to Repair rolls, halve normal Repair time with raise"/>
+    <Edge Name="Natural Leader" Requires="Novice, Spirit d8, Command" Description="Leader may give bennies to troops in command"/>
+    <Edge Name="Nerves of Steel" Requires="Novice, Wild Card, Vigor d8" Description="Ignore 1 point of wound penalties"/>
+    <Edge Name="Improved Nerves of Steel" Requires="Novice, Nerves of Steel" Description="Ignore 2 points of wound penalties"/>
+    <Edge Name="New Power" Requires="Novice, AB" Description="Character gains one new power"/>
+    <Edge Name="Noble" Requires="Novice" Description="+2 Charisma; Character is noble born with status and wealth"/>
+    <Edge Name="No Mercy" Requires="Seasoned" Description="May spend bennies on damage rolls"/>
+    <Edge Name="Power Points" Requires="Novice, AB" Description="+5 Power Points, once per rank only"/>
+    <Edge Name="Power Surge" Requires="Seasoned, arcane skill d10" Description="+2d6 Power Points when dealt a Joker"/>
+    <Edge Name="Professional" Requires="Legendary, d12 in trait" Description="Trait becomes d12+1"/>
+    <Edge Name="Expert" Requires="Legendary, Professional in trait" Description="Trait becomes d12+2"/>
+    <Edge Name="Master" Requires="Legendary, Wild Card, Expert in trait" Description="Wild Die is d10 for one trait"/>
+    <Edge Name="Quick" Requires="Novice, Agility d8" Description="Discard draw of 5 or less for new card"/>
+    <Edge Name="Quick Draw" Requires="Novice, Agility d8" Description="May automatically draw weapon as a free action"/>
+    <Edge Name="Rapid Recharge" Requires="Seasoned, Spirit d6, AB" Description="Regain 1 Power Point every 30 minutes"/>
+    <Edge Name="Improved Rapid Recharge" Requires="Veteran, Rapid Recharge" Description="Regain 1 Power Point every 15 minutes"/>
+    <Edge Name="Rich" Requires="Novice" Description="3x starting funds, $75K annual salary"/>
+    <Edge Name="Filthy Rich" Requires="Novice, Noble or Rich" Description="5x starting funds, $250K annual salary"/>
+    <Edge Name="Rock and Roll!" Requires="Seasoned, Shooting d8" Description="Full-auto penalty is -1 instead of -2"/>
+    <Edge Name="Scholar" Requires="Novice, d8 in affected skills" Description="+2 to two different Knowledge skills"/>
+    <Edge Name="Sidekick" Requires="Legendary, Wild Card" Description="Characters gains a Novice Wild Card sidekick"/>
+    <Edge Name="Soul Drain" Requires="Seasoned, Special" Description="Special"/>
+    <Edge Name="Steady Hands" Requires="Novice, Agility d8" Description="Ignore unstable platform penalty for mounts or vehicles"/>
+    <Edge Name="Sweep" Requires="Novice, Strength d8, Fighting d8" Description="Attack all adjacent foes at -2"/>
+    <Edge Name="Improved Sweep" Requires="Veteran, Sweep" Description="As above but with no penalty"/>
+    <Edge Name="Strong Willed" Requires="Novice, Intimidate d6, Taunt d6" Description="+2 Intimidate and Taunt, +2 to resist"/>
+    <Edge Name="Thief" Requires="Novice, Agility d8, Climb d6, Lockpick d6, Stealth d8" Description="+2 Climb, Lockpick, Stealth, rolls made to trick or deceive, detecting or disarming traps"/>
+    <Edge Name="Tough as Nails" Requires="Legendary" Description="Toughness +1"/>
+    <Edge Name="Improved Tough as Nails" Requires="Legendary, Tough as Nails" Description="Toughness +2"/>
+    <Edge Name="Trademark Weapon" Requires="Novice, Fighting d10 or Shooting d10" Description="+1 Fighting or Shooting with one particular weapon"/>
+    <Edge Name="Improved Trademark Weapon" Requires="Veteran, Trademark Weapon" Description="+2 Fighting or Shooting with one particular weapon"/>
+    <Edge Name="Two-Fisted" Requires="Novice, Agility d8" Description="May attack with a weapon in each hand without multi-action penalty."/>
+    <Edge Name="Weapon Master" Requires="Legendary, Fighting d12" Description="Parry +1"/>
+    <Edge Name="Master of Arms" Requires="Legendary, Weapon Master" Description="Parry +2"/>
+    <Edge Name="Wizard" Requires="Novice, AB (Magic), Smarts d8, Knowledge (arcana) d8, Spellcasting d6" Description="Each Spellcasting raise reduces cost of spell by 1 point"/>
+    <Edge Name="Woodsman" Requires="Novice, Spirit d6, Survival d8, Tracking d8" Description="+2 Tracking, Survival, and Stealth (while in Wilderness)"/>
+  </Edges>
+
+  <Archetypes>
+    <Archetype Name="Human Novice" UnusedAttributes="5" UnusedSkills="15" UnusedEdges="1"/>
+    <Archetype Name="Human Seasoned" UnusedAttributes="5" UnusedSkills="15" UnusedEdges="1" Experience="20" UnusedAdvances="4"/>
+    <Archetype Name="Human Veteran" UnusedAttributes="5" UnusedSkills="15" UnusedEdges="1" Experience="40" UnusedAdvances="8"/>
+    <Archetype Name="Human Heroic" UnusedAttributes="5" UnusedSkills="15" UnusedEdges="1" Experience="60" UnusedAdvances="12"/>
+    <Archetype Name="Human Legendary" UnusedAttributes="5" UnusedSkills="15" UnusedEdges="1" Experience="80" UnusedAdvances="16"/>
+  </Archetypes>
+</Setting>
+

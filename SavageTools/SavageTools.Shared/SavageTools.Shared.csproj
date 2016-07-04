@@ -55,6 +55,8 @@
     <Compile Include="Characters\Character.cs" />
     <Compile Include="Characters\Edge.cs" />
     <Compile Include="Characters\EdgeCollection.cs" />
+    <Compile Include="Characters\Feature.cs" />
+    <Compile Include="Characters\FeatureCollection.cs" />
     <Compile Include="Characters\Hindrance.cs" />
     <Compile Include="Characters\HindranceCollection.cs" />
     <Compile Include="Dice.cs" />
@@ -71,7 +73,23 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Settings\Core.setting">
+    <None Include="Settings\Everything.xml" />
+    <None Include="Settings\Super Powers.savage-setting">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Settings\Weird Science.savage-setting">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Settings\Psionics.savage-setting">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Settings\Miracles.savage-setting">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Settings\Magic.savage-setting">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Settings\Core.savage-setting">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

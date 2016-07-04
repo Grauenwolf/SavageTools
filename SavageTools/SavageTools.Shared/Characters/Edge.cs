@@ -8,6 +8,7 @@ namespace SavageTools.Characters
         public string Name { get { return Get<string>(); } set { Set(value); } }
         public string Description { get { return Get<string>(); } set { Set(value); } }
 
+        public string UniqueGroup { get { return Get<string>(); } set { Set(value); } }
     }
 }
 

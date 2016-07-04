@@ -28,7 +28,7 @@ namespace SavageTools
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".setting";
-            dlg.Filter = "Savage Worlds Setting (.setting)|*.setting|All Files (.*)|*.*";
+            dlg.Filter = "Savage Worlds Setting (.savage-setting)|*.savage-setting|All Files (.*)|*.*";
             dlg.Multiselect = true;
             dlg.InitialDirectory = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Settings");
 

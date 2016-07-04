@@ -17,6 +17,7 @@ namespace SavageTools.Characters
         public SkillCollection Skills { get { return GetNew<SkillCollection>(); } }
         public HindranceCollection Hindrances { get { return GetNew<HindranceCollection>(); } }
         public EdgeCollection Edges { get { return GetNew<EdgeCollection>(); } }
+        public FeatureCollection Features { get { return GetNew<FeatureCollection>(); } }
 
         public int Experience { get { return Get<int>(); } set { Set(value); } }
 
@@ -25,22 +26,55 @@ namespace SavageTools.Characters
         public int UnusedEdges { get { return Get<int>(); } set { Set(value); } }
         public int UnusedHindrances { get { return Get<int>(); } set { Set(value); } }
         public int UnusedAdvances { get { return Get<int>(); } set { Set(value); } }
+        public int PowerPoints { get { return Get<int>(); } set { Set(value); } }
+        public int UnusedPowers { get { return Get<int>(); } set { Set(value); } }
 
         public bool IsWildCard { get { return Get<bool>(); } set { Set(value); } }
 
         public string Archetype { get { return Get<string>(); } set { Set(value); } }
 
-        public void Increment(string trait)
+        public int Pace { get { return GetDefault(6); } set { Set(value); } }
+        public Trait Running { get { return GetDefault<Trait>(6); } set { Set(value); } }
+
+        public int Charisma { get { return Get<int>(); } set { Set(value); } }
+        public int Parry { get { return Get<int>(); } set { Set(value); } }
+        public int Toughness { get { return Get<int>(); } set { Set(value); } }
+
+
+        public int ParryTotal
+        {
+            get { return 2 + (Skills.SingleOrDefault(s => s.Name == "Fighting")?.Trait.HalfScore ?? 0); }
+        }
+
+        public int ToughnessTotal
+        {
+            get { return 2 + Vigor.HalfScore; }
+        }
+
+        public void Increment(string trait, int bonus = 1)
         {
             switch (trait)
             {
-                case "Vigor": Vigor += 1; return;
-                case "Smarts": Smarts += 1; return;
-                case "Agility": Agility += 1; return;
-                case "Strength": Strength += 1; return;
-                case "Spirit": Spirit += 1; return;
+                case "Vigor": Vigor += bonus; return;
+                case "Smarts": Smarts += bonus; return;
+                case "Agility": Agility += bonus; return;
+                case "Strength": Strength += bonus; return;
+                case "Spirit": Spirit += bonus; return;
 
-                    //TODO: Check skills
+                case "Pace": Pace += bonus; return;
+                case "Running": Running += bonus; return;
+                case "Charisma": Charisma += bonus; return;
+                case "Parry": Parry += bonus; return;
+                case "Toughness": Toughness += bonus; return;
+
+
+                case "UnusedAttributes": UnusedAttributes += bonus; return;
+                case "UnusedSkills": UnusedSkills += bonus; return;
+                case "UnusedEdges": UnusedEdges += bonus; return;
+                case "UnusedHindrances": UnusedHindrances += bonus; return;
+                case "UnusedAdvances": UnusedAdvances += bonus; return;
+                case "PowerPoints": PowerPoints += bonus; return;
+                case "UnusedPowers": UnusedPowers += bonus; return;
             }
             throw new ArgumentException("Unknown trait " + trait);
         }
@@ -63,7 +97,7 @@ namespace SavageTools.Characters
             if (feature.Contains(" or "))
             {
                 var parts = feature.Split(new[] { " or " }, StringSplitOptions.None).Select(f => f.Trim());
-                foreach(var part in parts)
+                foreach (var part in parts)
                 {
                     if (HasFeature(part))
                         return true;
@@ -138,6 +172,10 @@ namespace SavageTools.Characters
 
             //Check for hindrances
             if (Hindrances.Any(e => e.Name == name))
+                return true;
+
+            //Check for actual features
+            if(Features.Any(e => e.Name == name))
                 return true;
 
             Debug.WriteLine("Does not have feature " + feature);
