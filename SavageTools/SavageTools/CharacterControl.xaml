@@ -80,6 +80,32 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
+
+            <ItemsControl ItemsSource="{Binding Edges}">
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin" Value="4" />
+                                </Style>
+
+                            </StackPanel.Resources>
+
+                            <!--<TextBlock Text="{Binding Name}" />
+                            <TextBlock Text="{Binding Trait}" />-->
+                            <TextBlock Text="{Binding Name}"  FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Description}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
         </StackPanel>
     </Border>
 </UserControl>

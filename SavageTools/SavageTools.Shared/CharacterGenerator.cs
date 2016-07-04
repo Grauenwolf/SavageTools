@@ -1,5 +1,6 @@
 ﻿using SavageTools.Characters;
 using SavageTools.Settings;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
@@ -100,7 +101,31 @@ namespace SavageTools
 
 
                 if (result.UnusedEdges > 0)
-                    result.UnusedEdges -= 1; //TODO
+                {
+                    var table = new Table<SettingEdge>();
+                    foreach (var item in Edges)
+                    {
+                        if (result.Edges.Any(e => e.Name == item.Name))
+                            continue; //no dups
+
+                        var checks = item.Requires.Split(',').Select(e => e.Trim());
+                        if (checks.All(c => result.HasFeature(c)))
+                            table.Add(item, 1);
+                    }
+                    if (table.Count == 0)
+                    {
+                        Debug.WriteLine("No edges were available");
+                    }
+                    else
+                    {
+                        Debug.WriteLine($"Found {table.Count} edges");
+                        var edge = table.RandomChoose(dice);
+                        result.Edges.Add(new Edge() { Name = edge.Name, Description = edge.Description });
+                        //TODO: edge effects
+
+                        result.UnusedEdges -= 1;
+                    }
+                }
 
                 if (result.UnusedHindrances > 0)
                     result.UnusedHindrances -= 1; //TODO

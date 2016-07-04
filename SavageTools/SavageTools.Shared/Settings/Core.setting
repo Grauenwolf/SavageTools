@@ -82,27 +82,27 @@
   <Edges>
     <Edge Name="Ace" Requires="Novice, Agility d8" Description="+2 to Boating, Driving, Piloting; may make soak rolls for vehicle at -2"/>
     <Edge Name="Acrobat" Requires="Novice, Agility d8, Strength d6" Description="+2 to Agility tricks; +1 Parry if unencumbered"/>
-    <Edge Name="Alertness" Requires="N" Description="+2 Notice"/>
+    <Edge Name="Alertness" Requires="Novice" Description="+2 Notice"/>
     <Edge Name="Ambidextrous" Requires="Novice, Agility d8" Description="Ignore -2 penalty for using off-hand"/>
-    <Edge Name="Arcane Background" Requires="N" Description="Allows access to supernatural powers"/>
+    <Edge Name="Arcane Background" Requires="Novice" Description="Allows access to supernatural powers"/>
     <Edge Name="Arcane Resistance" Requires="Novice, Spirit d8" Description="Armor 2 vs. magic, +2 to resist magic effects"/>
     <Edge Name="Improved Arcane Resistance" Requires="Novice, Arcane Resistance" Description="Armor 4 vs. magic, +4 to resist magic effects"/>
     <Edge Name="Attractive" Requires="Novice, Vigor d6" Description="Charisma +2"/>
     <Edge Name="Very Attractive" Requires="Novice, Attractive" Description="Charisma +4"/>
-    <Edge Name="Beast Bond" Requires="N" Description="Character may spend bennies for his animals"/>
+    <Edge Name="Beast Bond" Requires="Novice" Description="Character may spend bennies for his animals"/>
     <Edge Name="Beast Master" Requires="Novice, Spirit d8" Description="You gain an animal companion"/>
-    <Edge Name="Berserk" Requires="N" Description="Smarts roll or go Berserk after being wounded; +2 Fighting and Strength rolls, -2 Parry, +2 Toughness; Roll of 1 on Fighting die hits random adjacent target"/>
+    <Edge Name="Berserk" Requires="Novice" Description="Smarts roll or go Berserk after being wounded; +2 Fighting and Strength rolls, -2 Parry, +2 Toughness; Roll of 1 on Fighting die hits random adjacent target"/>
     <Edge Name="Block" Requires="Seasoned, Fighting d8" Description="Parry +1"/>
     <Edge Name="Improved Block" Requires="Veteran, Block" Description="Parry +2"/>
     <Edge Name="Brawny" Requires="Novice, Strength d6, Vigor d6" Description="Toughness +1; load limit is 8xStr instead of 5xStr"/>
     <Edge Name="Champion" Requires="Novice, AB (Miracles), Spirit d8, Strength d6, Vigor d8, Faith d6, Fighting d8" Description="+2 damage and Toughness vs. supernatural evil"/>
     <Edge Name="Charismatic" Requires="Novice, Spirit d8" Description="Charisma +2"/>
-    <Edge Name="Combat Reflexes" Requires="S" Description="+2 to recover from being Shaken"/>
+    <Edge Name="Combat Reflexes" Requires="Seasoned" Description="+2 to recover from being Shaken"/>
     <Edge Name="Command" Requires="Novice, Smarts d6" Description="+1 to troops recovering from being Shaken within 5”"/>
     <Edge Name="Common Bond" Requires="Novice, Wild Card, Spirit d8" Description="May give bennies to companions in communication"/>
-    <Edge Name="Connections" Requires="N" Description="Call upon powerful friends with Persuasion roll"/>
-    <Edge Name="Danger Sense" Requires="N" Description="Notice-2 to detect surprise attacks/danger"/>
-    <Edge Name="Dead Shot" Requires="Wild Card, S, Shoot/Throw d10" Description="Double ranged damage when dealt Joker"/>
+    <Edge Name="Connections" Requires="Novice" Description="Call upon powerful friends with Persuasion roll"/>
+    <Edge Name="Danger Sense" Requires="Novice" Description="Notice-2 to detect surprise attacks/danger"/>
+    <Edge Name="Dead Shot" Requires="Wild Card, Seasoned, Shoot/Throw d10" Description="Double ranged damage when dealt Joker"/>
     <Edge Name="Dodge" Requires="Seasoned, Agility d8" Description="-1 to be hit with ranged attacks"/>
     <Edge Name="Improved Dodge" Requires="Veteran, Dodge" Description="-2 to be hit with ranged attacks"/>
     <Edge Name="Fast Healer" Requires="Novice, Vigor d8" Description="+2 to natural healing rolls"/>
@@ -110,25 +110,25 @@
     <Edge Name="First Strike" Requires="Novice, Agility d8" Description="Automatically attack one foe who moves adjacent per round"/>
     <Edge Name="Improved First Strike" Requires="Heroic, First Strike" Description="Automatically attack all foes who move adjacent"/>
     <Edge Name="Fleet-Footed" Requires="Novice, Agility d6" Description="+2 Pace, d10 running die instead of d6"/>
-    <Edge Name="Florentine" Requires="Novice, Agility d8, Fighting d8+" Description="+1 vs. foes with single weapon and no shield, ignore 1 point of gang up bonus"/>
+    <Edge Name="Florentine" Requires="Novice, Agility d8, Fighting d8" Description="+1 vs. foes with single weapon and no shield, ignore 1 point of gang up bonus"/>
     <Edge Name="Followers" Requires="Legendary, Wild Card" Description="Attract 5 henchmen"/>
     <Edge Name="Frenzy" Requires="Seasoned, Fighting d10" Description="1 extra Fighting attack at -2"/>
     <Edge Name="Improved Frenzy" Requires="Veteran, Frenzy" Description="As above but no penalty"/>
     <Edge Name="Gadgeteer" Requires="Novice, AB (Weird Science), Smarts d8, Repair d8 Weird Science d8, two scientific Knowledge skills d6" Description="May “jury-rig” a device with any available power once per game session"/>
-    <Edge Name="Giant Killer" Requires="V" Description="+1d6 damage when attacking large creatures"/>
+    <Edge Name="Giant Killer" Requires="Veteran" Description="+1d6 damage when attacking large creatures"/>
     <Edge Name="Hard to Kill" Requires="Novice, Wild Card, Spirit d8" Description="Ignore wound penalties for Vigor rolls made on the Knockout or Injury tables"/>
     <Edge Name="Harder to Kill" Requires="Veteran, Hard to Kill" Description="50% chance of surviving “death” by some unlikely means"/>
     <Edge Name="Healer" Requires="Novice, Spirit d8" Description="+2 to all Healing rolls and the healing power if applicable."/>
     <Edge Name="Hold the Line!" Requires="Seasoned, Smarts d8, Command" Description="Troops have +1 Toughness"/>
     <Edge Name="Holy/Unholy Warrior" Requires="Novice, AB (Miracles), Spirit d8, Faith d6" Description="Spend 1 Power Point to make evil creatures make Spirit check or be Shaken; roll of 1 kills Extras, wounds Wild Cards; cost is 1 Power Point per creature affected"/>
     <Edge Name="Inspire" Requires="Seasoned, Command" Description="+1 to Spirit rolls of all troops in command"/>
-    <Edge Name="Investigator" Requires="Novice, Smarts d8, Investigation d8+, Streetwise d8+" Description="+2 Investigation and Streetwise"/>
+    <Edge Name="Investigator" Requires="Novice, Smarts d8, Investigation d8, Streetwise d8" Description="+2 Investigation and Streetwise"/>
     <Edge Name="Jack of All Trades" Requires="Novice, Smarts d10" Description="Ignore -2 untrained penalty for skills linked to Smarts"/>
     <Edge Name="Level Headed" Requires="Seasoned, Smarts d8" Description="Act on best of two cards in combat"/>
     <Edge Name="Improved Level Headed" Requires="Seasoned, Level Headed" Description="Act on best of three cards in combat"/>
-    <Edge Name="Luck" Requires="N" Description="+1 benny per session"/>
+    <Edge Name="Luck" Requires="Novice" Description="+1 benny per session"/>
     <Edge Name="Great Luck" Requires="Novice, Luck" Description="+2 bennies per session"/>
-    <Edge Name="Marksman" Requires="S" Description="Character gets the aim maneuver (+2 Shooting) if he does not move"/>
+    <Edge Name="Marksman" Requires="Seasoned" Description="Character gets the aim maneuver (+2 Shooting) if he does not move"/>
     <Edge Name="McGyver" Requires="Novice, Smarts d6, Repair d6, Notice d8" Description="No penalties due to lack of equipment"/>
     <Edge Name="Mentalist" Requires="Novice, AB (Psionics), Smarts d8, Psionics d6" Description="+2 to any opposed Psionics roll"/>
     <Edge Name="Mighty Blow" Requires="Seasoned, Wild Card, Fighting d10" Description="Double melee damage when dealt Joker"/>
@@ -137,8 +137,8 @@
     <Edge Name="Nerves of Steel" Requires="Novice, Wild Card, Vigor d8" Description="Ignore 1 point of wound penalties"/>
     <Edge Name="Improved Nerves of Steel" Requires="Novice, Nerves of Steel" Description="Ignore 2 points of wound penalties"/>
     <Edge Name="New Power" Requires="Novice, AB" Description="Character gains one new power"/>
-    <Edge Name="Noble" Requires="N" Description="+2 Charisma; Character is noble born with status and wealth"/>
-    <Edge Name="No Mercy" Requires="S" Description="May spend bennies on damage rolls"/>
+    <Edge Name="Noble" Requires="Novice" Description="+2 Charisma; Character is noble born with status and wealth"/>
+    <Edge Name="No Mercy" Requires="Seasoned" Description="May spend bennies on damage rolls"/>
     <Edge Name="Power Points" Requires="Novice, AB" Description="+5 Power Points, once per rank only"/>
     <Edge Name="Power Surge" Requires="Seasoned, arcane skill d10" Description="+2d6 Power Points when dealt a Joker"/>
     <Edge Name="Professional" Requires="Legendary, d12 in trait" Description="Trait becomes d12+1"/>
@@ -148,7 +148,7 @@
     <Edge Name="Quick Draw" Requires="Novice, Agility d8" Description="May automatically draw weapon as a free action"/>
     <Edge Name="Rapid Recharge" Requires="Seasoned, Spirit d6, AB" Description="Regain 1 Power Point every 30 minutes"/>
     <Edge Name="Improved Rapid Recharge" Requires="Veteran, Rapid Recharge" Description="Regain 1 Power Point every 15 minutes"/>
-    <Edge Name="Rich" Requires="N" Description="3x starting funds, $75K annual salary"/>
+    <Edge Name="Rich" Requires="Novice" Description="3x starting funds, $75K annual salary"/>
     <Edge Name="Filthy Rich" Requires="Novice, Noble or Rich" Description="5x starting funds, $250K annual salary"/>
     <Edge Name="Rock and Roll!" Requires="Seasoned, Shooting d8" Description="Full-auto penalty is -1 instead of -2"/>
     <Edge Name="Scholar" Requires="Novice, d8 in affected skills" Description="+2 to two different Knowledge skills"/>
@@ -159,9 +159,9 @@
     <Edge Name="Improved Sweep" Requires="Veteran, Sweep" Description="As above but with no penalty"/>
     <Edge Name="Strong Willed" Requires="Novice, Intimidate d6, Taunt d6" Description="+2 Intimidate and Taunt, +2 to resist"/>
     <Edge Name="Thief" Requires="Novice, Agility d8, Climb d6, Lockpick d6, Stealth d8" Description="+2 Climb, Lockpick, Stealth, rolls made to trick or deceive, detecting or disarming traps"/>
-    <Edge Name="Tough as Nails" Requires="L" Description="Toughness +1"/>
+    <Edge Name="Tough as Nails" Requires="Legendary" Description="Toughness +1"/>
     <Edge Name="Improved Tough as Nails" Requires="Legendary, Tough as Nails" Description="Toughness +2"/>
-    <Edge Name="Trademark Weapon" Requires="Novice, Fighting or Shooting d10" Description="+1 Fighting or Shooting with one particular weapon"/>
+    <Edge Name="Trademark Weapon" Requires="Novice, Fighting d10 or Shooting d10" Description="+1 Fighting or Shooting with one particular weapon"/>
     <Edge Name="Improved Trademark Weapon" Requires="Veteran, Trademark Weapon" Description="+2 Fighting or Shooting with one particular weapon"/>
     <Edge Name="Two-Fisted" Requires="Novice, Agility d8" Description="May attack with a weapon in each hand without multi-action penalty."/>
     <Edge Name="Weapon Master" Requires="Legendary, Fighting d12" Description="Parry +1"/>
