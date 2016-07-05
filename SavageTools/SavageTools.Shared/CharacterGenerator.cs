@@ -26,7 +26,19 @@ namespace SavageTools
         public ObservableCollectionExtended<SettingRace> Races { get; } = new ObservableCollectionExtended<SettingRace>();
         public ObservableCollectionExtended<SettingRank> Ranks { get; } = new ObservableCollectionExtended<SettingRank>();
 
-        public SettingArchetype SelectedArchetype { get { return Get<SettingArchetype>(); } set { Set(value); } }
+        public SettingArchetype SelectedArchetype
+        {
+            get { return Get<SettingArchetype>(); }
+            set
+            {
+                if (Set(value) && !string.IsNullOrEmpty(value.Race))
+                {
+                    var newRace = Races.SingleOrDefault(r => r.Name == value.Race);
+                    if (newRace != null)
+                        SelectedRace = newRace;
+                }
+            }
+        }
 
         public SettingRace SelectedRace { get { return Get<SettingRace>(); } set { Set(value); } }
 
@@ -306,7 +318,7 @@ namespace SavageTools
             if (Settings.Any(s => s == book.Name))
                 return; //already loaded
 
-            Settings.Add(book.Name); 
+            Settings.Add(book.Name);
 
             if (book.References != null)
                 foreach (var item in book.References.Where(r => !Settings.Any(s => s == r.Name)))

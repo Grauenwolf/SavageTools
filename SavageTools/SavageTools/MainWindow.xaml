@@ -8,7 +8,6 @@
         Title="MainWindow" Height="350" Width="700">
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <Button Content="Add Book" Command="{Binding LoadSettingCommand}" Margin="6"/>
             <Label Content="Archetype" />
             <ComboBox ItemsSource="{Binding CharacterGenerator.Archetypes}" SelectedItem="{Binding CharacterGenerator.SelectedArchetype}" Margin="4">
                 <ItemsControl.ItemTemplate>
@@ -35,6 +34,33 @@
             </ComboBox>
             <CheckBox Content="Wild Card" IsChecked="{Binding CharacterGenerator.WildCard}" Margin="4"/>
             <Button Content="Create Character" Command="{Binding CreateCharacterCommand}" Margin="6"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Button Content="Add Setting" Command="{Binding LoadSettingCommand}" Margin="6"/>
+            <TextBlock Text="Settings" Margin="4" />
+            <ItemsControl ItemsSource="{Binding CharacterGenerator.Settings}">
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin" Value="4" />
+                                </Style>
+
+                            </StackPanel.Resources>
+                            <TextBlock Text="{Binding}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+            
+            
         </StackPanel>
         <ScrollViewer>
         <ItemsControl ItemsSource="{Binding Characters}">

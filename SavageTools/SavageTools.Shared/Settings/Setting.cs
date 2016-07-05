@@ -184,6 +184,10 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public int Vigor { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public string Race { get; set; }
     }
 
     /// <remarks/>
