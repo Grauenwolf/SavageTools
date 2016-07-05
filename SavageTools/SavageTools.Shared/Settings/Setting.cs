@@ -72,6 +72,20 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public string Description { get; set; }
+
+        /// <remarks/>
+        [XmlElement("Skill")]
+        public SettingSkill[] Skill { get; set; }
+
+        /// <remarks/>
+        [XmlElement("Trait")]
+        public SettingTrait[] Trait { get; set; }
+
+        /// <remarks/>
+        [XmlElement("Feature")]
+        public SettingFeature[] Features { get; set; }
+
+
     }
 
     /// <remarks/>

@@ -19,12 +19,12 @@ namespace SavageTools
             get { return GetCommand(CreateCharacter); }
         }
 
-        private void CreateCharacter()
+        void CreateCharacter()
         {
             Characters.Add(CharacterGenerator.GenerateCharacter());
         }
 
-        private void LoadSetting()
+        void LoadSetting()
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".setting";

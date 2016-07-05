@@ -15,6 +15,7 @@ namespace SavageTools.Characters
             dieCode = dieCode.ToUpperInvariant();
             switch (dieCode)
             {
+                case "2D": Score = 2; return;
                 case "4D": Score = 4; return;
                 case "6D": Score = 6; return;
                 case "8D": Score = 8; return;

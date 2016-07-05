@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Linq;
 using Tortuga.Anchor;
 
@@ -77,6 +78,11 @@ namespace SavageTools
             {
                 throw new ArgumentException(string.Format("Cannot parse '{0}'", dieCode), "dieCode", ex);
             }
+        }
+
+        public bool NextBoolean()
+        {
+            return Next(0, 2) == 1;
         }
 
         //public T ChooseWithOdds<T>(ICollection<T> list) where T : IHasOdds

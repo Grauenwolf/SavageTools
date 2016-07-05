@@ -92,18 +92,21 @@
                 <TextBlock Text="{Binding Charisma}" Grid.Column="0" Grid.Row="1"  />
                 <TextBlock Text="{Binding ParryTotal}" Grid.Column="1" Grid.Row="1"  />
                 <TextBlock Text="{Binding ToughnessTotal}" Grid.Column="2" Grid.Row="1"  />
-                <StackPanel Grid.Column="3" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="{Binding Pace}"  />
-                    <TextBlock Text="+"  />
-                    <TextBlock Text="{Binding Running}"  />
-                </StackPanel>
-                <StackPanel Grid.Column="4" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock Text="{Binding Strain}"  />
-                    <TextBlock Text="/"  />
-                    <TextBlock Text="{Binding MaximumStrainTotal}"  />
-                </StackPanel>
-                
 
+                <TextBlock Grid.Column="3" Grid.Row="1" >
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0}+{1}">
+                            <Binding Path="Pace" />
+                            <Binding Path="Running" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                
+                <TextBlock Grid.Column="4" Grid.Row="1" >
+                    <Run Text="{Binding Strain}"/>
+                    <Run Text="/"/>
+                    <Run Text="{Binding MaximumStrainTotal, Mode=OneWay}"/>
+                </TextBlock>
             </Grid>
             
             
@@ -133,22 +136,12 @@
             </ItemsControl>
 
             <ItemsControl ItemsSource="{Binding Edges}">
-
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel.Resources>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Margin" Value="4" />
-                                </Style>
-
-                            </StackPanel.Resources>
-
-                            <!--<TextBlock Text="{Binding Name}" />
-                            <TextBlock Text="{Binding Trait}" />-->
-                            <TextBlock Text="{Binding Name}"  FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Description}" />
-                        </StackPanel>
+                        <TextBlock Margin="4">
+                            <Run FontWeight="Bold" Text="{Binding Name}" />
+                            <Run Text="{Binding Description}" />
+                        </TextBlock>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>
@@ -157,6 +150,24 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
+
+            <ItemsControl ItemsSource="{Binding Hindrances}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Margin="4">
+                            <Run FontWeight="Bold" Text="{Binding Name}" />
+                            <Run Text="{Binding LevelName, Mode=OneWay}" />
+                            <Run Text="{Binding Description}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+            
             <WrapPanel>
                 <TextBlock Text="Unused Hindrances" Visibility="{Binding UnusedHindrances, Converter={StaticResource NotZeroToVisibleConverter}}" />
                 <TextBlock Text="{Binding UnusedHindrances}" Visibility="{Binding UnusedHindrances, Converter={StaticResource NotZeroToVisibleConverter}}" />

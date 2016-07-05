@@ -5,12 +5,27 @@ namespace SavageTools.Characters
     public class Hindrance : ChangeTrackingModelBase
     {
         public string Name { get { return Get<string>(); } set { Set(value); } }
+        public string Description { get { return Get<string>(); } set { Set(value); } }
 
         /// <summary>
         /// Level 1 = minor, level 2 = major
-        /// Level 0 means it is a built-in complication that doesn't count towards the hindrence limit
+        /// Level 0 means it is a built-in complication that doesn't count towards the hindrance limit
         /// </summary>
         public int Level { get { return Get<int>(); } set { Set(value); } }
+
+        public string LevelName
+        {
+            get
+            {
+                switch (Level)
+                {
+                    case 0: return "";
+                    case 1: return "{Minor}";
+                    case 2: return "{Major}";
+                }
+                return "";
+            }
+        }
     }
 }
 

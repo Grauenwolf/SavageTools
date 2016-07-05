@@ -23,6 +23,7 @@ namespace SavageTools.Characters
 
         public int UnusedAttributes { get { return Get<int>(); } set { Set(value); } }
         public int UnusedSkills { get { return Get<int>(); } set { Set(value); } }
+        public int UnusedSmartSkills { get { return Get<int>(); } set { Set(value); } }
         public int UnusedEdges { get { return Get<int>(); } set { Set(value); } }
         public int UnusedHindrances { get { return Get<int>(); } set { Set(value); } }
         public int UnusedAdvances { get { return Get<int>(); } set { Set(value); } }
