@@ -6,34 +6,6 @@
   </Hindrances>
   <Edges>
 
-    <Edge Name="Arcane Background (Magic)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
-      <Skill Name="Spellcasting" Attribute="Smarts" Level="4"/>
-      <Trait Name="UnusedSkills" Bonus="-1" />
-      <Trait Name="PowerPoints" Bonus="10" />
-      <Trait Name="UnusedPowers" Bonus="3" />
-      <Feature Name="Arcane Background" />
-    </Edge>
-    <Edge Name="Wizard" Requires="Novice, Arcane Background (Magic), Smarts d8, Knowledge (arcana) d8, Spellcasting d6" Description="Each Spellcasting raise reduces cost of spell by 1 point"/>
-
-
-    <Edge Name="Arcane Background (Miracles)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
-      <Skill Name="Faith" Attribute="Spirit" Level="4"/>
-      <Trait Name="UnusedSkills" Bonus="-1" />
-      <Trait Name="PowerPoints" Bonus="10" />
-      <Trait Name="UnusedPowers" Bonus="2" />
-      <Feature Name="Arcane Background" />
-    </Edge>
-    <Edge Name="Holy/Unholy Warrior" Requires="Novice, Arcane Background (Miracles), Spirit d8, Faith d6" Description="Spend 1 Power Point to make evil creatures make Spirit check or be Shaken; roll of 1 kills Extras, wounds Wild Cards; cost is 1 Power Point per creature affected"/>
-
-
-    <Edge Name="Arcane Background (Psionics)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
-      <Skill Name="Psionics" Attribute="Smarts" Level="4"/>
-      <Trait Name="UnusedSkills" Bonus="-1" />
-      <Trait Name="PowerPoints" Bonus="10" />
-      <Trait Name="UnusedPowers" Bonus="3" />
-      <Feature Name="Arcane Background" />
-    </Edge>
-    <Edge Name="Mentalist" Requires="Novice, Arcane Background (Psionics), Smarts d8, Psionics d6" Description="+2 to any opposed Psionics roll"/>
 
 
 
@@ -47,15 +19,7 @@
        <Statistic Name="UnusedSkills" Bonus="-1" />
       <Feature Name="Arcane Background" />
     </Edge>-->
-    <Edge Name="Arcane Background (Weird Science)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
-      <Skill Name="Weird Science" Attribute="Smarts" Level="4"/>
-      <Trait Name="UnusedSkills" Bonus="-1" />
-      <Trait Name="PowerPoints" Bonus="10" />
-      <Trait Name="UnusedPowers" Bonus="1" />
-      <Feature Name="Arcane Background" />
-    </Edge>
-    <Edge Name="Gadgeteer" Requires="Novice, Arcane Background (Weird Science), Smarts d8, Repair d8 Weird Science d8, two scientific Knowledge skills d6" Description="May “jury-rig” a device with any available power once per game session"/>
-    <Edge Name="Mr. Fix It" Requires="Novice, Arcane Background (Weird Science), Smarts d10, Repair d8, Weird Science d8, two scientific Knowledge skills at d6" Description="+2 to Repair rolls, halve normal Repair time with raise"/>
+
 
     <!-- Make sure this is kept in sync across all Arcane settings.-->
     <Edge Name="Arcane Resistance" Requires="Novice, Spirit d8" Description="Armor 2 vs. magic, +2 to resist magic effects"/>

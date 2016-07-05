@@ -8,11 +8,11 @@ namespace SavageTools.Characters
     public class Character : ChangeTrackingModelBase
     {
         public string Name { get { return Get<string>(); } set { Set(value); } }
-        public Trait Agility { get { return GetDefault<Trait>(4); } set { Set(value); } }
-        public Trait Smarts { get { return GetDefault<Trait>(4); } set { Set(value); } }
-        public Trait Strength { get { return GetDefault<Trait>(4); } set { Set(value); } }
-        public Trait Spirit { get { return GetDefault<Trait>(4); } set { Set(value); } }
-        public Trait Vigor { get { return GetDefault<Trait>(4); } set { Set(value); } }
+        public Trait Agility { get { return Get<Trait>(); } set { Set(value); } }
+        public Trait Smarts { get { return Get<Trait>(); } set { Set(value); } }
+        public Trait Strength { get { return Get<Trait>(); } set { Set(value); } }
+        public Trait Spirit { get { return Get<Trait>(); } set { Set(value); } }
+        public Trait Vigor { get { return Get<Trait>(); } set { Set(value); } }
 
         public SkillCollection Skills { get { return GetNew<SkillCollection>(); } }
         public HindranceCollection Hindrances { get { return GetNew<HindranceCollection>(); } }
@@ -32,6 +32,8 @@ namespace SavageTools.Characters
         public bool IsWildCard { get { return Get<bool>(); } set { Set(value); } }
 
         public string Archetype { get { return Get<string>(); } set { Set(value); } }
+        public string Race { get { return Get<string>(); } set { Set(value); } }
+        public string Rank { get { return Get<string>(); } set { Set(value); } }
 
         public int Pace { get { return GetDefault(6); } set { Set(value); } }
         public Trait Running { get { return GetDefault<Trait>(6); } set { Set(value); } }
@@ -39,6 +41,8 @@ namespace SavageTools.Characters
         public int Charisma { get { return Get<int>(); } set { Set(value); } }
         public int Parry { get { return Get<int>(); } set { Set(value); } }
         public int Toughness { get { return Get<int>(); } set { Set(value); } }
+        public int Strain { get { return Get<int>(); } set { Set(value); } }
+        public int MaximumStrain { get { return Get<int>(); } set { Set(value); } }
 
 
         public int ParryTotal
@@ -49,6 +53,11 @@ namespace SavageTools.Characters
         public int ToughnessTotal
         {
             get { return 2 + Vigor.HalfScore; }
+        }
+
+        public int MaximumStrainTotal
+        {
+            get { return MaximumStrain + Math.Min(Spirit.Score, Vigor.Score); }
         }
 
         public void Increment(string trait, int bonus = 1)
@@ -66,6 +75,8 @@ namespace SavageTools.Characters
                 case "Charisma": Charisma += bonus; return;
                 case "Parry": Parry += bonus; return;
                 case "Toughness": Toughness += bonus; return;
+                case "Strain": Strain += bonus; return;
+                case "MaximumStrain": MaximumStrain += bonus; return;
 
 
                 case "UnusedAttributes": UnusedAttributes += bonus; return;
@@ -161,9 +172,7 @@ namespace SavageTools.Characters
             foreach (var skill in Skills.Where(s => s.Trait > 0))
             {
                 if (skill.Name == name)
-                {
                     return (trait == null) || (skill.Trait > trait);
-                }
             }
 
             //Check for edges
@@ -175,7 +184,7 @@ namespace SavageTools.Characters
                 return true;
 
             //Check for actual features
-            if(Features.Any(e => e.Name == name))
+            if (Features.Any(e => e.Name == name))
                 return true;
 
             Debug.WriteLine("Does not have feature " + feature);

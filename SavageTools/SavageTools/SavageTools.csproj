@@ -58,8 +58,8 @@
       <HintPath>..\packages\Tortuga.Anchor.0.8.5985.31190\lib\net46\Tortuga.Anchor.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Tortuga.Sails, Version=1.0.6024.39939, Culture=neutral, PublicKeyToken=e177acbf757d82e6, processorArchitecture=MSIL">
-      <HintPath>..\packages\Tortuga.Sails.1.0.6024.39939\lib\net46\Tortuga.Sails.dll</HintPath>
+    <Reference Include="Tortuga.Sails, Version=1.0.6029.30615, Culture=neutral, PublicKeyToken=e177acbf757d82e6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tortuga.Sails.1.0.6029.30615\lib\net46\Tortuga.Sails.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
@@ -71,6 +71,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AppSpecific.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Blue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CharacterControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

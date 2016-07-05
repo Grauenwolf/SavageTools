@@ -5,12 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SavageTools"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="700">
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Button Content="Add Book" Command="{Binding LoadSettingCommand}" Margin="6"/>
-            <Label Content="Archtype" />
+            <Label Content="Archetype" />
             <ComboBox ItemsSource="{Binding CharacterGenerator.Archetypes}" SelectedItem="{Binding CharacterGenerator.SelectedArchetype}" Margin="4">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ComboBox>
+            <Label Content="Race" />
+            <ComboBox ItemsSource="{Binding CharacterGenerator.Races}" SelectedItem="{Binding CharacterGenerator.SelectedRace}" Margin="4">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ComboBox>
+            <Label Content="Rank" />
+            <ComboBox ItemsSource="{Binding CharacterGenerator.Ranks}" SelectedItem="{Binding CharacterGenerator.SelectedRank}" Margin="4">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" />

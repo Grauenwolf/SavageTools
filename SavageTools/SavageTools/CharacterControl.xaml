@@ -21,6 +21,10 @@
                 <TextBox Text="{Binding Name}" MinWidth="100" />
                 <TextBlock Text="Archetype" />
                 <TextBox Text="{Binding Archetype}" MinWidth="100" />
+                <TextBlock Text="Race" />
+                <TextBox Text="{Binding Race}" MinWidth="100" />
+                <TextBlock Text="Rank" />
+                <TextBox Text="{Binding Rank}" MinWidth="100" />
             </StackPanel>
             <Grid>
                 <Grid.Resources>
@@ -56,6 +60,53 @@
                 <TextBlock Text="{Binding Vigor}" Grid.Column="4" Grid.Row="1"  />
 
             </Grid>
+
+            <Grid>
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                    </Style>
+                    <Style TargetType="ColumnDefinition">
+                        <Setter Property="Width" Value="75" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  />
+                    <ColumnDefinition  />
+                    <ColumnDefinition  />
+                    <ColumnDefinition  />
+                    <ColumnDefinition  />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Charisma" Grid.Column="0" Grid.Row="0"   />
+                <TextBlock Text="Parry" Grid.Column="1" Grid.Row="0"  />
+                <TextBlock Text="Toughness" Grid.Column="2" Grid.Row="0"  />
+                <TextBlock Text="Pace" Grid.Column="3" Grid.Row="0"  />
+                <TextBlock Text="Strain/Max" Grid.Column="4" Grid.Row="0"  />
+
+
+                <TextBlock Text="{Binding Charisma}" Grid.Column="0" Grid.Row="1"  />
+                <TextBlock Text="{Binding ParryTotal}" Grid.Column="1" Grid.Row="1"  />
+                <TextBlock Text="{Binding ToughnessTotal}" Grid.Column="2" Grid.Row="1"  />
+                <StackPanel Grid.Column="3" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding Pace}"  />
+                    <TextBlock Text="+"  />
+                    <TextBlock Text="{Binding Running}"  />
+                </StackPanel>
+                <StackPanel Grid.Column="4" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding Strain}"  />
+                    <TextBlock Text="/"  />
+                    <TextBlock Text="{Binding MaximumStrainTotal}"  />
+                </StackPanel>
+                
+
+            </Grid>
+            
+            
             <ItemsControl ItemsSource="{Binding Skills}">
                 
                 <ItemsControl.ItemTemplate>
@@ -106,6 +157,14 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
+            <WrapPanel>
+                <TextBlock Text="Unused Hindrances" Visibility="{Binding UnusedHindrances, Converter={StaticResource NotZeroToVisibleConverter}}" />
+                <TextBlock Text="{Binding UnusedHindrances}" Visibility="{Binding UnusedHindrances, Converter={StaticResource NotZeroToVisibleConverter}}" />
+
+                <TextBlock Text="Unused Powers" Visibility="{Binding UnusedPowers, Converter={StaticResource NotZeroToVisibleConverter}}" />
+                <TextBlock Text="{Binding UnusedPowers}" Visibility="{Binding UnusedPowers, Converter={StaticResource NotZeroToVisibleConverter}}" />
+
+            </WrapPanel>
         </StackPanel>
     </Border>
 </UserControl>

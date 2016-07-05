@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:SavageTools"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Tortuga.Sails;component/ConvertersList.xaml" />
+                <ResourceDictionary Source="/Blue.xaml" />
+                <ResourceDictionary Source="/AppSpecific.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

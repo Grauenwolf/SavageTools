@@ -73,7 +73,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Settings\Everything.xml" />
+    <None Include="Settings\Rifts Tomorrow Legion.savage-setting">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Settings\Super Powers.savage-setting">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Setting>
-  <Skills>
-  </Skills>
-  <Hindrances>
-  </Hindrances>
+<Setting Name="Magic">
+
   <Edges>
 
     <Edge Name="Arcane Background (Magic)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
@@ -30,7 +27,6 @@
 
   </Edges>
 
-  <Archetypes>
-  </Archetypes>
+
 </Setting>
 

@@ -14,6 +14,11 @@ namespace SavageTools.Characters
                 Add(new Skill() { Name = name, Attribute = attribute, Trait = 4 });
         }
 
+        public Skill this[string name]
+        {
+            get { return this.FirstOrDefault(s => s.Name == name); }
+        }
+
     }
 
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Setting>
+<Setting Name="Core">
   <Skills>
     <Skill Name="Boating" Attribute="Agility"/>
     <Skill Name="Climbing" Attribute="Strength"/>
@@ -151,17 +151,17 @@
     <Edge Name="Noble" Requires="Novice" Description="+2 Charisma; Character is noble born with status and wealth">
       <Trait Name="Charisma" Bonus="2" />
     </Edge>
-    
-    
+
+
     <Edge Name="No Mercy" Requires="Seasoned" Description="May spend bennies on damage rolls"/>
     <Edge Name="Power Surge" Requires="Seasoned, arcane skill d10" Description="+2d6 Power Points when dealt a Joker"/>
-    
+
     <!-- Need way to wildcard these
       <Edge Name="Professional" Requires="Legendary, d12 in trait" Description="Trait becomes d12+1"/>
       <Edge Name="Expert" Requires="Legendary, Professional in trait" Description="Trait becomes d12+2"/>
       <Edge Name="Master" Requires="Legendary, Wild Card, Expert in trait" Description="Wild Die is d10 for one trait"/>
     -->
-    
+
     <Edge Name="Quick" Requires="Novice, Agility d8" Description="Discard draw of 5 or less for new card"/>
     <Edge Name="Quick Draw" Requires="Novice, Agility d8" Description="May automatically draw weapon as a free action"/>
     <Edge Name="Rich" Requires="Novice" Description="3x starting funds, $75K annual salary"/>
@@ -194,11 +194,44 @@
   </Edges>
 
   <Archetypes>
-    <Archetype Name="Human Novice" UnusedAttributes="5" UnusedSkills="15" UnusedEdges="1"/>
-    <Archetype Name="Human Seasoned" UnusedAttributes="5" UnusedSkills="15" UnusedEdges="1" Experience="20" UnusedAdvances="4"/>
-    <Archetype Name="Human Veteran" UnusedAttributes="5" UnusedSkills="15" UnusedEdges="1" Experience="40" UnusedAdvances="8"/>
-    <Archetype Name="Human Heroic" UnusedAttributes="5" UnusedSkills="15" UnusedEdges="1" Experience="60" UnusedAdvances="12"/>
-    <Archetype Name="Human Legendary" UnusedAttributes="5" UnusedSkills="15" UnusedEdges="1" Experience="80" UnusedAdvances="16"/>
+    <Archetype Name="(None)" UnusedAttributes="5" UnusedSkills="15" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4"/>
+    <Archetype Name="Driver" UnusedAttributes="0" UnusedSkills="7" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="6">
+      <Skill Name="Driving" Level="8"/>
+      <Skill Name="Fighting" Level="4"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Shooting" Level="6"/>
+      <Trait Name="UnusedHindrances" Bonus="3"/>
+      <Edge Name="Ace" />
+      <Edge Name="Quick" />
+    </Archetype>
+    <Archetype Name="Face" UnusedAttributes="0" UnusedSkills="0" Agility="6" Smarts="6" Spirit="8" Strength="6" Vigor="6">
+      <Skill Name="Fighting" Level="4"/>
+      <Skill Name="Intimindate" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Persuasion" Level="10"/>
+      <Skill Name="Shooting" Level="4"/>
+      <Skill Name="Streetwise" Level="6"/>
+      <Skill Name="Taunt" Level="6"/>
+      <Trait Name="UnusedHindrances" Bonus="3"/>
+      <Edge Name="Attractive" />
+      <Edge Name="Strong Willed" />
+    </Archetype>
+    
+
   </Archetypes>
+
+  <Races>
+    <Race Name="Human">
+      <Trait Name="UnusedEdges" Bonus="1" />
+    </Race>
+  </Races>
+
+  <Ranks>
+    <Rank Name="Novice" Experience="0" UnusedAdvances="0"/>
+    <Rank Name="Seasoned" Experience="20" UnusedAdvances="4"/>
+    <Rank Name="Veteran" Experience="40" UnusedAdvances="8"/>
+    <Rank Name="Heroic" Experience="60" UnusedAdvances="12"/>
+    <Rank Name="Legendary" Experience="80" UnusedAdvances="16"/>
+  </Ranks>
 </Setting>
 
