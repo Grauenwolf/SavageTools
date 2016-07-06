@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Setting Name="Rifts Tomorrow Legion">
   <References>
+    <Reference Name="Arcana" />
     <Reference Name="Magic" />
     <Reference Name="Psionics" />
     <Reference Name="Weird Science" />

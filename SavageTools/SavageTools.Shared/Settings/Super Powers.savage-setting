@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Setting>
+  <References>
+    <Reference Name="Arcana" />
+  </References>
   <Skills>
   </Skills>
   <Hindrances>
@@ -21,17 +24,6 @@
     </Edge>-->
 
 
-    <!-- Make sure this is kept in sync across all Arcane settings.-->
-    <Edge Name="Arcane Resistance" Requires="Novice, Spirit d8" Description="Armor 2 vs. magic, +2 to resist magic effects"/>
-    <Edge Name="Improved Arcane Resistance" Requires="Novice, Arcane Resistance" Description="Armor 4 vs. magic, +4 to resist magic effects"/>
-    <Edge Name="Power Points" Requires="Novice, Arcane Background" Description="+5 Power Points, once per rank only">
-      <Trait Name="PowerPoints" Bonus="5" />
-    </Edge>
-    <Edge Name="Rapid Recharge" Requires="Seasoned, Spirit d6, Arcane Background" Description="Regain 1 Power Point every 30 minutes"/>
-    <Edge Name="Improved Rapid Recharge" Requires="Veteran, Rapid Recharge" Description="Regain 1 Power Point every 15 minutes"/>
-    <Edge Name="New Power" Requires="Novice, Arcane Background" Description="Character gains one new power">
-      <Trait Name="UnusedPowers" Bonus="1" />
-    </Edge>
 
   </Edges>
 

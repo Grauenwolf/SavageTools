@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Setting Name="Magic">
 
+  <References>
+    <Reference Name="Arcana" />
+  </References>
+  
+  <Skills>
+  </Skills>
+
   <Edges>
 
     <Edge Name="Arcane Background (Magic)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
@@ -13,20 +20,30 @@
     <Edge Name="Wizard" Requires="Novice, Arcane Background (Magic), Smarts d8, Knowledge (arcana) d8, Spellcasting d6" Description="Each Spellcasting raise reduces cost of spell by 1 point"/>
 
 
-    <!-- Make sure this is kept in sync across all Arcane settings.-->
-    <Edge Name="Arcane Resistance" Requires="Novice, Spirit d8" Description="Armor 2 vs. magic, +2 to resist magic effects"/>
-    <Edge Name="Improved Arcane Resistance" Requires="Novice, Arcane Resistance" Description="Armor 4 vs. magic, +4 to resist magic effects"/>
-    <Edge Name="Power Points" Requires="Novice, Arcane Background" Description="+5 Power Points, once per rank only">
-      <Trait Name="PowerPoints" Bonus="5" />
-    </Edge>
-    <Edge Name="Rapid Recharge" Requires="Seasoned, Spirit d6, Arcane Background" Description="Regain 1 Power Point every 30 minutes"/>
-    <Edge Name="Improved Rapid Recharge" Requires="Veteran, Rapid Recharge" Description="Regain 1 Power Point every 15 minutes"/>
-    <Edge Name="New Power" Requires="Novice, Arcane Background" Description="Character gains one new power">
-      <Trait Name="UnusedPowers" Bonus="1" />
-    </Edge>
 
   </Edges>
 
 
+  <Archetypes>
+
+    <Archetype Name="Mage" Agility="4" Smarts="10" Spirit="8" Strength="4" Vigor="4" UnusedAttributes="0" UnusedSkills="5" >
+      <!-- Bumped unused skills to account for arcana background.-->
+      <Skill Name="Fighting" Level="4"/>
+      <Skill Name="Investigation" Level="6"/>
+      <Skill Name="Knowledge (Arcana)" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Spellcasting" Level="10"/>
+      <Edge Name="Arcane Background (Magic)" />
+      <Edge Name="New Power" />
+      <Edge Name="Power Points" />
+      <Edge Name="Sweep" />
+      <Trait Name="UnusedHindrances" Bonus="4"/>
+    </Archetype>
+
+
+
+
+
+  </Archetypes>
 </Setting>
 

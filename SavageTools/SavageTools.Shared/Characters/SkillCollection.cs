@@ -11,7 +11,7 @@ namespace SavageTools.Characters
             if (skill != null)
                 skill.Trait += 1;
             else
-                Add(new Skill() { Name = name, Attribute = attribute, Trait = 4 });
+                Add(new Skill(name, attribute) { Trait = 4 });
         }
 
         public Skill this[string name]

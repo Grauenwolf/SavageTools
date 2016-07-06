@@ -95,11 +95,11 @@ namespace SavageTools.Settings
 
         /// <remarks/>
         [XmlElement("Skill")]
-        public SettingSkill[] Skill { get; set; }
+        public SettingSkill[] Skills { get; set; }
 
         /// <remarks/>
         [XmlElement("Trait")]
-        public SettingTrait[] Trait { get; set; }
+        public SettingTrait[] Traits { get; set; }
 
         /// <remarks/>
         [XmlElement("Feature")]
@@ -271,3 +271,6 @@ namespace SavageTools.Settings
 
     }
 }
+
+
+

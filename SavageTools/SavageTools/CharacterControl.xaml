@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SavageTools"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Border Padding="10" Background="White">
+    <Border Padding="10" Background="White" BorderBrush="DarkBlue" BorderThickness="2"> 
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <StackPanel.Resources>
@@ -41,6 +41,7 @@
                     <ColumnDefinition  />
                     <ColumnDefinition  />
                     <ColumnDefinition  />
+                    <ColumnDefinition  Width="75" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -52,12 +53,14 @@
                 <TextBlock Text="Strength" Grid.Column="2" Grid.Row="0"  />
                 <TextBlock Text="Spirit" Grid.Column="3" Grid.Row="0"  />
                 <TextBlock Text="Vigor" Grid.Column="4" Grid.Row="0"  />
+                <TextBlock Text="Power Points" Grid.Column="5" Grid.Row="0"  />
 
                 <TextBlock Text="{Binding Agility}" Grid.Column="0" Grid.Row="1"  />
                 <TextBlock Text="{Binding Smarts}" Grid.Column="1" Grid.Row="1"  />
                 <TextBlock Text="{Binding Strength}" Grid.Column="2" Grid.Row="1"  />
                 <TextBlock Text="{Binding Spirit}" Grid.Column="3" Grid.Row="1"  />
                 <TextBlock Text="{Binding Vigor}" Grid.Column="4" Grid.Row="1"  />
+                <TextBlock Text="{Binding PowerPoints}" Grid.Column="5" Grid.Row="1"  />
 
             </Grid>
 
@@ -169,10 +172,12 @@
             </ItemsControl>
             
             <WrapPanel>
-                <TextBlock Text="Unused Hindrances" Visibility="{Binding UnusedHindrances, Converter={StaticResource NotZeroToVisibleConverter}}" />
-                <TextBlock Text="{Binding UnusedHindrances}" Visibility="{Binding UnusedHindrances, Converter={StaticResource NotZeroToVisibleConverter}}" />
-
-                <TextBlock Text="Unused Powers" Visibility="{Binding UnusedPowers, Converter={StaticResource NotZeroToVisibleConverter}}" />
+                <WrapPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Margin" Value="4" />
+                    </Style>
+                </WrapPanel.Resources>
+                <TextBlock FontWeight="Bold" Text="Unused Powers" Visibility="{Binding UnusedPowers, Converter={StaticResource NotZeroToVisibleConverter}}" />
                 <TextBlock Text="{Binding UnusedPowers}" Visibility="{Binding UnusedPowers, Converter={StaticResource NotZeroToVisibleConverter}}" />
 
             </WrapPanel>

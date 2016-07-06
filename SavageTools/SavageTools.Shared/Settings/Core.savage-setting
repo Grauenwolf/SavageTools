@@ -6,7 +6,7 @@
     <Skill Name="Driving" Attribute="Agility"/>
     <Skill Name="Fighting" Attribute="Agility"/>
     <Skill Name="Gambling" Attribute="Smarts"/>
-    <Skill Name="Guts" Attribute="Spirit"/>
+    <!--<Skill Name="Guts" Attribute="Spirit"/>-->
     <Skill Name="Healing" Attribute="Smarts"/>
     <Skill Name="Intimidation" Attribute="Spirit"/>
     <Skill Name="Investigation" Attribute="Smarts"/>
@@ -51,7 +51,6 @@
     <Hindrance Name="Curious" Type="Major" Description="Character wants to know about everything" />
     <Hindrance Name="Death Wish" Type="Minor" Description="Character wants to die after completing some task" />
     <Hindrance Name="Delusional" Type="Minor/Major" Description="Character suffers from grave delusions" />
-    <Hindrance Name="Doubting Thomas" Type="Minor" Description="Character doesn’t believe in the supernatural" />
     <Hindrance Name="Elderly" Type="Major" Description="Pace -1, -1 to Strength and Vigor die types; 5 extra skill points for any skill linked to Smarts" >
       <Trait Name="Pace" Bonus="-1"/>
       <Trait Name="Vigor" Bonus="-1"/>
@@ -226,29 +225,98 @@
   </Edges>
 
   <Archetypes>
-    <Archetype Name="(None)" UnusedAttributes="5" UnusedSkills="15" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4"/>
-    <Archetype Name="Driver" UnusedAttributes="0" UnusedSkills="7" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="6">
+    <Archetype Name="(None)" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="15" />
+    
+    <Archetype Name="Driver" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="7" >
       <Skill Name="Driving" Level="8"/>
       <Skill Name="Fighting" Level="4"/>
       <Skill Name="Notice" Level="6"/>
       <Skill Name="Shooting" Level="6"/>
-      <Trait Name="UnusedHindrances" Bonus="4"/>
       <Edge Name="Ace" />
       <Edge Name="Quick" />
+      <Trait Name="UnusedHindrances" Bonus="4"/>
+      <Trait Name="UnusedEdges" Bonus="-1" />
     </Archetype>
-    <Archetype Name="Face" UnusedAttributes="0" UnusedSkills="0" Agility="6" Smarts="6" Spirit="8" Strength="6" Vigor="6">
+    
+    <Archetype Name="Face" Agility="6" Smarts="6" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
       <Skill Name="Fighting" Level="4"/>
-      <Skill Name="Intimindate" Level="6"/>
+      <Skill Name="Intimidation" Level="6"/>
       <Skill Name="Notice" Level="6"/>
       <Skill Name="Persuasion" Level="10"/>
       <Skill Name="Shooting" Level="4"/>
       <Skill Name="Streetwise" Level="6"/>
       <Skill Name="Taunt" Level="6"/>
-      <Trait Name="UnusedHindrances" Bonus="4"/>
       <Edge Name="Attractive" />
       <Edge Name="Strong Willed" />
+      <Trait Name="UnusedHindrances" Bonus="4"/>
+      <Trait Name="UnusedEdges" Bonus="-1" />
+    </Archetype>
+
+    <Archetype Name="Fighter, Fencer" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
+      <Skill Name="Fighting" Level="12"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Stealth" Level="6"/>
+      <Skill Name="Taunt" Level="8"/>
+      <Edge Name="Florentine" />
+      <Edge Name="Two-Fisted" />
+      <Trait Name="UnusedHindrances" Bonus="4"/>
+      <Trait Name="UnusedEdges" Bonus="-1" />
+    </Archetype>
+
+    <Archetype Name="Fighter, Great Weapon" Agility="6" Smarts="4" Spirit="6" Strength="10" Vigor="6" UnusedAttributes="0" UnusedSkills="4" >
+      <Skill Name="Fighting" Level="10"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Edge Name="Brawny" />
+      <Edge Name="Sweep" />
+      <Trait Name="UnusedHindrances" Bonus="4"/>
+      <Trait Name="UnusedEdges" Bonus="-1" />
+    </Archetype>
+
+    <Archetype Name="Investigator" Agility="6" Smarts="8" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Investigation" Level="8"/>
+      <Skill Name="Notice" Level="8"/>
+      <Skill Name="Persuasion" Level="6"/>
+      <Skill Name="Shooting" Level="6"/>
+      <Skill Name="Streetwise" Level="8"/>
+      <Edge Name="Connections" />
+      <Edge Name="Investigator" />
+      <Trait Name="UnusedHindrances" Bonus="4"/>
+      <Trait Name="UnusedEdges" Bonus="-1" />
+    </Archetype>
+
+    <Archetype Name="Leader" Agility="6" Smarts="6" Spirit="8" Strength="4" Vigor="6" UnusedAttributes="0" UnusedSkills="3" >
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Knowledge (Battle)" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Persuasion" Level="6"/>
+      <Skill Name="Shooting" Level="6"/>
+      <Edge Name="Command" />
+      <Edge Name="Natural Leader" />
+      <Trait Name="UnusedHindrances" Bonus="4"/>
+      <Trait Name="UnusedEdges" Bonus="-1" />
+    </Archetype>
+
+    <Archetype Name="Marksman" Agility="10" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="5" >
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Shooting" Level="10"/>
+      <Skill Name="Taunt" Level="6"/>
+      <Edge Name="Alertness" />
+      <Trait Name="UnusedHindrances" Bonus="4"/>
+      <Trait Name="UnusedEdges" Bonus="-1" />
     </Archetype>
     
+    <Archetype Name="Martial Artist" Agility="8" Smarts="6" Spirit="6" Strength="8" Vigor="6" UnusedAttributes="0" UnusedSkills="6" >
+      <Skill Name="Fighting" Level="10"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Edge Name="Martial Artist" />
+      <Trait Name="UnusedHindrances" Bonus="4"/>
+      <Trait Name="UnusedEdges" Bonus="-1" />
+    </Archetype>
 
   </Archetypes>
 
