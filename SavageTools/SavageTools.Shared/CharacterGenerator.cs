@@ -283,17 +283,23 @@ namespace SavageTools
                     Hindrances.Add(item);
                 }
             if (book.Archetypes != null)
+            {
                 foreach (var item in book.Archetypes)
                 {
                     Archetypes.RemoveAll(s => s.Name == item.Name);
                     Archetypes.Add(item);
                 }
+                Archetypes.Sort(a => a.Name);
+            }
             if (book.Races != null)
+            {
                 foreach (var item in book.Races)
                 {
                     Races.RemoveAll(s => s.Name == item.Name);
                     Races.Add(item);
                 }
+                Races.Sort(r => r.Name);
+            }
             if (book.Ranks != null)
                 foreach (var item in book.Ranks)
                 {
