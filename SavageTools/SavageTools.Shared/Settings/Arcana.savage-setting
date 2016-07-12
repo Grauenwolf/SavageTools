@@ -20,6 +20,8 @@
     <Edge Name="New Power" Requires="Novice, Arcane Background" Description="Character gains one new power">
       <Trait Name="UnusedPowers" Bonus="1" />
     </Edge>
+    <Edge Name="Power Surge" Requires="Wild Card, Seasoned" Description="+2d6 Power Points when dealt a Joker" />
+    <Edge Name="Soul Drain" Requires="Seasoned, Arcane Background" Description="Special"/>
 
   </Edges>
 
