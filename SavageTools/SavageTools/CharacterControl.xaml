@@ -56,14 +56,12 @@
                 <TextBlock Text="Strength" Grid.Column="2" Grid.Row="0"  />
                 <TextBlock Text="Spirit" Grid.Column="3" Grid.Row="0"  />
                 <TextBlock Text="Vigor" Grid.Column="4" Grid.Row="0"  />
-                <TextBlock Text="Power Points" Grid.Column="5" Grid.Row="0"  />
 
                 <TextBlock Text="{Binding Agility}" Grid.Column="0" Grid.Row="1"  />
                 <TextBlock Text="{Binding Smarts}" Grid.Column="1" Grid.Row="1"  />
                 <TextBlock Text="{Binding Strength}" Grid.Column="2" Grid.Row="1"  />
                 <TextBlock Text="{Binding Spirit}" Grid.Column="3" Grid.Row="1"  />
                 <TextBlock Text="{Binding Vigor}" Grid.Column="4" Grid.Row="1"  />
-                <TextBlock Text="{Binding PowerPoints}" Grid.Column="5" Grid.Row="1"  />
 
             </Grid>
 
@@ -183,11 +181,7 @@
                         </TextBlock>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
+  
             </ItemsControl>
 
         </StackPanel>

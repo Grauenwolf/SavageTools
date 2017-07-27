@@ -205,6 +205,10 @@ namespace SavageTools.Settings
         public SettingEdge[] Edges { get; set; }
 
         /// <remarks/>
+        [XmlElement("Hindrance")]
+        public SettingHindrance[] Hindrances { get; set; }
+
+        /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
 

@@ -8,7 +8,35 @@
   </References>
 
   <Archetypes>
-    <Archetype Name="Flame Wind Dragon Hatchling" UnusedAttributes="5" UnusedSkills="15" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" Race="Dragon"/>
+    <Archetype Name="Flame Wind Dragon Hatchling" UnusedAttributes="3" UnusedSkills="10" Agility="4" Smarts="4" Spirit="4" Strength="16" Vigor="8" Race="Dragon">
+      <Edge Name="Arcane Background (Psionics)"/>
+      <Skill Name="Psionics" Attribute="Smarts" Level="6"/>
+      <Edge Name="Armored Hide" Description="+16 MDC Armor, +6 Toughness in dragon form"/>
+      <Edge Name="Claw/Bite" Description="Str+3d6 AP 4, MD in dragon form"/>
+      <Edge Name="Fear"/>
+      <Edge Name="Fire Breath" Description="Range 12/24/48 Damage 4D6 MD, Cone 2d10 MD"/>
+      <Edge Name="Flying" Description="12&quot; Climb 0 in dragon form" />
+      <Edge Name="Impervious to Fire"/>
+      <Edge Name="Infravision"/>
+      <Edge Name="Inherently Magical" Description="Power Points Edge gives +10 PPE instead of +5">
+        <Trait Name="PowerPoints:Magic" Bonus="10" />
+      </Edge>
+      <Edge Name="Limited Metamorphosis"/>
+      <Edge Name="Nigh-Immortality"/>
+      <Edge Name="Size +6" Description="Toughness +6 in dragon form"/>
+      <Edge Name="Slow Regeneration" Description="Natural healing role 1/day"/>
+      <Edge Name="Tail Lash" Description="Str+d8 MD in dragon form"/>
+      <Hindrance Name="No Cybernetics"/>
+      <Hindrance Name="Enemies: Coalition"/>
+      <Hindrance Name="Form Limits"/>
+      <Hindrance Name="Hatched"/>
+      <Hindrance Name="Large" Description="Opponents are +2 attack in dragon form"/>
+      <Hindrance Name="Outsider"/>
+      <Hindrance Name="Territorial"/>
+      <Hindrance Name="Untested"/>
+
+
+    </Archetype>
 
 
   </Archetypes>
@@ -19,7 +47,21 @@
   </Races>
 
   <Table Name="Narrative Hook" Roll="d20">
-
+    <Option Roll="1–3" Description="The Siege of Tolkeen."/>
+    <Option Roll="4" Description="Hidden Away."/>
+    <Option Roll="5–6" Description="Alistair Dunscon’s “True Federation.”"/>
+    <Option Roll="7" Description="Blood Is Thicker."/>
+    <Option Roll="8–9" Description="The Juicer Uprising."/>
+    <Option Roll="10" Description="Grudging Respect."/>
+    <Option Roll="11–12" Description="From Out of a Rift…"/>
+    <Option Roll="13" Description="The Black Market."/>
+    <Option Roll="14" Description="The Coalition."/>
+    <Option Roll="15" Description="Nearly Done For."/>
+    <Option Roll="16" Description="Should Old Acquaintances…"/>
+    <Option Roll="17" Description="Authority Issues."/>
+    <Option Roll="18" Description="A Battle Beyond the Rifts."/>
+    <Option Roll="19" Description="The Evil That Men Do."/>
+    <Option Roll="20" Description="Sometimes It Starts in a Bar."/>
   </Table>
 
   <Table Name="Benefits" Roll="d11" >

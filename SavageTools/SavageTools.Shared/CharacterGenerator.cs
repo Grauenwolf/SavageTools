@@ -31,6 +31,36 @@ namespace SavageTools
 
         public bool BornAHero { get => GetDefault(false); set => Set(value); }
 
+        SettingEdge FindEdge(SettingEdge prototype)
+        {
+            //If any of these are set, assume its a custom edge
+            if (!string.IsNullOrEmpty(prototype.Description))
+                return prototype;
+            if (prototype.Features?.Length > 0)
+                return prototype;
+            if (prototype.Traits?.Length > 0)
+                return prototype;
+            if (prototype.Skills?.Length > 0)
+                return prototype;
+
+            //Look for a shared edge
+            var result = Edges.FirstOrDefault(e => e.Name == prototype.Name);
+            return result ?? prototype;
+        }
+
+        SettingHindrance FindHindrance(SettingHindrance prototype)
+        {
+            //If any of these are set, assume its a custom edge
+            if (!string.IsNullOrEmpty(prototype.Description))
+                return prototype;
+            if (prototype.Features?.Length > 0)
+                return prototype;
+
+            //Look for a shared hindrance
+            var result = Hindrances.FirstOrDefault(e => e.Name == prototype.Name);
+            return result ?? prototype;
+        }
+
         public SettingArchetype SelectedArchetype
         {
             get { return Get<SettingArchetype>(); }
@@ -74,7 +104,7 @@ namespace SavageTools
             result.UnusedHindrances += Math.Max(dice.D(6) - 2, 0);
 
             //Main loop for random picks
-            while (result.UnusedAttributes > 0 || result.UnusedSkills > 0 || result.UnusedSmartSkills > 0 || result.UnusedAdvances > 0 || result.UnusedEdges > 0 || result.UnusedHindrances > 0 || result.PowerGroups.UnusedPowers > 0)
+            while (result.UnusedAttributes > 0 || result.UnusedSkills > 0 || result.UnusedSmartSkills > 0 || result.UnusedAdvances > 0 || result.UnusedEdges > 0 || result.UnusedHindrances > 0)
             {
                 //tight loop to apply current hindrances
                 while (result.UnusedHindrances > 0)
@@ -92,9 +122,7 @@ namespace SavageTools
                 if (result.UnusedEdges > 0)
                     PickEdge(result, dice);
 
-                foreach (var group in result.PowerGroups)
-                    if (group.UnusedPowers > 0)
-                        PickPower(result, group, dice);
+
 
                 //only apply an advance when everything else has been used
                 if (result.UnusedAdvances > 0 && result.UnusedAttributes <= 0 && result.UnusedSkills <= 0 && result.UnusedEdges <= 0 && result.UnusedSmartSkills <= 0)
@@ -129,6 +157,11 @@ namespace SavageTools
 
             }
 
+            //pick powers
+            foreach (var group in result.PowerGroups)
+                while (group.UnusedPowers > 0)
+                    PickPower(result, group, dice);
+
             //Remove the skills that were not chosen
             foreach (var item in result.Skills.Where(s => s.Trait == 0).ToList())
                 result.Skills.Remove(item);
@@ -152,10 +185,28 @@ namespace SavageTools
             //then edges first because they can create new skills
             if (SelectedArchetype.Edges != null)
                 foreach (var item in SelectedArchetype.Edges)
+                    ApplyEdge(result, FindEdge(item), dice);
+
+            if (SelectedArchetype.Hindrances != null)
+                foreach (var item in SelectedArchetype.Hindrances)
                 {
-                    //Lookup the edge definition. If not found, assume this edge is custom for the archetype.
-                    var edge = Edges.SingleOrDefault(e => e.Name == item.Name) ?? item;
-                    ApplyEdge(result, edge, dice);
+                    //pick up the level from the archetype
+                    var level = 0;
+                    if (item.Type == "Minor" || item.Type == "Minor/Major")
+                        level = 1;
+                    else if (item.Type == "Major")
+                        level = 2;
+
+                    var hindrance = FindHindrance(item);
+
+                    if (level == 0) //check for a default
+                    {
+                        if (hindrance.Type == "Minor" || hindrance.Type == "Minor/Major")
+                            level = 1;
+                        else if (hindrance.Type == "Major")
+                            level = 2;
+                    }
+                    ApplyHindrance(result, hindrance, level, dice);
                 }
 
             if (SelectedArchetype.Skills != null)
