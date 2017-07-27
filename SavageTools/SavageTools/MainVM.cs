@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Tortuga.Sails;
@@ -17,12 +18,12 @@ namespace SavageTools
         }
         public ICommand CreateCharacterCommand
         {
-            get { return GetCommand(CreateCharacter); }
+            get { return GetCommand(async () => await CreateCharacterAsync()); }
         }
 
-        void CreateCharacter()
+        async Task CreateCharacterAsync()
         {
-            Characters.Add(new CharacterVM(CharacterGenerator.GenerateCharacter()));
+            Characters.Add(new CharacterVM(await CharacterGenerator.GenerateCharacterAsync()));
         }
 
         void LoadSetting()

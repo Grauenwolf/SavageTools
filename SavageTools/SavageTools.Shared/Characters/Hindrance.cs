@@ -20,8 +20,8 @@ namespace SavageTools.Characters
                 switch (Level)
                 {
                     case 0: return "";
-                    case 1: return "{Minor}";
-                    case 2: return "{Major}";
+                    case 1: return "(Minor)";
+                    case 2: return "(Major)";
                 }
                 return "";
             }

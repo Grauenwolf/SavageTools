@@ -8,6 +8,7 @@ namespace SavageTools.Characters
     public class Character : ChangeTrackingModelBase
     {
         public string Name { get { return Get<string>(); } set { Set(value); } }
+        public string Gender { get { return Get<string>(); } set { Set(value); } }
         public Trait Agility { get { return Get<Trait>(); } set { Set(value); } }
         public Trait Smarts { get { return Get<Trait>(); } set { Set(value); } }
         public Trait Strength { get { return Get<Trait>(); } set { Set(value); } }
@@ -87,6 +88,7 @@ namespace SavageTools.Characters
 
                 case "UnusedAttributes": UnusedAttributes += bonus; return;
                 case "UnusedSkills": UnusedSkills += bonus; return;
+                case "UnusedSmartSkills": UnusedSmartSkills += bonus; return;
                 case "UnusedEdges": UnusedEdges += bonus; return;
                 case "UnusedHindrances": UnusedHindrances += bonus; return;
                 case "UnusedAdvances": UnusedAdvances += bonus; return;

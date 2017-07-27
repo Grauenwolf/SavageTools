@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Tortuga.Anchor.Collections;
 using Tortuga.Anchor.Modeling;
@@ -28,6 +29,11 @@ namespace SavageTools
         public ObservableCollectionExtended<SettingRank> Ranks { get; } = new ObservableCollectionExtended<SettingRank>();
         public ObservableCollectionExtended<SettingTrapping> Trappings { get; } = new ObservableCollectionExtended<SettingTrapping>();
         public ObservableCollectionExtended<SettingPower> Powers { get; } = new ObservableCollectionExtended<SettingPower>();
+
+
+        public bool RandomArchetype { get => GetDefault(false); set => Set(value); }
+        public bool RandomRace { get => GetDefault(false); set => Set(value); }
+        public bool RandomRank { get => GetDefault(false); set => Set(value); }
 
         public bool BornAHero { get => GetDefault(false); set => Set(value); }
 
@@ -80,17 +86,40 @@ namespace SavageTools
         public SettingRank SelectedRank { get { return Get<SettingRank>(); } set { Set(value); } }
 
 
-        public bool WildCard { get { return GetDefault(true); } set { Set(value); } }
+        public bool WildCard { get { return GetDefault(false); } set { Set(value); } }
 
 
-        public Character GenerateCharacter()
+        public async Task<Character> GenerateCharacterAsync()
         {
             var dice = new Dice();
             var result = new Character() { Rank = SelectedRank.Name, IsWildCard = WildCard };
 
+            var name = await Names.NameService.CreateRandomPersonAsync();
+            result.Name = name.FullName;
+            result.Gender = name.Gender;
+
             //Add all possible skills (except ones created by edges)
             foreach (var item in Skills)
                 result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = 0 });
+
+            if (RandomArchetype)
+            {
+                var list = Archetypes.Where(a => WildCard || !a.WildCard).ToList(); //Don't pick wildcard archetypes unless WildCard is checked.
+                SelectedArchetype = dice.Choose(list);
+            }
+            if (RandomRace && string.IsNullOrEmpty(SelectedArchetype.Race))
+            {
+                var list = Races.Where(r => r.Name != "(Special)").ToList();
+                SelectedRace = dice.Choose(list);
+            }
+            if (RandomRank)
+            {
+                var table = new Table<SettingRank>();
+                foreach (var item in Ranks)
+                    table.Add(item, 100 - item.Experience); //this should weigh it towards novice
+
+                SelectedRank = table.RandomChoose(dice);
+            }
 
             ApplyArchetype(result, dice);
 
@@ -100,8 +129,30 @@ namespace SavageTools
             result.UnusedAdvances = SelectedRank.UnusedAdvances;
             result.Experience = SelectedRank.Experience;
 
-            //Add some hindrances to make it interesting
-            result.UnusedHindrances += Math.Max(dice.D(6) - 2, 0);
+
+            if (result.UnusedHindrances == 0)//Add some hindrances to make it interesting
+            {
+                var extraHindrances = Math.Max(dice.D(6) - 2, 0);
+                result.UnusedHindrances += extraHindrances;
+
+                //Assign the points gained from the extra hindrances
+                while (extraHindrances > 0)
+                {
+                    if (extraHindrances >= 2 && dice.NextBoolean())
+                    {
+                        extraHindrances -= 2;
+                        if (dice.NextBoolean())
+                            result.UnusedAttributes += 1;
+                        else
+                            result.UnusedEdges += 1;
+                    }
+                    else
+                    {
+                        extraHindrances -= 1;
+                        result.UnusedSkills += 1;
+                    }
+                }
+            }
 
             //Main loop for random picks
             while (result.UnusedAttributes > 0 || result.UnusedSkills > 0 || result.UnusedSmartSkills > 0 || result.UnusedAdvances > 0 || result.UnusedEdges > 0 || result.UnusedHindrances > 0)
@@ -114,7 +165,7 @@ namespace SavageTools
                     PickAttribute(result, dice);
 
                 if (result.UnusedSmartSkills > 0)
-                    PickSkill(result, dice, "Smarts");
+                    PickSmartsSkill(result, dice);
 
                 if (result.UnusedSkills > 0)
                     PickSkill(result, dice);
@@ -283,6 +334,10 @@ namespace SavageTools
                 foreach (var item in edge.Features)
                     result.Features.Add(item.Name);
 
+            if (edge.AvailablePowers != null)
+                foreach (var item in edge.AvailablePowers)
+                    result.PowerGroups[item.Skill].AvailablePowers.Add(item.Name);
+
             if (edge.Skills != null)
                 foreach (var item in edge.Skills)
                 {
@@ -439,17 +494,17 @@ namespace SavageTools
 
             result.UnusedHindrances -= useMajor ? 2 : 1;
         }
-        static void PickSkill(Character result, Dice dice, string attributeFilter = null)
+        static void PickSkill(Character result, Dice dice)
         {
             bool allowHigh = result.UnusedSkills >= 2 && result.UnusedAttributes == 0; //don't buy expensive skills until all of the attributes are picked
 
             var table = new Table<Skill>();
-            foreach (var item in result.Skills.Where(s => attributeFilter == null || s.Attribute == attributeFilter))
+            foreach (var item in result.Skills)
             {
 
                 if (item.Trait == 0)
                     table.Add(item, result.GetAttribute(item.Attribute).Score - 3); //favor skills that match your attributes
-                else if (item.Trait < result.GetAttribute(item.Attribute)) //favor improving what you know
+                else if ((item.Trait + 1) < result.GetAttribute(item.Attribute)) //favor improving what you know
                     table.Add(item, result.GetAttribute(item.Attribute).Score - 3 + item.Trait.Score);
                 else if (allowHigh && item.Trait < 12)
                     table.Add(item, item.Trait.Score); //Raising skills above the controlling attribute is relatively rare
@@ -471,6 +526,40 @@ namespace SavageTools
                 skill.Trait += 1;
             }
         }
+
+        static void PickSmartsSkill(Character result, Dice dice)
+        {
+            bool allowHigh = result.UnusedSmartSkills >= 2 && result.UnusedAttributes == 0; //don't buy expensive skills until all of the attributes are picked
+
+            var table = new Table<Skill>();
+            foreach (var item in result.Skills.Where(s => s.Attribute == "Smarts"))
+            {
+
+                if (item.Trait == 0)
+                    table.Add(item, result.GetAttribute(item.Attribute).Score - 3); //favor skills that match your attributes
+                else if ((item.Trait + 1) < result.GetAttribute(item.Attribute)) //favor improving what you know
+                    table.Add(item, result.GetAttribute(item.Attribute).Score - 3 + item.Trait.Score);
+                else if (allowHigh && item.Trait < 12)
+                    table.Add(item, item.Trait.Score); //Raising skills above the controlling attribute is relatively rare
+            }
+            var skill = table.RandomChoose(dice);
+            if (skill.Trait == 0)
+            {
+                result.UnusedSmartSkills -= 1;
+                skill.Trait = 4;
+            }
+            else if (skill.Trait < result.GetAttribute(skill.Attribute))
+            {
+                result.UnusedSmartSkills -= 1;
+                skill.Trait += 1;
+            }
+            else
+            {
+                result.UnusedSmartSkills -= 2;
+                skill.Trait += 1;
+            }
+        }
+
         static void PickAttribute(Character result, Dice dice)
         {
             //Attributes are likely to stack rather than spread evenly
@@ -636,11 +725,6 @@ namespace SavageTools
             }
         }
     }
-
-
-
-
-
 }
 
 

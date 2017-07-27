@@ -117,6 +117,10 @@ namespace SavageTools.Settings
         public SettingFeature[] Features { get; set; }
 
         /// <remarks/>
+        [XmlElement("AvaialblePower")]
+        public SettingAvailablePower[] AvailablePowers { get; set; }
+
+        /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
 
@@ -189,6 +193,20 @@ namespace SavageTools.Settings
 
     /// <remarks/>
     [XmlType(AnonymousType = true)]
+    public class SettingAvailablePower
+    {
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public string Name { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public string Skill { get; set; }
+    }
+
+    /// <remarks/>
+    [XmlType(AnonymousType = true)]
     public class SettingArchetype
     {
 
@@ -211,6 +229,10 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public bool WildCard { get; set; }
 
         /// <remarks/>
         [XmlAttribute()]

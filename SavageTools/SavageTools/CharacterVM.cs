@@ -32,7 +32,7 @@ namespace SavageTools
 
             result.AppendLine(string.Join(", ", c.Skills.Select(s => s.LongName)));
             result.AppendLine(string.Join(", ", c.Edges.Select(e => e.Name + ": " + e.Description)));
-            result.AppendLine(string.Join(", ", c.Hindrances.Select(h => h.LevelName + " " + h.Description)));
+            result.AppendLine(string.Join(", ", c.Hindrances.Select(h => h.Name + " " + h.LevelName + ": " + h.Description)));
 
             foreach (var group in c.PowerGroups)
                 result.AppendLine($"{group.Skill}, Power Points {group.PowerPoints}, Powers: {string.Join(", ", group.Powers.Select(p => p.LongName))}");

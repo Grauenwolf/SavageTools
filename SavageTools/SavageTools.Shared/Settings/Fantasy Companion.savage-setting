@@ -25,7 +25,7 @@
     <Power Name="Havoc" Requires="Seasoned" Description="Move enemies in random directions."/>
     <Power Name="Sluggish Reflexes" Requires="Seasoned" Description="Reduce a targets response time."/>
     <Power Name="Slumber" Requires="Seasoned" Description="Target goes into a deep sleep. Solomon Kane Setting,"/>
-    <Power Name="Warrior's Gilft" Requires="Seasoned" Description="Gain a temporary Combat Edge."/>
+    <Power Name="Warrior's Gift" Requires="Seasoned" Description="Gain a temporary Combat Edge."/>
 
     <Power Name="Banish" Requires="Veteran" Description="Removes Ghosts, Demons and Elementals."/>
 

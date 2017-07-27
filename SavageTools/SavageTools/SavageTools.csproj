@@ -57,8 +57,8 @@
     <Reference Include="Tortuga.Anchor, Version=1.2.6283.989, Culture=neutral, PublicKeyToken=f554488cb4f278bd, processorArchitecture=MSIL">
       <HintPath>..\packages\Tortuga.Anchor.1.2.6283.989\lib\net46\Tortuga.Anchor.dll</HintPath>
     </Reference>
-    <Reference Include="Tortuga.Sails, Version=1.0.6126.36127, Culture=neutral, PublicKeyToken=e177acbf757d82e6, processorArchitecture=MSIL">
-      <HintPath>..\packages\Tortuga.Sails.1.0.6126.36127\lib\net46\Tortuga.Sails.dll</HintPath>
+    <Reference Include="Tortuga.Sails, Version=1.1.6387.33960, Culture=neutral, PublicKeyToken=e177acbf757d82e6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tortuga.Sails.1.1.6387.33960\lib\net46\Tortuga.Sails.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />

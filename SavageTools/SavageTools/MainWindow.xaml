@@ -9,33 +9,45 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Label Content="Archetype" />
-            <ComboBox ItemsSource="{Binding CharacterGenerator.Archetypes}" SelectedItem="{Binding CharacterGenerator.SelectedArchetype}" Margin="4">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ComboBox>
+            <StackPanel>
+                <ComboBox ItemsSource="{Binding CharacterGenerator.Archetypes}" SelectedItem="{Binding CharacterGenerator.SelectedArchetype}" Margin="4">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ComboBox>
+                <CheckBox Content="Random" IsChecked="{Binding CharacterGenerator.RandomArchetype}"/>
+            </StackPanel>
             <Label Content="Race" />
-            <ComboBox ItemsSource="{Binding CharacterGenerator.Races}" SelectedItem="{Binding CharacterGenerator.SelectedRace}" Margin="4">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ComboBox>
+            <StackPanel>
+                <ComboBox ItemsSource="{Binding CharacterGenerator.Races}" SelectedItem="{Binding CharacterGenerator.SelectedRace}" Margin="4">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ComboBox>
+                <CheckBox Content="Random" IsChecked="{Binding CharacterGenerator.RandomRace}"/>
+            </StackPanel>
             <Label Content="Rank" />
-            <ComboBox ItemsSource="{Binding CharacterGenerator.Ranks}" SelectedItem="{Binding CharacterGenerator.SelectedRank}" Margin="4">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ComboBox>
-            <CheckBox Content="Wild Card" IsChecked="{Binding CharacterGenerator.WildCard}" Margin="4"/>
-            <CheckBox Content="Born A Hero" IsChecked="{Binding CharacterGenerator.BornAHero}" Margin="4" ToolTip="If checked, ranks are ignored for edge selection."/>
+            <StackPanel>
+                <ComboBox ItemsSource="{Binding CharacterGenerator.Ranks}" SelectedItem="{Binding CharacterGenerator.SelectedRank}" Margin="4">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ComboBox>
+                <CheckBox Content="Random" IsChecked="{Binding CharacterGenerator.RandomRank}"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <CheckBox Content="Wild Card" IsChecked="{Binding CharacterGenerator.WildCard}" Margin="4"/>
+                <CheckBox Content="Born A Hero" IsChecked="{Binding CharacterGenerator.BornAHero}" Margin="4" ToolTip="If checked, ranks are ignored for edge selection."/>
+            </StackPanel>
             <Button Content="Create Character" Command="{Binding CreateCharacterCommand}" Margin="6"/>
-            <Button Content="Copy" Command="{Binding CopyAllCommand}" Margin="6"/>
+            <Button Content="Copy All" Command="{Binding CopyAllCommand}" Margin="6"/>
         </StackPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Button Content="Add Setting" Command="{Binding LoadSettingCommand}" Margin="6"/>

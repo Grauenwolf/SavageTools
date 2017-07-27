@@ -14,6 +14,9 @@ namespace SavageTools
 
         public T RandomChoose(Dice dice)
         {
+            if (Count == 0)
+                throw new InvalidOperationException("The list is empty.");
+
             var max = this.Sum(option => option.Value);
             var roll = dice.Next(1, max + 1);
             foreach (var option in this)
@@ -27,6 +30,9 @@ namespace SavageTools
 
         public T RandomPick(Dice dice)
         {
+            if (Count == 0)
+                throw new InvalidOperationException("The list is empty.");
+
             var max = this.Sum(option => option.Value);
             var roll = dice.Next(1, max + 1);
             foreach (var option in this)

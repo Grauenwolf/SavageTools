@@ -5,10 +5,77 @@
     <Reference Name="Magic" />
     <Reference Name="Psionics" />
     <Reference Name="Weird Science" />
+    <Reference Name="Fantasy Companion" />
   </References>
+  
+  
+  <Powers>
+    <Power Name="Clairvoyance" Requires="Seasoned" Description="Allows the caster to sense people, places, and things outside of normal perception."/>
+    <Power Name="Illusion" Requires="Novice" Description="Makes a single target see something that isn’t there, or else see things 
+differently than they actually are."/>
+    <Power Name="Telepathy" Requires="Novice" Description="Used to communicate mentally with other people."/>
+  </Powers>
+  
+  
+  <Edges>
+
+
+    <Edge Name="Arcane Background (Psionics)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+      <!-- replaces the default version of this power-->
+      <Skill Name="Psionics" Attribute="Smarts" Level="4"/>
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints:Psionics" Bonus="10" />
+      <Trait Name="UnusedPowers:Psionics" Bonus="3" />
+      <Feature Name="Arcane Background" />
+      
+      
+      <AvailablePower Skill="Psionics" Name="Armor"/>
+      <AvailablePower Skill="Psionics" Name="Barrier"/>
+      <AvailablePower Skill="Psionics" Name="Blind"/>
+      <AvailablePower Skill="Psionics" Name="Bolt"/>
+      <AvailablePower Skill="Psionics" Name="Boost/Lower Trait"/>
+      <AvailablePower Skill="Psionics" Name="Clairvoyance"/>
+      <AvailablePower Skill="Psionics" Name="Conceal Arcana"/>
+      <AvailablePower Skill="Psionics" Name="Confusion"/>
+      <AvailablePower Skill="Psionics" Name="Damage"/> 
+      <AvailablePower Skill="Psionics" Name="Field"/>
+      <AvailablePower Skill="Psionics" Name="Darksight"/>
+      <AvailablePower Skill="Psionics" Name="Deflection"/>
+      <AvailablePower Skill="Psionics" Name="Disguise"/>
+      <AvailablePower Skill="Psionics" Name="Dispel"/>
+      <AvailablePower Skill="Psionics" Name="Divination"/>
+      <AvailablePower Skill="Psionics" Name="Drain Power Points"/>
+      <AvailablePower Skill="Psionics" Name="Entangle"/>
+      <AvailablePower Skill="Psionics" Name="Environmental Protection"/>
+      <AvailablePower Skill="Psionics" Name="Farsight"/>
+      <AvailablePower Skill="Psionics" Name="Fear"/>
+      <AvailablePower Skill="Psionics" Name="Fly"/>
+      <AvailablePower Skill="Psionics" Name="Havoc"/>
+      <AvailablePower Skill="Psionics" Name="Healing"/>
+      <AvailablePower Skill="Psionics" Name="Illusion"/>
+      <AvailablePower Skill="Psionics" Name="Intangibility"/>
+      <AvailablePower Skill="Psionics" Name="Invisibility"/>
+      <AvailablePower Skill="Psionics" Name="Mind Reading"/>
+      <AvailablePower Skill="Psionics" Name="Pummel"/>
+      <AvailablePower Skill="Psionics" Name="Puppet"/>
+      <AvailablePower Skill="Psionics" Name="Slow"/>
+      <AvailablePower Skill="Psionics" Name="Slumber"/>
+      <AvailablePower Skill="Psionics" Name="Smite"/>
+      <AvailablePower Skill="Psionics" Name="Speak Language"/>
+      <AvailablePower Skill="Psionics" Name="Stun"/>
+      <AvailablePower Skill="Psionics" Name="Telekinesis"/>
+      <AvailablePower Skill="Psionics" Name="Telepathy"/>
+      <AvailablePower Skill="Psionics" Name="Teleport"/>
+      <AvailablePower Skill="Psionics" Name="Warrior's Gift"/>
+      
+    </Edge>
+
+
+
+  </Edges>
 
   <Archetypes>
-    <Archetype Name="Flame Wind Dragon Hatchling" UnusedAttributes="3" UnusedSkills="10" Agility="4" Smarts="4" Spirit="4" Strength="16" Vigor="8" Race="Dragon">
+    <Archetype Name="Flame Wind Dragon Hatchling" UnusedAttributes="3" UnusedSkills="10" Agility="4" Smarts="4" Spirit="4" Strength="16" Vigor="8" Race="(Special)" WildCard="true">
       <Edge Name="Arcane Background (Psionics)"/>
       <Skill Name="Psionics" Attribute="Smarts" Level="6"/>
       <Edge Name="Armored Hide" Description="+16 MDC Armor, +6 Toughness in dragon form"/>
@@ -42,7 +109,7 @@
   </Archetypes>
 
   <Races>
-    <Race Name="Dragon">
+    <Race Name="(Special)">
     </Race>
   </Races>
 

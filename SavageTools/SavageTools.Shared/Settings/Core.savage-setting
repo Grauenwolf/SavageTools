@@ -350,6 +350,7 @@
     <Race Name="Human">
       <Trait Name="UnusedEdges" Bonus="1" />
     </Race>
+    <Race Name="(Special)"/>
   </Races>
 
   <Ranks>
