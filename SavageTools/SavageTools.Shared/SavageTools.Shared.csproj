@@ -58,6 +58,9 @@
     <Compile Include="Characters\FeatureCollection.cs" />
     <Compile Include="Characters\Hindrance.cs" />
     <Compile Include="Characters\HindranceCollection.cs" />
+    <Compile Include="Characters\Power.cs" />
+    <Compile Include="Characters\PowerCollection.cs" />
+    <Compile Include="Characters\PowerGroup.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Settings\Setting.cs" />
     <Compile Include="Missing.cs" />
@@ -73,6 +76,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Settings\Arcana.savage-setting">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Settings\Fantasy Companion.savage-setting">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Settings\Rifts Tomorrow Legion.savage-setting">

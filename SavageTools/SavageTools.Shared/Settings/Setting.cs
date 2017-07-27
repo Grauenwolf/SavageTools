@@ -13,6 +13,9 @@ namespace SavageTools.Settings
         [XmlAttribute()]
         public string Name { get; set; }
 
+        [XmlAttribute]
+        public bool BornAHero { get; set; }
+
         /// <remarks/>
         [XmlArrayItem("Skill", IsNullable = false)]
         public SettingSkillOption[] Skills { get; set; }
@@ -40,6 +43,14 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlArrayItem("Reference", IsNullable = false)]
         public SettingReference[] References { get; set; }
+
+        /// <remarks/>
+        [XmlArrayItem("Power", IsNullable = false)]
+        public SettingPower[] Powers { get; set; }
+
+        /// <remarks/>
+        [XmlArrayItem("Trapping", IsNullable = false)]
+        public SettingTrapping[] Trappings { get; set; }
     }
 
     /// <remarks/>
@@ -120,6 +131,32 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public string UniqueGroup { get; set; }
+    }
+
+    /// <remarks/>
+    [XmlType(AnonymousType = true)]
+    public class SettingPower
+    {
+        /// <remarks/>
+        [XmlAttribute()]
+        public string Name { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public string Requires { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public string Description { get; set; }
+    }
+
+    /// <remarks/>
+    [XmlType(AnonymousType = true)]
+    public class SettingTrapping
+    {
+        /// <remarks/>
+        [XmlAttribute()]
+        public string Name { get; set; }
     }
 
     /// <remarks/>

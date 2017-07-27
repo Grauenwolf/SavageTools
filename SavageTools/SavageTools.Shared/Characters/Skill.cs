@@ -31,7 +31,5 @@ namespace SavageTools.Characters
             return LongName;
         }
     }
-
-
 }
 

@@ -27,8 +27,8 @@ namespace SavageTools.Characters
         public int UnusedEdges { get { return Get<int>(); } set { Set(value); } }
         public int UnusedHindrances { get { return Get<int>(); } set { Set(value); } }
         public int UnusedAdvances { get { return Get<int>(); } set { Set(value); } }
-        public int PowerPoints { get { return Get<int>(); } set { Set(value); } }
-        public int UnusedPowers { get { return Get<int>(); } set { Set(value); } }
+
+
 
         public bool IsWildCard { get { return Get<bool>(); } set { Set(value); } }
 
@@ -61,7 +61,12 @@ namespace SavageTools.Characters
             get { return MaximumStrain + Math.Min(Spirit.Score, Vigor.Score); }
         }
 
-        public void Increment(string trait, int bonus = 1)
+        public void Increment(string trait, Dice dice)
+        {
+            Increment(trait, 1, dice);
+        }
+
+        public void Increment(string trait, int bonus, Dice dice)
         {
             switch (trait)
             {
@@ -85,9 +90,22 @@ namespace SavageTools.Characters
                 case "UnusedEdges": UnusedEdges += bonus; return;
                 case "UnusedHindrances": UnusedHindrances += bonus; return;
                 case "UnusedAdvances": UnusedAdvances += bonus; return;
-                case "PowerPoints": PowerPoints += bonus; return;
-                case "UnusedPowers": UnusedPowers += bonus; return;
+                case "PowerPoints": dice.Choose(PowerGroups).PowerPoints += bonus; return;
+                case "UnusedPowers": dice.Choose(PowerGroups).UnusedPowers += bonus; return;
             }
+
+            if (trait.StartsWith("PowerPoints:"))
+            {
+                PowerGroups[trait.Substring("PowerPoints:".Length)].PowerPoints += bonus;
+                return;
+            }
+
+            if (trait.StartsWith("UnusedPowers:"))
+            {
+                PowerGroups[trait.Substring("UnusedPowers:".Length)].UnusedPowers += bonus;
+                return;
+            }
+
             throw new ArgumentException("Unknown trait " + trait);
         }
 
@@ -104,14 +122,20 @@ namespace SavageTools.Characters
             throw new ArgumentException("Unknown attribute " + attribute);
         }
 
-        public bool HasFeature(string feature)
+        /// <summary>
+        /// Determines whether the specified feature has feature.
+        /// </summary>
+        /// <param name="feature">The feature.</param>
+        /// <param name="ignoreRank">if set to <c>true</c> to ignore rank. This is used by the "Born a Hero" option.</param>
+        /// <returns><c>true</c> if the specified feature has feature; otherwise, <c>false</c>.</returns>
+        public bool HasFeature(string feature, bool ignoreRank)
         {
             if (feature.Contains(" or "))
             {
                 var parts = feature.Split(new[] { " or " }, StringSplitOptions.None).Select(f => f.Trim());
                 foreach (var part in parts)
                 {
-                    if (HasFeature(part))
+                    if (HasFeature(part, ignoreRank))
                         return true;
                 }
                 return false;
@@ -150,10 +174,10 @@ namespace SavageTools.Characters
             switch (name)
             {
                 case "Novice": return true;
-                case "Seasoned": return Experience >= 20;
-                case "Veteran": return Experience >= 40;
-                case "Heroic": return Experience >= 60;
-                case "Legendary": return Experience >= 80;
+                case "Seasoned": return ignoreRank || Experience >= 20;
+                case "Veteran": return ignoreRank || Experience >= 40;
+                case "Heroic": return ignoreRank || Experience >= 60;
+                case "Legendary": return ignoreRank || Experience >= 80;
             }
 
             if (name == "Wild Card")
@@ -191,6 +215,8 @@ namespace SavageTools.Characters
             Debug.WriteLine("Does not have feature " + feature);
             return false;
         }
+
+        public PowerCollection PowerGroups => GetNew<PowerCollection>();
     }
 }
 

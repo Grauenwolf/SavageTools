@@ -198,7 +198,7 @@
     <Edge Name="Martial Arts Master 3" Requires="Martial Arts Master 2" Description="+6 to unarmed damage rolls;" />
     <Edge Name="Martial Arts Master 4" Requires="Martial Arts Master 3" Description="+8 to unarmed damage rolls;" />
     <Edge Name="Martial Arts Master 5" Requires="Martial Arts Master 4" Description="+10 to unarmed damage rolls;" />
-    
+
     <Edge Name="McGyver" Requires="Novice, Smarts d6, Repair d6, Notice d8" Description="No penalties due to lack of equipment"/>
     <Edge Name="Mighty Blow" Requires="Seasoned, Wild Card, Fighting d10" Description="Double melee damage when dealt Joker"/>
     <Edge Name="Natural Leader" Requires="Novice, Spirit d8, Command" Description="Leader may give bennies to troops in command"/>
@@ -229,7 +229,7 @@
     <Edge Name="Improved Sweep" Requires="Veteran, Sweep" Description="As above but with no penalty"/>
     <Edge Name="Strong Willed" Requires="Novice, Intimidate d6, Taunt d6" Description="+2 Intimidate and Taunt, +2 to resist"/>
     <Edge Name="Scavenger" Requires="Novice, Luck" Description="Find an essential piece of equipment once per session" />
-    
+
     <Edge Name="Thief" Requires="Novice, Agility d8, Climb d6, Lockpick d6, Stealth d8" Description="+2 Climb, Lockpick, Stealth, rolls made to trick or deceive, detecting or disarming traps"/>
     <Edge Name="Tough as Nails" Requires="Legendary" Description="Toughness +1">
       <Trait Name="Toughness" Bonus="1" />
@@ -252,7 +252,7 @@
 
   <Archetypes>
     <Archetype Name="(None)" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="15" />
-    
+
     <Archetype Name="Driver" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="7" >
       <Skill Name="Driving" Level="8"/>
       <Skill Name="Fighting" Level="4"/>
@@ -263,7 +263,7 @@
       <Trait Name="UnusedHindrances" Bonus="4"/>
       <Trait Name="UnusedEdges" Bonus="-1" />
     </Archetype>
-    
+
     <Archetype Name="Face" Agility="6" Smarts="6" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
       <Skill Name="Fighting" Level="4"/>
       <Skill Name="Intimidation" Level="6"/>
@@ -334,7 +334,7 @@
       <Trait Name="UnusedHindrances" Bonus="4"/>
       <Trait Name="UnusedEdges" Bonus="-1" />
     </Archetype>
-    
+
     <Archetype Name="Martial Artist" Agility="8" Smarts="6" Spirit="6" Strength="8" Vigor="6" UnusedAttributes="0" UnusedSkills="6" >
       <Skill Name="Fighting" Level="10"/>
       <Skill Name="Intimidation" Level="6"/>
@@ -359,5 +359,6 @@
     <Rank Name="Heroic" Experience="60" UnusedAdvances="12"/>
     <Rank Name="Legendary" Experience="80" UnusedAdvances="16"/>
   </Ranks>
+
 </Setting>
 

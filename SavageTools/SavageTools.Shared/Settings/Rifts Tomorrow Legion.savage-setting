@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Setting Name="Rifts Tomorrow Legion">
+<Setting Name="Rifts Tomorrow Legion" BornAHero="true">
   <References>
     <Reference Name="Arcana" />
     <Reference Name="Magic" />
@@ -8,7 +8,7 @@
   </References>
 
   <Archetypes>
-    <Archetype Name="(Test Dragon)" UnusedAttributes="5" UnusedSkills="15" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" Race="Dragon"/>
+    <Archetype Name="Flame Wind Dragon Hatchling" UnusedAttributes="5" UnusedSkills="15" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" Race="Dragon"/>
 
 
   </Archetypes>

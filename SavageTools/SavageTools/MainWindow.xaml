@@ -33,7 +33,9 @@
                 </ItemsControl.ItemTemplate>
             </ComboBox>
             <CheckBox Content="Wild Card" IsChecked="{Binding CharacterGenerator.WildCard}" Margin="4"/>
+            <CheckBox Content="Born A Hero" IsChecked="{Binding CharacterGenerator.BornAHero}" Margin="4" ToolTip="If checked, ranks are ignored for edge selection."/>
             <Button Content="Create Character" Command="{Binding CreateCharacterCommand}" Margin="6"/>
+            <Button Content="Copy" Command="{Binding CopyAllCommand}" Margin="6"/>
         </StackPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Button Content="Add Setting" Command="{Binding LoadSettingCommand}" Margin="6"/>

@@ -1,7 +1,8 @@
-﻿using SavageTools.Characters;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using Tortuga.Sails;
 
@@ -21,16 +22,18 @@ namespace SavageTools
 
         void CreateCharacter()
         {
-            Characters.Add(CharacterGenerator.GenerateCharacter());
+            Characters.Add(new CharacterVM(CharacterGenerator.GenerateCharacter()));
         }
 
         void LoadSetting()
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.DefaultExt = ".setting";
-            dlg.Filter = "Savage Worlds Setting (.savage-setting)|*.savage-setting|All Files (.*)|*.*";
-            dlg.Multiselect = true;
-            dlg.InitialDirectory = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Settings");
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog()
+            {
+                DefaultExt = ".setting",
+                Filter = "Savage Worlds Setting (.savage-setting)|*.savage-setting|All Files (.*)|*.*",
+                Multiselect = true,
+                InitialDirectory = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Settings")
+            };
 
             if (dlg.ShowDialog() != true)
                 return;
@@ -46,9 +49,21 @@ namespace SavageTools
 
         public CharacterGenerator CharacterGenerator { get { return GetNew<CharacterGenerator>(); } }
 
-        public ObservableCollection<Character> Characters { get { return GetNew<ObservableCollection<Character>>(); } }
+        public ObservableCollection<CharacterVM> Characters => GetNew<ObservableCollection<CharacterVM>>();
 
 
+        public ICommand CopyAllCommand => GetCommand(CopyAll);
+        void CopyAll()
+        {
+            var result = new StringBuilder();
+            foreach (var c in Characters)
+            {
+                result.AppendLine(c.CopyToString());
+                result.AppendLine();
+                result.AppendLine();
+            }
+            Clipboard.SetText(result.ToString());
+        }
     }
 }
 

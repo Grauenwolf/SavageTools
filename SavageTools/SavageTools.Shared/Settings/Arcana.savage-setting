@@ -26,6 +26,58 @@
   </Edges>
 
 
+  <Trappings>
+    <Trapping Name="Acid"/>
+    <Trapping Name="Cold"/>
+    <Trapping Name="Ice"/>
+    <Trapping Name="Darkness"/>
+    <Trapping Name="Electricity"/>
+    <Trapping Name="Fire"/>
+    <Trapping Name="Heat"/>
+    <Trapping Name="Light"/>
+    <Trapping Name="Necromantic"/>
+    <Trapping Name="Sound"/>
+  </Trappings>
+
+  <Powers>
+    <Power Name="Armor" Requires="Novice" Description="Provides an armor bonus."/>
+    <Power Name="Beast Friend" Requires="Novice" Description="Speak with and control animals."/>
+    <Power Name="Bolt" Requires="Novice" Description="Shoot up to 3 bolts."/>
+    <Power Name="Boost/Lower Trait" Requires="Novice" Description="Increase or decrease a Trait."/>
+    <Power Name="Burrow" Requires="Novice" Description="Move incredible fast and hidden."/>
+    <Power Name="Burst" Requires="Novice" Description="Cone attack."/>
+    <Power Name="Deflection" Requires="Novice" Description="Others have penalty to hit you."/>
+    <Power Name="Detect/Conceal Arcana" Requires="Novice" Description="See supernatural unseen things or hide supernatural things."/>
+    <Power Name="Elemental Manipulation" Requires="Novice" Description="Blow air, Dig a hole, Create tiny flame, Create Water"/>
+    <Power Name="Entangle" Requires="Novice" Description="Lower the pace or prevent movement in an area."/>
+    <Power Name="Environmental Protection" Requires="Novice" Description="Exist in a normally hostile environment."/>
+    <Power Name="Fear" Requires="Novice" Description="Cause Fear in an area."/>
+    <Power Name="Healing" Requires="Novice" Description="Heal wounds within the first hour."/>
+    <Power Name="Light" Requires="Novice" Description="Create light in an area."/>
+    <Power Name="Obscure" Requires="Novice" Description="Visually obscure an area."/>
+    <Power Name="Shape Change" Requires="Novice" Description="Change to an animal based on your rank."/>
+    <Power Name="Smite" Requires="Novice" Description="Enhance a weapons damage."/>
+    <Power Name="Speak Language" Requires="Novice" Description="Speak/read/write language."/>
+    <Power Name="Speed" Requires="Novice" Description="Increase your pace."/>
+    <Power Name="Stun" Requires="Novice" Description="Cause those in an area to become Shaken."/>
+
+    <Power Name="Barrier" Requires="Seasoned" Description="Create a temporary wall sized on PP spent."/>
+    <Power Name="Blast" Requires="Seasoned" Description="Radius attack."/>
+    <Power Name="Disguise" Requires="Seasoned" Description="Look like another person."/>
+    <Power Name="Dispel" Requires="Seasoned" Description="Negate powers."/>
+    <Power Name="Farsight" Requires="Seasoned" Description="Reduce range penalties."/>
+    <Power Name="Invisibility" Requires="Seasoned" Description="Become invisible."/>
+    <Power Name="Pummel" Requires="Seasoned" Description="Knockdown targets in a cone."/>
+    <Power Name="Quickness" Requires="Seasoned" Description="Bonus action."/>
+    <Power Name="Telekinesis" Requires="Seasoned" Description="Lift things and wield weapons."/>
+    <Power Name="Teleport" Requires="Seasoned" Description="Teleport a distance based on PP spent."/>
+
+    <Power Name="Fly" Requires="Veteran" Description="Fly in the air."/>
+    <Power Name="Greater Healing" Requires="Veteran" Description="Heal wounds outside the first hour."/>
+    <Power Name="Puppet" Requires="Veteran" Description="Control another person's body."/>
+    <Power Name="Zombie" Requires="Veteran" Description="Create zombies."/>
+
+  </Powers>
   
 </Setting>
 

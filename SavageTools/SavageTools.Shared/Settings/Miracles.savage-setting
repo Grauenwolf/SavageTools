@@ -15,8 +15,8 @@
     <Edge Name="Arcane Background (Miracles)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
       <Skill Name="Faith" Attribute="Spirit" Level="4"/>
       <Trait Name="UnusedSkills" Bonus="-1" />
-      <Trait Name="PowerPoints" Bonus="10" />
-      <Trait Name="UnusedPowers" Bonus="2" />
+      <Trait Name="PowerPoints:Miracles" Bonus="10" />
+      <Trait Name="UnusedPowers:Miracles" Bonus="2" />
       <Feature Name="Arcane Background" />
     </Edge>
     <Edge Name="Champion" Requires="Novice, Arcane Background (Miracles), Spirit d8, Strength d6, Vigor d8, Faith d6, Fighting d8" Description="+2 damage and Toughness vs. supernatural evil"/>

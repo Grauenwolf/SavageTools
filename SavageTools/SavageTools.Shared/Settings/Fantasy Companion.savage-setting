@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Fantasy Companion" >
+  <References>
+    <Reference Name="Arcana" />
+    <Reference Name="Magic" />
+  </References>
+
+  <Powers>
+    <Power Name="Analyze Foe" Requires="Novice" Description="Gain an advantage over foe."/>
+    <Power Name="Blind" Requires="Novice" Description="Temporarily blind enemies."/>
+    <Power Name="Confusion" Requires="Novice" Description="Instill confusion in enemies."/>
+    <Power Name="Damage Field" Requires="Novice" Description="Create damaging aura around self."/>
+    <Power Name="Darksight" Requires="Novice" Description="See in darkness."/>
+    <Power Name="Jet" Requires="Novice" Description="Attack foes who are in a line."/>
+    <Power Name="Legerdemain" Requires="Novice" Description="Make a action at range that is normally done in person."/>
+    <Power Name="Succor" Requires="Novice" Description="Heal Fatigue damage. Deadlands: Reloaded Setting,"/>
+    <Power Name="Summon Ally" Requires="Novice" Description="Can call a ally."/>
+    <Power Name="Wall Walker" Requires="Novice" Description="Can climb any surface. Evernight Setting,"/>
+
+
+    <Power Name="Bless/Curse" Requires="Seasoned" Description="Increase or decrease another character's Traits."/>
+    <Power Name="Concentrate" Requires="Seasoned" Description="Resisted being distracted when casting a spell."/>
+    <Power Name="Draining Touch" Requires="Seasoned" Description="Cause damage with a touch attack."/>
+    <Power Name="Growth/Shrink" Requires="Seasoned" Description="Change size."/>
+    <Power Name="Havoc" Requires="Seasoned" Description="Move enemies in random directions."/>
+    <Power Name="Sluggish Reflexes" Requires="Seasoned" Description="Reduce a targets response time."/>
+    <Power Name="Slumber" Requires="Seasoned" Description="Target goes into a deep sleep. Solomon Kane Setting,"/>
+    <Power Name="Warrior's Gilft" Requires="Seasoned" Description="Gain a temporary Combat Edge."/>
+
+    <Power Name="Banish" Requires="Veteran" Description="Removes Ghosts, Demons and Elementals."/>
+
+    <Power Name="Divination" Requires="Heroic" Description="Gain knowledge from otherworldly sources."/>
+    <Power Name="Drain Power Points" Requires="Heroic" Description="Remove a spellcaster's Power Points."/>
+    <Power Name="Intangibility" Requires="Heroic" Description="Become incorporeal."/>
+  </Powers>
+
+</Setting>
+

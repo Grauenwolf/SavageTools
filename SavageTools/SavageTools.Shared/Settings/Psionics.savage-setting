@@ -13,8 +13,8 @@
     <Edge Name="Arcane Background (Psionics)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
       <Skill Name="Psionics" Attribute="Smarts" Level="4"/>
       <Trait Name="UnusedSkills" Bonus="-1" />
-      <Trait Name="PowerPoints" Bonus="10" />
-      <Trait Name="UnusedPowers" Bonus="3" />
+      <Trait Name="PowerPoints:Psionics" Bonus="10" />
+      <Trait Name="UnusedPowers:Psionics" Bonus="3" />
       <Feature Name="Arcane Background" />
     </Edge>
     <Edge Name="Mentalist" Requires="Novice, Arcane Background (Psionics), Smarts d8, Psionics d6" Description="+2 to any opposed Psionics roll"/>
