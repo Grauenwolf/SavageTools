@@ -151,6 +151,10 @@ namespace SavageTools.Settings
 
         /// <remarks/>
         [XmlAttribute()]
+        public string Skill { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
         public string Description { get; set; }
     }
 
@@ -222,6 +226,9 @@ namespace SavageTools.Settings
         [XmlElement("Edge")]
         public SettingEdge[] Edges { get; set; }
 
+        [XmlArrayItem("Edge", IsNullable = false)]
+        public SettingEdge[] IconicEdges { get; set; }
+
         /// <remarks/>
         [XmlElement("Hindrance")]
         public SettingHindrance[] Hindrances { get; set; }
@@ -290,12 +297,24 @@ namespace SavageTools.Settings
         public SettingSkill[] Skills { get; set; }
 
         /// <remarks/>
+        [XmlElement("Hindrance")]
+        public SettingHindrance[] Hindrances { get; set; }
+
+        /// <remarks/>
         [XmlElement("Trait")]
         public SettingTrait[] Traits { get; set; }
 
         /// <remarks/>
         [XmlElement("Edge")]
         public SettingEdge[] Edges { get; set; }
+
+        [XmlArrayItem("Edge", IsNullable = false)]
+        public SettingEdge[] RacialEdges { get; set; }
+
+
+        /// <remarks/>
+        [XmlElement("Power")]
+        public SettingPower[] Powers { get; set; }
 
         /// <remarks/>
         [XmlAttribute()]

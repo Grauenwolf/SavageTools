@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 
 namespace SavageTools
@@ -20,7 +21,7 @@ namespace SavageTools
                 mainVM.CharacterGenerator.LoadSetting(new FileInfo(mainBook));
 
                 mainVM.CharacterGenerator.SelectedArchetype = mainVM.CharacterGenerator.Archetypes[0];
-                mainVM.CharacterGenerator.SelectedRace = mainVM.CharacterGenerator.Races[0];
+                mainVM.CharacterGenerator.SelectedRace = mainVM.CharacterGenerator.Races.First(r => r.Name == "Human");
                 mainVM.CharacterGenerator.SelectedRank = mainVM.CharacterGenerator.Ranks[0];
 
                 MainWindow.DataContext = mainVM;

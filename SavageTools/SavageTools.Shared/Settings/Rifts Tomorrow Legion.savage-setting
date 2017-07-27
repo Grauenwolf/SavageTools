@@ -7,7 +7,7 @@
     <Reference Name="Weird Science" />
     <Reference Name="Fantasy Companion" />
   </References>
-  
+
   <Skills>
     <Skill Name="Knowledge (Arcana)" Attribute="Smarts"/>
     <Skill Name="Knowledge (Computers)" Attribute="Smarts"/>
@@ -18,7 +18,201 @@
     <Skill Name="Knowledge (Medicine)" Attribute="Smarts"/>
     <Skill Name="Knowledge (Politics)" Attribute="Smarts"/>
     <Skill Name="Knowledge (Science)" Attribute="Smarts"/>
+    <Skill Name="Language (American)" Attribute="Smarts"/>
+    <Skill Name="Language (Spanish)" Attribute="Smarts"/>
+    <Skill Name="Language (Dragonese/Elven)" Attribute="Smarts"/>
+    <Skill Name="Language (Chinese)" Attribute="Smarts"/>
+    <Skill Name="Language (Gobblely)" Attribute="Smarts"/>
+    <Skill Name="Language (Japanese)" Attribute="Smarts"/>
+    <Skill Name="Language (Techno-Can)" Attribute="Smarts"/>
+    <Skill Name="Language (Faerie Speak)" Attribute="Smarts"/>
   </Skills>
+  <Hindrances>
+    <Hindrance Name="Mania" TType="Minor/Major" Description="-2 Charisma if mania is known" />
+    <Hindrance Name="Monologuer" TType="Major" Description="On a Club, Test Smarts-2 to avoid talking instead of acting" />
+    
+    
+    </Hindrances>
+  
+  <Races>
+
+    <Race Name="Altara">
+      <Edge Name="Attractive" />
+      <Edge Name="Alertness" />
+      <Edge Name="Bad Reputation" />
+      <Edge Name="Blind" Description="Natural radar ability extending 1,200 feet (200”)" />
+      <Hindrance Name="Instilled  Ignorance" Description="−2 to all Smarts rolls" />
+      <Hindrance Name="Storm-Fouled  Senses" Description="−2 to Notice, Fighting, Shooting, and Throwing in bad weather" />
+      <Trait Name="Agility" Bonus="1"/>
+      <Trait Name="Strength" Bonus="1"/>
+      <Trait Name="Vigor" Bonus="1"/>
+
+      <Trait Name="MaxAgility" Bonus="1"/>
+      <Trait Name="MaxStrength" Bonus="1"/>
+      <Trait Name="MaxVigor" Bonus="1"/>
+
+      <Hindrance Name="Wanted" Level="1" Description="Splugorth"/>
+
+
+    </Race>
+    <Race Name="D’Norr">
+      <Hindrance Name="Distinctive  D-Bee"/>
+      <Trait Name="Smarts" Bonus="1"/>
+      <Trait Name="Spirit" Bonus="1"/>
+
+      <Trait Name="MaxSmarts" Bonus="1"/>
+      <Trait Name="MaxSpirit" Bonus="1"/>
+
+      <Edge Name="Natural Arcane Affinity" >
+        <Trait Name="PowerPoints:Magic" Bonus="5" />
+      </Edge>
+      <Edge Name="Personable"/>
+      <Edge Name="Restricted Path" Description="No psionics"/>
+      <Edge Name="Sensitive" Description="Fear checks -2"/>
+
+    </Race>
+    <Race Name="Dog Boy">
+      <Edge Name="Keen Sense of Smell" Description="+2 Notice, +2 Tracking"/>
+      <Edge Name="Natural  Weapons" Description="Str+d6 damage"/>
+      <Edge Name="Psychic  Sense" Description="Detect  arcana (Notice or Tracking)"/>
+      <Hindrance Name="Outsider"/>
+      <Hindrance Name="Restricted  Paths" Description="No arcane  magic"/>
+      <Hindrance Name="Wanted" Description="Coalition"/>
+      <Hindrance Name="Weakness (Ley Line Hypersensitivity)" />
+      <Trait Name="UnusedRacialEdges" Bonus="1"/>
+
+      <RacialEdges>
+        <Edge Name="Agile Breed" Requires="Novice">
+          <Trait Name="Agility" Bonus="1"/>
+          <Trait Name="MaxAgility" Bonus="1"/>
+        </Edge>
+        <Edge Name="Strong Breed" Requires="Novice">
+          <Trait Name="Strength" Bonus="1"/>
+          <Trait Name="MaxStrength" Bonus="1"/>
+        </Edge>
+        <Edge Name="Rugged Breed" Requires="Novice">
+          <Trait Name="Vigor" Bonus="1"/>
+          <Trait Name="MaxVigor" Bonus="1"/>
+        </Edge>
+        <Edge Name="Fast Breed" Requires="Novice">
+          <Trait Name="Pace" Bonus="2"/>
+          <Trait Name="Running" Bonus="1"/>
+        </Edge>
+        <Edge Name="Tough Breed" Requires="Novice">
+          <Trait Name="Toughness" Bonus="2"/>
+        </Edge>
+        <Edge Name="Tracking Breed" Requires="Novice" Description="+2 Tracking"/>
+        <Edge Name="Water Breed" Requires="Novice">
+          <Skill Name="Swimming" Level="6"/>
+        </Edge>
+        <Edge Name="Hunter" Requires="Seasoned, Spirit d8, Vigor d8, Figthing d8" Description="Choose prey. +2 Notice/Tracking. d8 dmg for raise." />
+      </RacialEdges>
+
+    </Race>
+
+    <Race Name="Fennodi" >
+      <Hindrance Name="Distinctive  D-Bee" Description="-4 Charisma with CS citizens"/>
+      <Edge Name="Infravision"/>
+      <Hindrance Name="Issues With Cold" Description="-4 resist cold, +4 dmg"/>
+      <Edge Name="Arcane Background (Psionics)" />
+      <Trait Name="UnusedPowers:Psionics" Bonus="-3" />
+      <Power Skill="Psionics" Name="Armor" />
+      <Power Skill="Psionics" Name="Intangibility" />
+      <Power Skill="Psionics" Name="Telepathy" />
+      <Edge Name="Natural Psionics" Description="+1 power if choosing an psionic framework"/>
+      <Edge Name="Visual  Acuity" Description="+2 to sight-based Notice"/>
+    </Race>
+
+    <Race Name="Grackle Tooth">
+      <Hindrance Name="Cyber Resistant" Description="Cannot use cybernetics"/>
+      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens"/>
+      <Hindrance Name="Issues With Cold" Description="-4 resist cold, +4 dmg"/>
+      <Hindrance Name="Just How I Was Raised" Description="Overconfident or Heroic"/>
+      <Edge Name="Natural Weapons" Description="Str+d6 damage bite, claws, or tail slap"/>
+      <Trait Name="Strength" Bonus="2"/>
+      <Trait Name="MaxStrength" Bonus="2"/>
+      <Trait Name="Vigor" Bonus="1"/>
+      <Trait Name="MaxVigor" Bonus="1"/>
+      <Edge Name="Prehensile Tail"/>
+      <Hindrance Name="Restricted Paths" Description="No magic/psionics"/>
+      <Hindrance Name="Stuff Ain’t Built for Me"/>
+      <Edge Name="Size +2">
+        <Trait Name="Toughness" Bonus="2"/>
+      </Edge>
+
+    </Race>
+    <Race Name="Lyn-Srial">
+      <Hindrance Name="Cyber Resistant" Description="Cannot use cybernetics"/>
+      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens"/>
+      <Edge Name="Flight" Description="Pace+6"/>
+      <Edge Name="Four  Arms" Description="+1 Action/turn" />
+      <Hindrance Name="Wanted" Level="2" Description="Coalition"/>
+      <Hindrance Name="Heroic"/>
+      <Edge Name="Low Light Vision"/>
+      <Edge Name="Supernaturally Good"/>
+      <Hindrance Name="Non-Standard Physiology"/>
+      <Hindrance Name="Poor Ground Speed" Description="−2 Pace (ground only), d4 running die"/>
+      <Edge Name="Regeneration" Description="Natural healing role 1/day"/>
+      <Trait Name="Strength" Bonus="1"/>
+
+    </Race>
+
+    <Race  Name="Psi-Stalker">
+      <Edge Name="Ambidexterity"/>
+      <Edge Name="Animal Empathy"/>
+      <Trait Name="Pace" Bonus="2"/>
+      <Trait Name="Running" Bonus="1"/>
+      <Hindrance Name="Outsider"/>
+      <Edge Name="Psychic Sense"  Description="Notice" />
+      <Edge Name="Psychic Vampire"  Description="Needs 5 PPE/ISP per 24 hrs"/>
+      <Hindrance Name="Racial Enemy" Description="Simvan"/>
+      <Hindrance Name=" Restricted Paths" Description="No magic"/>
+      <RacialEdges>
+        <Edge Name="Controlled Hunger" Requires="Novice, Spirit d6, Vigor d8" Description="Needs 3 PPE/ISP per 48 hrs" />
+        <Edge Name="Hunter" Requires="Seasoned, Spirit d8, Vigor d8, Figthing d8" Description="Choose prey. +2 Notice/Tracking. d8 dmg for raise." />
+      </RacialEdges>
+    </Race>
+
+    <Race Name="Quick Flex">
+      <Trait Name="Agility" Bonus="2"/>
+      <Trait Name="MaxAgility" Bonus="2"/>
+      <Edge Name="Ambidexterity"/>
+      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens"/>
+      <Trait Name="Parry" Bonus="1"/>
+      <Trait Name="Pace" Bonus="2"/>
+      <Trait Name="Running" Bonus="1"/>
+      <Hindrance Name="Restricted Paths" Description="No magic"/>
+      <Hindrance Name="Short Attention Span" Description="-1 Smarts Rolls"/>
+      <Hindrance Name="Overconfident"/>
+
+    </Race>
+    <Race Name="Simvan">
+      <Edge Name="Beast Master"/>
+      <Skill Name="Riding" Level="6" />
+      <Hindrance Name="Bloodthirsty"/>
+      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens"/>
+      <Hindrance Name="Instincts  Over  Intellect" Description="-1 Smarts Rolls"/>
+      <Edge Name="Low  Light  Vision"/>
+      <Edge Name="Arcane Background (Psionics)" />
+      <Trait Name="PowerPoints:Psionics" Bonus="5" />
+      <Trait Name="UnusedPowers:Psionics" Bonus="-1" />
+      <Power Skill="Psionics" Name="Beast Friend" />
+      <Edge Name="Natural Psionics" Description="+5 ISP if choosing an psionic framework"/>
+      <Hindrance Name="Racial Enemy" Description="Psi-Stalker"/>
+      
+    </Race>
+
+    <Race Name="Trimadore">
+      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens"/>
+      <Edge Name="Long Arms" Description="+1 Reach" />
+      <Edge Name="Mr.  Fix  It  Edge" />
+      <Hindrance Name="Non-Standard  Physiology"/>
+      <Edge Name="Technically Savvy" Description="Knowledge (Computers, Cybernetics, Electronics, or Engineering) d6" />
+      <Skill Name="Repair" Level="6"/>
+      
+    </Race>
+    
+  </Races>
 
   <Powers>
     <Power Name="Clairvoyance" Requires="Seasoned" Description="Allows the caster to sense people, places, and things outside of normal perception."/>
@@ -26,8 +220,8 @@
 differently than they actually are."/>
     <Power Name="Telepathy" Requires="Novice" Description="Used to communicate mentally with other people."/>
   </Powers>
-  
-  
+
+
   <Edges>
 
 
@@ -38,8 +232,8 @@ differently than they actually are."/>
       <Trait Name="PowerPoints:Psionics" Bonus="10" />
       <Trait Name="UnusedPowers:Psionics" Bonus="3" />
       <Feature Name="Arcane Background" />
-      
-      
+
+
       <AvailablePower Skill="Psionics" Name="Armor"/>
       <AvailablePower Skill="Psionics" Name="Barrier"/>
       <AvailablePower Skill="Psionics" Name="Blind"/>
@@ -48,7 +242,7 @@ differently than they actually are."/>
       <AvailablePower Skill="Psionics" Name="Clairvoyance"/>
       <AvailablePower Skill="Psionics" Name="Conceal Arcana"/>
       <AvailablePower Skill="Psionics" Name="Confusion"/>
-      <AvailablePower Skill="Psionics" Name="Damage"/> 
+      <AvailablePower Skill="Psionics" Name="Damage"/>
       <AvailablePower Skill="Psionics" Name="Field"/>
       <AvailablePower Skill="Psionics" Name="Darksight"/>
       <AvailablePower Skill="Psionics" Name="Deflection"/>
@@ -78,7 +272,7 @@ differently than they actually are."/>
       <AvailablePower Skill="Psionics" Name="Telepathy"/>
       <AvailablePower Skill="Psionics" Name="Teleport"/>
       <AvailablePower Skill="Psionics" Name="Warrior's Gift"/>
-      
+
     </Edge>
 
 
@@ -119,10 +313,7 @@ differently than they actually are."/>
 
   </Archetypes>
 
-  <Races>
-    <Race Name="(Special)">
-    </Race>
-  </Races>
+
 
   <Table Name="Narrative Hook" Roll="d20">
     <Option Roll="1–3" Description="The Siege of Tolkeen."/>

@@ -15,6 +15,14 @@ namespace SavageTools.Characters
         public Trait Spirit { get { return Get<Trait>(); } set { Set(value); } }
         public Trait Vigor { get { return Get<Trait>(); } set { Set(value); } }
 
+
+
+        public Trait MaxAgility { get { return GetDefault<Trait>(12); } set { Set(value); } }
+        public Trait MaxSmarts { get { return GetDefault<Trait>(12); } set { Set(value); } }
+        public Trait MaxStrength { get { return GetDefault<Trait>(12); } set { Set(value); } }
+        public Trait MaxSpirit { get { return GetDefault<Trait>(12); } set { Set(value); } }
+        public Trait MaxVigor { get { return GetDefault<Trait>(12); } set { Set(value); } }
+
         public SkillCollection Skills { get { return GetNew<SkillCollection>(); } }
         public HindranceCollection Hindrances { get { return GetNew<HindranceCollection>(); } }
         public EdgeCollection Edges { get { return GetNew<EdgeCollection>(); } }
@@ -26,6 +34,8 @@ namespace SavageTools.Characters
         public int UnusedSkills { get { return Get<int>(); } set { Set(value); } }
         public int UnusedSmartSkills { get { return Get<int>(); } set { Set(value); } }
         public int UnusedEdges { get { return Get<int>(); } set { Set(value); } }
+        public int UnusedRacialEdges { get { return Get<int>(); } set { Set(value); } }
+        public int UnusedIconicEdges { get { return Get<int>(); } set { Set(value); } }
         public int UnusedHindrances { get { return Get<int>(); } set { Set(value); } }
         public int UnusedAdvances { get { return Get<int>(); } set { Set(value); } }
 
@@ -77,6 +87,12 @@ namespace SavageTools.Characters
                 case "Strength": Strength += bonus; return;
                 case "Spirit": Spirit += bonus; return;
 
+                case "MaxVigor": MaxVigor += bonus; return;
+                case "MaxSmarts": MaxSmarts += bonus; return;
+                case "MaxAgility": MaxAgility += bonus; return;
+                case "MaxStrength": MaxStrength += bonus; return;
+                case "MaxSpirit": MaxSpirit += bonus; return;
+
                 case "Pace": Pace += bonus; return;
                 case "Running": Running += bonus; return;
                 case "Charisma": Charisma += bonus; return;
@@ -90,6 +106,7 @@ namespace SavageTools.Characters
                 case "UnusedSkills": UnusedSkills += bonus; return;
                 case "UnusedSmartSkills": UnusedSmartSkills += bonus; return;
                 case "UnusedEdges": UnusedEdges += bonus; return;
+                case "UnusedRacialEdges": UnusedRacialEdges += bonus; return;
                 case "UnusedHindrances": UnusedHindrances += bonus; return;
                 case "UnusedAdvances": UnusedAdvances += bonus; return;
                 case "PowerPoints": dice.Choose(PowerGroups).PowerPoints += bonus; return;
