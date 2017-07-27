@@ -7,6 +7,8 @@
   <Skills>
     <Skill Name="Knowledge (Demolitions)" Attribute="Smarts"/>
     <Skill Name="Knowledge (Battle)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Navigation)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Business)" Attribute="Smarts"/>
   </Skills>
 
   <Archetypes>
@@ -112,30 +114,220 @@
       <Edge Name="Brave"/>
       <Edge Name="Combat Reflexes"/>
       <Edge Name="Marksman"/>
-      <Edge Name="Cybernetics" Description="Core  Electronics  Package, Cyber-Wired  Reflexes,  Environmental Sensors,  Optics  Package  (+2  sight-based Notice),  Range  Data  System  (reduce 
-Shooting  penalties  by  two),  Wilderness Scout Package (+2 Survival and Tracking).">
+      <Edge Name="Cybernetics" Description="Core Electronics Package, Cyber-Wired Reflexes, Environmental Sensors, Optics Package (+2 sight-based Notice), Range Data System (reduce Shooting penalties by two), Wilderness Scout Package (+2 Survival and Tracking).">
         <Trait Name="Strain" Bonus="6" />
       </Edge>
 
     </Archetype>
 
     <Archetype Name="Coalition SAMAS Pilot" UnusedAttributes="0" UnusedSkills="0" Agility="8" Smarts="6" Spirit="8" Strength="6" Vigor="6" Race="Human" >
-<Skill Name="Driving" Level="4"/>
-<Skill Name="Fighting" Level="8"/>
-<Skill Name="Intimidation" Level="6"/>
-<Skill Name="Knowledge (Computers)" Level="4"/>
-<Skill Name="Notice" Level="6"/>
-<Skill Name="Piloting" Level="8"/>
-<Skill Name="Repair" Level="4"/>
-<Skill Name="Shooting" Level="10"/>
-<Skill Name="Survival" Level="4"/>
-            <Hindrance Name="Loyal"/>
+      <Skill Name="Driving" Level="4"/>
+      <Skill Name="Fighting" Level="8"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Knowledge (Computers)" Level="4"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Piloting" Level="8"/>
+      <Skill Name="Repair" Level="4"/>
+      <Skill Name="Shooting" Level="10"/>
+      <Skill Name="Survival" Level="4"/>
+      <Hindrance Name="Loyal"/>
       <Hindrance Name="Vow" Level="1" Description="Serve the Coalition"/>
       <Edge Name="Ace"/>
       <Edge Name="Combat Ace"/>
       <Edge Name="Power Armor Jock"/>
       <Edge Name="Rock and Roll!"/>
-      </Archetype>
+    </Archetype>
+
+    <Archetype Name="Coalition Sky Cycle Pilot" UnusedAttributes="0" UnusedSkills="0" Agility="8" Smarts="6" Spirit="8" Strength="6" Vigor="6" Race="Human" >
+      <Skill Name="Driving" Level="4"/>
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Knowledge (Computers)" Level="4"/>
+      <Skill Name="Knowledge (Navigation)" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Piloting" Level="8"/>
+      <Skill Name="Repair" Level="4"/>
+      <Skill Name="Shooting" Level="8"/>
+      <Skill Name="Survival" Level="4"/>
+
+      <Hindrance Name="Loyal"/>
+      <Hindrance Name="Vow" Level="1" Description="Serve the Coalition"/>
+      <Edge Name="Ace"/>
+      <Edge Name="Combat Ace"/>
+    </Archetype>
+
+
+    <Archetype Name="UAR-Enforcer  Pilot" UnusedAttributes="0" UnusedSkills="0" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="8" Race="Human" >
+      <Skill Name="Driving" Level="4"/>
+      <Skill Name="Fighting" Level="8"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Knowledge (Computers)" Level="4"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Piloting" Level="8"/>
+      <Skill Name="Repair" Level="4"/>
+      <Skill Name="Shooting" Level="8"/>
+      <Skill Name="Survival" Level="4"/>
+
+      <Hindrance Name="Loyal"/>
+      <Hindrance Name="Vow" Level="1" Description="Serve the Coalition"/>
+      <Edge Name="Ace"/>
+      <Edge Name="Combat Ace"/>
+      <Edge Name="Robot Armor Jock"/>
+    </Archetype>
+
+    <Archetype Name="Black Market Enforcer" UnusedAttributes="0" UnusedSkills="0" Agility="8" Smarts="6" Spirit="8" Strength="8" Vigor="8"  >
+      <Skill Name="Driving" Level="6"/>
+      <Skill Name="Fighting" Level="8"/>
+      <Skill Name="Intimidation" Level="8"/>
+      <Skill Name="Knowledge (Business)" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Stealth" Level="6"/>
+      <Skill Name="Shooting" Level="8"/>
+      <Skill Name="Streetwise" Level="6"/>
+      <Skill Name="Throwing" Level="6"/>
+      <Hindrance Name="Greedy"/>
+      <Hindrance Name="Loyal"/>
+      <Hindrance Name="Vow" Level="2" Description="Serve the Black Market"/>
+
+      <Edge Name="Brawler"/>
+      <Edge Name="Command"/>
+      <Edge Name="Connections"/>
+      <Edge Name="Dirty Fighter"/>
+
+    </Archetype>
+
+
+    <Archetype Name="Black Market Expeditor" UnusedAttributes="0" UnusedSkills="0" Agility="8" Smarts="8" Spirit="8" Strength="6" Vigor="6"  >
+
+      <Skill Name="Climbing" Level="6"/>
+      <Skill Name="Driving" Level="4"/>
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Intimidation" Level="8"/>
+      <Skill Name="Knowledge (Business)" Level="8"/>
+      <Skill Name="Knowledge (Politics)" Level="8"/>
+      <Skill Name="Lockpicking" Level="6"/>
+      <Skill Name="Notice" Level="8"/>
+      <Skill Name="Persuasion" Level="8"/>
+      <Skill Name="Shooting" Level="8"/>
+      <Skill Name="Stealth" Level="8"/>
+      <Skill Name="Streetwise" Level="8"/>
+      <Skill Name="Taunt" Level="8"/>
+
+      <Hindrance Name="Greedy"/>
+      <Hindrance Name="Loyal"/>
+      <Hindrance Name="Vow" Level="2" Description="Serve the Black Market"/>
+
+      <Edge Name="Charismatic"/>
+      <Edge Name="Connections"/>
+      <Edge Name="Dodge"/>
+      <Edge Name="Extraction"/>
+      <Edge Name="I Know a Guy"/>
+      <Edge Name="Scrounger"/>
+      <Edge Name="Strong Willed"/>
+      <Edge Name="Thief"/>
+
+    </Archetype>
+
+    <Archetype Name="Pecos Empire Bandit" UnusedAttributes="0" UnusedSkills="0" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6"  >
+      <Skill Name="Driving" Level="6"/>
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Riding" Level="6"/>
+      <Skill Name="Shooting" Level="6"/>
+      <Skill Name="Stealth" Level="6"/>
+      <Skill Name="Survival" Level="4"/>
+      <Skill Name="Streetwise" Level="4"/>
+      <Skill Name="Tracking" Level="4"/>
+
+
+      <Hindrance Name="Greedy" Level="2"/>
+      <Hindrance Name="Loyal"/>
+      <Hindrance Name="Mean" />
+
+      <Edge Name="Extraction"/>
+      <Edge Name="Steady Hands"/>
+    </Archetype>
+
+
+    <Archetype Name="Bandit" UnusedAttributes="0" UnusedSkills="0" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6"  >
+      <Skill Name="Driving" Level="4"/>
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Shooting" Level="8"/>
+      <Skill Name="Stealth" Level="6"/>
+      <Skill Name="Survival" Level="4"/>
+      <Skill Name="Throwing" Level="6"/>
+
+
+      <Hindrance Name="Greedy"/>
+
+      <Hindrance Name="Mean" />
+
+    </Archetype>
+
+    <Archetype Name="Civilian" UnusedAttributes="0" UnusedSkills="0" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6"  >
+      <Skill Name="Driving" Level="4"/>
+      <Skill Name="Fighting" Level="4"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Shooting" Level="4"/>
+      <Skill Name="Stealth" Level="4"/>
+      <Skill Name="Survival" Level="4"/>
+      <Skill Name="Throwing" Level="4"/>
+    </Archetype>
+
+    <Archetype Name="Commando" UnusedAttributes="0" UnusedSkills="0" Agility="8" Smarts="8" Spirit="8" Strength="8" Vigor="8"  >
+      <Skill Name="Driving" Level="4"/>
+      <Skill Name="Fighting" Level="4"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Shooting" Level="4"/>
+      <Skill Name="Stealth" Level="4"/>
+      <Skill Name="Survival" Level="4"/>
+      <Skill Name="Throwing" Level="4"/>
+
+      <Edge Name="Fleet-Footed"/>
+      <Edge Name="Frenzy"/>
+      <Edge Name="Marksman"/>
+      <Edge Name="Martial Artist"/>
+      <Edge Name="Steady Hands"/>
+      <Edge Name="Woodsman"/>
+
+      <Skill Name="Climbing" Level="6"/>
+      <Skill Name="Driving" Level="6"/>
+      <Skill Name="Fighting" Level="8"/>
+      <Skill Name="Healing" Level="6"/>
+      <Skill Name="Notice" Level="8"/>
+      <Skill Name="Shooting" Level="8"/>
+      <Skill Name="Stealth" Level="8"/>
+      <Skill Name="Streetwise" Level="6"/>
+      <Skill Name="Survival" Level="8"/>
+      <Skill Name="Swimming" Level="6"/>
+      <Skill Name="Throwing" Level="6"/>
+      <Skill Name="Tracking" Level="8"/>
+
+
+    </Archetype>
+
+
+    <Archetype Name="Robot Pilot" UnusedAttributes="0" UnusedSkills="0" Agility="10" Smarts="8" Spirit="6" Strength="6" Vigor="8"  >
+      <Skill Name="Driving" Level="6"/>
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Notice" Level="8"/>
+      <Skill Name="Piloting" Level="10"/>
+      <Skill Name="Repair" Level="6"/>
+      <Skill Name="Shooting" Level="10"/>
+      <Skill Name="Survival" Level="4"/>
+
+      <Edge Name="Ace"/>
+      <Edge Name="Combat Ace"/>
+      <Edge Name="Robot Armor Jock"/>
+
+      <Edge Name="Cybernetics" Description="Core Electronics Package (+4 Repair and Common Knowledge), Cyber-Wired Reflexes, Optics Package +2 sight-based Notice, thermal and night vision), Range Data System (offset Shooting penalties by two).">
+        <Trait Name="Strain" Bonus="4" />
+      </Edge>
+
+    </Archetype>
 
   </Archetypes>
 
