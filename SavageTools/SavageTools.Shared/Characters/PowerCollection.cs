@@ -4,9 +4,9 @@ using Tortuga.Anchor.Modeling;
 namespace SavageTools.Characters
 {
 
-    public class PowerCollection : ChangeTrackingModelCollection<PowerGroup>
+    public class PowerGroupCollection : ChangeTrackingModelCollection<PowerGroup>
     {
-        public PowerCollection()
+        public PowerGroupCollection()
         {
             ItemPropertyChanged += (s, e) => OnPropertyChanged("UnusedPowers");
             CollectionChanged += (s, e) => OnPropertyChanged("UnusedPowers");
@@ -30,7 +30,7 @@ namespace SavageTools.Characters
 
         public bool ContainsPower(string power, string trapping)
         {
-            return this.Any(g => g.Any(p => p.Name == power && p.Trapping == trapping));
+            return this.Any(g => g.Powers.Any(p => p.Name == power && p.Trapping == trapping));
         }
 
     }

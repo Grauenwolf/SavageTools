@@ -35,7 +35,7 @@ namespace SavageTools
             result.AppendLine(string.Join(", ", c.Hindrances.Select(h => h.LevelName + " " + h.Description)));
 
             foreach (var group in c.PowerGroups)
-                result.AppendLine($"{group.Skill}, Power Points {group.PowerPoints}, Powers: {string.Join(", ", group.Select(p => p.LongName))}");
+                result.AppendLine($"{group.Skill}, Power Points {group.PowerPoints}, Powers: {string.Join(", ", group.Powers.Select(p => p.LongName))}");
 
             return result.ToString();
         }

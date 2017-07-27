@@ -216,7 +216,7 @@ namespace SavageTools.Characters
             return false;
         }
 
-        public PowerCollection PowerGroups => GetNew<PowerCollection>();
+        public PowerGroupCollection PowerGroups => GetNew<PowerGroupCollection>();
     }
 }
 

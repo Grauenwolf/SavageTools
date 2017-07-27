@@ -176,7 +176,7 @@
                     <DataTemplate>
                         <TextBlock Margin="4">
                             <Run FontWeight="Bold" Text="{Binding Skill}" />
-                            <Run Text=", Power Points" />
+                            <Run Text="Power Points" />
                             <Run Text="{Binding PowerPoints, Mode=OneWay}" />
                             <Run Text=", Powers: " />
                             <Run Text="{Binding PowerList, Mode=OneWay}" />

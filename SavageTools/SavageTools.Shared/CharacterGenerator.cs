@@ -1,6 +1,7 @@
 ﻿using SavageTools.Characters;
 using SavageTools.Settings;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -441,14 +442,46 @@ namespace SavageTools
 
         void PickPower(Character result, PowerGroup group, Dice dice)
         {
+
+            var powers = new List<SettingPower>();
+            var trappings = new List<SettingTrapping>();
+
+            foreach (var item in Powers)
+            {
+                if (group.AvailablePowers.Count > 0 && !group.AvailablePowers.Contains(item.Name))
+                    continue;
+
+                var requirements = item.Requires.Split(',').Select(e => e.Trim());
+                if (requirements.All(c => result.HasFeature(c, BornAHero)))
+                    powers.Add(item);
+            }
+
+            foreach (var item in Trappings)
+            {
+                if (group.AvailableTrappings.Count > 0 && !group.AvailableTrappings.Contains(item.Name))
+                    continue;
+
+                if (group.ProhibitedTrappings.Contains(item.Name))
+                    continue;
+
+                trappings.Add(item);
+            }
+
+            if (powers.Count == 0 || trappings.Count == 0)
+            {
+                result.Features.Add($"Has {group.UnusedPowers} unused powers for {group.Skill}.");
+                group.UnusedPowers = 0;
+                return;
+            }
+
             TryAgain:
             var trapping = dice.Choose(Trappings);
-            var power = dice.Choose(Powers);
+            var power = dice.Choose(powers);
 
             if (result.PowerGroups.ContainsPower(power.Name, trapping.Name))
                 goto TryAgain;
 
-            group.Add(new Power(power.Name, trapping.Name));
+            group.Powers.Add(new Power(power.Name, trapping.Name));
 
             group.UnusedPowers -= 1;
         }
@@ -467,8 +500,8 @@ namespace SavageTools
                     if (result.Edges.Any(e => e.UniqueGroup == item.UniqueGroup))
                         continue; //can't have multiple from a unique group (i.e. arcane background)
 
-                var checks = item.Requires.Split(',').Select(e => e.Trim());
-                if (checks.All(c => result.HasFeature(c, BornAHero)))
+                var requirements = item.Requires.Split(',').Select(e => e.Trim());
+                if (requirements.All(c => result.HasFeature(c, BornAHero)))
                     table.Add(item, 1);
             }
             if (table.Count == 0)
