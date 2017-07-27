@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Savage Foes of North America">
+  <References>
+    <Reference Name="Rifts Tomorrow Legion" />
+  </References>
+  
+  <Archetypes>
+    <Archetype Name="Coalition Grunt" UnusedAttributes="0" UnusedSkills="0" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" Race="Human" >
+
+      <Skill Name="Driving" Level="4"/>
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Shooting" Level="8"/>
+      <Skill Name="Survival" Level="4"/>
+      <Skill Name="Throwing" Level="6"/>
+
+      <Hindrance Name="Loyal"/>
+      <Hindrance Name="Vow"/>
+      
+      
+
+    </Archetype>
+
+
+  </Archetypes>
+
+  <Races>
+
+  </Races>
+
+</Setting>
+

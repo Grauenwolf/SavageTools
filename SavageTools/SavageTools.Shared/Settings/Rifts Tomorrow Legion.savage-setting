@@ -77,7 +77,7 @@ differently than they actually are."/>
   <Archetypes>
     <Archetype Name="Flame Wind Dragon Hatchling" UnusedAttributes="3" UnusedSkills="10" Agility="4" Smarts="4" Spirit="4" Strength="16" Vigor="8" Race="(Special)" WildCard="true">
       <Edge Name="Arcane Background (Psionics)"/>
-      <Skill Name="Psionics" Attribute="Smarts" Level="6"/>
+      <Skill Name="Psionics" Level="6"/>
       <Edge Name="Armored Hide" Description="+16 MDC Armor, +6 Toughness in dragon form"/>
       <Edge Name="Claw/Bite" Description="Str+3d6 AP 4, MD in dragon form"/>
       <Edge Name="Fear"/>
