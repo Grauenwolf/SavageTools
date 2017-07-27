@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="700">
     <DockPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Grid.Column="0">
             <Label Content="Archetype" />
             <StackPanel>
                 <ComboBox ItemsSource="{Binding CharacterGenerator.Archetypes}" SelectedItem="{Binding CharacterGenerator.SelectedArchetype}" Margin="4">
@@ -41,15 +42,16 @@
                 </ComboBox>
                 <CheckBox Content="Random" IsChecked="{Binding CharacterGenerator.RandomRank}"/>
             </StackPanel>
-            
+
             <StackPanel>
                 <CheckBox Content="Wild Card" IsChecked="{Binding CharacterGenerator.WildCard}" Margin="4"/>
                 <CheckBox Content="Born A Hero" IsChecked="{Binding CharacterGenerator.BornAHero}" Margin="4" ToolTip="If checked, ranks are ignored for edge selection."/>
             </StackPanel>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" >
             <Button Content="Create Character" Command="{Binding CreateCharacterCommand}" Margin="6"/>
             <Button Content="Copy All" Command="{Binding CopyAllCommand}" Margin="6"/>
-        </StackPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+
             <Button Content="Add Setting" Command="{Binding LoadSettingCommand}" Margin="6"/>
             <TextBlock Text="Settings" Margin="4" />
             <ItemsControl ItemsSource="{Binding CharacterGenerator.Settings}">
@@ -73,17 +75,17 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
-            
-            
+
+
         </StackPanel>
         <ScrollViewer>
-        <ItemsControl ItemsSource="{Binding Characters}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <local:CharacterControl/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            <ItemsControl ItemsSource="{Binding Characters}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:CharacterControl/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
     </DockPanel>
 </Window>

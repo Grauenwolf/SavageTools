@@ -3,10 +3,14 @@
   <References>
     <Reference Name="Rifts Tomorrow Legion" />
   </References>
-  
+
+  <Skills>
+    <Skill Name="Knowledge (Demolitions)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Battle)" Attribute="Smarts"/>
+  </Skills>
+
   <Archetypes>
     <Archetype Name="Coalition Grunt" UnusedAttributes="0" UnusedSkills="0" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" Race="Human" >
-
       <Skill Name="Driving" Level="4"/>
       <Skill Name="Fighting" Level="6"/>
       <Skill Name="Intimidation" Level="6"/>
@@ -16,12 +20,122 @@
       <Skill Name="Throwing" Level="6"/>
 
       <Hindrance Name="Loyal"/>
-      <Hindrance Name="Vow"/>
-      
-      
+      <Hindrance Name="Vow" Level="1" Description="Serve the Coalition"/>
+    </Archetype>
+
+    <Archetype Name="Coalition Tech: Demolitions MOS" UnusedAttributes="0" UnusedSkills="0" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" Race="Human" >
+      <Skill Name="Driving" Level="4"/>
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Shooting" Level="8"/>
+      <Skill Name="Survival" Level="4"/>
+      <Skill Name="Throwing" Level="6"/>
+      <Skill Name="Knowledge (Demolitions)" Level="8"/>
+      <Skill Name="Knowledge (Engineering)" Level="6"/>
+      <Skill Name="Notice" Level="8"/>
+
+      <Hindrance Name="Loyal"/>
+      <Hindrance Name="Vow" Level="1" Description="Serve the Coalition"/>
+    </Archetype>
+
+    <Archetype Name="Coalition Tech: Mechanics MOS" UnusedAttributes="0" UnusedSkills="0" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" Race="Human" >
+      <Skill Name="Driving" Level="4"/>
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Shooting" Level="8"/>
+      <Skill Name="Survival" Level="4"/>
+      <Skill Name="Throwing" Level="6"/>
+      <Skill Name="Knowledge (Engineering)" Level="6"/>
+      <Skill Name="Repair" Level="8"/>
+
+
+      <Hindrance Name="Loyal"/>
+      <Hindrance Name="Vow" Level="1" Description="Serve the Coalition"/>
+    </Archetype>
+
+    <Archetype Name="Coalition Tech: Medic MOS" UnusedAttributes="0" UnusedSkills="0" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" Race="Human" >
+      <Skill Name="Driving" Level="4"/>
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Shooting" Level="8"/>
+      <Skill Name="Survival" Level="4"/>
+      <Skill Name="Throwing" Level="6"/>
+      <Skill Name="Healing" Level="8"/>
+      <Skill Name="Knowledge (Medicine)" Level="6"/>
+      <Skill Name="Survival" Level="6"/>
+
+
+      <Hindrance Name="Loyal"/>
+      <Hindrance Name="Vow" Level="1" Description="Serve the Coalition"/>
+    </Archetype>
+
+    <Archetype Name="Coalition Tech: Technician MOS" UnusedAttributes="0" UnusedSkills="0" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" Race="Human" >
+      <Skill Name="Driving" Level="4"/>
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Intimidation" Level="6"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Shooting" Level="8"/>
+      <Skill Name="Survival" Level="4"/>
+      <Skill Name="Throwing" Level="6"/>
+      <Skill Name="Healing" Level="8"/>
+      <Skill Name="Knowledge (Electronics)" Level="8"/>
+      <Skill Name="Knowledge (Computers)" Level="6"/>
+      <Skill Name="Repair" Level="4"/>
+
+
+      <Hindrance Name="Loyal"/>
+      <Hindrance Name="Vow" Level="1" Description="Serve the Coalition"/>
+    </Archetype>
+
+    <Archetype Name="Coalition Military  Specialist" UnusedAttributes="0" UnusedSkills="0" Agility="8" Smarts="8" Spirit="8" Strength="8" Vigor="8" Race="Human" >
+
+      <Skill Name="Climbing" Level="6"/>
+      <Skill Name="Driving" Level="6"/>
+      <Skill Name="Fighting" Level="8"/>
+      <Skill Name="Healing" Level="4"/>
+      <Skill Name="Intimidation" Level="8"/>
+      <Skill Name="Knowledge (Battle)" Level="4"/>
+      <Skill Name="Notice" Level="6"/>
+      <Skill Name="Persuasion" Level="6"/>
+      <Skill Name="Shooting" Level="10"/>
+      <Skill Name="Stealth" Level="6"/>
+      <Skill Name="Survival" Level="6"/>
+      <Skill Name="Throwing" Level="6"/>
+      <Skill Name="Tracking" Level="6"/>
+      <Hindrance Name="Loyal"/>
+      <Hindrance Name="Vow" Level="1" Description="Serve the Coalition"/>
+
+
+      <Edge Name="Brave"/>
+      <Edge Name="Combat Reflexes"/>
+      <Edge Name="Marksman"/>
+      <Edge Name="Cybernetics" Description="Core  Electronics  Package, Cyber-Wired  Reflexes,  Environmental Sensors,  Optics  Package  (+2  sight-based Notice),  Range  Data  System  (reduce 
+Shooting  penalties  by  two),  Wilderness Scout Package (+2 Survival and Tracking).">
+        <Trait Name="Strain" Bonus="6" />
+      </Edge>
 
     </Archetype>
 
+    <Archetype Name="Coalition SAMAS Pilot" UnusedAttributes="0" UnusedSkills="0" Agility="8" Smarts="6" Spirit="8" Strength="6" Vigor="6" Race="Human" >
+<Skill Name="Driving" Level="4"/>
+<Skill Name="Fighting" Level="8"/>
+<Skill Name="Intimidation" Level="6"/>
+<Skill Name="Knowledge (Computers)" Level="4"/>
+<Skill Name="Notice" Level="6"/>
+<Skill Name="Piloting" Level="8"/>
+<Skill Name="Repair" Level="4"/>
+<Skill Name="Shooting" Level="10"/>
+<Skill Name="Survival" Level="4"/>
+            <Hindrance Name="Loyal"/>
+      <Hindrance Name="Vow" Level="1" Description="Serve the Coalition"/>
+      <Edge Name="Ace"/>
+      <Edge Name="Combat Ace"/>
+      <Edge Name="Power Armor Jock"/>
+      <Edge Name="Rock and Roll!"/>
+      </Archetype>
 
   </Archetypes>
 

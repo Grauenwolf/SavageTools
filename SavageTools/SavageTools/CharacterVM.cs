@@ -1,4 +1,5 @@
 ﻿using SavageTools.Characters;
+using System;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -14,7 +15,10 @@ namespace SavageTools
         public Character Character { get; }
 
         public ICommand CopyCommand => GetCommand(CopyToClipboard);
+        public ICommand RemoveCommand => GetCommand(() => RemoveMe?.Invoke(this, EventArgs.Empty));
 
+
+        public event EventHandler RemoveMe;
 
         public void CopyToClipboard()
         {
@@ -25,7 +29,7 @@ namespace SavageTools
         {
             var c = Character;
             var result = new StringBuilder();
-            result.AppendLine($"Name {c.Name}, Archetype {c.Archetype}, Race {c.Race}");
+            result.AppendLine($"Name {c.Name}, Archetype {c.Archetype}, Race {c.Race}, Rank {c.Rank}");
             result.AppendLine($"Agility {c.Agility}, Smarts {c.Smarts}, Strength {c.Strength}, Spirt {c.Spirit}, Vigor {c.Vigor}");
 
             result.AppendLine($"Charisma {c.Charisma}, Parry {c.ParryTotal}, Toughness {c.ToughnessTotal}, Pace {c.Pace}+{c.Running}, Strain {c.Strain}/{c.MaximumStrainTotal}");

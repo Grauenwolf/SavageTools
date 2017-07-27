@@ -8,7 +8,18 @@
     <Reference Name="Fantasy Companion" />
   </References>
   
-  
+  <Skills>
+    <Skill Name="Knowledge (Arcana)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Computers)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Cybernetics)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Electronics)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Engineering)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (History)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Medicine)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Politics)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Science)" Attribute="Smarts"/>
+  </Skills>
+
   <Powers>
     <Power Name="Clairvoyance" Requires="Seasoned" Description="Allows the caster to sense people, places, and things outside of normal perception."/>
     <Power Name="Illusion" Requires="Novice" Description="Makes a single target see something that isn’t there, or else see things 

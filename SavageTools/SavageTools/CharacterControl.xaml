@@ -28,6 +28,7 @@
                 <TextBlock Text="Rank" />
                 <TextBox Text="{Binding Rank}" MinWidth="100" />
                 <Button Content="Copy" Command="{Binding DataContext.CopyCommand, ElementName=Top}" />
+                <Button Content="Remove" Command="{Binding DataContext.RemoveCommand, ElementName=Top}" />
             </StackPanel>
             <Grid >
                 <Grid.Resources>

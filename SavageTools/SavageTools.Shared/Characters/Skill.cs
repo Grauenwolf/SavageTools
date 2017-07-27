@@ -9,9 +9,10 @@ namespace SavageTools.Characters
         public Skill(string name, string attribute)
         {
             if (string.IsNullOrEmpty(name))
-                throw new ArgumentException("name is null or empty.", "name");
+                throw new ArgumentException($"{nameof(name)} is null or empty.", nameof(name));
+
             if (string.IsNullOrEmpty(attribute))
-                throw new ArgumentException("attribute is null or empty.", "attribute");
+                throw new ArgumentException($"{nameof(attribute)} is null or empty for skill {name}.", nameof(attribute));
 
             Name = name;
             Attribute = attribute;

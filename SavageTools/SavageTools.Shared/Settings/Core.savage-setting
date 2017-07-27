@@ -12,7 +12,7 @@
     <Skill Name="Investigation" Attribute="Smarts"/>
     <Skill Name="Knowledge (Area)" Attribute="Smarts"/>
     <Skill Name="Knowledge (Battle)" Attribute="Smarts"/>
-    <Skill Name="Knowledge (Copmuters)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Computers)" Attribute="Smarts"/>
     <Skill Name="Knowledge (Electronics)" Attribute="Smarts"/>
     <Skill Name="Knowledge (History)" Attribute="Smarts"/>
     <Skill Name="Knowledge (Journalism)" Attribute="Smarts"/>

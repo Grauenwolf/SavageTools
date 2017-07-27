@@ -23,9 +23,12 @@ namespace SavageTools
 
         async Task CreateCharacterAsync()
         {
-            Characters.Add(new CharacterVM(await CharacterGenerator.GenerateCharacterAsync()));
+            var characterVM = new CharacterVM(await CharacterGenerator.GenerateCharacterAsync());
+            characterVM.RemoveMe += (s,e)=> Characters.Remove((CharacterVM)s);
+            Characters.Add(characterVM);
         }
 
+      
         void LoadSetting()
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog()

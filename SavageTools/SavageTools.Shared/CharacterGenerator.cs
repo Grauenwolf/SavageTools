@@ -72,7 +72,7 @@ namespace SavageTools
             get { return Get<SettingArchetype>(); }
             set
             {
-                if (Set(value) && !string.IsNullOrEmpty(value.Race))
+                if (Set(value) && value != null && !string.IsNullOrEmpty(value.Race))
                 {
                     var newRace = Races.SingleOrDefault(r => r.Name == value.Race);
                     if (newRace != null)
@@ -92,15 +92,6 @@ namespace SavageTools
         public async Task<Character> GenerateCharacterAsync()
         {
             var dice = new Dice();
-            var result = new Character() { Rank = SelectedRank.Name, IsWildCard = WildCard };
-
-            var name = await Names.NameService.CreateRandomPersonAsync();
-            result.Name = name.FullName;
-            result.Gender = name.Gender;
-
-            //Add all possible skills (except ones created by edges)
-            foreach (var item in Skills)
-                result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = 0 });
 
             if (RandomArchetype)
             {
@@ -120,6 +111,19 @@ namespace SavageTools
 
                 SelectedRank = table.RandomChoose(dice);
             }
+
+
+            var result = new Character() { Rank = SelectedRank.Name, IsWildCard = WildCard };
+
+            var name = await Names.NameService.CreateRandomPersonAsync();
+            result.Name = name.FullName;
+            result.Gender = name.Gender;
+
+            //Add all possible skills (except ones created by edges)
+            foreach (var item in Skills)
+                result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = 0 });
+
+
 
             ApplyArchetype(result, dice);
 
