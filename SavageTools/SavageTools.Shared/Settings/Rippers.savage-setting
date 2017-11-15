@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Rippers">
+  <References>
+    <Reference Name="Arcana" />
+    <Reference Name="Magic" />
+    <Reference Name="Psionics" />
+    <Reference Name="Weird Science" />
+    <Reference Name="Fantasy Companion" />
+  </References>
+
+  <Skills>
+    <Skill Name="Knowledge (Rippertech)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Occult)" Attribute="Smarts"/>
+  </Skills>
+
+  <Hindrances>
+    <Hindrance Name="Cursed" Type="Major" Description="May never receive beneficial blessings such as those from the Arcane Background (Miracles) Edge." />
+    <Hindrance Name="Disowned" Type="Minor" Description="Family refuses to acknowledge you." >
+      <Trait Name="Status" Bonus="-1" />
+    </Hindrance>
+    <Hindrance Name="Jingoistic" Type="Minor/Major" Description="Charisma -2/-4 among other cultures." />
+    <Hindrance Name="Notorious" Type="Minor" Description="Renowned for being something of a rogue or scoundrel." />
+    <Hindrance Name="Obligation" Type="Minor/Major" Description="Minor Obligations are occasionally inconvenient. Major Obligations are crucial, time-consuming, and might put your hero in harm’s way." />
+    <Hindrance Name="Oversensitive" Type="Major" Description="Your hero is high-strung, nervous, or otherwise of a sensitive disposition." >
+      <Trait Name="Reason" Bonus="-1" />
+    </Hindrance>
+    <Hindrance Name="Screamer" Type="Minor" Description="Any time the character fails a Fear test, she automatically screams at the top of her lungs. Anyone within a Large Burst Template of the victim suffers a –1 to their Fear tests as well from the disturbing sound!" />
+    <Hindrance Name="Supernatural Weakness" Type="Minor" Description="Choose which weakness your hero has: Cold Iron, Wood, Silver, Sunlight, Salt, or Fire. +4 Damage" />
+  </Hindrances>
+
+  <Edges>
+    <Edge Name="Champion" Requires="Novice, Spirit d8, Strength d6, Vigor d8, Fighting d8" Description="+2 damage and Toughness vs. supernatural evil"/>
+    <Edge Name="Noble" Requires="Novice" Description="+2 Charisma; Character is noble born with status and wealth">
+      <Trait Name="Charisma" Bonus="2" />
+      <Trait Name="Status" Bonus="1" />
+    </Edge>
+    <Edge Name="Rich" Requires="Novice" Description="">
+      <Trait Name="Status" Bonus="1" />
+    </Edge>
+    <Edge Name="Filthy Rich" Requires="Novice, Noble or Rich" Description="">
+      <Trait Name="Status" Bonus="1" />
+    </Edge>
+    <Edge Name="Down-to-Earth" Requires="Novice, Spirit d6+" Description="+2 damage and Toughness vs. supernatural evil">
+      <Trait Name="Reason" Bonus="1" />
+    </Edge>
+    <Edge Name="Renown" Requires="Novice" Description="">
+      <Trait Name="Status" Bonus="1" />
+    </Edge>
+    <Edge Name="Rippertech" Requires="Novice" Description="Your monster-to-be may start with up to half her total Reason in rippertech (round up)." />
+    <Edge Name="Sterner Stuff" Requires="Novice, Vigor d8" Description="+2 for receiving rippertech surgery/extrations." />
+
+    <Edge Name="Frazer's Fighters" Requires="Ripper"  UniqueGroup="Faction">
+      <Feature Name="Faction Member"/>
+    </Edge>
+    <Edge Name="Masked Crusaders" Requires="Ripper"  UniqueGroup="Faction">
+      <Feature Name="Faction Member"/>
+    </Edge>
+    <Edge Name="Old Worlders" Requires="Ripper"  UniqueGroup="Faction">
+      <Feature Name="Faction Member"/>
+    </Edge>
+    <Edge Name="Order of St. George" Requires="Ripper"  UniqueGroup="Faction">
+      <Feature Name="Faction Member"/>
+    </Edge>
+    <Edge Name="Rosicrucians" Requires="Ripper"  UniqueGroup="Faction">
+      <Feature Name="Faction Member"/>
+    </Edge>
+    <Edge Name="Slayers" Requires="Ripper"  UniqueGroup="Faction">
+      <Feature Name="Faction Member"/>
+    </Edge>
+    <Edge Name="Witch Hunters" Requires="Ripper" UniqueGroup="Faction">
+      <Feature Name="Faction Member"/>
+    </Edge>
+    <Edge Name="Cabal" Requires="Ripper" UniqueGroup="Faction">
+      <Feature Name="Faction Member"/>
+    </Edge>
+
+    <Edge Name="Charms &amp; Wards" Requires="Novice, Witch Hunters" Description="Black magic is -2" />
+    <Edge Name="Exceptional Individual" Requires="Novice, Masked Crusaders" Description="Free combat edge" />
+    <Edge Name="Fortune Favors the Bold" Requires="Novice, Frazer's Fighters" Description="The hero starts each session with one extra Benny" />
+    <Edge Name="Grim Fatalism" Requires=" Novice, Old Worlders" Description="add +2 to Knowledge (Occult) rolls concerning vampires and werewolves. Ignores Panicked or Paralyzed by fear" />
+    <Edge Name="Mystic Pact" Requires="Novice, Rosicrucians" Description="Take a level of Fatigue for 1d6 Power Points." />
+    <Edge Name="Righteous Fury" Requires="Novice, Slayers" Description="+1 to all Strength-based damage rolls versus supernaturally evil creatures." />
+    <Edge Name="Song of St. George" Requires="Novice, Order of St. George" Description="All allies within 10” (20 yards) immediately get a Spirit roll as a free action to recover from being Shaken." />
+
+    <Edge Name="Alienist" Requires="Novice, Healing d6, Knowledge (Psychology) d6, Persuasion d6" Description="This hero can heal temporary Reason loss in a patient." />
+    <Edge Name="Arcane Chemist" Requires="Novice, Knowledge (Chemistry) d6, Knowledge (Rippertech) d6" Description="" />
+    <Edge Name="Gone Native" Requires="Novice" Description="" />
+    <Edge Name="Guts" Requires="Seasoned, Spirit d6" Description="ignores two points of Fear penalties for both her Spirit roll and any Fright Table result" />
+    <Edge Name="Know Your Enemy" Requires="Seasoned, Fighting d6" Description="Parry by +2 when attacked by [select monster type]." />
+    <Edge Name="Monster Hunter" Requires="Seasoned" Description="immune to Fear tests caused by [select monster type]." />
+    <Edge Name="Monster Slayer" Requires="Veteran, Monster Hunter" Description="Every time he defeats a monster specified by the Monster Hunter Edge, he receives a Benny!" />
+    <Edge Name="Paragon" Requires="Veteran, Common Bond" Description="Give benny to other at +2 to their roll" />
+    <Edge Name="Surgeon" Requires="Seasoned, Healing d8, Knowledge (Rippertech) d8" Description="When installing rippertech, the patient gets a +1 bonus to the Implant Table roll" />
+    <Edge Name="Technical Journals" Requires="Novice, Arcane Background (Weird Science), Weird Science d8" Description="" />
+    <Edge Name="Tomb Fighter" Requires="Seasoned, Fighting d8" Description="" />
+    <Edge Name="Wolfen Jaeger" Requires="Seasoned, Notice d6, Stealth d6, Survival d6, Tracking d6" Description="" />
+    <Edge Name="Alternate Identity" Requires="Novice, Persuasion d6" Description="" />
+    <Edge Name="Master of Disguise" Requires="Veteran, Alternate Identity, Persuasion d8" Description="" />
+    <Edge Name="Associate" Requires="Novice, Smarts d8, Persuasion d6" Description="" />
+    <Edge Name="Faction Defender" Requires="Seasoned, Persuasion d6, Status 3, Faction Member" Description="" />
+    <Edge Name="Faction Luminary" Requires="Heroic, Faction Defender, Status 4" Description="" />
+    <Edge Name="Socialite" Requires="Novice, Noble or Rich" Description="" />
+    <Edge Name="World Traveler" Requires="Seasoned" Description="" />
+  </Edges>
+
+  <Archetypes>
+
+    <Archetype Name="Ripper" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="15" >
+      <Feature Name="Ripper" />
+    </Archetype>
+
+
+    <Archetype Name="Constable" Agility="6" Smarts="6" Spirit="8" Strength="8" Vigor="8" UnusedAttributes="0" UnusedSkills="0" >
+      <Skill Name="Fighting" Level="8"/>
+      <Skill Name="Investigation" Level="4"/>
+      <Skill Name="Notice" Level="4"/>
+      <Skill Name="Stealth" Level="4"/>
+      <Skill Name="Streetwise" Level="4"/>
+      <Hindrance Name="Vow" />
+      <Edge Name="Brave"/>
+      <Feature Name="Baton (Str+d4)"/>
+    </Archetype>
+
+    <Archetype Name="Hired Gun" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="8" UnusedAttributes="0" UnusedSkills="0" >
+      <Skill Name="Climbing" Level="4"/>
+      <Skill Name="Fighting" Level="8"/>
+      <Skill Name="Notice" Level="4"/>
+      <Skill Name="Shooting" Level="6"/>
+      <Skill Name="Stealth" Level="4"/>
+      <Trait Name="UnusedEdges" Bonus="1"/>
+      <Hindrance Name="Greedy"/>
+      <Feature Name="Rifle (Range 24/48/96, Damage 2d8, RoF 1, AP 2), knife (Str+d4)"/>
+    </Archetype>
+
+    <Archetype Name="Romany" Agility="6" Smarts="6" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Knowledge (Occult)" Level="6"/>
+      <Skill Name="Persuasion" Level="8"/>
+      <Skill Name="Stealth" Level="6"/>
+      <Skill Name="Streetwise" Level="6"/>
+      <Skill Name="Survival" Level="4"/>
+      <Skill Name="Taunt" Level="8"/>
+      <Skill Name="Tracking" Level="4"/>
+      <Hindrance Name="Outsider"/>
+      <Feature Name="Silver dagger (Str+d4), wooden stake (Str+d4), wolfsbane"/>
+    </Archetype>
+
+    <Archetype Name="Romany Enchanter" Agility="6" Smarts="6" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Knowledge (Occult)" Level="6"/>
+      <Skill Name="Persuasion" Level="8"/>
+      <Skill Name="Stealth" Level="6"/>
+      <Skill Name="Streetwise" Level="6"/>
+      <Skill Name="Survival" Level="4"/>
+      <Skill Name="Taunt" Level="8"/>
+      <Skill Name="Tracking" Level="4"/>
+      <Hindrance Name="Outsider"/>
+      <Feature Name="Silver dagger (Str+d4), wooden stake (Str+d4), wolfsbane"/>
+
+
+      <Skill Name="Spellcasting" Attribute="Smarts" Level="6"/>
+      <Trait Name="PowerPoints:Magic" Bonus="15" />
+      <Feature Name="Arcane Background" />
+      <Edge Name="Gypsy Magic" Description="Boost/Lower Trait (Curse/Boon), Confusion (Hex), Detect/Conceal Arcana (True Seeing)" />
+      <!-- TODO: Create a way to specify known powers in an archetype. -->
+
+    </Archetype>
+    <Archetype Name="Innocent" Agility="6" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
+      <Skill Name="Notice" Level="4"/>
+      <Trait Name="Status" Bonus="1"/>
+    </Archetype>
+
+    <Archetype Name="Irregular" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
+      <Feature Name="Ripper"/>
+      <Skill Name="Fighting" Level="8"/>
+      <Skill Name="Notice" Level="4"/>
+      <Skill Name="Shooting" Level="6"/>
+      <Skill Name="Streetwise" Level="4"/>
+      <Skill Name="Tracking" Level="4"/>
+      <Feature Name="Heavy coat (+1), pistol (Range 12/24/48, Damage 2d6, AP 1), 20× bullets."/>
+    </Archetype>
+
+    <Archetype Name="Militia" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Notice" Level="4"/>
+      <Skill Name="Shooting" Level="6"/>
+      <Skill Name="Stealth" Level="4"/>
+      <Feature Name="Musket (Range 10/20/40, Damage 2d8+1, RoF 1, AP 1), 20× shots."/>
+    </Archetype>
+
+
+
+    <Archetype Name="Soldier" Agility="6" Smarts="6" Spirit="6" Strength="8" Vigor="8" UnusedAttributes="0" UnusedSkills="0" >
+      <Skill Name="Fighting" Level="8"/>
+      <Skill Name="Notice" Level="4"/>
+      <Skill Name="Shooting" Level="8"/>
+      <Skill Name="Stealth" Level="4"/>
+      <Skill Name="Survival" Level="4"/>
+      <Edge Name="Brave"/>
+      <Feature Name="Rifle (Range 24/48/96, Damage 2d8, RoF 1, AP 2), 20× bullets, bayonet (Str+d6)."/>
+    </Archetype>
+
+    <Archetype Name="Hyde (Human)" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Shooting" Level="6"/>
+      <Feature Name="Pistol (Range 12/24/48, Damage 2d6, AP 1), 20× bullets"/>
+      <Edge Name="Shape Change" Description="Turn into Hyde Monster when a face-card is drawn."/>
+    </Archetype>
+
+    <!-- TODO: Add "alternate form" feature. This will copy a character and apply a set of changes to it. -->
+    <Archetype Name="Hyde (Monster)" Agility="10" Smarts="4" Spirit="6" Strength="14" Vigor="10" UnusedAttributes="0" UnusedSkills="0" >
+      <Skill Name="Climbing" Level="6"/>
+      <Skill Name="Fighting" Level="8"/>
+      
+      <Trait Name="Size" Bonus="1"/>
+      <Trait Name="Toughness" Bonus="1"/>
+      <Trait Name="Pace" Bonus="2"/>
+      <Hindrance Name="Mean"/>
+      <Hindrance Name="Ugly"/>
+      <Edge Name="Berserk"/>
+      <Edge Name="Brawny"/>
+      <Edge Name="Bruiser"/>
+      <Edge Name="Combat Reflexes"/>
+      <Edge Name="Improved Sweep"/>
+      <Edge Name="Claws" Description="Str+d6"/>
+      <Edge Name="Shape Change" Description="Turn into Hyde (Human) when a face-card is drawn."/>
+    </Archetype>
+
+
+    <Archetype Name="Invisible Man" Agility="6" Smarts="8" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
+      <Skill Name="Climbing" Level="6"/>
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Lockpicking" Level="6"/>
+      <Skill Name="Notice" Level="4"/>
+      <Skill Name="Stealth" Level="10"/>
+      <Hindrance Name="Curious"/>
+      <Hindrance Name="Thief"/>
+      <Feature Name="Various hand weapons (Str+d4)"/>
+      <Edge Name="Invisibility" Description="Attacks against an invisible man suffer a –6 penalty."/>
+    </Archetype>
+  
+  </Archetypes>
+
+</Setting>
+

@@ -272,6 +272,10 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public string Race { get; set; }
+
+        /// <remarks/>
+        [XmlElement("Feature")]
+        public SettingFeature[] Features { get; set; }
     }
 
     /// <remarks/>

@@ -284,6 +284,10 @@ namespace SavageTools
                 foreach (var item in SelectedArchetype.Traits)
                     result.Increment(item.Name, item.Bonus, dice);
 
+            if (SelectedArchetype.Features != null)
+                foreach (var item in SelectedArchetype.Features)
+                    result.Features.Add(item.Name);
+
         }
         void ApplyRace(Character result, Dice dice)
         {

@@ -21,15 +21,9 @@ namespace SavageTools.Characters
         public string Name { get => Get<string>(); set => Set(value); }
         public string Trapping { get => Get<string>(); set => Set(value); }
 
-        public string LongName
-        {
-            get { return $"{Name} [{Trapping}]"; }
-        }
+        public string LongName => $"{Name} [{Trapping}]";
 
-        public override string ToString()
-        {
-            return LongName;
-        }
+        public override string ToString() => LongName;
     }
 }
 

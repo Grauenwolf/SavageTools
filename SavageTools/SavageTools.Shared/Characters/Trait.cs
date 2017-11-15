@@ -5,10 +5,7 @@ namespace SavageTools.Characters
 
     public struct Trait : IEquatable<Trait>, IComparable, IComparable<Trait>
     {
-        public Trait(int score)
-        {
-            Score = score;
-        }
+        public Trait(int score) => Score = score;
 
         public Trait(string dieCode)
         {
@@ -33,10 +30,7 @@ namespace SavageTools.Characters
 
         public int Score { get; }
 
-        public int HalfScore
-        {
-            get { return (int)Math.Floor(Score / 2M); }
-        }
+        public int HalfScore => (int)Math.Floor(Score / 2M);
 
         public override string ToString()
         {
@@ -76,19 +70,7 @@ namespace SavageTools.Characters
             return new Trait(score);
         }
 
-        public static Trait operator -(Trait original, int bonus)
-        {
-            return original + (bonus * -1);
-        }
-
-        //public static bool operator ==(Trait left, Trait right)
-        //{
-        //    return left.Score == right.Score;
-        //}
-        //public static bool operator !=(Trait left, Trait right)
-        //{
-        //    return left.Score != right.Score;
-        //}
+        public static Trait operator -(Trait original, int bonus) => original + (bonus * -1);
 
         public static implicit operator Trait(int score) { return new Trait(score); }
 
@@ -101,37 +83,13 @@ namespace SavageTools.Characters
             return base.Equals(obj);
         }
 
-        public static bool operator ==(Trait first, Trait second)
-        {
-            //if ((object)first == null)
-            //    return (object)second == null;
-            return first.Equals(second);
-        }
+        public static bool operator ==(Trait first, Trait second) => first.Equals(second);
 
-        public static bool operator !=(Trait first, Trait second)
-        {
-            return !(first == second);
-        }
+        public static bool operator !=(Trait first, Trait second) => !(first == second);
 
-        public bool Equals(Trait other)
-        {
-            return Score == other.Score;
-            //if (ReferenceEquals(null, other))
-            //    return false;
-            //if (ReferenceEquals(this, other))
-            //    return true;
-            //return false;
-        }
+        public bool Equals(Trait other) => Score == other.Score;
 
-        public override int GetHashCode()
-        {
-            return Score;
-            //unchecked
-            //{
-            //    var hashCode = 47;
-            //    return hashCode;
-            //}
-        }
+        public override int GetHashCode() => Score;
 
         public int CompareTo(object obj)
         {
@@ -150,25 +108,10 @@ namespace SavageTools.Characters
             return Score.CompareTo(other.Score);
         }
 
-        public static bool operator >(Trait first, Trait second)
-        {
-            return first.Score > second.Score;
-        }
-
-        public static bool operator <(Trait first, Trait second)
-        {
-            return first.Score < second.Score;
-        }
-
-        public static bool operator >=(Trait first, Trait second)
-        {
-            return first.Score >= second.Score;
-        }
-
-        public static bool operator <=(Trait first, Trait second)
-        {
-            return first.Score <= second.Score;
-        }
+        public static bool operator >(Trait first, Trait second) => first.Score > second.Score;
+        public static bool operator <(Trait first, Trait second) => first.Score < second.Score;
+        public static bool operator >=(Trait first, Trait second) => first.Score >= second.Score;
+        public static bool operator <=(Trait first, Trait second) => first.Score <= second.Score;
     }
 }
 

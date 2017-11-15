@@ -39,9 +39,5 @@ namespace SavageTools.Characters
         public StringCollection ProhibitedTrappings => GetNew<StringCollection>();
 
     }
-
-    public class StringCollection : ChangeTrackingModelCollection<string> { }
-    public class PowerCollection : ChangeTrackingModelCollection<Power> { }
-
 }
 

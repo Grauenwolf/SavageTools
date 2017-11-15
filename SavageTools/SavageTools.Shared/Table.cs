@@ -7,10 +7,7 @@ namespace SavageTools
 
     public class Table<T> : System.Collections.Generic.List<KeyValuePair<T, int>> //Using a KeyValuePair because its cheaper than a Tuple
     {
-        public void Add(T item, int odds)
-        {
-            Add(new KeyValuePair<T, int>(item, odds));
-        }
+        public void Add(T item, int odds) => Add(new KeyValuePair<T, int>(item, odds));
 
         public T RandomChoose(Dice dice)
         {

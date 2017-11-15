@@ -52,6 +52,11 @@ namespace SavageTools
         private const int InsertionSortLimit = 16;
 
 
+        /// <summary>
+        /// In place sort.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entries"></param>
         public static void Sort<T>(this IList<T> entries) where T : IComparable<T>
         {
             if (entries == null)
@@ -60,6 +65,12 @@ namespace SavageTools
             Sort(entries, 0, entries.Count - 1, new Random(), GetComparer<T>());
         }
 
+        /// <summary>
+        /// In place sort.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entries"></param>
+        /// <param name="comparer"></param>
         public static void Sort<T>(this IList<T> entries, IComparer<T> comparer)
         {
             if (entries == null)
@@ -70,6 +81,12 @@ namespace SavageTools
             Sort(entries, 0, entries.Count - 1, new Random(), comparer);
         }
 
+        /// <summary>
+        /// In place sort.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entries"></param>
+        /// <param name="comparer"></param>
         public static void Sort<T>(this IList<T> entries, Func<T, T, int> comparer)
         {
             if (entries == null)
@@ -80,6 +97,13 @@ namespace SavageTools
             Sort(entries, 0, entries.Count - 1, new Random(), new Comparer<T>(comparer));
         }
 
+        /// <summary>
+        /// In place sort.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="entries"></param>
+        /// <param name="comparer"></param>
         public static void Sort<T, TKey>(this IList<T> entries, Func<T, TKey> comparer) where TKey : IComparable<TKey>
         {
             if (entries == null)

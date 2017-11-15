@@ -17,15 +17,9 @@ namespace SavageTools
             return result;
         }
 
-        public int D(int die)
-        {
-            return D(1, die);
-        }
+        public int D(int die) => D(1, die);
 
-        public int D66()
-        {
-            return (Next(1, 7) * 10) + Next(1, 7);
-        }
+        public int D66() => (Next(1, 7) * 10) + Next(1, 7);
 
         public int D(string dieCode)
         {
@@ -80,10 +74,7 @@ namespace SavageTools
             }
         }
 
-        public bool NextBoolean()
-        {
-            return Next(0, 2) == 1;
-        }
+        public bool NextBoolean() => Next(0, 2) == 1;
 
         //public T ChooseWithOdds<T>(ICollection<T> list) where T : IHasOdds
         //{

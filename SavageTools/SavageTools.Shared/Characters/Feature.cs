@@ -4,7 +4,7 @@ namespace SavageTools.Characters
 {
     public class Feature : ChangeTrackingModelBase
     {
-        public string Name { get { return Get<string>(); } set { Set(value); } }
+        public string Name { get => Get<string>(); set => Set(value); }
 
     }
 }

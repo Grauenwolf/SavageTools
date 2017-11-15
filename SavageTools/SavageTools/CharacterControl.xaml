@@ -81,6 +81,9 @@
                     <ColumnDefinition  />
                     <ColumnDefinition  />
                     <ColumnDefinition  />
+                    <ColumnDefinition  />
+                    <ColumnDefinition  />
+                    <ColumnDefinition  />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -92,6 +95,9 @@
                 <TextBlock Text="Toughness" Grid.Column="2" Grid.Row="0"  />
                 <TextBlock Text="Pace" Grid.Column="3" Grid.Row="0"  />
                 <TextBlock Text="Strain/Max" Grid.Column="4" Grid.Row="0"  />
+                <TextBlock Text="Status" Grid.Column="5" Grid.Row="0"  />
+                <TextBlock Text="Reason" Grid.Column="6" Grid.Row="0"  />
+                <TextBlock Text="Size" Grid.Column="7" Grid.Row="0"  />
 
 
                 <TextBlock Text="{Binding Charisma}" Grid.Column="0" Grid.Row="1"  />
@@ -112,6 +118,11 @@
                     <Run Text="/"/>
                     <Run Text="{Binding MaximumStrainTotal, Mode=OneWay}"/>
                 </TextBlock>
+
+                <TextBlock Text="{Binding Status}" Grid.Column="5" Grid.Row="1"  />
+                <TextBlock Text="{Binding Reason}" Grid.Column="6" Grid.Row="1"  />
+                <TextBlock Text="{Binding Size}" Grid.Column="7" Grid.Row="1"  />
+                
             </Grid>
             
             
@@ -153,7 +164,20 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
-
+            <ItemsControl ItemsSource="{Binding Features}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Margin="4">
+                            <Run FontWeight="Bold" Text="{Binding Name}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
             <ItemsControl ItemsSource="{Binding Hindrances}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>

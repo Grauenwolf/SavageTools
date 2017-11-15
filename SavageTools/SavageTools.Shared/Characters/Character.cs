@@ -56,17 +56,29 @@ namespace SavageTools.Characters
         public int Strain { get { return Get<int>(); } set { Set(value); } }
         public int MaximumStrain { get { return Get<int>(); } set { Set(value); } }
 
+        public int Status { get { return GetDefault(2); } set { Set(value); } }
+        public int Reason { get { return Get<int>(); } set { Set(value); } }
+        public int Size { get { return Get<int>(); } set { Set(value); } }
+
+        [CalculatedField("Reason,Spirit")]
+        public int ReasonTotal
+        {
+            get { return 2 + Spirit.HalfScore + Reason; }
+        }
+
 
         public int ParryTotal
         {
             get { return 2 + (Skills.SingleOrDefault(s => s.Name == "Fighting")?.Trait.HalfScore ?? 0); }
         }
 
+        [CalculatedField("Vigor")]
         public int ToughnessTotal
         {
-            get { return 2 + Vigor.HalfScore; }
+            get { return 2 + Vigor.HalfScore + Toughness; }
         }
 
+        [CalculatedField("MaximumStrain,Spirit,Vigor")]
         public int MaximumStrainTotal
         {
             get { return MaximumStrain + Math.Min(Spirit.Score, Vigor.Score); }
@@ -100,6 +112,9 @@ namespace SavageTools.Characters
                 case "Toughness": Toughness += bonus; return;
                 case "Strain": Strain += bonus; return;
                 case "MaximumStrain": MaximumStrain += bonus; return;
+                case "Reason": Reason += bonus; return;
+                case "Status": Status += bonus; return;
+                case "Size": Size += bonus; return;
 
 
                 case "UnusedAttributes": UnusedAttributes += bonus; return;
@@ -210,6 +225,9 @@ namespace SavageTools.Characters
                 case "Agility": return trait == null || Agility >= trait;
                 case "Strength": return trait == null || Strength >= trait;
                 case "Spirit": return trait == null || Spirit >= trait;
+
+                case "Status": return trait == null || Status >= trait;
+                case "Reason": return trait == null || ReasonTotal >= trait;
             }
 
             //Check for skills

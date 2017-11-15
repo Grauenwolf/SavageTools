@@ -62,8 +62,10 @@
     <Compile Include="Characters\Hindrance.cs" />
     <Compile Include="Characters\HindranceCollection.cs" />
     <Compile Include="Characters\Power.cs" />
+    <Compile Include="Characters\PowerGroupCollection.cs" />
     <Compile Include="Characters\PowerCollection.cs" />
     <Compile Include="Characters\PowerGroup.cs" />
+    <Compile Include="Characters\StringCollection.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="NameService.cs" />
     <Compile Include="Settings\Setting.cs" />
@@ -79,6 +81,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Settings\Rippers.savage-setting">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Settings\Arcana.savage-setting">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
