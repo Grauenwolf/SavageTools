@@ -23,6 +23,7 @@ namespace SavageTools.Characters
         public Trait Trait { get => GetDefault<Trait>(4); set => Set(value); }
 
         public string LongName => $"{Name} [{Attribute}] {Trait}";
+        public string ShortName => $"{Name} {Trait}";
 
         public override string ToString() => LongName;
     }

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Modern">
+
+  <Skills>
+    <Skill Name="Knowledge (Computers)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Electronics)" Attribute="Smarts"/>
+    <Skill Name="Piloting" Attribute="Agility"/>
+  </Skills>
+  
+</Setting>
+

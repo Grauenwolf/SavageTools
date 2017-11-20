@@ -26,6 +26,9 @@
     </Hindrance>
     <Hindrance Name="Screamer" Type="Minor" Description="Any time the character fails a Fear test, she automatically screams at the top of her lungs. Anyone within a Large Burst Template of the victim suffers a –1 to their Fear tests as well from the disturbing sound!" />
     <Hindrance Name="Supernatural Weakness" Type="Minor" Description="Choose which weakness your hero has: Cold Iron, Wood, Silver, Sunlight, Salt, or Fire. +4 Damage" />
+    <Hindrance Name="Poverty" Type="Minor" Description="Half starting funds, general inability to hang onto future income" >
+      <Trait Name="Status" Bonus="-1" />
+    </Hindrance>
   </Hindrances>
 
   <Edges>
@@ -43,7 +46,7 @@
     <Edge Name="Down-to-Earth" Requires="Novice, Spirit d6+" Description="+2 damage and Toughness vs. supernatural evil">
       <Trait Name="Reason" Bonus="1" />
     </Edge>
-    <Edge Name="Renown" Requires="Novice" Description="">
+    <Edge Name="Renown" Requires="Novice" Description="Celebrated war hero, actor, artist, poet, etc.">
       <Trait Name="Status" Bonus="1" />
     </Edge>
     <Edge Name="Rippertech" Requires="Novice" Description="Your monster-to-be may start with up to half her total Reason in rippertech (round up)." />
@@ -165,10 +168,38 @@
       <!-- TODO: Create a way to specify known powers in an archetype. -->
 
     </Archetype>
+    
+    <Archetype Name="Dockworker" Agility="4" Smarts="4" Spirit="4" Strength="8" Vigor="6" UnusedAttributes="2" UnusedSkills="5" >
+      <Skill Name="Fighting" Level="6"/>
+      <Skill Name="Gambling" Level="4"/>
+    </Archetype>
+    
+    <Archetype Name="Prostitute" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="5" >
+      <Hindrance Name="Poverty" />       
+      <Skill Name="Persuasion" Level="6"/>
+      <Skill Name="Streetwise" Level="4"/>
+    </Archetype>
+
+    <Archetype Name="Bartender" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="5" >
+      <Skill Name="Streetwise" Level="6"/>
+      <Skill Name="Persuasion" Level="4"/>
+    </Archetype>
+    
+    <Archetype Name="Cook" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="5" >
+      <Skill Name="Knowledge (Cooking)" Attribute="Smarts" Level="6"/>
+      <Skill Name="Persuasion" Level="4"/>
+    </Archetype>
+    
+    <Archetype Name="Fisherman" Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="5" >
+      <Skill Name="Boating" Level="6"/>
+      <Skill Name="Swimming" Level="4"/>
+    </Archetype>
+    
     <Archetype Name="Innocent" Agility="6" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
       <Skill Name="Notice" Level="4"/>
       <Trait Name="Status" Bonus="1"/>
     </Archetype>
+    
 
     <Archetype Name="Irregular" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
       <Feature Name="Ripper"/>

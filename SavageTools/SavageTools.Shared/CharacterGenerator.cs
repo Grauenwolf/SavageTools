@@ -1,4 +1,5 @@
 ﻿using SavageTools.Characters;
+using SavageTools.Names;
 using SavageTools.Settings;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,9 @@ namespace SavageTools
 
     public class CharacterGenerator : ModelBase
     {
+
+        public LocalNameService NameService = new LocalNameService("Settings");
+
         public ObservableCollectionExtended<string> Settings { get; } = new ObservableCollectionExtended<string>();
 
         public ObservableCollectionExtended<SettingSkillOption> Skills { get; } = new ObservableCollectionExtended<SettingSkillOption>();
@@ -115,7 +119,7 @@ namespace SavageTools
 
             var result = new Character() { Rank = SelectedRank.Name, IsWildCard = WildCard };
 
-            var name = await Names.NameService.CreateRandomPersonAsync();
+            var name = await NameService.CreateRandomPersonAsync(dice);
             result.Name = name.FullName;
             result.Gender = name.Gender;
 
@@ -671,7 +675,7 @@ namespace SavageTools
         {
             var trappings = new List<SettingTrapping>();
             var group = result.PowerGroups[power.Skill];
-            
+
             foreach (var item in Trappings)
             {
                 if (group.AvailableTrappings.Count > 0 && !group.AvailableTrappings.Contains(item.Name))

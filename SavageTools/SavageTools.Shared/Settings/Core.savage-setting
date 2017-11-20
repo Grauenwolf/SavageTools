@@ -6,14 +6,11 @@
     <Skill Name="Driving" Attribute="Agility"/>
     <Skill Name="Fighting" Attribute="Agility"/>
     <Skill Name="Gambling" Attribute="Smarts"/>
-    <!--<Skill Name="Guts" Attribute="Spirit"/>-->
     <Skill Name="Healing" Attribute="Smarts"/>
     <Skill Name="Intimidation" Attribute="Spirit"/>
     <Skill Name="Investigation" Attribute="Smarts"/>
     <Skill Name="Knowledge (Area)" Attribute="Smarts"/>
     <Skill Name="Knowledge (Battle)" Attribute="Smarts"/>
-    <Skill Name="Knowledge (Computers)" Attribute="Smarts"/>
-    <Skill Name="Knowledge (Electronics)" Attribute="Smarts"/>
     <Skill Name="Knowledge (History)" Attribute="Smarts"/>
     <Skill Name="Knowledge (Journalism)" Attribute="Smarts"/>
     <Skill Name="Knowledge (Law)" Attribute="Smarts"/>
@@ -22,7 +19,6 @@
     <Skill Name="Lockpicking" Attribute="Agility"/>
     <Skill Name="Notice" Attribute="Smarts"/>
     <Skill Name="Persuasion" Attribute="Spirit"/>
-    <Skill Name="Piloting" Attribute="Agility"/>
     <Skill Name="Repair" Attribute="Smarts"/>
     <Skill Name="Riding" Attribute="Agility"/>
     <Skill Name="Shooting" Attribute="Agility"/>
