@@ -29,7 +29,16 @@ namespace SavageTools
         {
             var c = Character;
             var result = new StringBuilder();
-            result.AppendLine($"Name {c.Name}, Archetype {c.Archetype}, Race {c.Race}, Rank {c.Rank}");
+
+            result.Append($"{c.Name} ({c.Gender})");
+            if (!string.IsNullOrWhiteSpace(c.Archetype) && c.Archetype != "(None)")
+                result.Append($", {c.Archetype}");
+            if (c.Race != "Human")
+                result.Append($", {c.Race}");
+            if (c.Rank != "Novice")
+                result.Append($", Rank {c.Rank}");
+            result.AppendLine();
+
             result.AppendLine($"Agility {c.Agility}, Smarts {c.Smarts}, Strength {c.Strength}, Spirt {c.Spirit}, Vigor {c.Vigor}");
 
             result.Append($"Charisma {c.Charisma}, Parry {c.ParryTotal}, Toughness {c.ToughnessTotal}, Pace {c.Pace}+{c.Running}, Size {c.Size}, ");
@@ -45,6 +54,8 @@ namespace SavageTools
 
             foreach (var group in c.PowerGroups)
                 result.AppendLine($"{group.Skill}, Power Points {group.PowerPoints}, Powers: {string.Join(", ", group.Powers.Select(p => p.LongName))}");
+
+            result.AppendLine(string.Join(", ", c.Gear.Select(h => h.Name + (string.IsNullOrEmpty(h.Description) ? "" : ": " + h.Description))));
 
             return result.ToString();
         }

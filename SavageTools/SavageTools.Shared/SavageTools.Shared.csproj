@@ -59,6 +59,8 @@
     <Compile Include="Characters\EdgeCollection.cs" />
     <Compile Include="Characters\Feature.cs" />
     <Compile Include="Characters\FeatureCollection.cs" />
+    <Compile Include="Characters\Gear.cs" />
+    <Compile Include="Characters\GearCollection.cs" />
     <Compile Include="Characters\Hindrance.cs" />
     <Compile Include="Characters\HindranceCollection.cs" />
     <Compile Include="Characters\Power.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Characters\StringCollection.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="NameService.cs" />
+    <Compile Include="PersonalityService.cs" />
     <Compile Include="Settings\Setting.cs" />
     <Compile Include="Missing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,6 +129,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Settings\victorian-male-first.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Settings\personality.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

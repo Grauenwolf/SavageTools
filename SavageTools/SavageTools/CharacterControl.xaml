@@ -25,6 +25,7 @@
                 <TextBox Text="{Binding Archetype}" MinWidth="100" />
                 <TextBlock Text="Race" />
                 <TextBox Text="{Binding Race}" MinWidth="100" />
+                <TextBox Text="{Binding Gender}" MinWidth="20" />
                 <TextBlock Text="Rank" />
                 <TextBox Text="{Binding Rank}" MinWidth="100" />
                 <Button Content="Copy" Command="{Binding DataContext.CopyCommand, ElementName=Top}" />
@@ -208,7 +209,21 @@
                 </ItemsControl.ItemTemplate>
   
             </ItemsControl>
-
+            <ItemsControl ItemsSource="{Binding Gear}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Margin="4">
+                            <Run FontWeight="Bold" Text="{Binding Name}" />
+                            <Run Text="{Binding Description}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
         </StackPanel>
     </Border>
 </UserControl>

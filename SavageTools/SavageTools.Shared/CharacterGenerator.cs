@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Tortuga.Anchor.Collections;
 using Tortuga.Anchor.Modeling;
@@ -19,6 +18,7 @@ namespace SavageTools
     {
 
         public LocalNameService NameService = new LocalNameService("Settings");
+        public PersonalityService PersonalityService = new PersonalityService("Settings");
 
         public ObservableCollectionExtended<string> Settings { get; } = new ObservableCollectionExtended<string>();
 
@@ -93,7 +93,7 @@ namespace SavageTools
         public bool WildCard { get { return GetDefault(false); } set { Set(value); } }
 
 
-        public async Task<Character> GenerateCharacterAsync()
+        public Character GenerateCharacter()
         {
             var dice = new Dice();
 
@@ -119,7 +119,7 @@ namespace SavageTools
 
             var result = new Character() { Rank = SelectedRank.Name, IsWildCard = WildCard };
 
-            var name = await NameService.CreateRandomPersonAsync(dice);
+            var name = NameService.CreateRandomPerson(dice);
             result.Name = name.FullName;
             result.Gender = name.Gender;
 
@@ -232,6 +232,11 @@ namespace SavageTools
             foreach (var item in result.Skills.Where(s => s.Trait == 0).ToList())
                 result.Skills.Remove(item);
 
+            //Add personality
+            int personalityTraits = dice.D(3);
+            for (var i = 0; i < personalityTraits; i++)
+                result.Features.Add(PersonalityService.CreateRandomPersonality(dice));
+
             return result;
         }
 
@@ -291,6 +296,10 @@ namespace SavageTools
             if (SelectedArchetype.Features != null)
                 foreach (var item in SelectedArchetype.Features)
                     result.Features.Add(item.Name);
+
+            if (SelectedArchetype.Gear != null)
+                foreach (var item in SelectedArchetype.Gear)
+                    result.Gear.Add(item.Name, item.Description);
 
         }
         void ApplyRace(Character result, Dice dice)

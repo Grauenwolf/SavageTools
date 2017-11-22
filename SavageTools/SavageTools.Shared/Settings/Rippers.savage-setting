@@ -121,7 +121,7 @@
       <Skill Name="Streetwise" Level="4"/>
       <Hindrance Name="Vow" />
       <Edge Name="Brave"/>
-      <Feature Name="Baton (Str+d4)"/>
+      <Feature Name="Baton" Description="Str+d4"/>
     </Archetype>
 
     <Archetype Name="Hired Gun" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="8" UnusedAttributes="0" UnusedSkills="0" >
@@ -132,7 +132,8 @@
       <Skill Name="Stealth" Level="4"/>
       <Trait Name="UnusedEdges" Bonus="1"/>
       <Hindrance Name="Greedy"/>
-      <Feature Name="Rifle (Range 24/48/96, Damage 2d8, RoF 1, AP 2), knife (Str+d4)"/>
+      <Feature Name="Rifle" Description="Range 24/48/96, Damage 2d8, RoF 1, AP 2"/>
+      <Feature Name="Knife" Description="(Str+d4)"/>
     </Archetype>
 
     <Archetype Name="Romany" Agility="6" Smarts="6" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
@@ -145,7 +146,9 @@
       <Skill Name="Taunt" Level="8"/>
       <Skill Name="Tracking" Level="4"/>
       <Hindrance Name="Outsider"/>
-      <Feature Name="Silver dagger (Str+d4), wooden stake (Str+d4), wolfsbane"/>
+      <Feature Name="Silver dagger" Description="Str+d4"/>
+      <Feature Name="Wooden stake" Description="Str+d4"/>
+      <Feature Name="Wolfsbane"/>
     </Archetype>
 
     <Archetype Name="Romany Enchanter" Agility="6" Smarts="6" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
@@ -158,8 +161,9 @@
       <Skill Name="Taunt" Level="8"/>
       <Skill Name="Tracking" Level="4"/>
       <Hindrance Name="Outsider"/>
-      <Feature Name="Silver dagger (Str+d4), wooden stake (Str+d4), wolfsbane"/>
-
+      <Feature Name="Silver dagger" Description="Str+d4"/>
+      <Feature Name="Wooden stake" Description="Str+d4"/>
+      <Feature Name="Wolfsbane"/>
 
       <Skill Name="Spellcasting" Attribute="Smarts" Level="6"/>
       <Trait Name="PowerPoints:Magic" Bonus="15" />
@@ -168,14 +172,14 @@
       <!-- TODO: Create a way to specify known powers in an archetype. -->
 
     </Archetype>
-    
+
     <Archetype Name="Dockworker" Agility="4" Smarts="4" Spirit="4" Strength="8" Vigor="6" UnusedAttributes="2" UnusedSkills="5" >
       <Skill Name="Fighting" Level="6"/>
       <Skill Name="Gambling" Level="4"/>
     </Archetype>
-    
+
     <Archetype Name="Prostitute" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="5" >
-      <Hindrance Name="Poverty" />       
+      <Hindrance Name="Poverty" />
       <Skill Name="Persuasion" Level="6"/>
       <Skill Name="Streetwise" Level="4"/>
     </Archetype>
@@ -184,22 +188,22 @@
       <Skill Name="Streetwise" Level="6"/>
       <Skill Name="Persuasion" Level="4"/>
     </Archetype>
-    
+
     <Archetype Name="Cook" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="5" >
       <Skill Name="Knowledge (Cooking)" Attribute="Smarts" Level="6"/>
       <Skill Name="Persuasion" Level="4"/>
     </Archetype>
-    
+
     <Archetype Name="Fisherman" Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="5" >
       <Skill Name="Boating" Level="6"/>
       <Skill Name="Swimming" Level="4"/>
     </Archetype>
-    
+
     <Archetype Name="Innocent" Agility="6" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
       <Skill Name="Notice" Level="4"/>
       <Trait Name="Status" Bonus="1"/>
     </Archetype>
-    
+
 
     <Archetype Name="Irregular" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
       <Feature Name="Ripper"/>
@@ -208,7 +212,7 @@
       <Skill Name="Shooting" Level="6"/>
       <Skill Name="Streetwise" Level="4"/>
       <Skill Name="Tracking" Level="4"/>
-      <Feature Name="Heavy coat (+1), pistol (Range 12/24/48, Damage 2d6, AP 1), 20× bullets."/>
+      <Gear Name="Heavy coat (+1), pistol (Range 12/24/48, Damage 2d6, AP 1), 20× bullets."/>
     </Archetype>
 
     <Archetype Name="Militia" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
@@ -216,7 +220,7 @@
       <Skill Name="Notice" Level="4"/>
       <Skill Name="Shooting" Level="6"/>
       <Skill Name="Stealth" Level="4"/>
-      <Feature Name="Musket (Range 10/20/40, Damage 2d8+1, RoF 1, AP 1), 20× shots."/>
+      <Gear Name="Musket (Range 10/20/40, Damage 2d8+1, RoF 1, AP 1), 20× shots."/>
     </Archetype>
 
 
@@ -228,13 +232,14 @@
       <Skill Name="Stealth" Level="4"/>
       <Skill Name="Survival" Level="4"/>
       <Edge Name="Brave"/>
-      <Feature Name="Rifle (Range 24/48/96, Damage 2d8, RoF 1, AP 2), 20× bullets, bayonet (Str+d6)."/>
+      <Gear Name="Rifle" Description="Range 24/48/96, Damage 2d8, RoF 1, AP 2, 20× bullets, bayonet (Str+d6)."/>
+      <Gear Name="Bayonet" Description="Str+d6"/>
     </Archetype>
 
     <Archetype Name="Hyde (Human)" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
       <Skill Name="Fighting" Level="6"/>
       <Skill Name="Shooting" Level="6"/>
-      <Feature Name="Pistol (Range 12/24/48, Damage 2d6, AP 1), 20× bullets"/>
+      <Gear Name="Pistol" Description="Range 12/24/48, Damage 2d6, AP 1, 20× bullets"/>
       <Edge Name="Shape Change" Description="Turn into Hyde Monster when a face-card is drawn."/>
     </Archetype>
 
@@ -242,7 +247,7 @@
     <Archetype Name="Hyde (Monster)" Agility="10" Smarts="4" Spirit="6" Strength="14" Vigor="10" UnusedAttributes="0" UnusedSkills="0" >
       <Skill Name="Climbing" Level="6"/>
       <Skill Name="Fighting" Level="8"/>
-      
+
       <Trait Name="Size" Bonus="1"/>
       <Trait Name="Toughness" Bonus="1"/>
       <Trait Name="Pace" Bonus="2"/>
@@ -266,10 +271,10 @@
       <Skill Name="Stealth" Level="10"/>
       <Hindrance Name="Curious"/>
       <Hindrance Name="Thief"/>
-      <Feature Name="Various hand weapons (Str+d4)"/>
+      <Gear Name="Various hand weapons" Description="Str+d4"/>
       <Edge Name="Invisibility" Description="Attacks against an invisible man suffer a –6 penalty."/>
     </Archetype>
-  
+
   </Archetypes>
 
 </Setting>

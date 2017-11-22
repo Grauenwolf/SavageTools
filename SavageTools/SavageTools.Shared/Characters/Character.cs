@@ -27,6 +27,7 @@ namespace SavageTools.Characters
         public HindranceCollection Hindrances { get { return GetNew<HindranceCollection>(); } }
         public EdgeCollection Edges { get { return GetNew<EdgeCollection>(); } }
         public FeatureCollection Features { get { return GetNew<FeatureCollection>(); } }
+        public GearCollection Gear { get { return GetNew<GearCollection>(); } }
 
         public int Experience { get { return Get<int>(); } set { Set(value); } }
 

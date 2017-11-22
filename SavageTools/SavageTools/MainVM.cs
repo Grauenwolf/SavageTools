@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Tortuga.Sails;
@@ -18,17 +17,17 @@ namespace SavageTools
         }
         public ICommand CreateCharacterCommand
         {
-            get { return GetCommand(async () => await CreateCharacterAsync()); }
+            get { return GetCommand(() => CreateCharacter()); }
         }
 
-        async Task CreateCharacterAsync()
+        void CreateCharacter()
         {
-            var characterVM = new CharacterVM(await CharacterGenerator.GenerateCharacterAsync());
-            characterVM.RemoveMe += (s,e)=> Characters.Remove((CharacterVM)s);
+            var characterVM = new CharacterVM(CharacterGenerator.GenerateCharacter());
+            characterVM.RemoveMe += (s, e) => Characters.Remove((CharacterVM)s);
             Characters.Add(characterVM);
         }
 
-      
+
         void LoadSetting()
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog()

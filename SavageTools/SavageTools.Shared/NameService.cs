@@ -1,7 +1,6 @@
 ﻿using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SavageTools.Names
 {
@@ -22,15 +21,15 @@ namespace SavageTools.Names
             m_MaleNames = File.ReadAllLines(maleFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToImmutableList();
         }
 
-        public Task<RandomPerson> CreateRandomPersonAsync(Dice random)
+        public RandomPerson CreateRandomPerson(Dice random)
         {
             var isMale = random.NextBoolean();
 
-            return Task.FromResult(new RandomPerson(
+            return new RandomPerson(
                  isMale ? random.Choose(m_LastNames) : random.Choose(m_FemaleNames),
                  random.Choose(m_LastNames),
                  isMale ? "M" : "F"
-                ));
+                );
         }
     }
     //public static class NameService

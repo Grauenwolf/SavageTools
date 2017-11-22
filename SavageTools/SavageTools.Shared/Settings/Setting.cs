@@ -197,6 +197,19 @@ namespace SavageTools.Settings
 
     /// <remarks/>
     [XmlType(AnonymousType = true)]
+    public class SettingGear
+    {
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public string Name { get; set; }
+        /// <remarks/>
+        [XmlAttribute()]
+        public string Description { get; set; }
+    }
+
+    /// <remarks/>
+    [XmlType(AnonymousType = true)]
     public class SettingAvailablePower
     {
 
@@ -276,6 +289,10 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlElement("Feature")]
         public SettingFeature[] Features { get; set; }
+
+        /// <remarks/>
+        [XmlElement("Gear")]
+        public SettingGear[] Gear { get; set; }
     }
 
     /// <remarks/>
