@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace SavageToolsWeb
+namespace SavageTools.Web
 {
     public class FilterConfig
     {

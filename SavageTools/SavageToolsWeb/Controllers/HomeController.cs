@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using SavageTools.Web.Models;
 using System.Web.Mvc;
 
-namespace SavageToolsWeb.Controllers
+namespace SavageTools.Web.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            return View();
+            return View(new HomeIndexViewModel());
         }
 
         public ActionResult About()

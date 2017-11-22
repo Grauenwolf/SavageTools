@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace SavageToolsWeb
+namespace SavageTools.Web
 {
     public class BundleConfig
     {

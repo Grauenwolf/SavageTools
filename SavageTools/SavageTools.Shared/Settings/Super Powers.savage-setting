@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Setting>
+<Setting Name="Super Powers">
   <References>
     <Reference Name="Arcana" />
   </References>

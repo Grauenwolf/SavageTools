@@ -1,8 +1,9 @@
-﻿@{
+﻿@model SavageTools.Web.Models.HomeIndexViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+@*<div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
@@ -28,4 +29,56 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
+</div>*@
+
+<div class="row">
+    <h2>NPC Generator</h2>
+    <table class="gridtable">
+        <tr>
+            <th>Setting</th>
+            <td>
+                @Html.DropDownList("setting", Model.SettingList(), new { onchange = "SettingChanged($('#setting')[0].value, $('#archetype')[0])" })
+            </td>
+            <th>Archetype</th>
+            <td>
+                <select id="archetype"></select>
+            </td>
+            <th>Race</th>
+            <td>
+                <select id="race"></select>
+            </td>
+            <th>Rank</th>
+            <td>
+                @Html.DropDownList("rank", Model.RankList())
+            </td>
+
+            <th>Count</th>
+            <td>
+                <input type="number" id="count" value="1" />
+            </td>
+            <td rowspan="2" valign="middle">
+                <input id="showCharacterScreen" type="button" value="Generate Squad"  />
+            </td>
+        </tr>
+        <tr>
+            <td  colspan="2"></td>
+            
+            
+            <td colspan="2">
+                <label><input type="checkbox" id="randomArchetype" />Random</label>
+
+            </td>
+            <td colspan="2">
+                <label><input type="checkbox" id="randomRace" />Random</label>
+
+            </td>         
+            <td  colspan="2">
+                <label><input type="checkbox" id="randomRank" />Random</label>
+
+            </td>
+            <td  colspan="2"></td>
+
+        </tr>
+
+    </table>
 </div>
