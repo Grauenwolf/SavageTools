@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Setting Name="Arcana">
+  <References>
+    <Reference Name="Core" />
+  </References>
 
   <Skills>
     <Skill Name="Knowledge (Arcana)" Attribute="Smarts"/>

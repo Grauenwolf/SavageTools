@@ -13,8 +13,19 @@ namespace SavageTools.Settings
         [XmlAttribute()]
         public string Name { get; set; }
 
+        /// <remarks/>
+        [XmlAttribute()]
+        public string NamePrefix { get; set; }
+
         [XmlAttribute]
         public bool BornAHero { get; set; }
+
+        [XmlAttribute]
+        public bool UseStrain { get; set; }
+        [XmlAttribute]
+        public bool UseReason { get; set; }
+        [XmlAttribute]
+        public bool UseStatus { get; set; }
 
         /// <remarks/>
         [XmlArrayItem("Skill", IsNullable = false)]
@@ -206,6 +217,10 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public string Description { get; set; }
+
+        /// <remarks/>
+        [XmlElement("Trait")]
+        public SettingTrait[] Traits { get; set; }
     }
 
     /// <remarks/>

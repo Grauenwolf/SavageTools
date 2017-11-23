@@ -10,6 +10,12 @@ namespace SavageTools
 {
     public class MainVM : ViewModelBase
     {
+        public MainVM()
+        {
+            CharacterGenerator = new CharacterGenerator(new FileInfo(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Settings", "Core.savage-setting")));
+        }
+
+
 
         public ICommand LoadSettingCommand
         {
@@ -50,7 +56,7 @@ namespace SavageTools
 
         }
 
-        public CharacterGenerator CharacterGenerator { get { return GetNew<CharacterGenerator>(); } }
+        public CharacterGenerator CharacterGenerator { get => Get<CharacterGenerator>(); set => Set(value); }
 
         public ObservableCollection<CharacterVM> Characters => GetNew<ObservableCollection<CharacterVM>>();
 

@@ -10,5 +10,4 @@ namespace SavageTools.Characters
             if (!this.Any(f => f.Name == name))
                 Add(new Feature() { Name = name });
         }
-    }
-}
+    }    }

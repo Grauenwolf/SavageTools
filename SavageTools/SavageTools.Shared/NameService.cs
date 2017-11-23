@@ -10,8 +10,11 @@ namespace SavageTools.Names
         readonly ImmutableList<string> m_FemaleNames;
         readonly ImmutableList<string> m_MaleNames;
 
-        public LocalNameService(string dataPath, string prefix = "victorian-")
+        public LocalNameService(string dataPath, string prefix)
         {
+            if (!string.IsNullOrWhiteSpace(prefix) && !prefix.EndsWith("-"))
+                prefix += "-";
+
             var femaleFile = new FileInfo(Path.Combine(dataPath, prefix + "female-first.txt"));
             var lastFile = new FileInfo(Path.Combine(dataPath, prefix + "last.txt"));
             var maleFile = new FileInfo(Path.Combine(dataPath, prefix + "male-first.txt"));

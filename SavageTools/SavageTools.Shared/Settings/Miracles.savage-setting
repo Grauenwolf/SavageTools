@@ -2,6 +2,7 @@
 <Setting Name="Miracles">
   <References>
     <Reference Name="Arcana" />
+    <Reference Name="Core" />
   </References>
   
   <Skills>

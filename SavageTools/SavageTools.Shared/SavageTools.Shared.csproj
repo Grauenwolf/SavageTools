@@ -63,6 +63,8 @@
     <Compile Include="Characters\GearCollection.cs" />
     <Compile Include="Characters\Hindrance.cs" />
     <Compile Include="Characters\HindranceCollection.cs" />
+    <Compile Include="Characters\Personality.cs" />
+    <Compile Include="Characters\PersonalityCollection.cs" />
     <Compile Include="Characters\Power.cs" />
     <Compile Include="Characters\PowerGroupCollection.cs" />
     <Compile Include="Characters\PowerCollection.cs" />
@@ -134,6 +136,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Settings\personality.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Settings\female-first.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Settings\last.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Settings\male-first.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

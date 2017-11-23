@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Setting Name="Rippers">
+<Setting Name="Rippers" UseStatus="true" UseReason="true" NamePrefix="victorian">
   <References>
     <Reference Name="Arcana" />
     <Reference Name="Magic" />
     <Reference Name="Psionics" />
     <Reference Name="Weird Science" />
     <Reference Name="Fantasy Companion" />
+    <Reference Name="Core" />
   </References>
+
 
   <Skills>
     <Skill Name="Knowledge (Rippertech)" Attribute="Smarts"/>
@@ -212,7 +214,10 @@
       <Skill Name="Shooting" Level="6"/>
       <Skill Name="Streetwise" Level="4"/>
       <Skill Name="Tracking" Level="4"/>
-      <Gear Name="Heavy coat (+1), pistol (Range 12/24/48, Damage 2d6, AP 1), 20× bullets."/>
+      <Gear Name="Heavy coat" >
+        <Trait Name="Armor" Bonus="1" />
+      </Gear>
+      <Gear Name="Pistol" Description="Range 12/24/48, Damage 2d6, AP 1, 20× bullets."/>
     </Archetype>
 
     <Archetype Name="Militia" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" >
@@ -220,7 +225,7 @@
       <Skill Name="Notice" Level="4"/>
       <Skill Name="Shooting" Level="6"/>
       <Skill Name="Stealth" Level="4"/>
-      <Gear Name="Musket (Range 10/20/40, Damage 2d8+1, RoF 1, AP 1), 20× shots."/>
+      <Gear Name="Musket" Description="Range 10/20/40, Damage 2d8+1, RoF 1, AP 1, 20× shots."/>
     </Archetype>
 
 

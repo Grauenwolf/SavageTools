@@ -2,7 +2,9 @@
 <Setting Name="Savage Foes of North America">
   <References>
     <Reference Name="Rifts Tomorrow Legion" />
+    <Reference Name="Core" />
   </References>
+
 
   <Skills>
     <Skill Name="Knowledge (Demolitions)" Attribute="Smarts"/>

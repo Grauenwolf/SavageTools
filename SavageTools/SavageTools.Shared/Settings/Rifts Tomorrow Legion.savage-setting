@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Setting Name="Rifts Tomorrow Legion" BornAHero="true">
+<Setting Name="Rifts Tomorrow Legion" BornAHero="true" UseStrain="true">
   <References>
     <Reference Name="Modern" />
     <Reference Name="Arcana" />
@@ -7,7 +7,9 @@
     <Reference Name="Psionics" />
     <Reference Name="Weird Science" />
     <Reference Name="Fantasy Companion" />
+    <Reference Name="Core" />
   </References>
+
 
   <Skills>
     <Skill Name="Knowledge (Arcana)" Attribute="Smarts"/>
@@ -307,7 +309,7 @@ differently than they actually are."/>
       <Hindrance Name="Outsider"/>
       <Hindrance Name="Territorial"/>
       <Hindrance Name="Untested"/>
-
+      <Trait Name="Size" Bonus="6" />
 
     </Archetype>
 

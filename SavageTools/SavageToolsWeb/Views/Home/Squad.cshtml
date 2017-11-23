@@ -1,0 +1,169 @@
+﻿@model System.Collections.Generic.List<SavageTools.Characters.Character>
+@{
+    ViewBag.Title = "Squad";
+}
+
+
+@foreach (var chr in @Model)
+{
+    <h2>@(chr.Name)</h2>
+
+    <table class="gridtable">
+        <tr><th>Gender</th><th>Archetype</th><th>Race</th><th>Rank</th><th>Personality</th></tr>
+        <tr><td>@(chr.Gender)</td><td>@(chr.Archetype)</td><td>@(chr.Race)</td><td>@(chr.Rank)</td><td>@(string.Join(", ", chr.Personality.Select(x => x.Name)))</td></tr>
+    </table>
+
+
+    <table class="gridtable">
+        <tr><th>Agility</th><th>Smarts</th><th>Strength</th><th>Spirit</th><th>Vigor</th></tr>
+        <tr><td>@(chr.Agility)</td><td>@(chr.Smarts)</td><td>@(chr.Strength)</td><td>@(chr.Spirit)</td><td>@(chr.Vigor)</td></tr>
+    </table>
+
+    <table class="gridtable">
+        <tr>
+            <th>Charisma</th>
+            <th>Parry</th>
+            <th>Toughness</th>
+            <th>Pace</th>
+            @if (chr.UseStrain)
+            {
+                <th>Strain/Max</th>
+            }
+            @if (chr.UseStatus)
+            {
+                <th>Status</th>
+            }
+            @if (chr.UseReason)
+            {
+                <th>Reason</th>
+            }
+            @if (chr.Size != 0)
+            {
+                <th>Size</th>
+            }
+        </tr>
+
+        <tr>
+            <td>@(chr.Charisma)</td>
+            <td>@(chr.ParryTotal)</td>
+            @if (chr.Armor == 0)
+            {
+                <td>@(chr.ToughnessTotal)</td>
+            }
+            else
+            {
+                <td>@(chr.ToughnessTotal) (@(chr.Armor))</td>
+            }
+
+
+
+            <td>@(chr.Pace)+@(chr.Running)</td>
+            @if (chr.UseStrain)
+            {
+                <td>@(chr.Strain)/@(chr.MaximumStrainTotal)</td>
+            }
+            @if (chr.UseStatus)
+            {
+                <td>@(chr.Status)</td>
+            }
+            @if (chr.UseReason)
+            {
+                <td>@(chr.ReasonTotal)</td>
+            }
+            @if (chr.Size != 0)
+            {
+                <td>@(chr.Size)</td>
+            }
+        </tr>
+    </table>
+    <div>&nbsp;</div>
+    <table>
+        <tr>
+            <td valign="top">
+                <table class="gridtable">
+                    <tr><th>Skill</th> <th>Attribute</th><th>Rank</th></tr>
+
+                    @foreach (var skill in chr.Skills)
+                    {
+                        <tr><td>@(skill.Name)</td> <td>@(skill.Attribute)</td><td>@(skill.Trait)</td></tr>
+                    }
+                </table>
+
+            </td>
+            <td>&nbsp;</td>
+            <td valign="top">
+                @if (chr.Edges.Count > 0)
+                { <h4>Edges</h4>
+                <ul>
+                    @foreach (var item in chr.Edges)
+                    {
+                        <li><b>@(item.Name)</b> @(item.Description)</li>
+                    }
+                </ul>
+                }
+
+                @if (chr.Hindrances.Count > 0)
+                {
+                    <h4>Hindrances</h4>
+                    <ul>
+                        @foreach (var item in chr.Hindrances)
+                    {
+                            <li><b>@(item.Name)</b> @(item.Description)</li>
+                        }
+                    </ul>
+                }
+
+                @if (chr.Features.Count > 0)
+                { <h4>Features</h4>
+                <ul>
+                    @foreach (var item in chr.Features)
+                    {
+                        <li> @(item.Name)</li>
+                    }
+                </ul>
+                }
+
+                @if (chr.PowerGroups.Count > 0)
+                {
+                    <h4>Powers</h4>
+
+                    foreach (var item in chr.PowerGroups)
+                    {
+
+                        <table class="gridtable">
+                            <tr>
+                                <th>Skill</th>
+                                <th>Power Points</th>
+
+                            </tr>
+                            <tr><td>@(item.Skill)</td><td>@(item.PowerPoints)</td></tr>
+                            @foreach (var power in item.Powers)
+                            {
+                                <tr>
+                                    <td colspan="2">
+                                        @(power.LongName)
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                        <div>&nbsp;</div>
+
+                    }
+                }
+
+                @if (chr.Gear.Count > 0)
+                { <h4>Gear</h4>
+                <ul>
+                    @foreach (var item in chr.Gear)
+                    {
+                        <li><b>@(item.Name)</b> @(item.Description)</li>
+
+                    }
+                </ul>
+                }
+            </td>
+        </tr>
+    </table>
+
+}
+

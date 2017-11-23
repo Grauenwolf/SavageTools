@@ -103,7 +103,14 @@
 
                 <TextBlock Text="{Binding Charisma}" Grid.Column="0" Grid.Row="1"  />
                 <TextBlock Text="{Binding ParryTotal}" Grid.Column="1" Grid.Row="1"  />
-                <TextBlock Text="{Binding ToughnessTotal}" Grid.Column="2" Grid.Row="1"  />
+                <TextBlock Grid.Column="2" Grid.Row="1"  >
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0} ({1})">
+                            <Binding Path="ToughnessTotal" />
+                            <Binding Path="Armor" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
 
                 <TextBlock Grid.Column="3" Grid.Row="1" >
                     <TextBlock.Text>
@@ -166,6 +173,20 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
             <ItemsControl ItemsSource="{Binding Features}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Margin="4">
+                            <Run FontWeight="Bold" Text="{Binding Name}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+            <ItemsControl ItemsSource="{Binding Personality}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Margin="4">

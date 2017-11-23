@@ -3,6 +3,7 @@
   <References>
     <Reference Name="Arcana" />
     <Reference Name="Magic" />
+    <Reference Name="Core" />
   </References>
 
   <Powers>

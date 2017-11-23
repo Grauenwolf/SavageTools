@@ -2,6 +2,7 @@
 <Setting Name="Super Powers">
   <References>
     <Reference Name="Arcana" />
+    <Reference Name="Core" />
   </References>
   <Skills>
   </Skills>

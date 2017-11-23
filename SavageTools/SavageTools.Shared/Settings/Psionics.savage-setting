@@ -2,7 +2,9 @@
 <Setting Name="Psionics">
   <References>
     <Reference Name="Arcana" />
+    <Reference Name="Core" />
   </References>
+
   <Skills>
   </Skills>
   <Hindrances>

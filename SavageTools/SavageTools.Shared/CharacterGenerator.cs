@@ -16,9 +16,21 @@ namespace SavageTools
 
     public class CharacterGenerator : ModelBase
     {
+        public CharacterGenerator(FileInfo setting)
+        {
+            LoadSetting(setting);
 
-        public LocalNameService NameService = new LocalNameService("Settings");
-        public PersonalityService PersonalityService = new PersonalityService("Settings");
+            NameService = new LocalNameService(setting.DirectoryName, NamePrefix);
+            PersonalityService = new PersonalityService(setting.DirectoryName);
+        }
+
+        public bool UseStrain { get => Get<bool>(); set => Set(value); }
+        public bool UseReason { get => Get<bool>(); set => Set(value); }
+        public bool UseStatus { get => Get<bool>(); set => Set(value); }
+        public string NamePrefix { get => Get<string>(); set => Set(value); }
+
+        public LocalNameService NameService;
+        public PersonalityService PersonalityService;
 
         public ObservableCollectionExtended<string> Settings { get; } = new ObservableCollectionExtended<string>();
 
@@ -93,9 +105,9 @@ namespace SavageTools
         public bool WildCard { get { return GetDefault(false); } set { Set(value); } }
 
 
-        public Character GenerateCharacter()
+        public Character GenerateCharacter(Dice dice = null)
         {
-            var dice = new Dice();
+            dice = dice ?? new Dice();
 
             if (RandomArchetype)
             {
@@ -117,7 +129,7 @@ namespace SavageTools
             }
 
 
-            var result = new Character() { Rank = SelectedRank.Name, IsWildCard = WildCard };
+            var result = new Character() { Rank = SelectedRank.Name, IsWildCard = WildCard, UseReason = UseReason, UseStatus = UseStatus, UseStrain = UseStrain };
 
             var name = NameService.CreateRandomPerson(dice);
             result.Name = name.FullName;
@@ -235,7 +247,7 @@ namespace SavageTools
             //Add personality
             int personalityTraits = dice.D(3);
             for (var i = 0; i < personalityTraits; i++)
-                result.Features.Add(PersonalityService.CreateRandomPersonality(dice));
+                result.Personality.Add(PersonalityService.CreateRandomPersonality(dice));
 
             return result;
         }
@@ -299,7 +311,13 @@ namespace SavageTools
 
             if (SelectedArchetype.Gear != null)
                 foreach (var item in SelectedArchetype.Gear)
+                {
                     result.Gear.Add(item.Name, item.Description);
+
+                    if (item.Traits != null)
+                        foreach (var trait in item.Traits)
+                            result.Increment(trait.Name, trait.Bonus, dice);
+                }
 
         }
         void ApplyRace(Character result, Dice dice)
@@ -409,6 +427,7 @@ namespace SavageTools
 
         static readonly XmlSerializer SettingXmlSerializer = new XmlSerializer(typeof(Setting));
 
+
         public void LoadSetting(FileInfo file)
         {
             var currentArchetype = SelectedArchetype?.Name;
@@ -426,6 +445,15 @@ namespace SavageTools
             Settings.Add(book.Name);
             if (book.BornAHero)
                 BornAHero = true;
+
+            if (book.UseReason)
+                UseReason = true;
+
+            if (book.UseStatus)
+                UseStatus = true;
+
+            if (book.UseStrain)
+                UseStrain = true;
 
             if (book.References != null)
                 foreach (var item in book.References.Where(r => !Settings.Any(s => s == r.Name)))
@@ -501,6 +529,8 @@ namespace SavageTools
 
             if (currentRank != null && SelectedRank == null) //selected rank was replaced so we need to reselect it
                 SelectedRank = Ranks.Single(a => a.Name == currentRank);
+
+            NamePrefix = book.NamePrefix;
         }
         void PickHindrance(Character result, Dice dice)
         {

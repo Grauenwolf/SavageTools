@@ -1,10 +1,15 @@
-﻿using SavageTools.Web.Models;
+﻿using SavageTools.Characters;
+using SavageTools.Web.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace SavageTools.Web.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             return View(new HomeIndexViewModel());
@@ -22,6 +27,33 @@ namespace SavageTools.Web.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Squad(string setting, string archetype = null, string race = null, string rank = null, int squadCount = 1)
+        {
+            var generator = Globals.GetGeneratorForSetting(setting);
+            var dice = new Dice();
+
+            if (string.IsNullOrWhiteSpace(race))
+                generator.RandomRace = true;
+            else
+                generator.SelectedRace = generator.Races.Single(x => string.Equals(x.Name, race, StringComparison.OrdinalIgnoreCase));
+
+            if (string.IsNullOrWhiteSpace(rank))
+                generator.RandomRank = true;
+            else
+                generator.SelectedRank = generator.Ranks.Single(x => string.Equals(x.Name, rank, StringComparison.OrdinalIgnoreCase));
+
+            if (string.IsNullOrWhiteSpace(archetype))
+                generator.RandomArchetype = true;
+            else
+                generator.SelectedArchetype = generator.Archetypes.Single(x => string.Equals(x.Name, archetype, StringComparison.OrdinalIgnoreCase));
+
+            var models = new List<Character>();
+            for (var i = 0; i < squadCount; i++)
+                models.Add(generator.GenerateCharacter(dice));
+
+            return View(models);
         }
     }
 }
