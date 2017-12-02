@@ -64,6 +64,12 @@
             <td><input type="number" id="eventFrequency" value="3" /></td>
         </tr>
         <tr>
+            <td colspan="2">This determines how many miles the group travels per day, which is important when the mission requires travelling.<br/>
+            If ridiing in a vehicle, use it's pace instead.
+            </td>
+            <td colspan="2">Normally you draw 1 card every 3 days, with a Jack or better meaning trouble.</td>
+        </tr>
+        <tr>
             <th>Rifts</th>
             <td>Requires Rifts GM Handbook and Savage Foes of North America</td>
             <td colspan="6">
@@ -71,8 +77,6 @@
                 <input type="button" value="Rift" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'), 'rift')" />
                 <input type="button" value="Ley Line Storm" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'), 'leylinestorm')" />
                 <input type="button" value="Trouble" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'), 'trouble')" />
-
-
             </td>
         </tr>
     </table>

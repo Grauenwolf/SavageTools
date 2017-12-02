@@ -23,9 +23,9 @@ namespace SavageTools.Names
             var lastFile = new FileInfo(Path.Combine(dataPath, prefix + "last.txt"));
             var maleFile = new FileInfo(Path.Combine(dataPath, prefix + "male-first.txt"));
 
-            m_LastNames = File.ReadAllLines(maleFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToImmutableList();
-            m_FemaleNames = File.ReadAllLines(femaleFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToImmutableList();
-            m_MaleNames = File.ReadAllLines(maleFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Distinct().ToImmutableList();
+            m_LastNames = File.ReadAllLines(maleFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Select(x => x.Substring(0, 1).ToUpper() + x.Substring(1)).Distinct().ToImmutableList();
+            m_FemaleNames = File.ReadAllLines(femaleFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Select(x => x.Substring(0, 1).ToUpper() + x.Substring(1)).Distinct().ToImmutableList();
+            m_MaleNames = File.ReadAllLines(maleFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Select(x => x.Substring(0, 1).ToUpper() + x.Substring(1)).Distinct().ToImmutableList();
         }
 
         public RandomPerson CreateRandomPerson(Dice random)
