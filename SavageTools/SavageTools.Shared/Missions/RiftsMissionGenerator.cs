@@ -2,9 +2,9 @@
 
 namespace SavageTools
 {
-    public class RiftsMissionGenerator : MissionGenerator
+    public class RiftsMissionGenerator
     {
-        public override string CreateMission(Dice dice, MissionGeneratorSettings settings)
+        public string CreateMission(Dice dice, MissionGeneratorSettings settings)
         {
             var story = new StoryBuilder(settings);
 
@@ -29,6 +29,28 @@ namespace SavageTools
                 MonsterHunting(story, dice);
 
 
+            return story.ToString();
+        }
+
+        public string CreateRift(Dice dice, MissionGeneratorSettings settings)
+        {
+            var story = new StoryBuilder(settings);
+            Rift(story, dice);
+            return story.ToString();
+        }
+
+        public string CreateLeyLineStorm(Dice dice, MissionGeneratorSettings settings)
+        {
+            var story = new StoryBuilder(settings);
+            LeyLineStorm(story, dice);
+            return story.ToString();
+        }
+
+        public string CreateTrouble(Dice dice, MissionGeneratorSettings settings)
+        {
+            var story = new StoryBuilder(settings);
+            var riftInvolved = false;
+            Trouble(story, dice, ref riftInvolved);
             return story.ToString();
         }
 
@@ -485,8 +507,7 @@ namespace SavageTools
                 story.AppendLine("Distance to threat: " + DistanceText(d1));
                 TravelMiles(story, dice, d1);
 
-                story.AppendLine("Page 66-67 - FINISH ME");
-
+                Encounter(story, dice);
             }
         }
 
@@ -575,8 +596,7 @@ namespace SavageTools
                 story.AppendLine("Distance to sighting: " + DistanceText(d1));
                 TravelMiles(story, dice, d1);
 
-                story.AppendLine("Page 67 - FINISH ME");
-
+                Encounter(story, dice);
             }
         }
 
@@ -869,7 +889,21 @@ namespace SavageTools
 
         void ThingsBadEnough(StoryBuilder story, Dice dice)
         {
-            story.AppendLine("If things we're bad enough - FINISH ME");
+            var roll = dice.D(10);
+            if (roll == 1) Rift(story, dice);
+            else if (roll == 2) LeyLineSize(story, dice);
+            else if (roll == 3) story.AppendLine("Bounty  hunters  arrive");
+            else if (roll == 4) story.AppendLine("Someone  is  dealing  with  technical  difficulties.");
+            else if (roll == 5) story.AppendLine("The Black Market is involved");
+            else if (roll == 6) story.AppendLine("Refugees by the dozens, or even hundreds");
+            else if (roll == 7) story.AppendLine("One or more supernatural creatures");
+            else if (roll == 8) Encounter(story, dice);
+            else if (roll == 9) story.AppendLine("A spy from an otherwise uninvolved faction is in the area.");
+            else
+            {
+                ThingsBadEnough(story, dice);
+                ThingsBadEnough(story, dice);
+            }
         }
         void TravelMiles(StoryBuilder story, Dice dice, decimal distance)
         {

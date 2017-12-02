@@ -83,8 +83,8 @@ function generateSquad(setting: string, archetype: string, race: string, rank: s
     window.location.href = "/Home/Squad?setting=" + encodeURIComponent(setting) + "&archetype=" + encodeURIComponent(archetype) + "&race=" + encodeURIComponent(race) + "&rank=" + encodeURIComponent(rank) + "&squadCount=" + squadCount;
 }
 
-function generateRiftsMission(pace: number, eventFrequency: number)
+function generateRiftsMission(pace: number, eventFrequency: number, type: string)
 {
-    window.location.href = "/Home/RiftsMission?pace=" + pace + "&eventFrequency=" + eventFrequency;
+    window.location.href = "/Home/RiftsMission?pace=" + pace + "&eventFrequency=" + eventFrequency + "&type=" + type;
 }
 

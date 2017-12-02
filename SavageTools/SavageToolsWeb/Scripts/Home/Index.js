@@ -45,7 +45,7 @@ function settingChanged(setting, archetype, race, rank) {
 function generateSquad(setting, archetype, race, rank, squadCount) {
     window.location.href = "/Home/Squad?setting=" + encodeURIComponent(setting) + "&archetype=" + encodeURIComponent(archetype) + "&race=" + encodeURIComponent(race) + "&rank=" + encodeURIComponent(rank) + "&squadCount=" + squadCount;
 }
-function generateRiftsMission(pace, eventFrequency) {
-    window.location.href = "/Home/RiftsMission?pace=" + pace + "&eventFrequency=" + eventFrequency;
+function generateRiftsMission(pace, eventFrequency, type) {
+    window.location.href = "/Home/RiftsMission?pace=" + pace + "&eventFrequency=" + eventFrequency + "&type=" + type;
 }
 //# sourceMappingURL=Index.js.map

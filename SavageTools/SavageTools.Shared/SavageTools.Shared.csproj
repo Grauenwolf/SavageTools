@@ -72,7 +72,6 @@
     <Compile Include="Characters\PowerGroup.cs" />
     <Compile Include="Characters\StringCollection.cs" />
     <Compile Include="Dice.cs" />
-    <Compile Include="Missions\MissionGenerator.cs" />
     <Compile Include="Missions\RiftsMissionGenerator.cs" />
     <Compile Include="Names\NameService.cs" />
     <Compile Include="PersonalityService.cs" />

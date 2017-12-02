@@ -29,13 +29,22 @@ namespace SavageTools.Web.Controllers
             return View();
         }
 
-        public ActionResult RiftsMission(string setting, int pace = 6, int eventFrequency = 3)
+        public ActionResult RiftsMission(string setting, int pace = 6, int eventFrequency = 3, string type = "mission")
         {
             var generator = new RiftsMissionGenerator();
-            var settings = new MissionGeneratorSettings() { Pace = pace, UseHtml = true , EventFrequency = eventFrequency };
-            var mission = generator.CreateMission(new Dice(), settings);
+            var settings = new MissionGeneratorSettings() { Pace = pace, UseHtml = true, EventFrequency = eventFrequency };
 
-            return View("~/Views/Home/Story.cshtml", (object)mission);
+            string result = null;
+            switch (type.ToLowerInvariant())
+            {
+                case "mission": result = generator.CreateMission(new Dice(), settings); break;
+                case "rift": result = generator.CreateRift(new Dice(), settings); break;
+                case "leylinestorm": result = generator.CreateLeyLineStorm(new Dice(), settings); break;
+                case "trouble": result = generator.CreateTrouble(new Dice(), settings); break;
+            }
+
+
+            return View("~/Views/Home/Story.cshtml", (object)result);
         }
 
         public ActionResult Squad(string setting, string archetype = null, string race = null, string rank = null, int squadCount = 1)

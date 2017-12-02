@@ -2,27 +2,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<div class="row">
-    <h2>Mission Generator</h2>
-    <table class="gridtable">
-        <tr>
-            <th>Slowest Pace</th>
-            <td><input type="number" id="pace" value="6" /></td>
 
-            <th>Days per encounter draw</th>
-            <td><input type="number" id="eventFrequency" value="3" /></td>
-        </tr>
-        <tr>
-            <th>Rifts</th>
-            <td>Requires Rifts GM Handbook and Savage Foes of North America</td>
-            <td>
-                <input type="button" value="Generate Mission" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'))" />
-
-
-            </td>
-        </tr>
-    </table>
-</div>
 
 <div class="row">
     <h2>NPC Generator</h2>
@@ -72,6 +52,33 @@
 
     </table>
 </div>
+
+<div class="row">
+    <h2>Mission Generator</h2>
+    <table class="gridtable">
+        <tr>
+            <th>Slowest Pace</th>
+            <td><input type="number" id="pace" value="6" /></td>
+
+            <th>Days per trouble draw</th>
+            <td><input type="number" id="eventFrequency" value="3" /></td>
+        </tr>
+        <tr>
+            <th>Rifts</th>
+            <td>Requires Rifts GM Handbook and Savage Foes of North America</td>
+            <td colspan="6">
+                <input type="button" value="Mission" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'), 'mission')" />
+                <input type="button" value="Rift" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'), 'rift')" />
+                <input type="button" value="Ley Line Storm" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'), 'leylinestorm')" />
+                <input type="button" value="Trouble" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'), 'trouble')" />
+
+
+            </td>
+        </tr>
+    </table>
+</div>
+
+
 <div>Names are based on <a href="https://github.com/RandomAPI/Randomuser.me-Node">RandomUser.me</a> and historic sources.</div>
 <div>Personality traits are based on <a href="https://www.roleplayingtips.com/tools/1000-npc-traits/">1,000 NPC Traits</a></div>
 
