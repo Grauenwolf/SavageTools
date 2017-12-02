@@ -54,8 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Card.cs" />
-    <Compile Include="CharacterGenerator.cs" />
+    <Compile Include="Characters\CharacterGenerator.cs" />
     <Compile Include="Characters\Character.cs" />
+    <Compile Include="Characters\CharacterGeneratorSettings.cs" />
     <Compile Include="Characters\Edge.cs" />
     <Compile Include="Characters\EdgeCollection.cs" />
     <Compile Include="Characters\Feature.cs" />

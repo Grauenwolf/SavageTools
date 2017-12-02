@@ -1,4 +1,5 @@
-﻿using SavageTools.Settings;
+﻿using SavageTools.Characters;
+using SavageTools.Settings;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -27,6 +28,7 @@ namespace SavageTools.Web
             s_AppDataPath = Server.MapPath("~/bin/Settings");
 
             var settings = new Dictionary<string, FileInfo>(StringComparer.OrdinalIgnoreCase);
+            var characterGenerators = new Dictionary<string, CharacterGenerator>(StringComparer.OrdinalIgnoreCase);
 
             var root = new DirectoryInfo(AppDataPath);
             foreach (var file in root.GetFiles("*.savage-setting"))
@@ -37,8 +39,10 @@ namespace SavageTools.Web
                     book = (Setting)SettingXmlSerializer.Deserialize(stream);
 
                 settings.Add(book.Name, file);
+                characterGenerators.Add(book.Name, new CharacterGenerator(file));
             }
             s_SettingFiles = settings;
+            s_CharacterGenerators = characterGenerators;
 
         }
 
@@ -47,6 +51,7 @@ namespace SavageTools.Web
         public static string AppDataPath { get => s_AppDataPath; }
 
         static Dictionary<string, FileInfo> s_SettingFiles;
+        static Dictionary<string, CharacterGenerator> s_CharacterGenerators;
 
         public static IReadOnlyList<string> GetSettingNames()
         {
@@ -55,9 +60,7 @@ namespace SavageTools.Web
 
         public static CharacterGenerator GetCharacterGeneratorForSetting(string settingName)
         {
-            //CharacterGenerator isn't threadsafe so we need a new one each time.
-            //We can make it thread-safe, but only if we change the Windows version of the UI to match.
-            return new CharacterGenerator(s_SettingFiles[settingName]);
+            return s_CharacterGenerators[settingName];
         }
 
 

@@ -20,9 +20,9 @@ namespace SavageTools
                 var mainBook = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), @"Settings\Core.savage-setting");
                 mainVM.CharacterGenerator.LoadSetting(new FileInfo(mainBook));
 
-                mainVM.CharacterGenerator.SelectedArchetype = mainVM.CharacterGenerator.Archetypes[0];
-                mainVM.CharacterGenerator.SelectedRace = mainVM.CharacterGenerator.Races.First(r => r.Name == "Human");
-                mainVM.CharacterGenerator.SelectedRank = mainVM.CharacterGenerator.Ranks[0];
+                mainVM.CharacterGeneratorSettings.SelectedArchetype = mainVM.CharacterGenerator.Archetypes[0];
+                mainVM.CharacterGeneratorSettings.SelectedRace = mainVM.CharacterGenerator.Races.First(r => r.Name == "Human");
+                mainVM.CharacterGeneratorSettings.SelectedRank = mainVM.CharacterGenerator.Ranks[0];
 
                 MainWindow.DataContext = mainVM;
             }

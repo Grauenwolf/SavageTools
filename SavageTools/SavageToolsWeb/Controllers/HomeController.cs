@@ -50,26 +50,26 @@ namespace SavageTools.Web.Controllers
         public ActionResult Squad(string setting, string archetype = null, string race = null, string rank = null, int squadCount = 1)
         {
             var generator = Globals.GetCharacterGeneratorForSetting(setting);
-            var dice = new Dice();
+            var settings = new CharacterGeneratorSettings(generator);
 
             if (string.IsNullOrWhiteSpace(race))
-                generator.RandomRace = true;
+                settings.RandomRace = true;
             else
-                generator.SelectedRace = generator.Races.Single(x => string.Equals(x.Name, race, StringComparison.OrdinalIgnoreCase));
+                settings.SelectedRace = generator.Races.Single(x => string.Equals(x.Name, race, StringComparison.OrdinalIgnoreCase));
 
             if (string.IsNullOrWhiteSpace(rank))
-                generator.RandomRank = true;
+                settings.RandomRank = true;
             else
-                generator.SelectedRank = generator.Ranks.Single(x => string.Equals(x.Name, rank, StringComparison.OrdinalIgnoreCase));
+                settings.SelectedRank = generator.Ranks.Single(x => string.Equals(x.Name, rank, StringComparison.OrdinalIgnoreCase));
 
             if (string.IsNullOrWhiteSpace(archetype))
-                generator.RandomArchetype = true;
+                settings.RandomArchetype = true;
             else
-                generator.SelectedArchetype = generator.Archetypes.Single(x => string.Equals(x.Name, archetype, StringComparison.OrdinalIgnoreCase));
+                settings.SelectedArchetype = generator.Archetypes.Single(x => string.Equals(x.Name, archetype, StringComparison.OrdinalIgnoreCase));
 
             var models = new List<Character>();
             for (var i = 0; i < squadCount; i++)
-                models.Add(generator.GenerateCharacter(dice));
+                models.Add(settings.GenerateCharacter());
 
             return View(models);
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using SavageTools.Characters;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,11 @@ namespace SavageTools
         public MainVM()
         {
             CharacterGenerator = new CharacterGenerator(new FileInfo(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Settings", "Core.savage-setting")));
+            CharacterGeneratorSettings = new CharacterGeneratorSettings(CharacterGenerator);
         }
 
         public CharacterGenerator CharacterGenerator { get => Get<CharacterGenerator>(); set => Set(value); }
+        public CharacterGeneratorSettings CharacterGeneratorSettings { get => Get<CharacterGeneratorSettings>(); set => Set(value); }
 
         public ObservableCollection<CharacterVM> Characters => GetNew<ObservableCollection<CharacterVM>>();
 
@@ -39,7 +42,7 @@ namespace SavageTools
 
         void CreateCharacter()
         {
-            var characterVM = new CharacterVM(CharacterGenerator.GenerateCharacter());
+            var characterVM = new CharacterVM(CharacterGeneratorSettings.GenerateCharacter());
             characterVM.RemoveMe += (s, e) => Characters.Remove((CharacterVM)s);
             Characters.Add(characterVM);
         }
@@ -59,10 +62,10 @@ namespace SavageTools
                 return;
 
             foreach (var file in dlg.FileNames.Select(f => new FileInfo(f)))
-                CharacterGenerator.LoadSetting(file);
+                CharacterGeneratorSettings.LoadSetting(file);
 
-            if (CharacterGenerator.SelectedArchetype == null)
-                CharacterGenerator.SelectedArchetype = CharacterGenerator.Archetypes.FirstOrDefault();
+            if (CharacterGeneratorSettings.SelectedArchetype == null)
+                CharacterGeneratorSettings.SelectedArchetype = CharacterGenerator.Archetypes.FirstOrDefault();
 
 
         }
