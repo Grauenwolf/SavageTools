@@ -26,6 +26,7 @@ namespace SavageTools
                 if (m_NeedsTab)
                     m_Story.Append($"<p style=\"text-indent: {m_TabDepth * 25}px;\">");
                 m_Story.Append(WebUtility.HtmlEncode(value));
+                m_NeedsTab = false;
             }
             else
             {
@@ -59,12 +60,29 @@ namespace SavageTools
             m_NeedsTab = true;
         }
 
-        public void Dedent() => m_TabDepth -= 1;
-
-        public void Indent() => m_TabDepth += 1;
         public override string ToString()
         {
             return m_Story.ToString();
+        }
+
+        public IDisposable Indent()
+        {
+            m_TabDepth += 1;
+            return new IndentToken(this);
+        }
+
+        class IndentToken : IDisposable
+        {
+            readonly StoryBuilder m_StoryBuilder;
+
+            public IndentToken(StoryBuilder storyBuilder)
+            {
+                m_StoryBuilder = storyBuilder;
+            }
+            public void Dispose()
+            {
+                m_StoryBuilder.m_TabDepth -= 1;
+            }
         }
     }
 }
