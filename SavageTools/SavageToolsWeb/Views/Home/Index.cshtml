@@ -2,6 +2,27 @@
 @{
     ViewBag.Title = "Home Page";
 }
+<div class="row">
+    <h2>Mission Generator</h2>
+    <table class="gridtable">
+        <tr>
+            <th>Slowest Pace</th>
+            <td><input type="number" id="pace" value="6" /></td>
+
+            <th>Days per encounter draw</th>
+            <td><input type="number" id="eventFrequency" value="3" /></td>
+        </tr>
+        <tr>
+            <th>Rifts</th>
+            <td>Requires Rifts GM Handbook and Savage Foes of North America</td>
+            <td>
+                <input type="button" value="Generate Mission" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'))" />
+
+
+            </td>
+        </tr>
+    </table>
+</div>
 
 <div class="row">
     <h2>NPC Generator</h2>
@@ -33,19 +54,19 @@
             </td>
         </tr>
         <tr>
-            <td  colspan="2"></td>
-            
-            
+            <td colspan="2"></td>
+
+
             <td colspan="2">
                 Leave blank for random.
             </td>
             <td colspan="2">
                 Leave blank for random.
-            </td>         
-            <td  colspan="2">
+            </td>
+            <td colspan="2">
                 Leave blank for random.
             </td>
-            <td  colspan="2"></td>
+            <td colspan="2"></td>
 
         </tr>
 

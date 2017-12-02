@@ -18,13 +18,11 @@ namespace SavageTools.Characters
             Attribute = attribute;
         }
 
-        public string Name { get => Get<string>(); set => Set(value); }
         public string Attribute { get => Get<string>(); set => Set(value); }
-        public Trait Trait { get => GetDefault<Trait>(4); set => Set(value); }
-
         public string LongName => $"{Name} [{Attribute}] {Trait}";
+        public string Name { get => Get<string>(); set => Set(value); }
         public string ShortName => $"{Name} {Trait}";
-
+        public Trait Trait { get => GetDefault<Trait>(4); set => Set(value); }
         public override string ToString() => LongName;
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 namespace SavageTools
 {
 
-    public class Table<T> : System.Collections.Generic.List<KeyValuePair<T, int>> //Using a KeyValuePair because its cheaper than a Tuple
+    public class Table<T> : List<KeyValuePair<T, int>> //Using a KeyValuePair because its cheaper than a Tuple
     {
         public void Add(T item, int odds) => Add(new KeyValuePair<T, int>(item, odds));
 

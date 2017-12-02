@@ -29,9 +29,18 @@ namespace SavageTools.Web.Controllers
             return View();
         }
 
+        public ActionResult RiftsMission(string setting, int pace = 6, int eventFrequency = 3)
+        {
+            var generator = new RiftsMissionGenerator();
+            var settings = new MissionGeneratorSettings() { Pace = pace, UseHtml = true , EventFrequency = eventFrequency };
+            var mission = generator.CreateMission(new Dice(), settings);
+
+            return View("~/Views/Home/Story.cshtml", (object)mission);
+        }
+
         public ActionResult Squad(string setting, string archetype = null, string race = null, string rank = null, int squadCount = 1)
         {
-            var generator = Globals.GetGeneratorForSetting(setting);
+            var generator = Globals.GetCharacterGeneratorForSetting(setting);
             var dice = new Dice();
 
             if (string.IsNullOrWhiteSpace(race))

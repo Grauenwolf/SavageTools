@@ -16,6 +16,12 @@ namespace SavageTools
 
     public class CharacterGenerator : ModelBase
     {
+        public LocalNameService NameService;
+
+        public PersonalityService PersonalityService;
+
+        static readonly XmlSerializer SettingXmlSerializer = new XmlSerializer(typeof(Setting));
+
         public CharacterGenerator(FileInfo setting)
         {
             LoadSetting(setting);
@@ -24,65 +30,17 @@ namespace SavageTools
             PersonalityService = new PersonalityService(setting.DirectoryName);
         }
 
-        public bool UseStrain { get => Get<bool>(); set => Set(value); }
-        public bool UseReason { get => Get<bool>(); set => Set(value); }
-        public bool UseStatus { get => Get<bool>(); set => Set(value); }
-        public string NamePrefix { get => Get<string>(); set => Set(value); }
-
-        public LocalNameService NameService;
-        public PersonalityService PersonalityService;
-
-        public ObservableCollectionExtended<string> Settings { get; } = new ObservableCollectionExtended<string>();
-
-        public ObservableCollectionExtended<SettingSkillOption> Skills { get; } = new ObservableCollectionExtended<SettingSkillOption>();
-
-        public ObservableCollectionExtended<SettingHindrance> Hindrances { get; } = new ObservableCollectionExtended<SettingHindrance>();
-
-        public ObservableCollectionExtended<SettingEdge> Edges { get; } = new ObservableCollectionExtended<SettingEdge>();
-
         public ObservableCollectionExtended<SettingArchetype> Archetypes { get; } = new ObservableCollectionExtended<SettingArchetype>();
-        public ObservableCollectionExtended<SettingRace> Races { get; } = new ObservableCollectionExtended<SettingRace>();
-        public ObservableCollectionExtended<SettingRank> Ranks { get; } = new ObservableCollectionExtended<SettingRank>();
-        public ObservableCollectionExtended<SettingTrapping> Trappings { get; } = new ObservableCollectionExtended<SettingTrapping>();
+        public bool BornAHero { get => GetDefault(false); set => Set(value); }
+        public ObservableCollectionExtended<SettingEdge> Edges { get; } = new ObservableCollectionExtended<SettingEdge>();
+        public ObservableCollectionExtended<SettingHindrance> Hindrances { get; } = new ObservableCollectionExtended<SettingHindrance>();
+        public string NamePrefix { get => Get<string>(); set => Set(value); }
         public ObservableCollectionExtended<SettingPower> Powers { get; } = new ObservableCollectionExtended<SettingPower>();
-
-
+        public ObservableCollectionExtended<SettingRace> Races { get; } = new ObservableCollectionExtended<SettingRace>();
         public bool RandomArchetype { get => GetDefault(false); set => Set(value); }
         public bool RandomRace { get => GetDefault(false); set => Set(value); }
         public bool RandomRank { get => GetDefault(false); set => Set(value); }
-
-        public bool BornAHero { get => GetDefault(false); set => Set(value); }
-
-        SettingEdge FindEdge(SettingEdge prototype)
-        {
-            //If any of these are set, assume its a custom edge
-            if (!string.IsNullOrEmpty(prototype.Description))
-                return prototype;
-            if (prototype.Features?.Length > 0)
-                return prototype;
-            if (prototype.Traits?.Length > 0)
-                return prototype;
-            if (prototype.Skills?.Length > 0)
-                return prototype;
-
-            //Look for a shared edge
-            var result = Edges.FirstOrDefault(e => e.Name == prototype.Name);
-            return result ?? prototype;
-        }
-
-        SettingHindrance FindHindrance(SettingHindrance prototype)
-        {
-            //If any of these are set, assume its a custom edge
-            if (!string.IsNullOrEmpty(prototype.Description))
-                return prototype;
-            if (prototype.Features?.Length > 0)
-                return prototype;
-
-            //Look for a shared hindrance
-            var result = Hindrances.FirstOrDefault(e => e.Name == prototype.Name);
-            return result ?? prototype;
-        }
-
+        public ObservableCollectionExtended<SettingRank> Ranks { get; } = new ObservableCollectionExtended<SettingRank>();
         public SettingArchetype SelectedArchetype
         {
             get { return Get<SettingArchetype>(); }
@@ -98,12 +56,14 @@ namespace SavageTools
         }
 
         public SettingRace SelectedRace { get { return Get<SettingRace>(); } set { Set(value); } }
-
         public SettingRank SelectedRank { get { return Get<SettingRank>(); } set { Set(value); } }
-
-
-        public bool WildCard { get { return GetDefault(false); } set { Set(value); } }
-
+        public ObservableCollectionExtended<string> Settings => GetNew<ObservableCollectionExtended<string>>();
+        public ObservableCollectionExtended<SettingSkillOption> Skills => GetNew<ObservableCollectionExtended<SettingSkillOption>>();
+        public ObservableCollectionExtended<SettingTrapping> Trappings => GetNew<ObservableCollectionExtended<SettingTrapping>>();
+        public bool UseReason { get => Get<bool>(); set => Set(value); }
+        public bool UseStatus { get => Get<bool>(); set => Set(value); }
+        public bool UseStrain { get => Get<bool>(); set => Set(value); }
+        public bool WildCard { get => GetDefault(false); set => Set(value); }
 
         public Character GenerateCharacter(Dice dice = null)
         {
@@ -252,182 +212,6 @@ namespace SavageTools
             return result;
         }
 
-        void ApplyArchetype(Character result, Dice dice)
-        {
-            //Add the archetype
-            result.Archetype = SelectedArchetype.Name;
-            result.UnusedAttributes = SelectedArchetype.UnusedAttributes;
-            result.UnusedSkills = SelectedArchetype.UnusedSkills;
-            result.Agility = SelectedArchetype.Agility;
-            result.Smarts = SelectedArchetype.Smarts;
-            result.Spirit = SelectedArchetype.Spirit;
-            result.Strength = SelectedArchetype.Strength;
-            result.Vigor = SelectedArchetype.Vigor;
-
-
-            //then edges first because they can create new skills
-            if (SelectedArchetype.Edges != null)
-                foreach (var item in SelectedArchetype.Edges)
-                    ApplyEdge(result, FindEdge(item), dice);
-
-            if (SelectedArchetype.Hindrances != null)
-                foreach (var item in SelectedArchetype.Hindrances)
-                {
-                    //pick up the level from the archetype
-                    var level = 0;
-                    if (item.Type == "Minor" || item.Type == "Minor/Major")
-                        level = 1;
-                    else if (item.Type == "Major")
-                        level = 2;
-
-                    var hindrance = FindHindrance(item);
-
-                    if (level == 0) //check for a default
-                    {
-                        if (hindrance.Type == "Minor" || hindrance.Type == "Minor/Major")
-                            level = 1;
-                        else if (hindrance.Type == "Major")
-                            level = 2;
-                    }
-                    ApplyHindrance(result, hindrance, level, dice);
-                }
-
-            if (SelectedArchetype.Skills != null)
-                foreach (var item in SelectedArchetype.Skills)
-                {
-                    var skill = result.Skills[item.Name];
-                    if (skill != null)
-                        skill.Trait = Math.Max(skill.Trait.Score, item.Level);
-                    else
-                        result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = item.Level });
-                }
-            if (SelectedArchetype.Traits != null)
-                foreach (var item in SelectedArchetype.Traits)
-                    result.Increment(item.Name, item.Bonus, dice);
-
-            if (SelectedArchetype.Features != null)
-                foreach (var item in SelectedArchetype.Features)
-                    result.Features.Add(item.Name);
-
-            if (SelectedArchetype.Gear != null)
-                foreach (var item in SelectedArchetype.Gear)
-                {
-                    result.Gear.Add(item.Name, item.Description);
-
-                    if (item.Traits != null)
-                        foreach (var trait in item.Traits)
-                            result.Increment(trait.Name, trait.Bonus, dice);
-                }
-
-        }
-        void ApplyRace(Character result, Dice dice)
-        {
-            //Add the race
-            result.Race = SelectedRace.Name;
-
-            if (SelectedRace.Edges != null)
-                foreach (var item in SelectedRace.Edges)
-                    ApplyEdge(result, FindEdge(item), dice);
-
-            if (SelectedRace.Hindrances != null)
-                foreach (var item in SelectedRace.Hindrances)
-                {
-                    //pick up the level from the archetype
-                    var level = 0;
-                    if (item.Type == "Minor" || item.Type == "Minor/Major")
-                        level = 1;
-                    else if (item.Type == "Major")
-                        level = 2;
-
-                    var hindrance = FindHindrance(item);
-
-                    if (level == 0) //check for a default
-                    {
-                        if (hindrance.Type == "Minor" || hindrance.Type == "Minor/Major")
-                            level = 1;
-                        else if (hindrance.Type == "Major")
-                            level = 2;
-                    }
-                    ApplyHindrance(result, hindrance, level, dice);
-                }
-
-            if (SelectedRace.Skills != null)
-                foreach (var item in SelectedRace.Skills)
-                {
-                    var skill = result.Skills[item.Name];
-                    if (skill != null)
-                        skill.Trait = Math.Max(skill.Trait.Score, item.Level);
-                    else
-                        result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = item.Level });
-                }
-            if (SelectedRace.Traits != null)
-                foreach (var item in SelectedRace.Traits)
-                    result.Increment(item.Name, item.Bonus, dice);
-
-            if (SelectedRace.Powers != null)
-                foreach (var item in SelectedRace.Powers)
-                    AddPower(result, item, dice);
-
-
-        }
-        void ApplyHindrance(Character result, SettingHindrance hindrance, int level, Dice dice)
-        {
-            result.Hindrances.Add(new Hindrance() { Name = hindrance.Name, Description = hindrance.Description, Level = level });
-
-            if (hindrance.Trait != null)
-                foreach (var item in hindrance.Trait)
-                    result.Increment(item.Name, item.Bonus, dice);
-
-            if (hindrance.Features != null)
-                foreach (var item in hindrance.Features)
-                    result.Features.Add(item.Name);
-
-            if (hindrance.Skill != null)
-                foreach (var item in hindrance.Skill)
-                {
-                    var skill = result.Skills.FirstOrDefault(s => s.Name == item.Name);
-
-                    if (skill == null)
-                        result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = item.Level });
-                    else if (skill.Trait < item.Level)
-                        skill.Trait = item.Level;
-                }
-        }
-
-        static void ApplyEdge(Character result, SettingEdge edge, Dice dice)
-        {
-            result.Edges.Add(new Edge() { Name = edge.Name, Description = edge.Description, UniqueGroup = edge.UniqueGroup });
-
-            if (edge.Traits != null)
-                foreach (var item in edge.Traits)
-                    result.Increment(item.Name, item.Bonus, dice);
-
-            if (edge.Features != null)
-                foreach (var item in edge.Features)
-                    result.Features.Add(item.Name);
-
-            if (edge.AvailablePowers != null)
-                foreach (var item in edge.AvailablePowers)
-                    result.PowerGroups[item.Skill].AvailablePowers.Add(item.Name);
-
-            if (edge.Skills != null)
-                foreach (var item in edge.Skills)
-                {
-                    var skill = result.Skills.FirstOrDefault(s => s.Name == item.Name);
-                    if (skill == null)
-                    {
-                        result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = item.Level });
-                    }
-                    else if (skill.Trait < item.Level)
-                    {
-                        skill.Trait = item.Level;
-                    }
-                }
-        }
-
-        static readonly XmlSerializer SettingXmlSerializer = new XmlSerializer(typeof(Setting));
-
-
         public void LoadSetting(FileInfo file)
         {
             var currentArchetype = SelectedArchetype?.Name;
@@ -532,309 +316,36 @@ namespace SavageTools
 
             NamePrefix = book.NamePrefix;
         }
-        void PickHindrance(Character result, Dice dice)
+
+        static void ApplyEdge(Character result, SettingEdge edge, Dice dice)
         {
-            var minors = result.Hindrances.Where(h => h.Level == 1).Count();
-            var majors = result.Hindrances.Where(h => h.Level == 2).Count();
+            result.Edges.Add(new Edge() { Name = edge.Name, Description = edge.Description, UniqueGroup = edge.UniqueGroup });
 
-            bool useMajor;
+            if (edge.Traits != null)
+                foreach (var item in edge.Traits)
+                    result.Increment(item.Name, item.Bonus, dice);
 
-            if (result.UnusedHindrances < 2)
-                useMajor = false; //
-            else if (result.UnusedHindrances == 2)
-            {
-                if (majors == 0 && minors == 0)
-                    useMajor = dice.NextBoolean(); //empty slate, can go either way
-                else if (majors == 0)
-                    useMajor = true; //we already have 1+ minors so use a major
-                else
-                    useMajor = false;
-            }
-            else
-            {
-                if (majors == 0)
-                    useMajor = true; //pick a major if we don't have one already
-                else if (minors == 0)
-                    useMajor = false; //pick a minor since we don't have any yet
-                else
-                    useMajor = dice.NextBoolean(); //this shouldn't happen with normal characters
-            }
+            if (edge.Features != null)
+                foreach (var item in edge.Features)
+                    result.Features.Add(item.Name);
 
-            var table = new Table<SettingHindrance>();
-            foreach (var item in Hindrances)
-            {
-                //TODO: Some hindrances allow duplicates
-                if (result.Hindrances.Any(e => e.Name == item.Name))
-                    continue; //no dups
+            if (edge.AvailablePowers != null)
+                foreach (var item in edge.AvailablePowers)
+                    result.PowerGroups[item.Skill].AvailablePowers.Add(item.Name);
 
-                if ((item.Type == "Minor" && !useMajor)
-                || (item.Type == "Major" && useMajor)
-                || (item.Type == "Minor/Major"))
-                    table.Add(item, 1);
-            }
-
-            var hindrance = table.RandomChoose(dice);
-            ApplyHindrance(result, hindrance, useMajor ? 2 : 1, dice);
-
-            result.UnusedHindrances -= useMajor ? 2 : 1;
-        }
-        static void PickSkill(Character result, Dice dice)
-        {
-            bool allowHigh = result.UnusedSkills >= 2 && result.UnusedAttributes == 0; //don't buy expensive skills until all of the attributes are picked
-
-            var table = new Table<Skill>();
-            foreach (var item in result.Skills)
-            {
-
-                if (item.Trait == 0)
-                    table.Add(item, result.GetAttribute(item.Attribute).Score - 3); //favor skills that match your attributes
-                else if ((item.Trait + 1) < result.GetAttribute(item.Attribute)) //favor improving what you know
-                    table.Add(item, result.GetAttribute(item.Attribute).Score - 3 + item.Trait.Score);
-                else if (allowHigh && item.Trait < 12)
-                    table.Add(item, item.Trait.Score); //Raising skills above the controlling attribute is relatively rare
-            }
-            var skill = table.RandomChoose(dice);
-            if (skill.Trait == 0)
-            {
-                result.UnusedSkills -= 1;
-                skill.Trait = 4;
-            }
-            else if (skill.Trait < result.GetAttribute(skill.Attribute))
-            {
-                result.UnusedSkills -= 1;
-                skill.Trait += 1;
-            }
-            else
-            {
-                result.UnusedSkills -= 2;
-                skill.Trait += 1;
-            }
-        }
-
-        static void PickSmartsSkill(Character result, Dice dice)
-        {
-            bool allowHigh = result.UnusedSmartSkills >= 2 && result.UnusedAttributes == 0; //don't buy expensive skills until all of the attributes are picked
-
-            var table = new Table<Skill>();
-            foreach (var item in result.Skills.Where(s => s.Attribute == "Smarts"))
-            {
-
-                if (item.Trait == 0)
-                    table.Add(item, result.GetAttribute(item.Attribute).Score - 3); //favor skills that match your attributes
-                else if ((item.Trait + 1) < result.GetAttribute(item.Attribute)) //favor improving what you know
-                    table.Add(item, result.GetAttribute(item.Attribute).Score - 3 + item.Trait.Score);
-                else if (allowHigh && item.Trait < 12)
-                    table.Add(item, item.Trait.Score); //Raising skills above the controlling attribute is relatively rare
-            }
-            var skill = table.RandomChoose(dice);
-            if (skill.Trait == 0)
-            {
-                result.UnusedSmartSkills -= 1;
-                skill.Trait = 4;
-            }
-            else if (skill.Trait < result.GetAttribute(skill.Attribute))
-            {
-                result.UnusedSmartSkills -= 1;
-                skill.Trait += 1;
-            }
-            else
-            {
-                result.UnusedSmartSkills -= 2;
-                skill.Trait += 1;
-            }
-        }
-
-        static void PickAttribute(Character result, Dice dice)
-        {
-            //Attributes are likely to stack rather than spread evenly
-            var table = new Table<string>();
-            if (result.Vigor < result.MaxVigor)
-                table.Add("Vigor", result.Vigor.Score);
-            if (result.Smarts < result.MaxSmarts)
-                table.Add("Smarts", result.Smarts.Score);
-            if (result.Agility < result.MaxAgility)
-                table.Add("Agility", result.Agility.Score);
-            if (result.Strength < result.MaxStrength)
-                table.Add("Strength", result.Strength.Score);
-            if (result.Spirit < result.MaxSpirit)
-                table.Add("Spirit", result.Spirit.Score);
-
-            result.Increment(table.RandomChoose(dice), dice);
-
-            result.UnusedAttributes -= 1;
-        }
-
-        void PickPower(Character result, PowerGroup group, Dice dice)
-        {
-
-            var powers = new List<SettingPower>();
-            var trappings = new List<SettingTrapping>();
-
-            foreach (var item in Powers)
-            {
-                if (group.AvailablePowers.Count > 0 && !group.AvailablePowers.Contains(item.Name))
-                    continue;
-
-                var requirements = item.Requires.Split(',').Select(e => e.Trim());
-                if (requirements.All(c => result.HasFeature(c, BornAHero)))
-                    powers.Add(item);
-            }
-
-            foreach (var item in Trappings)
-            {
-                if (group.AvailableTrappings.Count > 0 && !group.AvailableTrappings.Contains(item.Name))
-                    continue;
-
-                if (group.ProhibitedTrappings.Contains(item.Name))
-                    continue;
-
-                trappings.Add(item);
-            }
-
-            if (powers.Count == 0 || trappings.Count == 0)
-            {
-                result.Features.Add($"Has {group.UnusedPowers} unused powers for {group.Skill}.");
-                group.UnusedPowers = 0;
-                return;
-            }
-
-            TryAgain:
-            var trapping = dice.Choose(Trappings);
-            var power = dice.Choose(powers);
-
-            if (result.PowerGroups.ContainsPower(power.Name, trapping.Name))
-                goto TryAgain;
-
-            group.Powers.Add(new Power(power.Name, trapping.Name));
-
-            group.UnusedPowers -= 1;
-        }
-
-        void AddPower(Character result, SettingPower power, Dice dice)
-        {
-            var trappings = new List<SettingTrapping>();
-            var group = result.PowerGroups[power.Skill];
-
-            foreach (var item in Trappings)
-            {
-                if (group.AvailableTrappings.Count > 0 && !group.AvailableTrappings.Contains(item.Name))
-                    continue;
-
-                if (group.ProhibitedTrappings.Contains(item.Name))
-                    continue;
-
-                trappings.Add(item);
-            }
-
-            if (trappings.Count == 0)
-                trappings.Add(new SettingTrapping() { Name = "None" });
-
-            var trapping = dice.Choose(Trappings);
-
-            group.Powers.Add(new Power(power.Name, trapping.Name));
-        }
-
-
-        void PickEdge(Character result, Dice dice)
-        {
-            var table = new Table<SettingEdge>();
-            var edgeList = (IEnumerable<SettingEdge>)Edges;
-
-            if (SelectedArchetype.IconicEdges != null)
-                edgeList = edgeList.Concat(SelectedArchetype.IconicEdges);
-            if (SelectedRace.RacialEdges != null)
-                edgeList = edgeList.Concat(SelectedRace.RacialEdges);
-
-            foreach (var item in edgeList)
-            {
-                //TODO: Some edges allow duplicates
-                if (result.Edges.Any(e => e.Name == item.Name))
-                    continue; //no dups
-
-                if (!string.IsNullOrEmpty(item.UniqueGroup))
-                    if (result.Edges.Any(e => e.UniqueGroup == item.UniqueGroup))
-                        continue; //can't have multiple from a unique group (i.e. arcane background)
-
-                var requirements = item.Requires.Split(',').Select(e => e.Trim());
-                if (requirements.All(c => result.HasFeature(c, BornAHero)))
-                    table.Add(item, 1);
-            }
-            if (table.Count == 0)
-            {
-                Debug.WriteLine("No edges were available");
-            }
-            else
-            {
-                Debug.WriteLine($"Found {table.Count} edges");
-                var edge = table.RandomChoose(dice);
-                ApplyEdge(result, edge, dice);
-
-                result.UnusedEdges -= 1;
-            }
-        }
-
-        void PickRacialEdge(Character result, Dice dice)
-        {
-            var table = new Table<SettingEdge>();
-
-            foreach (var item in SelectedRace.RacialEdges)
-            {
-                //TODO: Some edges allow duplicates
-                if (result.Edges.Any(e => e.Name == item.Name))
-                    continue; //no dups
-
-                if (!string.IsNullOrEmpty(item.UniqueGroup))
-                    if (result.Edges.Any(e => e.UniqueGroup == item.UniqueGroup))
-                        continue; //can't have multiple from a unique group (i.e. arcane background)
-
-                var requirements = item.Requires.Split(',').Select(e => e.Trim());
-                if (requirements.All(c => result.HasFeature(c, BornAHero)))
-                    table.Add(item, 1);
-            }
-            if (table.Count == 0)
-            {
-                Debug.WriteLine("No edges were available");
-            }
-            else
-            {
-                Debug.WriteLine($"Found {table.Count} edges");
-                var edge = table.RandomChoose(dice);
-                ApplyEdge(result, edge, dice);
-
-                result.UnusedRacialEdges -= 1;
-            }
-        }
-
-        void PickIconicEdge(Character result, Dice dice)
-        {
-            var table = new Table<SettingEdge>();
-
-            foreach (var item in SelectedArchetype.IconicEdges)
-            {
-                //TODO: Some edges allow duplicates
-                if (result.Edges.Any(e => e.Name == item.Name))
-                    continue; //no dups
-
-                if (!string.IsNullOrEmpty(item.UniqueGroup))
-                    if (result.Edges.Any(e => e.UniqueGroup == item.UniqueGroup))
-                        continue; //can't have multiple from a unique group (i.e. arcane background)
-
-                var requirements = item.Requires.Split(',').Select(e => e.Trim());
-                if (requirements.All(c => result.HasFeature(c, BornAHero)))
-                    table.Add(item, 1);
-            }
-            if (table.Count == 0)
-            {
-                Debug.WriteLine("No edges were available");
-            }
-            else
-            {
-                Debug.WriteLine($"Found {table.Count} edges");
-                var edge = table.RandomChoose(dice);
-                ApplyEdge(result, edge, dice);
-
-                result.UnusedIconicEdges -= 1;
-            }
+            if (edge.Skills != null)
+                foreach (var item in edge.Skills)
+                {
+                    var skill = result.Skills.FirstOrDefault(s => s.Name == item.Name);
+                    if (skill == null)
+                    {
+                        result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = item.Level });
+                    }
+                    else if (skill.Trait < item.Level)
+                    {
+                        skill.Trait = item.Level;
+                    }
+                }
         }
 
         static void PickAdvancement(Character result, Dice dice)
@@ -902,6 +413,482 @@ namespace SavageTools
                         result.UnusedAttributes += 1;
                         break;
                 }
+            }
+        }
+
+        static void PickAttribute(Character result, Dice dice)
+        {
+            //Attributes are likely to stack rather than spread evenly
+            var table = new Table<string>();
+            if (result.Vigor < result.MaxVigor)
+                table.Add("Vigor", result.Vigor.Score);
+            if (result.Smarts < result.MaxSmarts)
+                table.Add("Smarts", result.Smarts.Score);
+            if (result.Agility < result.MaxAgility)
+                table.Add("Agility", result.Agility.Score);
+            if (result.Strength < result.MaxStrength)
+                table.Add("Strength", result.Strength.Score);
+            if (result.Spirit < result.MaxSpirit)
+                table.Add("Spirit", result.Spirit.Score);
+
+            result.Increment(table.RandomChoose(dice), dice);
+
+            result.UnusedAttributes -= 1;
+        }
+
+        static void PickSkill(Character result, Dice dice)
+        {
+            bool allowHigh = result.UnusedSkills >= 2 && result.UnusedAttributes == 0; //don't buy expensive skills until all of the attributes are picked
+
+            var table = new Table<Skill>();
+            foreach (var item in result.Skills)
+            {
+
+                if (item.Trait == 0)
+                    table.Add(item, result.GetAttribute(item.Attribute).Score - 3); //favor skills that match your attributes
+                else if ((item.Trait + 1) < result.GetAttribute(item.Attribute)) //favor improving what you know
+                    table.Add(item, result.GetAttribute(item.Attribute).Score - 3 + item.Trait.Score);
+                else if (allowHigh && item.Trait < 12)
+                    table.Add(item, item.Trait.Score); //Raising skills above the controlling attribute is relatively rare
+            }
+            var skill = table.RandomChoose(dice);
+            if (skill.Trait == 0)
+            {
+                result.UnusedSkills -= 1;
+                skill.Trait = 4;
+            }
+            else if (skill.Trait < result.GetAttribute(skill.Attribute))
+            {
+                result.UnusedSkills -= 1;
+                skill.Trait += 1;
+            }
+            else
+            {
+                result.UnusedSkills -= 2;
+                skill.Trait += 1;
+            }
+        }
+
+        static void PickSmartsSkill(Character result, Dice dice)
+        {
+            bool allowHigh = result.UnusedSmartSkills >= 2 && result.UnusedAttributes == 0; //don't buy expensive skills until all of the attributes are picked
+
+            var table = new Table<Skill>();
+            foreach (var item in result.Skills.Where(s => s.Attribute == "Smarts"))
+            {
+
+                if (item.Trait == 0)
+                    table.Add(item, result.GetAttribute(item.Attribute).Score - 3); //favor skills that match your attributes
+                else if ((item.Trait + 1) < result.GetAttribute(item.Attribute)) //favor improving what you know
+                    table.Add(item, result.GetAttribute(item.Attribute).Score - 3 + item.Trait.Score);
+                else if (allowHigh && item.Trait < 12)
+                    table.Add(item, item.Trait.Score); //Raising skills above the controlling attribute is relatively rare
+            }
+            var skill = table.RandomChoose(dice);
+            if (skill.Trait == 0)
+            {
+                result.UnusedSmartSkills -= 1;
+                skill.Trait = 4;
+            }
+            else if (skill.Trait < result.GetAttribute(skill.Attribute))
+            {
+                result.UnusedSmartSkills -= 1;
+                skill.Trait += 1;
+            }
+            else
+            {
+                result.UnusedSmartSkills -= 2;
+                skill.Trait += 1;
+            }
+        }
+
+        void AddPower(Character result, SettingPower power, Dice dice)
+        {
+            var trappings = new List<SettingTrapping>();
+            var group = result.PowerGroups[power.Skill];
+
+            foreach (var item in Trappings)
+            {
+                if (group.AvailableTrappings.Count > 0 && !group.AvailableTrappings.Contains(item.Name))
+                    continue;
+
+                if (group.ProhibitedTrappings.Contains(item.Name))
+                    continue;
+
+                trappings.Add(item);
+            }
+
+            if (trappings.Count == 0)
+                trappings.Add(new SettingTrapping() { Name = "None" });
+
+            var trapping = dice.Choose(Trappings);
+
+            group.Powers.Add(new Power(power.Name, trapping.Name));
+        }
+
+        void ApplyArchetype(Character result, Dice dice)
+        {
+            //Add the archetype
+            result.Archetype = SelectedArchetype.Name;
+            result.UnusedAttributes = SelectedArchetype.UnusedAttributes;
+            result.UnusedSkills = SelectedArchetype.UnusedSkills;
+            result.Agility = SelectedArchetype.Agility;
+            result.Smarts = SelectedArchetype.Smarts;
+            result.Spirit = SelectedArchetype.Spirit;
+            result.Strength = SelectedArchetype.Strength;
+            result.Vigor = SelectedArchetype.Vigor;
+
+
+            //then edges first because they can create new skills
+            if (SelectedArchetype.Edges != null)
+                foreach (var item in SelectedArchetype.Edges)
+                    ApplyEdge(result, FindEdge(item), dice);
+
+            if (SelectedArchetype.Hindrances != null)
+                foreach (var item in SelectedArchetype.Hindrances)
+                {
+                    //pick up the level from the archetype
+                    var level = 0;
+                    if (item.Type == "Minor" || item.Type == "Minor/Major")
+                        level = 1;
+                    else if (item.Type == "Major")
+                        level = 2;
+
+                    var hindrance = FindHindrance(item);
+
+                    if (level == 0) //check for a default
+                    {
+                        if (hindrance.Type == "Minor" || hindrance.Type == "Minor/Major")
+                            level = 1;
+                        else if (hindrance.Type == "Major")
+                            level = 2;
+                    }
+                    ApplyHindrance(result, hindrance, level, dice);
+                }
+
+            if (SelectedArchetype.Skills != null)
+                foreach (var item in SelectedArchetype.Skills)
+                {
+                    var skill = result.Skills[item.Name];
+                    if (skill != null)
+                        skill.Trait = Math.Max(skill.Trait.Score, item.Level);
+                    else
+                        result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = item.Level });
+                }
+            if (SelectedArchetype.Traits != null)
+                foreach (var item in SelectedArchetype.Traits)
+                    result.Increment(item.Name, item.Bonus, dice);
+
+            if (SelectedArchetype.Features != null)
+                foreach (var item in SelectedArchetype.Features)
+                    result.Features.Add(item.Name);
+
+            if (SelectedArchetype.Gear != null)
+                foreach (var item in SelectedArchetype.Gear)
+                {
+                    result.Gear.Add(item.Name, item.Description);
+
+                    if (item.Traits != null)
+                        foreach (var trait in item.Traits)
+                            result.Increment(trait.Name, trait.Bonus, dice);
+                }
+
+        }
+
+        void ApplyHindrance(Character result, SettingHindrance hindrance, int level, Dice dice)
+        {
+            result.Hindrances.Add(new Hindrance() { Name = hindrance.Name, Description = hindrance.Description, Level = level });
+
+            if (hindrance.Trait != null)
+                foreach (var item in hindrance.Trait)
+                    result.Increment(item.Name, item.Bonus, dice);
+
+            if (hindrance.Features != null)
+                foreach (var item in hindrance.Features)
+                    result.Features.Add(item.Name);
+
+            if (hindrance.Skill != null)
+                foreach (var item in hindrance.Skill)
+                {
+                    var skill = result.Skills.FirstOrDefault(s => s.Name == item.Name);
+
+                    if (skill == null)
+                        result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = item.Level });
+                    else if (skill.Trait < item.Level)
+                        skill.Trait = item.Level;
+                }
+        }
+
+        void ApplyRace(Character result, Dice dice)
+        {
+            //Add the race
+            result.Race = SelectedRace.Name;
+
+            if (SelectedRace.Edges != null)
+                foreach (var item in SelectedRace.Edges)
+                    ApplyEdge(result, FindEdge(item), dice);
+
+            if (SelectedRace.Hindrances != null)
+                foreach (var item in SelectedRace.Hindrances)
+                {
+                    //pick up the level from the archetype
+                    var level = 0;
+                    if (item.Type == "Minor" || item.Type == "Minor/Major")
+                        level = 1;
+                    else if (item.Type == "Major")
+                        level = 2;
+
+                    var hindrance = FindHindrance(item);
+
+                    if (level == 0) //check for a default
+                    {
+                        if (hindrance.Type == "Minor" || hindrance.Type == "Minor/Major")
+                            level = 1;
+                        else if (hindrance.Type == "Major")
+                            level = 2;
+                    }
+                    ApplyHindrance(result, hindrance, level, dice);
+                }
+
+            if (SelectedRace.Skills != null)
+                foreach (var item in SelectedRace.Skills)
+                {
+                    var skill = result.Skills[item.Name];
+                    if (skill != null)
+                        skill.Trait = Math.Max(skill.Trait.Score, item.Level);
+                    else
+                        result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = item.Level });
+                }
+            if (SelectedRace.Traits != null)
+                foreach (var item in SelectedRace.Traits)
+                    result.Increment(item.Name, item.Bonus, dice);
+
+            if (SelectedRace.Powers != null)
+                foreach (var item in SelectedRace.Powers)
+                    AddPower(result, item, dice);
+
+
+        }
+
+        SettingEdge FindEdge(SettingEdge prototype)
+        {
+            //If any of these are set, assume its a custom edge
+            if (!string.IsNullOrEmpty(prototype.Description))
+                return prototype;
+            if (prototype.Features?.Length > 0)
+                return prototype;
+            if (prototype.Traits?.Length > 0)
+                return prototype;
+            if (prototype.Skills?.Length > 0)
+                return prototype;
+
+            //Look for a shared edge
+            var result = Edges.FirstOrDefault(e => e.Name == prototype.Name);
+            return result ?? prototype;
+        }
+
+        SettingHindrance FindHindrance(SettingHindrance prototype)
+        {
+            //If any of these are set, assume its a custom edge
+            if (!string.IsNullOrEmpty(prototype.Description))
+                return prototype;
+            if (prototype.Features?.Length > 0)
+                return prototype;
+
+            //Look for a shared hindrance
+            var result = Hindrances.FirstOrDefault(e => e.Name == prototype.Name);
+            return result ?? prototype;
+        }
+        void PickEdge(Character result, Dice dice)
+        {
+            var table = new Table<SettingEdge>();
+            var edgeList = (IEnumerable<SettingEdge>)Edges;
+
+            if (SelectedArchetype.IconicEdges != null)
+                edgeList = edgeList.Concat(SelectedArchetype.IconicEdges);
+            if (SelectedRace.RacialEdges != null)
+                edgeList = edgeList.Concat(SelectedRace.RacialEdges);
+
+            foreach (var item in edgeList)
+            {
+                //TODO: Some edges allow duplicates
+                if (result.Edges.Any(e => e.Name == item.Name))
+                    continue; //no dups
+
+                if (!string.IsNullOrEmpty(item.UniqueGroup))
+                    if (result.Edges.Any(e => e.UniqueGroup == item.UniqueGroup))
+                        continue; //can't have multiple from a unique group (i.e. arcane background)
+
+                var requirements = item.Requires.Split(',').Select(e => e.Trim());
+                if (requirements.All(c => result.HasFeature(c, BornAHero)))
+                    table.Add(item, 1);
+            }
+            if (table.Count == 0)
+            {
+                Debug.WriteLine("No edges were available");
+            }
+            else
+            {
+                Debug.WriteLine($"Found {table.Count} edges");
+                var edge = table.RandomChoose(dice);
+                ApplyEdge(result, edge, dice);
+
+                result.UnusedEdges -= 1;
+            }
+        }
+
+        void PickHindrance(Character result, Dice dice)
+        {
+            var minors = result.Hindrances.Where(h => h.Level == 1).Count();
+            var majors = result.Hindrances.Where(h => h.Level == 2).Count();
+
+            bool useMajor;
+
+            if (result.UnusedHindrances < 2)
+                useMajor = false; //
+            else if (result.UnusedHindrances == 2)
+            {
+                if (majors == 0 && minors == 0)
+                    useMajor = dice.NextBoolean(); //empty slate, can go either way
+                else if (majors == 0)
+                    useMajor = true; //we already have 1+ minors so use a major
+                else
+                    useMajor = false;
+            }
+            else
+            {
+                if (majors == 0)
+                    useMajor = true; //pick a major if we don't have one already
+                else if (minors == 0)
+                    useMajor = false; //pick a minor since we don't have any yet
+                else
+                    useMajor = dice.NextBoolean(); //this shouldn't happen with normal characters
+            }
+
+            var table = new Table<SettingHindrance>();
+            foreach (var item in Hindrances)
+            {
+                //TODO: Some hindrances allow duplicates
+                if (result.Hindrances.Any(e => e.Name == item.Name))
+                    continue; //no dups
+
+                if ((item.Type == "Minor" && !useMajor)
+                || (item.Type == "Major" && useMajor)
+                || (item.Type == "Minor/Major"))
+                    table.Add(item, 1);
+            }
+
+            var hindrance = table.RandomChoose(dice);
+            ApplyHindrance(result, hindrance, useMajor ? 2 : 1, dice);
+
+            result.UnusedHindrances -= useMajor ? 2 : 1;
+        }
+        void PickIconicEdge(Character result, Dice dice)
+        {
+            var table = new Table<SettingEdge>();
+
+            foreach (var item in SelectedArchetype.IconicEdges)
+            {
+                //TODO: Some edges allow duplicates
+                if (result.Edges.Any(e => e.Name == item.Name))
+                    continue; //no dups
+
+                if (!string.IsNullOrEmpty(item.UniqueGroup))
+                    if (result.Edges.Any(e => e.UniqueGroup == item.UniqueGroup))
+                        continue; //can't have multiple from a unique group (i.e. arcane background)
+
+                var requirements = item.Requires.Split(',').Select(e => e.Trim());
+                if (requirements.All(c => result.HasFeature(c, BornAHero)))
+                    table.Add(item, 1);
+            }
+            if (table.Count == 0)
+            {
+                Debug.WriteLine("No edges were available");
+            }
+            else
+            {
+                Debug.WriteLine($"Found {table.Count} edges");
+                var edge = table.RandomChoose(dice);
+                ApplyEdge(result, edge, dice);
+
+                result.UnusedIconicEdges -= 1;
+            }
+        }
+
+        void PickPower(Character result, PowerGroup group, Dice dice)
+        {
+
+            var powers = new List<SettingPower>();
+            var trappings = new List<SettingTrapping>();
+
+            foreach (var item in Powers)
+            {
+                if (group.AvailablePowers.Count > 0 && !group.AvailablePowers.Contains(item.Name))
+                    continue;
+
+                var requirements = item.Requires.Split(',').Select(e => e.Trim());
+                if (requirements.All(c => result.HasFeature(c, BornAHero)))
+                    powers.Add(item);
+            }
+
+            foreach (var item in Trappings)
+            {
+                if (group.AvailableTrappings.Count > 0 && !group.AvailableTrappings.Contains(item.Name))
+                    continue;
+
+                if (group.ProhibitedTrappings.Contains(item.Name))
+                    continue;
+
+                trappings.Add(item);
+            }
+
+            if (powers.Count == 0 || trappings.Count == 0)
+            {
+                result.Features.Add($"Has {group.UnusedPowers} unused powers for {group.Skill}.");
+                group.UnusedPowers = 0;
+                return;
+            }
+
+            TryAgain:
+            var trapping = dice.Choose(Trappings);
+            var power = dice.Choose(powers);
+
+            if (result.PowerGroups.ContainsPower(power.Name, trapping.Name))
+                goto TryAgain;
+
+            group.Powers.Add(new Power(power.Name, trapping.Name));
+
+            group.UnusedPowers -= 1;
+        }
+        void PickRacialEdge(Character result, Dice dice)
+        {
+            var table = new Table<SettingEdge>();
+
+            foreach (var item in SelectedRace.RacialEdges)
+            {
+                //TODO: Some edges allow duplicates
+                if (result.Edges.Any(e => e.Name == item.Name))
+                    continue; //no dups
+
+                if (!string.IsNullOrEmpty(item.UniqueGroup))
+                    if (result.Edges.Any(e => e.UniqueGroup == item.UniqueGroup))
+                        continue; //can't have multiple from a unique group (i.e. arcane background)
+
+                var requirements = item.Requires.Split(',').Select(e => e.Trim());
+                if (requirements.All(c => result.HasFeature(c, BornAHero)))
+                    table.Add(item, 1);
+            }
+            if (table.Count == 0)
+            {
+                Debug.WriteLine("No edges were available");
+            }
+            else
+            {
+                Debug.WriteLine($"Found {table.Count} edges");
+                var edge = table.RandomChoose(dice);
+                ApplyEdge(result, edge, dice);
+
+                result.UnusedRacialEdges -= 1;
             }
         }
     }

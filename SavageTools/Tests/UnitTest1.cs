@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SavageTools;
+using System;
 
 namespace Tests
 {
@@ -8,6 +10,15 @@ namespace Tests
         [TestMethod]
         public void TestMethod1()
         {
+            var story = new RiftsMissionGenerator();
+            var settings = new MissionGeneratorSettings();
+            var dice = new Dice();
+
+            for (var i = 0; i < 10; i++)
+            {
+                Console.WriteLine(story.CreateMission(dice, settings));
+                Console.WriteLine();
+            }
         }
     }
 

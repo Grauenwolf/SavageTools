@@ -14,21 +14,21 @@ namespace SavageTools.Web.Controllers
         [Route("Archetypes")]
         public IReadOnlyList<NamedItem> Archetypes(string setting)
         {
-            return Globals.GetGeneratorForSetting(setting).Archetypes.Select(a => new NamedItem(a.Name)).ToList();
+            return Globals.GetCharacterGeneratorForSetting(setting).Archetypes.Select(a => new NamedItem(a.Name)).ToList();
         }
 
         [HttpGet]
         [Route("Ranks")]
         public IReadOnlyList<NamedItem> Ranks(string setting)
         {
-            return Globals.GetGeneratorForSetting(setting).Ranks.Select(a => new NamedItem(a.Name)).ToList();
+            return Globals.GetCharacterGeneratorForSetting(setting).Ranks.Select(a => new NamedItem(a.Name)).ToList();
         }
 
         [HttpGet]
         [Route("Races")]
         public IReadOnlyList<NamedItem> Races(string setting)
         {
-            return Globals.GetGeneratorForSetting(setting).Races.Select(a => new NamedItem(a.Name)).ToList();
+            return Globals.GetCharacterGeneratorForSetting(setting).Races.Select(a => new NamedItem(a.Name)).ToList();
         }
 
 

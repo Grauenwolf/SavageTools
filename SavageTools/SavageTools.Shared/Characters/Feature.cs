@@ -6,4 +6,5 @@ namespace SavageTools.Characters
     {
         public string Name { get => Get<string>(); set => Set(value); }
 
-    }    }
+    }
+}

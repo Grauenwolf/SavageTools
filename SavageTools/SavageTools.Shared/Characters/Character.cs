@@ -9,11 +9,11 @@ namespace SavageTools.Characters
     {
         public Trait Agility { get => Get<Trait>(); set => Set(value); }
         public string Archetype { get { return Get<string>(); } set { Set(value); } }
+        public int Armor { get { return Get<int>(); } set { Set(value); } }
         public int Charisma { get { return Get<int>(); } set { Set(value); } }
         public EdgeCollection Edges => GetNew<EdgeCollection>();
         public int Experience { get => Get<int>(); set => Set(value); }
         public FeatureCollection Features => GetNew<FeatureCollection>();
-        public PersonalityCollection Personality => GetNew<PersonalityCollection>();
         public GearCollection Gear => GetNew<GearCollection>();
         public string Gender { get => Get<string>(); set => Set(value); }
         public HindranceCollection Hindrances => GetNew<HindranceCollection>();
@@ -21,10 +21,7 @@ namespace SavageTools.Characters
         public Trait MaxAgility { get => GetDefault<Trait>(12); set => Set(value); }
         public int MaximumStrain { get { return Get<int>(); } set { Set(value); } }
         [CalculatedField("MaximumStrain,Spirit,Vigor")]
-        public int MaximumStrainTotal
-        {
-            get { return MaximumStrain + Math.Min(Spirit.Score, Vigor.Score); }
-        }
+        public int MaximumStrainTotal => MaximumStrain + Math.Min(Spirit.Score, Vigor.Score);
 
         public Trait MaxSmarts { get => GetDefault<Trait>(12); set => Set(value); }
         public Trait MaxSpirit { get => GetDefault<Trait>(12); set => Set(value); }
@@ -33,20 +30,15 @@ namespace SavageTools.Characters
         public string Name { get => Get<string>(); set => Set(value); }
         public int Pace { get { return GetDefault(6); } set { Set(value); } }
         public int Parry { get { return Get<int>(); } set { Set(value); } }
-        public int ParryTotal
-        {
-            get { return 2 + (Skills.SingleOrDefault(s => s.Name == "Fighting")?.Trait.HalfScore ?? 0); }
-        }
+        public int ParryTotal => 2 + (Skills.SingleOrDefault(s => s.Name == "Fighting")?.Trait.HalfScore ?? 0);
 
+        public PersonalityCollection Personality => GetNew<PersonalityCollection>();
         public PowerGroupCollection PowerGroups => GetNew<PowerGroupCollection>();
         public string Race { get { return Get<string>(); } set { Set(value); } }
         public string Rank { get { return Get<string>(); } set { Set(value); } }
         public int Reason { get { return Get<int>(); } set { Set(value); } }
         [CalculatedField("Reason,Spirit")]
-        public int ReasonTotal
-        {
-            get { return 2 + Spirit.HalfScore + Reason; }
-        }
+        public int ReasonTotal => 2 + Spirit.HalfScore + Reason;
 
         public Trait Running { get { return GetDefault<Trait>(6); } set { Set(value); } }
         public int Size { get { return Get<int>(); } set { Set(value); } }
@@ -59,13 +51,7 @@ namespace SavageTools.Characters
         public int Toughness { get { return Get<int>(); } set { Set(value); } }
 
         [CalculatedField("Vigor,Armor,Toughness")]
-        public int ToughnessTotal
-        {
-            get { return 2 + Vigor.HalfScore + Toughness + Armor; }
-        }
-
-        public int Armor { get { return Get<int>(); } set { Set(value); } }
-
+        public int ToughnessTotal => 2 + Vigor.HalfScore + Toughness + Armor;
         public int UnusedAdvances { get { return Get<int>(); } set { Set(value); } }
         public int UnusedAttributes { get { return Get<int>(); } set { Set(value); } }
         public int UnusedEdges { get { return Get<int>(); } set { Set(value); } }
@@ -175,10 +161,7 @@ namespace SavageTools.Characters
             return false;
         }
 
-        public void Increment(string trait, Dice dice)
-        {
-            Increment(trait, 1, dice);
-        }
+        public void Increment(string trait, Dice dice) => Increment(trait, 1, dice);
 
         public void Increment(string trait, int bonus, Dice dice)
         {

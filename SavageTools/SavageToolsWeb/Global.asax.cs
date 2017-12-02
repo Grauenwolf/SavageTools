@@ -53,12 +53,14 @@ namespace SavageTools.Web
             return s_SettingFiles.Keys.ToImmutableArray();
         }
 
-        public static CharacterGenerator GetGeneratorForSetting(string settingName)
+        public static CharacterGenerator GetCharacterGeneratorForSetting(string settingName)
         {
             //CharacterGenerator isn't threadsafe so we need a new one each time.
             //We can make it thread-safe, but only if we change the Windows version of the UI to match.
             return new CharacterGenerator(s_SettingFiles[settingName]);
         }
+
+
 
     }
 }

@@ -6,27 +6,7 @@ namespace SavageTools
 {
     public static class Missing
     {
-        /// <summary>
-        /// Removes all the elements that match the conditions defined by the specified predicate.
-        /// </summary>
-        /// <param name="match"> The System.Predicate`1 delegate that defines the conditions of the elements to remove.</param>
-        /// <returns>The number of elements removed.</returns>
-        public static int RemoveAll<T>(this ObservableCollection<T> list, Predicate<T> match)
-        {
-            if (match == null)
-                throw new ArgumentNullException(nameof(match), $"{nameof(match)} is null.");
-
-            var count = 0;
-            for (int i = list.Count - 1; i >= 0; i--)
-            {
-                if (match(list[i]))
-                {
-                    list.RemoveAt(i);
-                    count += 1;
-                }
-            }
-            return count;
-        }
+        private const int InsertionSortLimit = 16;
 
         /// <summary>
         /// Creates an IComparer&lt;T&gt; from an IComparable&lt;T&gt;
@@ -49,9 +29,27 @@ namespace SavageTools
             return new ComparableToComparer<T>();
         }
 
-        private const int InsertionSortLimit = 16;
+        /// <summary>
+        /// Removes all the elements that match the conditions defined by the specified predicate.
+        /// </summary>
+        /// <param name="match"> The System.Predicate`1 delegate that defines the conditions of the elements to remove.</param>
+        /// <returns>The number of elements removed.</returns>
+        public static int RemoveAll<T>(this ObservableCollection<T> list, Predicate<T> match)
+        {
+            if (match == null)
+                throw new ArgumentNullException(nameof(match), $"{nameof(match)} is null.");
 
-
+            var count = 0;
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+                if (match(list[i]))
+                {
+                    list.RemoveAt(i);
+                    count += 1;
+                }
+            }
+            return count;
+        }
         /// <summary>
         /// In place sort.
         /// </summary>
@@ -112,6 +110,110 @@ namespace SavageTools
                 throw new ArgumentNullException("comparer", "comparer is null.");
 
             Sort(entries, 0, entries.Count - 1, new Random(), new CompareByKey<T, TKey>(comparer));
+        }
+
+        static void InsertionSort<T>(IList<T> entries, int first, int last, IComparer<T> comparer)
+        {
+            for (var i = first + 1; i <= last; i++)
+            {
+                var entry = entries[i];
+                var j = i;
+                while (j > first && comparer.Compare(entries[j - 1], entry) > 0)
+                    entries[j] = entries[--j];
+                entries[j] = entry;
+            }
+        }
+
+        static T Pivot<T>(IList<T> entries, int first, int last, Random random, IComparer<T> comparer)
+        {
+
+            var length = last + 1 - first;
+            var pivotSamples = 2 * (int)Math.Log10(length) + 1;
+            var sampleSize = Math.Min(pivotSamples, length);
+            var right = first + sampleSize - 1;
+            for (var left = first; left <= right; left++)
+            {
+                // Random sampling avoids pathological cases
+
+                Swap(entries, left, random.Next(left, last + 1));
+            }
+
+            InsertionSort(entries, first, right, comparer);
+            var median = entries[first + sampleSize / 2];
+            return median;
+        }
+
+        static void Sort<T>(IList<T> entries, int first, int last, Random random, IComparer<T> comparer)
+        {
+            var length = last + 1 - first;
+            while (length > 1)
+            {
+                if (length < InsertionSortLimit)
+                {
+                    InsertionSort(entries, first, last, comparer);
+                    return;
+                }
+
+                var median = Pivot(entries, first, last, random, comparer);
+
+                var left = first;
+                var right = last;
+
+                //partition
+                while (true)
+                {
+                    while (comparer.Compare(median, entries[left]) > 0)
+                        left++;
+                    while (comparer.Compare(median, entries[right]) < 0)
+                        right--;
+
+                    if (right <= left)
+                        break;
+
+                    Swap(entries, left, right);
+
+                    left++;
+                    right--;
+                }
+
+                if (left == right)
+                {
+                    left++;
+                    right--;
+                }
+
+
+                var leftLength = right + 1 - first;
+                var rightLength = last + 1 - left;
+
+                //recursion, shorter partition first
+                if (leftLength < rightLength)
+                {
+                    Sort(entries, first, right, random, comparer);
+                    first = left;
+                    length = rightLength;
+                }
+                else
+                {
+                    Sort(entries, left, last, random, comparer);
+                    last = right;
+                    length = leftLength;
+                }
+            }
+        }
+
+        //    InsertionSort(entries, first, right);
+        //    var median = entries[first + sampleSize / 2];
+        //    return median;
+        //}
+        static void Swap<T>(IList<T> entries, int index1, int index2)
+        {
+            if (index1 == index2)
+                return;
+
+            var entry = entries[index1];
+            entries[index1] = entries[index2];
+            entries[index2] = entry;
         }
 
         class ComparableToComparer<T> : IComparer<T> where T : IComparable<T>
@@ -216,66 +318,6 @@ namespace SavageTools
         //        }
         //    }
         //}
-
-        static void Sort<T>(IList<T> entries, int first, int last, Random random, IComparer<T> comparer)
-        {
-            var length = last + 1 - first;
-            while (length > 1)
-            {
-                if (length < InsertionSortLimit)
-                {
-                    InsertionSort(entries, first, last, comparer);
-                    return;
-                }
-
-                var median = Pivot(entries, first, last, random, comparer);
-
-                var left = first;
-                var right = last;
-
-                //partition
-                while (true)
-                {
-                    while (comparer.Compare(median, entries[left]) > 0)
-                        left++;
-                    while (comparer.Compare(median, entries[right]) < 0)
-                        right--;
-
-                    if (right <= left)
-                        break;
-
-                    Swap(entries, left, right);
-
-                    left++;
-                    right--;
-                }
-
-                if (left == right)
-                {
-                    left++;
-                    right--;
-                }
-
-
-                var leftLength = right + 1 - first;
-                var rightLength = last + 1 - left;
-
-                //recursion, shorter partition first
-                if (leftLength < rightLength)
-                {
-                    Sort(entries, first, right, random, comparer);
-                    first = left;
-                    length = rightLength;
-                }
-                else
-                {
-                    Sort(entries, left, last, random, comparer);
-                    last = right;
-                    length = leftLength;
-                }
-            }
-        }
-
         //static T Pivot<T>(IList<T> entries, int first, int last, Random random) where T : IComparable<T>
         //{
 
@@ -288,53 +330,6 @@ namespace SavageTools
         //        // Random sampling avoids pathological cases
         //        Swap(entries, left, random.Next(left, last + 1));
         //    }
-
-        //    InsertionSort(entries, first, right);
-        //    var median = entries[first + sampleSize / 2];
-        //    return median;
-        //}
-
-        static T Pivot<T>(IList<T> entries, int first, int last, Random random, IComparer<T> comparer)
-        {
-
-            var length = last + 1 - first;
-            var pivotSamples = 2 * (int)Math.Log10(length) + 1;
-            var sampleSize = Math.Min(pivotSamples, length);
-            var right = first + sampleSize - 1;
-            for (var left = first; left <= right; left++)
-            {
-                // Random sampling avoids pathological cases
-
-                Swap(entries, left, random.Next(left, last + 1));
-            }
-
-            InsertionSort(entries, first, right, comparer);
-            var median = entries[first + sampleSize / 2];
-            return median;
-        }
-
-        static void Swap<T>(IList<T> entries, int index1, int index2)
-        {
-            if (index1 == index2)
-                return;
-
-            var entry = entries[index1];
-            entries[index1] = entries[index2];
-            entries[index2] = entry;
-        }
-
-        static void InsertionSort<T>(IList<T> entries, int first, int last, IComparer<T> comparer)
-        {
-            for (var i = first + 1; i <= last; i++)
-            {
-                var entry = entries[i];
-                var j = i;
-                while (j > first && comparer.Compare(entries[j - 1], entry) > 0)
-                    entries[j] = entries[--j];
-                entries[j] = entry;
-            }
-        }
-
         //static void InsertionSort<T>(IList<T> entries, int first, int last) where T : IComparable<T>
         //{
         //    for (var i = first + 1; i <= last; i++)

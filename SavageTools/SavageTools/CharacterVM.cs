@@ -12,18 +12,13 @@ namespace SavageTools
     {
         public CharacterVM(Character character) { Character = character; }
 
+        public event EventHandler RemoveMe;
+
         public Character Character { get; }
 
         public ICommand CopyCommand => GetCommand(CopyToClipboard);
         public ICommand RemoveCommand => GetCommand(() => RemoveMe?.Invoke(this, EventArgs.Empty));
-
-
-        public event EventHandler RemoveMe;
-
-        public void CopyToClipboard()
-        {
-            Clipboard.SetText(CopyToString());
-        }
+        public void CopyToClipboard() => Clipboard.SetText(CopyToString());
 
         public string CopyToString()
         {

@@ -1,13 +1,31 @@
 ﻿
 using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Tortuga.Anchor;
 
 namespace SavageTools
 {
-
     public class Dice : RandomExtended
     {
+        ImmutableArray<Card> m_Deck;
+        public Dice()
+        {
+            var deck = new List<Card>();
+            for (var rank = Rank.Two; rank <= Rank.Ace; rank++)
+                for (var suit = Suit.Spade; suit <= Suit.Diamond; suit++)
+                    deck.Add(new Card(suit, rank));
+            deck.Add(new Card(Suit.Red, Rank.Joker));
+            deck.Add(new Card(Suit.Black, Rank.Joker));
+            m_Deck = deck.ToImmutableArray();
+        }
+
+        public Card Card()
+        {
+            return Choose(m_Deck);
+        }
+
         public int D(int count, int die)
         {
             var result = 0;
@@ -18,8 +36,6 @@ namespace SavageTools
         }
 
         public int D(int die) => D(1, die);
-
-        public int D66() => (Next(1, 7) * 10) + Next(1, 7);
 
         public int D(string dieCode)
         {
@@ -74,6 +90,7 @@ namespace SavageTools
             }
         }
 
+        public int D66() => (Next(1, 7) * 10) + Next(1, 7);
         public bool NextBoolean() => Next(0, 2) == 1;
 
         //public T ChooseWithOdds<T>(ICollection<T> list) where T : IHasOdds

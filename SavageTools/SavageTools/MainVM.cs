@@ -15,15 +15,26 @@ namespace SavageTools
             CharacterGenerator = new CharacterGenerator(new FileInfo(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), "Settings", "Core.savage-setting")));
         }
 
+        public CharacterGenerator CharacterGenerator { get => Get<CharacterGenerator>(); set => Set(value); }
 
+        public ObservableCollection<CharacterVM> Characters => GetNew<ObservableCollection<CharacterVM>>();
 
-        public ICommand LoadSettingCommand
+        public ICommand CopyAllCommand => GetCommand(CopyAll);
+
+        public ICommand CreateCharacterCommand => GetCommand(() => CreateCharacter());
+
+        public ICommand LoadSettingCommand => GetCommand(LoadSetting);
+
+        void CopyAll()
         {
-            get { return GetCommand(LoadSetting); }
-        }
-        public ICommand CreateCharacterCommand
-        {
-            get { return GetCommand(() => CreateCharacter()); }
+            var result = new StringBuilder();
+            foreach (var c in Characters)
+            {
+                result.AppendLine(c.CopyToString());
+                result.AppendLine();
+                result.AppendLine();
+            }
+            Clipboard.SetText(result.ToString());
         }
 
         void CreateCharacter()
@@ -54,24 +65,6 @@ namespace SavageTools
                 CharacterGenerator.SelectedArchetype = CharacterGenerator.Archetypes.FirstOrDefault();
 
 
-        }
-
-        public CharacterGenerator CharacterGenerator { get => Get<CharacterGenerator>(); set => Set(value); }
-
-        public ObservableCollection<CharacterVM> Characters => GetNew<ObservableCollection<CharacterVM>>();
-
-
-        public ICommand CopyAllCommand => GetCommand(CopyAll);
-        void CopyAll()
-        {
-            var result = new StringBuilder();
-            foreach (var c in Characters)
-            {
-                result.AppendLine(c.CopyToString());
-                result.AppendLine();
-                result.AppendLine();
-            }
-            Clipboard.SetText(result.ToString());
         }
     }
 }

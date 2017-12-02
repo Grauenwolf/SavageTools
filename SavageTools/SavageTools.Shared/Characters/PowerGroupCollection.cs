@@ -12,6 +12,8 @@ namespace SavageTools.Characters
             CollectionChanged += (s, e) => OnPropertyChanged("UnusedPowers");
         }
 
+        public int UnusedPowers => this.Sum(p => p.UnusedPowers);
+
         public PowerGroup this[string skill]
         {
             get
@@ -25,9 +27,6 @@ namespace SavageTools.Characters
                 return result;
             }
         }
-
-        public int UnusedPowers => this.Sum(p => p.UnusedPowers);
-
         public bool ContainsPower(string power, string trapping)
         {
             return this.Any(g => g.Powers.Any(p => p.Name == power && p.Trapping == trapping));
