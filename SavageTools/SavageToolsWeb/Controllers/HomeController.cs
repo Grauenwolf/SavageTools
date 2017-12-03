@@ -1,4 +1,5 @@
 ﻿using SavageTools.Characters;
+using SavageTools.Missions;
 using SavageTools.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -29,10 +30,10 @@ namespace SavageTools.Web.Controllers
             return View();
         }
 
-        public ActionResult RiftsMission(string setting, int pace = 6, int eventFrequency = 3, string type = "mission")
+        public ActionResult RiftsMission(int pace = 6, int eventFrequency = 3, string type = "mission")
         {
             var generator = new RiftsMissionGenerator();
-            var settings = new MissionGeneratorSettings() { Pace = pace, UseHtml = true, EventFrequency = eventFrequency };
+            var settings = new MissionOptions() { Pace = pace, UseHtml = true, EventFrequency = eventFrequency };
 
             string result = null;
             switch (type.ToLowerInvariant())
@@ -46,11 +47,19 @@ namespace SavageTools.Web.Controllers
 
             return View("~/Views/Home/Story.cshtml", (object)result);
         }
+        public ActionResult RiftsDemon()
+        {
+            var generator = new RiftsDemonGenerator(Globals.GetCharacterGeneratorForSetting("Rifts"));
+
+            var result = generator.GenerateCharacter() ?? new List<Character>();
+
+            return View("~/Views/Home/Squad.cshtml", result);
+        }
 
         public ActionResult Squad(string setting, string archetype = null, string race = null, string rank = null, int squadCount = 1)
         {
             var generator = Globals.GetCharacterGeneratorForSetting(setting);
-            var settings = new CharacterGeneratorSettings(generator);
+            var settings = new CharacterOptions(generator);
 
             if (string.IsNullOrWhiteSpace(race))
                 settings.RandomRace = true;

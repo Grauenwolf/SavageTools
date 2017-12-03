@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Tortuga.Anchor.Modeling;
@@ -11,6 +12,7 @@ namespace SavageTools.Characters
         public string Archetype { get { return Get<string>(); } set { Set(value); } }
         public int Armor { get { return Get<int>(); } set { Set(value); } }
         public int Charisma { get { return Get<int>(); } set { Set(value); } }
+        public int? Fear { get { return Get<int?>(); } set { Set(value); } }
         public EdgeCollection Edges => GetNew<EdgeCollection>();
         public int Experience { get => Get<int>(); set => Set(value); }
         public FeatureCollection Features => GetNew<FeatureCollection>();
@@ -42,6 +44,36 @@ namespace SavageTools.Characters
 
         public Trait Running { get { return GetDefault<Trait>(6); } set { Set(value); } }
         public int Size { get { return Get<int>(); } set { Set(value); } }
+
+        [CalculatedField("Size")]
+        public string SizeDescription
+        {
+            get
+            {
+                switch (Size)
+                {
+                    case -6: return "1/2  to 2 oz ";
+                    case -5: return "2  to 8 oz ";
+                    case -4: return "8 oz  to 2 lbs";
+                    case -3: return "2  to 8 lbs";
+                    case -2: return "8 to 31 lbs";
+                    case -1: return "31 to 125 lbs";
+                    case 0: return "125  to 250 lbs";
+                    case 1: return "250  to 500 lbs";
+                    case 2: return "500  to 1,000 lbs";
+                    case 3: return "1,000 lbs to 1 ton ";
+                    case 4: return "1  to 2 tons";
+                    case 5: return "2  to 4 tons";
+                    case 6: return "4  to 8 tons";
+                    case 7: return "8  to 16 tons";
+                    case 8: return "16  to 32 tons";
+                    case 9: return "32  to 64 tons";
+                    case 10: return "64 tons+";
+                    default: return "";
+                }
+            }
+        }
+
         public SkillCollection Skills => GetNew<SkillCollection>();
         public Trait Smarts { get => Get<Trait>(); set => Set(value); }
         public Trait Spirit { get => Get<Trait>(); set => Set(value); }
@@ -182,6 +214,7 @@ namespace SavageTools.Characters
                 case "Pace": Pace += bonus; return;
                 case "Running": Running += bonus; return;
                 case "Charisma": Charisma += bonus; return;
+                case "Fear": Fear += bonus; return;
                 case "Parry": Parry += bonus; return;
                 case "Toughness": Toughness += bonus; return;
                 case "Strain": Strain += bonus; return;
@@ -229,6 +262,109 @@ namespace SavageTools.Characters
                 case "Spirit": return Spirit;
             }
             throw new ArgumentException("Unknown attribute " + attribute);
+        }
+
+        public Character Clone()
+        {
+            var result = new Character()
+            {
+                Agility = Agility,
+                Archetype = Archetype,
+                Armor = Armor,
+                Charisma = Charisma,
+                Experience = Experience,
+                Fear = Fear,
+                Gender = Gender,
+                IsWildCard = IsWildCard,
+                MaxAgility = MaxAgility,
+                MaximumStrain = MaximumStrain,
+                MaxSmarts = MaxSmarts,
+                MaxSpirit = MaxSpirit,
+                MaxVigor = MaxVigor,
+                MaxStrength = MaxStrength,
+                Name = Name,
+                Pace = Pace,
+                Parry = Parry,
+                Race = Race,
+                Rank = Rank,
+                Reason = Reason,
+                Size = Size,
+                Smarts = Smarts,
+                Spirit = Spirit,
+                Status = Status,
+                Strain = Strain,
+                Strength = Strength,
+                Toughness = Toughness,
+                UnusedAdvances = UnusedAdvances,
+                UnusedAttributes = UnusedAttributes,
+                UnusedEdges = UnusedEdges,
+                UnusedHindrances = UnusedHindrances,
+                UnusedIconicEdges = UnusedIconicEdges,
+                UnusedRacialEdges = UnusedRacialEdges,
+                UnusedSkills = UnusedSkills,
+                UnusedSmartSkills = UnusedSmartSkills,
+                UseReason = UseReason,
+                UseStatus = UseStatus,
+                UseStrain = UseStrain,
+                Running = Running,
+                Vigor = Vigor,
+
+            };
+
+            result.Edges.AddRange(Edges.Select(e => e.Clone()));
+            result.Features.AddRange(Features.Select(e => e.Clone()));
+            result.Skills.AddRange(Skills.Select(e => e.Clone()));
+            result.PowerGroups.AddRange(PowerGroups.Select(e => e.Clone()));
+            result.Gear.AddRange(Gear.Select(e => e.Clone()));
+            result.Hindrances.AddRange(Hindrances.Select(e => e.Clone()));
+
+            return result;
+        }
+
+        public void CopyToStory(StoryBuilder story)
+        {
+            story.Append($"{Name} ({Gender})");
+            if (!string.IsNullOrWhiteSpace(Archetype) && Archetype != "(None)")
+                story.Append($", {Archetype}");
+            if (Race != "Human")
+                story.Append($", {Race}");
+            if (Rank != "Novice")
+                story.Append($", Rank {Rank}");
+            story.AppendLine();
+
+            story.AppendLine($"Agility {Agility}, Smarts {Smarts}, Strength {Strength}, Spirt {Spirit}, Vigor {Vigor}");
+
+            story.Append($"Charisma {Charisma}, Parry {ParryTotal}, Toughness {ToughnessTotal}, Pace {Pace}+{Running}, Size {Size}, ");
+
+            var additionTraits = new List<string>();
+
+            if (Fear == 0)
+                additionTraits.Add($"Fear");
+            else if (Fear.HasValue)
+                additionTraits.Add($"Fear {Fear}");
+
+            if (UseReason)
+                additionTraits.Add($"Reason {ReasonTotal}");
+            if (UseStatus)
+                additionTraits.Add($"Status {Status}");
+            if (UseStrain)
+                additionTraits.Add($"Strain {Strain}/{MaximumStrainTotal}");
+
+            if (additionTraits.Count > 0)
+                story.AppendLine(string.Join(", ", additionTraits));
+
+
+            story.AppendLine(string.Join(", ", Skills.Select(s => s.ShortName)));
+            story.AppendLine(string.Join(", ", Edges.Select(e => e.Name + ": " + e.Description)));
+            story.AppendLine(string.Join(", ", Hindrances.Select(h => h.Name + " " + h.LevelName + ": " + h.Description)));
+            story.AppendLine(string.Join(", ", Features.Select(h => h.Name)));
+            story.AppendLine(string.Join(", ", Personality.Select(h => h.Name)));
+
+            foreach (var group in PowerGroups)
+                story.AppendLine($"{group.Skill}, Power Points {group.PowerPoints}, Powers: {string.Join(", ", group.Powers.Select(p => p.LongName))}");
+
+            story.AppendLine(string.Join(", ", Gear.Select(h => h.Name + (string.IsNullOrEmpty(h.Description) ? "" : ": " + h.Description))));
+
         }
     }
 }

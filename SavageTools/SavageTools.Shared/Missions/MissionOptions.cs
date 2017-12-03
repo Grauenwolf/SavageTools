@@ -1,6 +1,6 @@
-﻿namespace SavageTools
+﻿namespace SavageTools.Missions
 {
-    public class MissionGeneratorSettings
+    public class MissionOptions
     {
         public decimal DistancePerDay => Pace / 2.0M * 8M;
         public int Pace { get; set; } = 6;

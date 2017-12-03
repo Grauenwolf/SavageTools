@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Rifts" BornAHero="true" UseStrain="true">
+  <References>
+    <Reference Name="Rifts Tomorrow Legion" />
+    <Reference Name="Savage Foes of North America" />
+  </References>
+
+</Setting>
+

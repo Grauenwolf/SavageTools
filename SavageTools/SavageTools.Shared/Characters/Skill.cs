@@ -24,6 +24,10 @@ namespace SavageTools.Characters
         public string ShortName => $"{Name} {Trait}";
         public Trait Trait { get => GetDefault<Trait>(4); set => Set(value); }
         public override string ToString() => LongName;
+        public Skill Clone()
+        {
+            return new Skill(Name, Attribute) { Trait = Trait };
+        }
     }
 }
 

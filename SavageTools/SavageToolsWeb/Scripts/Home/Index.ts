@@ -88,3 +88,8 @@ function generateRiftsMission(pace: number, eventFrequency: number, type: string
     window.location.href = "/Home/RiftsMission?pace=" + pace + "&eventFrequency=" + eventFrequency + "&type=" + type;
 }
 
+function generateRiftsDemon()
+{
+    window.location.href = "/Home/RiftsDemon";
+}
+

@@ -6,18 +6,18 @@ using Tortuga.Anchor.Modeling;
 
 namespace SavageTools.Characters
 {
-    public class CharacterGeneratorSettings : ModelBase
+    public class CharacterOptions : ModelBase
     {
-        public CharacterGeneratorSettings(CharacterGenerator characterGenerator)
+        public CharacterOptions(CharacterGenerator characterGenerator)
         {
             CharacterGenerator = characterGenerator ?? throw new ArgumentNullException(nameof(characterGenerator));
         }
 
+        public bool BornAHero { get => GetDefault(false); set => Set(value); }
         public CharacterGenerator CharacterGenerator { get; }
         public bool RandomArchetype { get => GetDefault(false); set => Set(value); }
         public bool RandomRace { get => GetDefault(false); set => Set(value); }
         public bool RandomRank { get => GetDefault(false); set => Set(value); }
-
         public SettingArchetype SelectedArchetype
         {
             get { return Get<SettingArchetype>(); }
@@ -58,6 +58,9 @@ namespace SavageTools.Characters
 
             if (currentRank != null && SelectedRank == null) //selected rank was replaced so we need to reselect it
                 SelectedRank = CharacterGenerator.Ranks.Single(a => a.Name == currentRank);
+
+            if (CharacterGenerator.BornAHeroSetting)
+                BornAHero = true;
 
         }
     }

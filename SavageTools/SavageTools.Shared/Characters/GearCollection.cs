@@ -1,14 +1,12 @@
-﻿using System.Linq;
-using Tortuga.Anchor.Modeling;
+﻿using Tortuga.Anchor.Modeling;
 
 namespace SavageTools.Characters
 {
     public class GearCollection : ChangeTrackingModelCollection<Gear>
     {
-        internal void Add(string name, string description)
+        public void Add(string name, string description = null)
         {
-            if (!this.Any(f => f.Name == name))
-                Add(new Gear() { Name = name, Description = description });
+            Add(new Gear() { Name = name, Description = description });
         }
     }
 }

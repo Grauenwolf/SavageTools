@@ -1,4 +1,5 @@
-﻿using Tortuga.Anchor.Modeling;
+﻿using System;
+using Tortuga.Anchor.Modeling;
 
 namespace SavageTools.Characters
 {
@@ -26,6 +27,11 @@ namespace SavageTools.Characters
         }
 
         public string Name { get => Get<string>(); set => Set(value); }
+
+        public Hindrance Clone()
+        {
+            return new Hindrance() { Description = Description, Name = Name, Level = Level };
+        }
     }
 }
 

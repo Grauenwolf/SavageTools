@@ -11,41 +11,41 @@
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Grid.Column="0">
             <Label Content="Archetype" />
             <StackPanel>
-                <ComboBox ItemsSource="{Binding CharacterGenerator.Archetypes}" SelectedItem="{Binding CharacterGeneratorSettings.SelectedArchetype}" Margin="4">
+                <ComboBox ItemsSource="{Binding CharacterGenerator.Archetypes}" SelectedItem="{Binding CharacterOptions.SelectedArchetype}" Margin="4">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ComboBox>
-                <CheckBox Content="Random" IsChecked="{Binding CharacterGeneratorSettings.RandomArchetype}"/>
+                <CheckBox Content="Random" IsChecked="{Binding CharacterOptions.RandomArchetype}"/>
             </StackPanel>
             <Label Content="Race" />
             <StackPanel>
-                <ComboBox ItemsSource="{Binding CharacterGenerator.Races}" SelectedItem="{Binding CharacterGeneratorSettings.SelectedRace}" Margin="4">
+                <ComboBox ItemsSource="{Binding CharacterGenerator.Races}" SelectedItem="{Binding CharacterOptions.SelectedRace}" Margin="4">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ComboBox>
-                <CheckBox Content="Random" IsChecked="{Binding CharacterGeneratorSettings.RandomRace}"/>
+                <CheckBox Content="Random" IsChecked="{Binding CharacterOptions.RandomRace}"/>
             </StackPanel>
             <Label Content="Rank" />
             <StackPanel>
-                <ComboBox ItemsSource="{Binding CharacterGenerator.Ranks}" SelectedItem="{Binding CharacterGeneratorSettings.SelectedRank}" Margin="4">
+                <ComboBox ItemsSource="{Binding CharacterGenerator.Ranks}" SelectedItem="{Binding CharacterOptions.SelectedRank}" Margin="4">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}" />
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ComboBox>
-                <CheckBox Content="Random" IsChecked="{Binding CharacterGeneratorSettings.RandomRank}"/>
+                <CheckBox Content="Random" IsChecked="{Binding CharacterOptions.RandomRank}"/>
             </StackPanel>
 
             <StackPanel>
-                <CheckBox Content="Wild Card" IsChecked="{Binding CharacterGeneratorSettings.WildCard}" Margin="4"/>
-                <CheckBox Content="Born A Hero" IsChecked="{Binding CharacterGenerator.BornAHero}" Margin="4" ToolTip="If checked, ranks are ignored for edge selection."/>
+                <CheckBox Content="Wild Card" IsChecked="{Binding CharacterOptions.WildCard}" Margin="4"/>
+                <CheckBox Content="Born A Hero" IsChecked="{Binding CharacterOptions.BornAHero}" Margin="4" ToolTip="If checked, ranks are ignored for edge selection."/>
             </StackPanel>
         </StackPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" >

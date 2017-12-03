@@ -12,17 +12,17 @@ namespace SavageTools.Characters
 
         public Trait(string dieCode)
         {
-            dieCode = dieCode.ToUpperInvariant();
+            dieCode = dieCode.ToLowerInvariant();
             switch (dieCode)
             {
-                case "2D": Score = 2; return;
-                case "4D": Score = 4; return;
-                case "6D": Score = 6; return;
-                case "8D": Score = 8; return;
-                case "10D": Score = 10; return;
-                case "12D": Score = 12; return;
+                case "d2": Score = 2; return;
+                case "d4": Score = 4; return;
+                case "d6": Score = 6; return;
+                case "d8": Score = 8; return;
+                case "d10": Score = 10; return;
+                case "d12": Score = 12; return;
             }
-            if (dieCode.StartsWith("12D+"))
+            if (dieCode.StartsWith("d12+"))
             {
                 Score = 12 + int.Parse(dieCode.Substring(4));
                 return;

@@ -70,13 +70,18 @@
             <td colspan="2">Normally you draw 1 card every 3 days, with a Jack or better meaning trouble.</td>
         </tr>
         <tr>
-            <th>Rifts</th>
-            <td>Requires Rifts GM Handbook and Savage Foes of North America</td>
+            <th rowspan="2">Rifts</th>
+            <td rowspan="2">Requires Rifts GM Handbook and Savage Foes of North America</td>
             <td colspan="6">
                 <input type="button" value="Mission" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'), 'mission')" />
                 <input type="button" value="Rift" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'), 'rift')" />
                 <input type="button" value="Ley Line Storm" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'), 'leylinestorm')" />
                 <input type="button" value="Trouble" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'), 'trouble')" />
+            </td>
+        </tr>
+         <tr>
+            <td colspan="6">
+                <input type="button" value="It Came From the Rifts" onclick="generateRiftsDemon()" />
             </td>
         </tr>
     </table>

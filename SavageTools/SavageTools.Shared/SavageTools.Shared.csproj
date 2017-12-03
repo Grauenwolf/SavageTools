@@ -56,7 +56,7 @@
     <Compile Include="Card.cs" />
     <Compile Include="Characters\CharacterGenerator.cs" />
     <Compile Include="Characters\Character.cs" />
-    <Compile Include="Characters\CharacterGeneratorSettings.cs" />
+    <Compile Include="Characters\CharacterOptions.cs" />
     <Compile Include="Characters\Edge.cs" />
     <Compile Include="Characters\EdgeCollection.cs" />
     <Compile Include="Characters\Feature.cs" />
@@ -71,6 +71,7 @@
     <Compile Include="Characters\PowerGroupCollection.cs" />
     <Compile Include="Characters\PowerCollection.cs" />
     <Compile Include="Characters\PowerGroup.cs" />
+    <Compile Include="Characters\RiftsDemonGenerator.cs" />
     <Compile Include="Characters\StringCollection.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Missions\RiftsMissionGenerator.cs" />
@@ -84,10 +85,10 @@
     <Compile Include="Characters\Skill.cs" />
     <Compile Include="Characters\SkillCollection.cs" />
     <Compile Include="Characters\Trait.cs" />
-    <Compile Include="Missions\StoryBuilder.cs" />
+    <Compile Include="StoryBuilder.cs" />
     <Compile Include="Suit.cs" />
     <Compile Include="Table.cs" />
-    <Compile Include="Missions\MissionGeneratorSettings.cs" />
+    <Compile Include="Missions\MissionOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -95,37 +96,40 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Settings\Modern.savage-setting">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Settings\Rifts.savage-setting">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Settings\Rippers.savage-setting">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Settings\Arcana.savage-setting">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Settings\Fantasy Companion.savage-setting">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Settings\Savage Foes of North America.savage-setting">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Settings\Rifts Tomorrow Legion.savage-setting">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Settings\Super Powers.savage-setting">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Settings\Weird Science.savage-setting">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Settings\Psionics.savage-setting">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Settings\Miracles.savage-setting">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Settings\Magic.savage-setting">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Settings\Core.savage-setting">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

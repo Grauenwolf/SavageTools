@@ -22,6 +22,10 @@ namespace SavageTools.Characters
         public string Name { get => Get<string>(); set => Set(value); }
         public string Trapping { get => Get<string>(); set => Set(value); }
         public override string ToString() => LongName;
+        public Power Clone()
+        {
+            return new Power(Name, Trapping);
+        }
     }
 }
 

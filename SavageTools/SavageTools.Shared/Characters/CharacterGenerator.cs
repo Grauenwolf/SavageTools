@@ -28,7 +28,7 @@ namespace SavageTools.Characters
         }
 
         public ObservableCollectionExtended<SettingArchetype> Archetypes => GetNew<ObservableCollectionExtended<SettingArchetype>>();
-        public bool BornAHero { get => GetDefault(false); set => Set(value); }
+        public bool BornAHeroSetting { get => GetDefault(false); private set => Set(value); }
         public ObservableCollectionExtended<SettingEdge> Edges => GetNew<ObservableCollectionExtended<SettingEdge>>();
         public ObservableCollectionExtended<SettingHindrance> Hindrances => GetNew<ObservableCollectionExtended<SettingHindrance>>();
         public string NamePrefix { get => Get<string>(); set => Set(value); }
@@ -44,32 +44,64 @@ namespace SavageTools.Characters
         public bool UseReason { get => Get<bool>(); set => Set(value); }
         public bool UseStatus { get => Get<bool>(); set => Set(value); }
         public bool UseStrain { get => Get<bool>(); set => Set(value); }
+        public void AddPower(Character result, string arcaneSkill, string power, Dice dice)
+        {
+            var trappings = new List<SettingTrapping>();
+            var group = result.PowerGroups[arcaneSkill];
 
-        public Character GenerateCharacter(CharacterGeneratorSettings settings, Dice dice = null)
+            foreach (var item in Trappings)
+            {
+                if (group.AvailableTrappings.Count > 0 && !group.AvailableTrappings.Contains(item.Name))
+                    continue;
+
+                if (group.ProhibitedTrappings.Contains(item.Name))
+                    continue;
+
+                trappings.Add(item);
+            }
+
+            if (trappings.Count == 0)
+                trappings.Add(new SettingTrapping() { Name = "None" });
+
+            var trapping = dice.Choose(Trappings);
+
+            group.Powers.Add(new Power(power, trapping.Name));
+        }
+
+        public void ApplyEdge(Character result, Dice dice, string edgeName, string description = null)
+        {
+            var edge = Edges.SingleOrDefault(x => string.Equals(x.Name, edgeName, StringComparison.OrdinalIgnoreCase));
+            if (edge == null)
+                result.Edges.Add(edgeName, description);
+            else
+                ApplyEdge(result, edge, dice);
+        }
+
+        public Character GenerateCharacter(CharacterOptions options, Dice dice = null)
         {
             dice = dice ?? new Dice();
 
-            if (settings.RandomArchetype)
+            if (options.RandomArchetype)
             {
-                var list = Archetypes.Where(a => settings.WildCard || !a.WildCard).ToList(); //Don't pick wildcard archetypes unless WildCard is checked.
-                settings.SelectedArchetype = dice.Choose(list);
+                var list = Archetypes.Where(a => options.WildCard || !a.WildCard).ToList(); //Don't pick wildcard archetypes unless WildCard is checked.
+                options.SelectedArchetype = dice.Choose(list);
             }
-            if (settings.RandomRace && string.IsNullOrEmpty(settings.SelectedArchetype.Race))
+            if (options.RandomRace && string.IsNullOrEmpty(options.SelectedArchetype.Race))
             {
                 var list = Races.Where(r => r.Name != "(Special)").ToList();
-                settings.SelectedRace = dice.Choose(list);
+                options.SelectedRace = dice.Choose(list);
             }
-            if (settings.RandomRank)
+            if (options.RandomRank)
             {
                 var table = new Table<SettingRank>();
                 foreach (var item in Ranks)
                     table.Add(item, 100 - item.Experience); //this should weigh it towards novice
 
-                settings.SelectedRank = table.RandomChoose(dice);
+                options.SelectedRank = table.RandomChoose(dice);
             }
 
 
-            var result = new Character() { Rank = settings.SelectedRank.Name, IsWildCard = settings.WildCard, UseReason = UseReason, UseStatus = UseStatus, UseStrain = UseStrain };
+            var result = new Character() { Rank = options.SelectedRank.Name, IsWildCard = options.WildCard, UseReason = UseReason, UseStatus = UseStatus, UseStrain = UseStrain };
 
             var name = NameService.CreateRandomPerson(dice);
             result.Name = name.FullName;
@@ -81,13 +113,13 @@ namespace SavageTools.Characters
 
 
 
-            ApplyArchetype(result, dice, settings.SelectedArchetype);
+            ApplyArchetype(result, dice, options.SelectedArchetype);
 
-            ApplyRace(result, dice, settings.SelectedRace);
+            ApplyRace(result, dice, options.SelectedRace);
 
             //Add the rank
-            result.UnusedAdvances = settings.SelectedRank.UnusedAdvances;
-            result.Experience = settings.SelectedRank.Experience;
+            result.UnusedAdvances = options.SelectedRank.UnusedAdvances;
+            result.Experience = options.SelectedRank.Experience;
 
 
             if (result.UnusedHindrances == 0)//Add some hindrances to make it interesting
@@ -123,10 +155,10 @@ namespace SavageTools.Characters
 
                 //Pick up racial and iconic edges early because they can grant skills
                 if (result.UnusedRacialEdges > 0)
-                    PickRacialEdge(result, dice, settings.SelectedRace);
+                    PickRacialEdge(result, dice, options.SelectedRace, options.BornAHero);
 
                 if (result.UnusedIconicEdges > 0)
-                    PickIconicEdge(result, dice, settings.SelectedArchetype);
+                    PickIconicEdge(result, dice, options.SelectedArchetype, options.BornAHero);
 
                 if (result.UnusedAttributes > 0)
                     PickAttribute(result, dice);
@@ -138,7 +170,7 @@ namespace SavageTools.Characters
                     PickSkill(result, dice);
 
                 if (result.UnusedEdges > 0)
-                    PickEdge(result, dice, settings.SelectedArchetype, settings.SelectedRace);
+                    PickEdge(result, dice, options.SelectedArchetype, options.SelectedRace, options.BornAHero);
 
 
 
@@ -178,7 +210,7 @@ namespace SavageTools.Characters
             //pick powers
             foreach (var group in result.PowerGroups)
                 while (group.UnusedPowers > 0)
-                    PickPower(result, group, dice);
+                    PickPower(result, group, dice, options.BornAHero);
 
             //Remove the skills that were not chosen
             foreach (var item in result.Skills.Where(s => s.Trait == 0).ToList())
@@ -192,6 +224,10 @@ namespace SavageTools.Characters
             return result;
         }
 
+        public IEnumerable<SettingSkillOption> KnowledgeSkills()
+        {
+            return Skills.Where(x => x.Name.StartsWith("Knowledge "));
+        }
         public void LoadSetting(FileInfo file)
         {
             Setting book;
@@ -203,8 +239,9 @@ namespace SavageTools.Characters
                 return; //already loaded
 
             Settings.Add(book.Name);
+
             if (book.BornAHero)
-                BornAHero = true;
+                BornAHeroSetting = true;
 
             if (book.UseReason)
                 UseReason = true;
@@ -282,6 +319,10 @@ namespace SavageTools.Characters
                 }
 
             NamePrefix = book.NamePrefix;
+        }
+        public void PickEdge(Character result, Dice dice, bool bornAHero)
+        {
+            PickEdge(result, dice, null, null, bornAHero);
         }
 
         static void ApplyEdge(Character result, SettingEdge edge, Dice dice)
@@ -468,7 +509,6 @@ namespace SavageTools.Characters
                 skill.Trait += 1;
             }
         }
-
         void AddPower(Character result, SettingPower power, Dice dice)
         {
             var trappings = new List<SettingTrapping>();
@@ -666,14 +706,14 @@ namespace SavageTools.Characters
             var result = Hindrances.FirstOrDefault(e => e.Name == prototype.Name);
             return result ?? prototype;
         }
-        void PickEdge(Character result, Dice dice, SettingArchetype archetype, SettingRace race)
+        void PickEdge(Character result, Dice dice, SettingArchetype archetype, SettingRace race, bool bornAHero)
         {
             var table = new Table<SettingEdge>();
             var edgeList = (IEnumerable<SettingEdge>)Edges;
 
-            if (archetype.IconicEdges != null)
+            if (archetype?.IconicEdges != null)
                 edgeList = edgeList.Concat(archetype.IconicEdges);
-            if (race.RacialEdges != null)
+            if (race?.RacialEdges != null)
                 edgeList = edgeList.Concat(race.RacialEdges);
 
             foreach (var item in edgeList)
@@ -687,7 +727,7 @@ namespace SavageTools.Characters
                         continue; //can't have multiple from a unique group (i.e. arcane background)
 
                 var requirements = item.Requires.Split(',').Select(e => e.Trim());
-                if (requirements.All(c => result.HasFeature(c, BornAHero)))
+                if (requirements.All(c => result.HasFeature(c, bornAHero)))
                     table.Add(item, 1);
             }
             if (table.Count == 0)
@@ -750,7 +790,7 @@ namespace SavageTools.Characters
 
             result.UnusedHindrances -= useMajor ? 2 : 1;
         }
-        void PickIconicEdge(Character result, Dice dice, SettingArchetype archetype)
+        void PickIconicEdge(Character result, Dice dice, SettingArchetype archetype, bool bornAHero)
         {
             var table = new Table<SettingEdge>();
 
@@ -765,7 +805,7 @@ namespace SavageTools.Characters
                         continue; //can't have multiple from a unique group (i.e. arcane background)
 
                 var requirements = item.Requires.Split(',').Select(e => e.Trim());
-                if (requirements.All(c => result.HasFeature(c, BornAHero)))
+                if (requirements.All(c => result.HasFeature(c, bornAHero)))
                     table.Add(item, 1);
             }
             if (table.Count == 0)
@@ -782,7 +822,7 @@ namespace SavageTools.Characters
             }
         }
 
-        void PickPower(Character result, PowerGroup group, Dice dice)
+        void PickPower(Character result, PowerGroup group, Dice dice, bool bornAHero)
         {
 
             var powers = new List<SettingPower>();
@@ -794,7 +834,7 @@ namespace SavageTools.Characters
                     continue;
 
                 var requirements = item.Requires.Split(',').Select(e => e.Trim());
-                if (requirements.All(c => result.HasFeature(c, BornAHero)))
+                if (requirements.All(c => result.HasFeature(c, bornAHero)))
                     powers.Add(item);
             }
 
@@ -827,7 +867,7 @@ namespace SavageTools.Characters
 
             group.UnusedPowers -= 1;
         }
-        void PickRacialEdge(Character result, Dice dice, SettingRace race)
+        void PickRacialEdge(Character result, Dice dice, SettingRace race, bool bornAHero)
         {
             var table = new Table<SettingEdge>();
 
@@ -842,7 +882,7 @@ namespace SavageTools.Characters
                         continue; //can't have multiple from a unique group (i.e. arcane background)
 
                 var requirements = item.Requires.Split(',').Select(e => e.Trim());
-                if (requirements.All(c => result.HasFeature(c, BornAHero)))
+                if (requirements.All(c => result.HasFeature(c, bornAHero)))
                     table.Add(item, 1);
             }
             if (table.Count == 0)

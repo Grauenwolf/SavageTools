@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SavageTools.Missions;
+using System;
 using System.Net;
 using System.Text;
 
@@ -6,18 +7,21 @@ namespace SavageTools
 {
     public class StoryBuilder
     {
-        readonly MissionGeneratorSettings m_Settings;
+        readonly MissionOptions m_Settings;
         readonly StringBuilder m_Story = new StringBuilder();
         bool m_NeedsTab = true;
 
         int m_TabDepth;
 
-        public StoryBuilder(MissionGeneratorSettings settings)
+        //TOOD: Add Markdown options
+
+
+        public StoryBuilder(MissionOptions settings = null)
         {
-            m_Settings = settings ?? throw new ArgumentNullException(nameof(settings), $"{nameof(settings)} is null.");
+            m_Settings = settings ?? new MissionOptions();
         }
 
-        public MissionGeneratorSettings Settings => m_Settings;
+        public MissionOptions Settings => m_Settings;
 
         public void Append(string value)
         {
@@ -69,6 +73,10 @@ namespace SavageTools
         {
             m_TabDepth += 1;
             return new IndentToken(this);
+        }
+        public void AppendLine()
+        {
+            AppendLine("");
         }
 
         class IndentToken : IDisposable

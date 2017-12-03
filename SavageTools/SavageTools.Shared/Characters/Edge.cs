@@ -8,6 +8,16 @@ namespace SavageTools.Characters
         public string Description { get => Get<string>(); set => Set(value); }
         public string Name { get => Get<string>(); set => Set(value); }
         public string UniqueGroup { get => Get<string>(); set => Set(value); }
+
+        public Edge Clone()
+        {
+            return new Edge()
+            {
+                Description = Description,
+                Name = Name,
+                UniqueGroup = UniqueGroup
+            };
+        }
     }
 }
 

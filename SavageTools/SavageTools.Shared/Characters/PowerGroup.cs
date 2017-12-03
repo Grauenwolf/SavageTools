@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Tortuga.Anchor.Modeling;
 
 namespace SavageTools.Characters
@@ -31,6 +32,19 @@ namespace SavageTools.Characters
         public string Skill { get => Get<string>(); set => Set(value); }
 
         public int UnusedPowers { get => Get<int>(); set => Set(value); }
+
+
+
+        public PowerGroup Clone()
+        {
+            var result = new PowerGroup() { PowerPoints = PowerPoints, Skill=Skill, UnusedPowers=UnusedPowers };
+
+            result.ProhibitedTrappings.AddRange(ProhibitedTrappings);
+            result.AvailableTrappings.AddRange(AvailableTrappings);
+            result.Powers.AddRange(Powers.Select(x => x.Clone()));
+
+            return result;
+        }
     }
 }
 

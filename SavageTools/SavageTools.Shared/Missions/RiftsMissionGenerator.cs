@@ -1,54 +1,48 @@
 ﻿using System;
 
-namespace SavageTools
+namespace SavageTools.Missions
 {
+
+
+
     public class RiftsMissionGenerator
     {
-        public string CreateMission(Dice dice, MissionGeneratorSettings settings)
+        public string CreateMission(Dice dice, MissionOptions options)
         {
-            var story = new StoryBuilder(settings);
+            var story = new StoryBuilder(options);
 
             var roll = dice.D(20);
-            if (roll <= 2)
-                Survey(story, dice);
-            else if (roll <= 4)
-                CommunicationLines(story, dice);
-            else if (roll <= 6)
-                ArcaneAnomalies(story, dice);
-            else if (roll <= 10)
-                CommunityOutreach(story, dice);
-            else if (roll <= 12)
-                EmergencyRelief(story, dice);
-            else if (roll <= 14)
-                Exploration(story, dice);
-            else if (roll <= 17)
-                SecurityPatrol(story, dice);
-            else if (roll <= 19)
-                Interdiction(story, dice);
-            else if (roll <= 20)
-                MonsterHunting(story, dice);
+            if (roll <= 2) Survey(story, dice);
+            else if (roll <= 4) CommunicationLines(story, dice);
+            else if (roll <= 6) ArcaneAnomalies(story, dice);
+            else if (roll <= 10) CommunityOutreach(story, dice);
+            else if (roll <= 12) EmergencyRelief(story, dice);
+            else if (roll <= 14) Exploration(story, dice);
+            else if (roll <= 17) SecurityPatrol(story, dice);
+            else if (roll <= 19) Interdiction(story, dice);
+            else MonsterHunting(story, dice);
 
 
             return story.ToString();
         }
 
-        public string CreateRift(Dice dice, MissionGeneratorSettings settings)
+        public string CreateRift(Dice dice, MissionOptions options)
         {
-            var story = new StoryBuilder(settings);
+            var story = new StoryBuilder(options);
             Rift(story, dice);
             return story.ToString();
         }
 
-        public string CreateLeyLineStorm(Dice dice, MissionGeneratorSettings settings)
+        public string CreateLeyLineStorm(Dice dice, MissionOptions options)
         {
-            var story = new StoryBuilder(settings);
+            var story = new StoryBuilder(options);
             LeyLineStorm(story, dice);
             return story.ToString();
         }
 
-        public string CreateTrouble(Dice dice, MissionGeneratorSettings settings)
+        public string CreateTrouble(Dice dice, MissionOptions options)
         {
-            var story = new StoryBuilder(settings);
+            var story = new StoryBuilder(options);
             var riftInvolved = false;
             Trouble(story, dice, ref riftInvolved);
             return story.ToString();
@@ -69,24 +63,18 @@ namespace SavageTools
                 {
                     story.Append("Arcane Artifact: ");
                     var roll2 = dice.D(6);
-                    if (roll2 < 3)
-                        story.AppendLine("Nothing");
-                    else if (roll2 <= 5)
-                        story.AppendLine("Cheap TW gadget");
-                    else
-                        story.AppendLine("Unique and powerful");
+                    if (roll2 < 3) story.AppendLine("Nothing");
+                    else if (roll2 <= 5) story.AppendLine("Cheap TW gadget");
+                    else story.AppendLine("Unique and powerful");
 
                 }
                 else if (roll == 2)
                 {
                     story.Append("Ghosts: ");
                     var roll2 = dice.D(6);
-                    if (roll2 < 3)
-                        story.AppendLine("Hoax");
-                    else if (roll2 <= 5)
-                        story.AppendLine("Real");
-                    else
-                        story.AppendLine("Horror (e..g Neuron Beast or a Witchling)");
+                    if (roll2 < 3) story.AppendLine("Hoax");
+                    else if (roll2 <= 5) story.AppendLine("Real");
+                    else story.AppendLine("Horror (e..g Neuron Beast or a Witchling)");
                 }
                 else if (roll == 3)
                 {
@@ -218,14 +206,10 @@ namespace SavageTools
         decimal Distance(Dice dice, int modifier = 0)
         {
             var roll = dice.D(20) + modifier;
-            if (roll <= 4)
-                return dice.D(4) * 10;
-            else if (roll <= 12)
-                return dice.D(2, 6) * 20;
-            else if (roll <= 18)
-                return dice.D(3, 6) * 50;
-            else
-                return dice.D(2, 10) * 100;
+            if (roll <= 4) return dice.D(4) * 10;
+            else if (roll <= 12) return dice.D(2, 6) * 20;
+            else if (roll <= 18) return dice.D(3, 6) * 50;
+            else return dice.D(2, 10) * 100;
         }
 
         string DistanceText(decimal distance)
@@ -306,12 +290,9 @@ namespace SavageTools
                 else if (roll <= 17)
                 {
                     var d3 = dice.D(6);
-                    if (d3 <= 4)
-                        story.AppendLine("Cult, harmless");
-                    else if (d3 <= 5)
-                        story.AppendLine("Dark cult, powerless");
-                    else if (d3 <= 6)
-                        story.AppendLine("Darl cult, powerful. (e.g. a necromancer and her Grim Reaper Cult followers)");
+                    if (d3 <= 4) story.AppendLine("Cult, harmless");
+                    else if (d3 <= 5) story.AppendLine("Dark cult, powerless");
+                    else if (d3 <= 6) story.AppendLine("Darl cult, powerful. (e.g. a necromancer and her Grim Reaper Cult followers)");
                 }
                 else if (roll <= 20)
                 {
@@ -326,32 +307,24 @@ namespace SavageTools
             var roll = dice.D(6) + modifier;
             if (usePrefix)
                 story.Append("Leader is ");
-            if (roll <= 1)
-                story.AppendLine("War Weary");
-            else if (roll <= 3)
-                story.AppendLine("Noncommittal");
-            else if (roll <= 5)
-                story.AppendLine("Wary");
-            else
-                story.AppendLine("Aggressive");
+
+            if (roll <= 1) story.AppendLine("War Weary");
+            else if (roll <= 3) story.AppendLine("Noncommittal");
+            else if (roll <= 5) story.AppendLine("Wary");
+            else story.AppendLine("Aggressive");
         }
 
         void OtherAuthorityFigure(StoryBuilder story, Dice dice, int modifier = 0)
         {
-            var roll = dice.D(6) + modifier;
             story.Append("Other authority figure is ");
-            if (roll <= 1)
-                OppositionLeader(story, dice, usePrefix: false);
-            else if (roll <= 2)
-                story.AppendLine("Greedy");
-            else if (roll <= 3)
-                story.AppendLine("Ambitious");
-            else if (roll <= 4)
-                story.AppendLine("Cowardly");
-            else if (roll <= 5)
-                story.AppendLine("Apathetic");
-            else
-                story.AppendLine("Sympathetic");
+
+            var roll = dice.D(6) + modifier;
+            if (roll <= 1) OppositionLeader(story, dice, usePrefix: false);
+            else if (roll <= 2) story.AppendLine("Greedy");
+            else if (roll <= 3) story.AppendLine("Ambitious");
+            else if (roll <= 4) story.AppendLine("Cowardly");
+            else if (roll <= 5) story.AppendLine("Apathetic");
+            else story.AppendLine("Sympathetic");
         }
 
         void Encounter(StoryBuilder story, Dice dice)
@@ -511,9 +484,12 @@ namespace SavageTools
             }
         }
 
+
+
+
         void ItCameFromTheRift(StoryBuilder story, Dice dice)
         {
-            story.AppendLine("It came from the rift = FINISH ME");
+            story.AppendLine("It came from the rift.");
         }
 
         void LeyLineSize(StoryBuilder story, Dice dice)
@@ -578,9 +554,7 @@ namespace SavageTools
             using (story.Indent())
             {
                 if (card.Rank >= Rank.Jack)
-                {
                     Trouble(story, dice, ref riftInvolved);
-                }
                 else
                     story.AppendLine("No event");
             }
@@ -603,22 +577,14 @@ namespace SavageTools
         void PlotThickens(StoryBuilder story, Dice dice)
         {
             var roll = dice.D(8);
-            if (roll <= 1)
-                story.AppendLine("An old enemy is involved.");
-            else if (roll <= 2)
-                story.AppendLine("A former love interest is mixed up in things somehow.");
-            else if (roll <= 3)
-                story.AppendLine("An ally is working undercover in the situation.");
-            else if (roll <= 4)
-                story.AppendLine("One of the enemy force members has a secret agenda at work.");
-            else if (roll <= 5)
-                story.AppendLine("Innocents are directly in the line of fire, held as captives, or are otherwise in danger.");
-            else if (roll <= 6)
-                story.AppendLine("Someone’s emotional or ethical Hindrance is directly engaged b");
-            else if (roll <= 7)
-                story.AppendLine("Someone’s social or behavioral Hindrance is directly engaged");
-            else
-                story.AppendLine("Someone’s physical Hindrance is directly engaged");
+            if (roll <= 1) story.AppendLine("An old enemy is involved.");
+            else if (roll <= 2) story.AppendLine("A former love interest is mixed up in things somehow.");
+            else if (roll <= 3) story.AppendLine("An ally is working undercover in the situation.");
+            else if (roll <= 4) story.AppendLine("One of the enemy force members has a secret agenda at work.");
+            else if (roll <= 5) story.AppendLine("Innocents are directly in the line of fire, held as captives, or are otherwise in danger.");
+            else if (roll <= 6) story.AppendLine("Someone’s emotional or ethical Hindrance is directly engaged b");
+            else if (roll <= 7) story.AppendLine("Someone’s social or behavioral Hindrance is directly engaged");
+            else story.AppendLine("Someone’s physical Hindrance is directly engaged");
         }
 
         void Rift(StoryBuilder story, Dice dice)
@@ -838,16 +804,11 @@ namespace SavageTools
                     Contact(story, dice);
                 }
             }
-            else if (roll <= 2)
-                story.AppendLine("A cache of weapons and ammunition");
-            else if (roll <= 3)
-                story.AppendLine("A powerful magical artifact");
-            else if (roll <= 4)
-                story.AppendLine("A revelation of very important information.");
-            else if (roll <= 5)
-                story.AppendLine("A useful and safe location");
-            else
-                story.AppendLine("A large sum of credits");
+            else if (roll <= 2) story.AppendLine("A cache of weapons and ammunition");
+            else if (roll <= 3) story.AppendLine("A powerful magical artifact");
+            else if (roll <= 4) story.AppendLine("A revelation of very important information.");
+            else if (roll <= 5) story.AppendLine("A useful and safe location");
+            else story.AppendLine("A large sum of credits");
         }
 
         void SecurityPatrol(StoryBuilder story, Dice dice)
@@ -892,8 +853,8 @@ namespace SavageTools
             var roll = dice.D(10);
             if (roll == 1) Rift(story, dice);
             else if (roll == 2) LeyLineSize(story, dice);
-            else if (roll == 3) story.AppendLine("Bounty  hunters  arrive");
-            else if (roll == 4) story.AppendLine("Someone  is  dealing  with  technical  difficulties.");
+            else if (roll == 3) story.AppendLine("Bounty hunters arrive");
+            else if (roll == 4) story.AppendLine("Someone is dealing with technical difficulties.");
             else if (roll == 5) story.AppendLine("The Black Market is involved");
             else if (roll == 6) story.AppendLine("Refugees by the dozens, or even hundreds");
             else if (roll == 7) story.AppendLine("One or more supernatural creatures");

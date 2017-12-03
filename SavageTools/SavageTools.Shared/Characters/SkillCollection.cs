@@ -15,6 +15,18 @@ namespace SavageTools.Characters
             else
                 Add(new Skill(name, attribute) { Trait = 4 });
         }
+
+        public void AddSkill(string name, string attribute, Trait minLevel)
+        {
+            var skill = this.SingleOrDefault(s => s.Name == name);
+            if (skill != null)
+            {
+                if (skill.Trait < minLevel)
+                    skill.Trait = minLevel;
+            }
+            else
+                Add(new Skill(name, attribute) { Trait = minLevel });
+        }
     }
 
 }

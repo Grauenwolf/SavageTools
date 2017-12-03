@@ -1,4 +1,5 @@
-﻿using Tortuga.Anchor.Modeling;
+﻿using System;
+using Tortuga.Anchor.Modeling;
 
 namespace SavageTools.Characters
 {
@@ -6,5 +7,9 @@ namespace SavageTools.Characters
     {
         public string Description { get => Get<string>(); set => Set(value); }
         public string Name { get => Get<string>(); set => Set(value); }
+        public Gear Clone()
+        {
+            return new Gear() { Name = Name, Description = Description };
+        }
     }
 }
