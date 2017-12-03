@@ -7,7 +7,7 @@ namespace SavageTools.Characters
     {
         public Skill this[string name] => this.FirstOrDefault(s => s.Name == name);
 
-        public void AddSkill(string name, string attribute)
+        public void Add(string name, string attribute)
         {
             var skill = this.SingleOrDefault(s => s.Name == name);
             if (skill != null)
@@ -16,7 +16,7 @@ namespace SavageTools.Characters
                 Add(new Skill(name, attribute) { Trait = 4 });
         }
 
-        public void AddSkill(string name, string attribute, Trait minLevel)
+        public void Add(string name, string attribute, Trait minLevel)
         {
             var skill = this.SingleOrDefault(s => s.Name == name);
             if (skill != null)

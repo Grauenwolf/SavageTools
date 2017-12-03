@@ -1,14 +1,24 @@
-﻿using System;
+﻿using SavageTools.Characters;
+using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace SavageTools.Missions
 {
 
-
-
     public class RiftsMissionGenerator
     {
-        public string CreateMission(Dice dice, MissionOptions options)
+        readonly RiftsDemonGenerator m_RiftsDemonGenerator;
+
+        public RiftsMissionGenerator(RiftsDemonGenerator riftsDemonGenerator)
         {
+            m_RiftsDemonGenerator = riftsDemonGenerator ?? throw new ArgumentNullException(nameof(riftsDemonGenerator));
+        }
+
+        public string CreateMission(Dice dice, MissionOptions options = null)
+        {
+            if (dice == null)
+                throw new ArgumentNullException(nameof(dice), $"{nameof(dice)} is null.");
+
             var story = new StoryBuilder(options);
 
             var roll = dice.D(20);
@@ -26,6 +36,7 @@ namespace SavageTools.Missions
             return story.ToString();
         }
 
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public string CreateRift(Dice dice, MissionOptions options)
         {
             var story = new StoryBuilder(options);
@@ -33,6 +44,7 @@ namespace SavageTools.Missions
             return story.ToString();
         }
 
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
         public string CreateLeyLineStorm(Dice dice, MissionOptions options)
         {
             var story = new StoryBuilder(options);
@@ -197,13 +209,13 @@ namespace SavageTools.Missions
             }
         }
 
-        void DelayAtRift(StoryBuilder story, Dice dice, int daysRemaining)
-        {
-            var riftInvolved = true;
-            Delay(story, dice, daysRemaining, ref riftInvolved);
-        }
+        //void DelayAtRift(StoryBuilder story, Dice dice, int daysRemaining)
+        //{
+        //    var riftInvolved = true;
+        //    Delay(story, dice, daysRemaining, ref riftInvolved);
+        //}
 
-        decimal Distance(Dice dice, int modifier = 0)
+        static decimal Distance(Dice dice, int modifier = 0)
         {
             var roll = dice.D(20) + modifier;
             if (roll <= 4) return dice.D(4) * 10;
@@ -212,7 +224,7 @@ namespace SavageTools.Missions
             else return dice.D(2, 10) * 100;
         }
 
-        string DistanceText(decimal distance)
+        static string DistanceText(decimal distance)
         {
             return distance.ToString("N0") + " Miles";
         }
@@ -302,7 +314,7 @@ namespace SavageTools.Missions
             }
         }
 
-        void OppositionLeader(StoryBuilder story, Dice dice, int modifier = 0, bool usePrefix = true)
+        static void OppositionLeader(StoryBuilder story, Dice dice, int modifier = 0, bool usePrefix = true)
         {
             var roll = dice.D(6) + modifier;
             if (usePrefix)
@@ -314,7 +326,7 @@ namespace SavageTools.Missions
             else story.AppendLine("Aggressive");
         }
 
-        void OtherAuthorityFigure(StoryBuilder story, Dice dice, int modifier = 0)
+        static void OtherAuthorityFigure(StoryBuilder story, Dice dice, int modifier = 0)
         {
             story.Append("Other authority figure is ");
 
@@ -489,10 +501,12 @@ namespace SavageTools.Missions
 
         void ItCameFromTheRift(StoryBuilder story, Dice dice)
         {
-            story.AppendLine("It came from the rift.");
+            var characters = m_RiftsDemonGenerator.GenerateCharacter(dice);
+            foreach (var row in characters)
+                row.CopyToStory(story, true);
         }
 
-        void LeyLineSize(StoryBuilder story, Dice dice)
+        static void LeyLineSize(StoryBuilder story, Dice dice)
         {
             story.Append("Ley line: ");
             var roll = dice.D(8);
@@ -506,7 +520,7 @@ namespace SavageTools.Missions
             else story.AppendLine("Colossal: Two miles wide, three miles tall, 500 miles long.");
         }
 
-        void LeyLineStorm(StoryBuilder story, Dice dice, int? duration = null)
+        static void LeyLineStorm(StoryBuilder story, Dice dice, int? duration = null)
         {
             story.AppendLine("Ley Line Storm");
             using (story.Indent())
@@ -574,7 +588,7 @@ namespace SavageTools.Missions
             }
         }
 
-        void PlotThickens(StoryBuilder story, Dice dice)
+        static void PlotThickens(StoryBuilder story, Dice dice)
         {
             var roll = dice.D(8);
             if (roll <= 1) story.AppendLine("An old enemy is involved.");
@@ -587,7 +601,7 @@ namespace SavageTools.Missions
             else story.AppendLine("Someone’s physical Hindrance is directly engaged");
         }
 
-        void Rift(StoryBuilder story, Dice dice)
+        static void Rift(StoryBuilder story, Dice dice)
         {
             story.AppendLine("Rift");
             using (story.Indent())
@@ -787,12 +801,12 @@ namespace SavageTools.Missions
             }
         }
 
-        void Contact(StoryBuilder story, Dice dice)
+        static void Contact(StoryBuilder story)
         {
             story.AppendLine("Contact - FINISH ME Page 78");
         }
 
-        void RisksAndRewards(StoryBuilder story, Dice dice)
+        static void RisksAndRewards(StoryBuilder story, Dice dice)
         {
             var roll = dice.D(6);
             story.Append("Potential reward: ");
@@ -801,7 +815,7 @@ namespace SavageTools.Missions
                 story.AppendLine("Valuable ally");
                 using (story.Indent())
                 {
-                    Contact(story, dice);
+                    Contact(story);
                 }
             }
             else if (roll <= 2) story.AppendLine("A cache of weapons and ammunition");

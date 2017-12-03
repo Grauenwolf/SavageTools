@@ -69,6 +69,15 @@ namespace SavageTools
             return m_Story.ToString();
         }
 
+        public void IncreaseIndent()
+        {
+            m_TabDepth += 1;
+        }
+        public void DecreaseIndent()
+        {
+            m_TabDepth -= 1;
+        }
+
         public IDisposable Indent()
         {
             m_TabDepth += 1;

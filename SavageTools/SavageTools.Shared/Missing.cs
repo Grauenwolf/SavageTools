@@ -8,16 +8,16 @@ namespace SavageTools
     {
         private const int InsertionSortLimit = 16;
 
-        /// <summary>
-        /// Creates an IComparer&lt;T&gt; from an IComparable&lt;T&gt;
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="comparable">Used for type inference, may be null.</param>
-        /// <returns>IComparer&lt;T&gt;.</returns>
-        public static IComparer<T> GetComparer<T>(this T comparable) where T : IComparable<T>
-        {
-            return new ComparableToComparer<T>();
-        }
+        ///// <summary>
+        ///// Creates an IComparer&lt;T&gt; from an IComparable&lt;T&gt;
+        ///// </summary>
+        ///// <typeparam name="T"></typeparam>
+        ///// <param name="comparable">Used for type inference, may be null.</param>
+        ///// <returns>IComparer&lt;T&gt;.</returns>
+        //public static IComparer<T> GetComparer<T>(this T comparable) where T : IComparable<T>
+        //{
+        //    return new ComparableToComparer<T>();
+        //}
 
         /// <summary>
         /// Creates an IComparer&lt;T&gt; from an IComparable&lt;T&gt;
@@ -36,6 +36,8 @@ namespace SavageTools
         /// <returns>The number of elements removed.</returns>
         public static int RemoveAll<T>(this ObservableCollection<T> list, Predicate<T> match)
         {
+            if (list == null)
+                throw new ArgumentNullException(nameof(list), $"{nameof(list)} is list.");
             if (match == null)
                 throw new ArgumentNullException(nameof(match), $"{nameof(match)} is null.");
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System;
+using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 
@@ -23,18 +24,21 @@ namespace SavageTools.Names
             var lastFile = new FileInfo(Path.Combine(dataPath, prefix + "last.txt"));
             var maleFile = new FileInfo(Path.Combine(dataPath, prefix + "male-first.txt"));
 
-            m_LastNames = File.ReadAllLines(maleFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Select(x => x.Substring(0, 1).ToUpper() + x.Substring(1)).Distinct().ToImmutableList();
-            m_FemaleNames = File.ReadAllLines(femaleFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Select(x => x.Substring(0, 1).ToUpper() + x.Substring(1)).Distinct().ToImmutableList();
-            m_MaleNames = File.ReadAllLines(maleFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Select(x => x.Substring(0, 1).ToUpper() + x.Substring(1)).Distinct().ToImmutableList();
+            m_LastNames = File.ReadAllLines(lastFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Select(x => x.Substring(0, 1).ToUpperInvariant() + x.Substring(1)).Distinct().ToImmutableList();
+            m_FemaleNames = File.ReadAllLines(femaleFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Select(x => x.Substring(0, 1).ToUpperInvariant() + x.Substring(1)).Distinct().ToImmutableList();
+            m_MaleNames = File.ReadAllLines(maleFile.FullName).Where(x => !string.IsNullOrEmpty(x)).Select(x => x.Substring(0, 1).ToUpperInvariant() + x.Substring(1)).Distinct().ToImmutableList();
         }
 
-        public RandomPerson CreateRandomPerson(Dice random)
+        public RandomPerson CreateRandomPerson(Dice dice)
         {
-            var isMale = random.NextBoolean();
+            if (dice == null)
+                throw new ArgumentNullException(nameof(dice), $"{nameof(dice)} is null.");
+
+            var isMale = dice.NextBoolean();
 
             return new RandomPerson(
-                 isMale ? random.Choose(m_LastNames) : random.Choose(m_FemaleNames),
-                 random.Choose(m_LastNames),
+                 isMale ? dice.Choose(m_MaleNames) : dice.Choose(m_FemaleNames),
+                 dice.Choose(m_LastNames),
                  isMale ? "M" : "F"
                 );
         }

@@ -32,7 +32,7 @@ namespace SavageTools.Web.Controllers
 
         public ActionResult RiftsMission(int pace = 6, int eventFrequency = 3, string type = "mission")
         {
-            var generator = new RiftsMissionGenerator();
+            var generator = new RiftsMissionGenerator(new RiftsDemonGenerator(Globals.GetCharacterGeneratorForSetting("Rifts")));
             var settings = new MissionOptions() { Pace = pace, UseHtml = true, EventFrequency = eventFrequency };
 
             string result = null;

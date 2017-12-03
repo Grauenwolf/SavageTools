@@ -26,6 +26,7 @@ namespace SavageTools
             return Choose(m_Deck);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "D")]
         public int D(int count, int die)
         {
             var result = 0;
@@ -35,8 +36,10 @@ namespace SavageTools
             return result;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "D")]
         public int D(int die) => D(1, die);
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "D")]
         public int D(string dieCode)
         {
             if (string.IsNullOrWhiteSpace(dieCode))
@@ -72,7 +75,7 @@ namespace SavageTools
                         else
                             result += D(parts[0], parts[1]) * isNegative;
                     }
-                    else if (expression == "")
+                    else if (expression.Length == 0)
                     {
                         //skip
                     }

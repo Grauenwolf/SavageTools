@@ -12,6 +12,9 @@ namespace SavageTools.Characters
 
         public Trait(string dieCode)
         {
+            if (string.IsNullOrEmpty(dieCode))
+                throw new ArgumentException($"{nameof(dieCode)} is null or empty.", nameof(dieCode));
+
             dieCode = dieCode.ToLowerInvariant();
             switch (dieCode)
             {

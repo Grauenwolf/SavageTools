@@ -13,11 +13,11 @@ namespace SavageTools.Characters
 {
     public class CharacterGenerator : ModelBase
     {
-        public LocalNameService NameService;
+        public LocalNameService NameService { get; }
 
-        public PersonalityService PersonalityService;
+        public PersonalityService PersonalityService { get; }
 
-        static readonly XmlSerializer SettingXmlSerializer = new XmlSerializer(typeof(Setting));
+        static readonly XmlSerializer s_SettingXmlSerializer = new XmlSerializer(typeof(Setting));
 
         public CharacterGenerator(FileInfo setting)
         {
@@ -46,6 +46,15 @@ namespace SavageTools.Characters
         public bool UseStrain { get => Get<bool>(); set => Set(value); }
         public void AddPower(Character result, string arcaneSkill, string power, Dice dice)
         {
+            if (result == null)
+                throw new ArgumentNullException(nameof(result), $"{nameof(result)} is null.");
+            if (string.IsNullOrEmpty(arcaneSkill))
+                throw new ArgumentException($"{nameof(arcaneSkill)} is null or empty.", nameof(arcaneSkill));
+            if (string.IsNullOrEmpty(power))
+                throw new ArgumentException($"{nameof(power)} is null or empty.", nameof(power));
+            if (dice == null)
+                throw new ArgumentNullException(nameof(dice), $"{nameof(dice)} is null.");
+
             var trappings = new List<SettingTrapping>();
             var group = result.PowerGroups[arcaneSkill];
 
@@ -70,6 +79,15 @@ namespace SavageTools.Characters
 
         public void ApplyEdge(Character result, Dice dice, string edgeName, string description = null)
         {
+            if (result == null)
+                throw new ArgumentNullException(nameof(result), $"{nameof(result)} is null.");
+
+            if (string.IsNullOrEmpty(edgeName))
+                throw new ArgumentException($"{nameof(edgeName)} is null or empty.", nameof(edgeName));
+
+            if (dice == null)
+                throw new ArgumentNullException(nameof(dice), $"{nameof(dice)} is null.");
+
             var edge = Edges.SingleOrDefault(x => string.Equals(x.Name, edgeName, StringComparison.OrdinalIgnoreCase));
             if (edge == null)
                 result.Edges.Add(edgeName, description);
@@ -230,10 +248,13 @@ namespace SavageTools.Characters
         }
         public void LoadSetting(FileInfo file)
         {
+            if (file == null)
+                throw new ArgumentNullException(nameof(file), $"{nameof(file)} is null.");
+
             Setting book;
             // Open document
             using (var stream = file.OpenRead())
-                book = (Setting)SettingXmlSerializer.Deserialize(stream);
+                book = (Setting)s_SettingXmlSerializer.Deserialize(stream);
 
             if (Settings.Any(s => s == book.Name))
                 return; //already loaded
@@ -602,7 +623,7 @@ namespace SavageTools.Characters
 
         }
 
-        void ApplyHindrance(Character result, SettingHindrance hindrance, int level, Dice dice)
+        static void ApplyHindrance(Character result, SettingHindrance hindrance, int level, Dice dice)
         {
             result.Hindrances.Add(new Hindrance() { Name = hindrance.Name, Description = hindrance.Description, Level = level });
 
@@ -790,7 +811,7 @@ namespace SavageTools.Characters
 
             result.UnusedHindrances -= useMajor ? 2 : 1;
         }
-        void PickIconicEdge(Character result, Dice dice, SettingArchetype archetype, bool bornAHero)
+        static void PickIconicEdge(Character result, Dice dice, SettingArchetype archetype, bool bornAHero)
         {
             var table = new Table<SettingEdge>();
 
@@ -867,7 +888,7 @@ namespace SavageTools.Characters
 
             group.UnusedPowers -= 1;
         }
-        void PickRacialEdge(Character result, Dice dice, SettingRace race, bool bornAHero)
+        static void PickRacialEdge(Character result, Dice dice, SettingRace race, bool bornAHero)
         {
             var table = new Table<SettingEdge>();
 

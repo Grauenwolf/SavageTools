@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SavageTools.Characters
@@ -24,9 +25,7 @@ namespace SavageTools.Characters
 
         List<Character> SingleEntity(Dice dice)
         {
-            var result = new Character();
-
-            result.Name = "It Came From the Rift";
+            var result = new Character() { Name = "It Came From the Rift" };
 
             int sizeRoll = dice.D(6);
             Size size;
@@ -60,9 +59,20 @@ namespace SavageTools.Characters
             }
 
             RollAttributes(result, dice, size);
+            EssentialNature(result, dice);
+            GeneralAppearance(result, dice);
 
-            result.Features.Add(Nature(dice));
+            var abilities = dice.D(4) + 1;
+            for (int i = 0; i < abilities; i++)
+                SpecialAbilities(result, dice);
 
+            Role(result, dice);
+
+            return new List<Character> { result };
+        }
+
+        private static void GeneralAppearance(Character result, Dice dice)
+        {
             var appearanceRoll = dice.D(8);
             if (appearanceRoll == 1)
             {
@@ -93,17 +103,9 @@ namespace SavageTools.Characters
                 result.Features.Add("Unearthly beautiful and mesmerizing");
                 result.Charisma += 4;
             }
-
-            Role(result, dice);
-
-            var abilities = dice.D(4) + 1;
-            for (int i = 0; i < abilities; i++)
-                SpecialAbilities(result, dice);
-
-            return new List<Character> { result };
         }
 
-        void RollAttributes(Character result, Dice dice, Size size)
+        static void RollAttributes(Character result, Dice dice, Size size)
         {
             result.Agility = RollAttribute(dice);
             result.Smarts = RollAttribute(dice);
@@ -123,7 +125,6 @@ namespace SavageTools.Characters
                 case Size.Large: result.Strength = new Trait("d12+" + dice.D(1, 6)); break;
                 default: result.Strength = RollAttribute(dice, vigorMod); break;
             }
-
         }
 
         void SpecialAbilities(Character result, Dice dice)
@@ -174,13 +175,13 @@ namespace SavageTools.Characters
 
         }
 
-        void MindlessIntruder(Character result, Dice dice)
+        FollowerTypes MindlessIntruder(Character result, Dice dice)
         {
             result.Personality.Add("Mindless Intruder");
             result.Smarts = 4;
-            result.Skills.AddSkill("Fighting", "Agility", result.Agility);
-            result.Skills.AddSkill("Fighting", "Agility", 6); //sets a min score
-            result.Skills.AddSkill("Notice", "Smarts", 6);
+            result.Skills.Add("Fighting", "Agility", result.Agility);
+            result.Skills.Add("Fighting", "Agility", 6); //sets a min score
+            result.Skills.Add("Notice", "Smarts", 6);
 
             m_Generator.ApplyEdge(result, dice, "Frenzy");
             m_Generator.ApplyEdge(result, dice, "Sweep");
@@ -190,44 +191,49 @@ namespace SavageTools.Characters
             var abilities = dice.D(4) + 1;
             for (int i = 0; i < abilities; i++)
                 SpecialAbilities(result, dice);
+
+            return FollowerTypes.MindlessMinions;
         }
-        void Commander(Character result, Dice dice)
+        FollowerTypes Commander(Character result, Dice dice)
         {
-            result.Skills.AddSkill("Fighting", "Agility", 8);
-            result.Skills.AddSkill("Knowledge (Battle)", "Smarts", 8);
-            result.Skills.AddSkill("Notice", "Smarts", 8);
-            result.Skills.AddSkill("Shooting", "Agility", 8);
+            result.Skills.Add("Fighting", "Agility", 8);
+            result.Skills.Add("Knowledge (Battle)", "Smarts", 8);
+            result.Skills.Add("Notice", "Smarts", 8);
+            result.Skills.Add("Shooting", "Agility", 8);
 
             m_Generator.ApplyEdge(result, dice, "Command");
             m_Generator.ApplyEdge(result, dice, "Command Presence");
             m_Generator.ApplyEdge(result, dice, "Hold the Line!");
 
+            return FollowerTypes.Commandos | FollowerTypes.Soldiers;
         }
-        void Explorer(Character result, Dice dice)
+        FollowerTypes Explorer(Character result, Dice dice)
         {
             result.Personality.Add("Explorer");
             if (result.Smarts < 8) result.Smarts = 8;
-            result.Skills.AddSkill("Climbing", "Strength", 6);
-            result.Skills.AddSkill("Fighting", "Agility", 6);
-            result.Skills.AddSkill("Healing", "Smarts", 6);
-            result.Skills.AddSkill("Notice", "Smarts", 8);
-            result.Skills.AddSkill("Shooting", "Agility", 6);
-            result.Skills.AddSkill("Stealth", "Agility", 6);
-            result.Skills.AddSkill("Survival", "Smarts", 8);
-            result.Skills.AddSkill("Tracking", "Smarts", 8);
+            result.Skills.Add("Climbing", "Strength", 6);
+            result.Skills.Add("Fighting", "Agility", 6);
+            result.Skills.Add("Healing", "Smarts", 6);
+            result.Skills.Add("Notice", "Smarts", 8);
+            result.Skills.Add("Shooting", "Agility", 6);
+            result.Skills.Add("Stealth", "Agility", 6);
+            result.Skills.Add("Survival", "Smarts", 8);
+            result.Skills.Add("Tracking", "Smarts", 8);
 
             m_Generator.ApplyEdge(result, dice, "Woodsman");
 
+            return FollowerTypes.Any;
+
         }
 
-        void Psionic(Character result, Dice dice)
+        FollowerTypes Psionic(Character result, Dice dice)
         {
             result.Personality.Add("Psionic");
             if (result.Smarts < 8) result.Smarts = 8;
             if (result.Spirit < 8) result.Spirit = 8;
-            result.Skills.AddSkill("Fighting", "Agility", 6);
-            result.Skills.AddSkill("Notice", "Smarts", 8);
-            result.Skills.AddSkill("Psionics", "Smarts", result.Smarts);
+            result.Skills.Add("Fighting", "Agility", 6);
+            result.Skills.Add("Notice", "Smarts", 8);
+            result.Skills.Add("Psionics", "Smarts", result.Smarts);
 
             m_Generator.ApplyEdge(result, dice, "Arcane Background (Psionics)");
             m_Generator.ApplyEdge(result, dice, "Energy Control (Electricity)");
@@ -244,36 +250,39 @@ namespace SavageTools.Characters
 
             result.PowerGroups["Psionics"].PowerPoints = 30;
 
+            return FollowerTypes.Any;
         }
 
-        void ScientistScholar(Character result, Dice dice)
+        FollowerTypes ScientistScholar(Character result, Dice dice)
         {
             result.Personality.Add("Scientist/Scholar");
             if (result.Smarts < 8) result.Smarts = 8;
-            result.Skills.AddSkill("Healing", "Smarts", result.Smarts);
+            result.Skills.Add("Healing", "Smarts", result.Smarts);
 
             var skills = m_Generator.KnowledgeSkills().ToList();
             for (var i = 0; i < 3; i++)
             {
                 var skill = dice.Pick(skills);
-                result.Skills.AddSkill(skill.Name, skill.Attribute);
+                result.Skills.Add(skill.Name, skill.Attribute);
             }
 
-            result.Skills.AddSkill("Notice", "Smarts", result.Smarts);
-            result.Skills.AddSkill("Repair", "Smarts", result.Smarts);
-            result.Skills.AddSkill("Survival", "Smarts", 6);
+            result.Skills.Add("Notice", "Smarts", result.Smarts);
+            result.Skills.Add("Repair", "Smarts", result.Smarts);
+            result.Skills.Add("Survival", "Smarts", 6);
 
             m_Generator.ApplyEdge(result, dice, "Scholar");
+
+            return FollowerTypes.Any;
         }
 
-        void Spellcaster(Character result, Dice dice)
+        FollowerTypes Spellcaster(Character result, Dice dice)
         {
             result.Personality.Add("Spellcaster");
             if (result.Smarts < 8) result.Smarts = 8;
             if (result.Spirit < 8) result.Spirit = 8;
-            result.Skills.AddSkill("Fighting", "Agility", 6);
-            result.Skills.AddSkill("Notice", "Smarts", 8);
-            result.Skills.AddSkill("Spellcasting", "Smarts", result.Smarts);
+            result.Skills.Add("Fighting", "Agility", 6);
+            result.Skills.Add("Notice", "Smarts", 8);
+            result.Skills.Add("Spellcasting", "Smarts", result.Smarts);
 
             m_Generator.ApplyEdge(result, dice, "Arcane Background (Magic)");
             m_Generator.ApplyEdge(result, dice, "Master of Magic");
@@ -288,50 +297,53 @@ namespace SavageTools.Characters
             m_Generator.AddPower(result, "Magic", "Speak languages", dice);
 
             result.PowerGroups["Magic"].PowerPoints = 30;
+            return FollowerTypes.Any;
         }
 
-        void Trader(Character result, Dice dice)
+        FollowerTypes Trader(Character result, Dice dice)
         {
             result.Personality.Add("Trader");
             if (result.Smarts < 6) result.Smarts = 6;
             if (result.Spirit < 8) result.Spirit = 8;
-            result.Skills.AddSkill("Gambling", "Smarts", result.Smarts);
-            result.Skills.AddSkill("Persuasion", "Spirit", result.Spirit);
-            result.Skills.AddSkill("Streetwise", "Smarts", result.Smarts);
+            result.Skills.Add("Gambling", "Smarts", result.Smarts);
+            result.Skills.Add("Persuasion", "Spirit", result.Spirit);
+            result.Skills.Add("Streetwise", "Smarts", result.Smarts);
 
             m_Generator.ApplyEdge(result, dice, "Charismatic");
+            return FollowerTypes.Any;
         }
-        void Warrior(Character result, Dice dice)
+        FollowerTypes Warrior(Character result, Dice dice)
         {
             result.Personality.Add("Warrior");
             if (result.Agility < 8) result.Agility = 8;
             if (result.Strength < 8) result.Strength = 8;
             if (result.Vigor < 8) result.Vigor = 8;
-            result.Skills.AddSkill("Fighting", "Agility", result.Agility);
-            result.Skills.AddSkill("Healing", "Smarts", 6);
-            result.Skills.AddSkill("Shooting", "Agility", result.Agility);
-            result.Skills.AddSkill("Survival", "Smarts", 6);
-            result.Skills.AddSkill("Throwing", "Agility", 6);
+            result.Skills.Add("Fighting", "Agility", result.Agility);
+            result.Skills.Add("Healing", "Smarts", 6);
+            result.Skills.Add("Shooting", "Agility", result.Agility);
+            result.Skills.Add("Survival", "Smarts", 6);
+            result.Skills.Add("Throwing", "Agility", 6);
 
             m_Generator.ApplyEdge(result, dice, "Frenzy");
             m_Generator.ApplyEdge(result, dice, "Marksman");
+            return FollowerTypes.Any;
         }
 
-        void Role(Character result, Dice dice)
+        FollowerTypes Role(Character result, Dice dice)
         {
             var roll = dice.D(12);
 
-            if (roll <= 2) MindlessIntruder(result, dice);
-            else if (roll <= 4) Commander(result, dice);
-            else if (roll <= 5) Explorer(result, dice);
-            else if (roll <= 6) Psionic(result, dice);
-            else if (roll <= 7) ScientistScholar(result, dice);
-            else if (roll <= 8) Spellcaster(result, dice);
-            else if (roll <= 9) Trader(result, dice);
-            else Warrior(result, dice);
+            if (roll <= 2) return MindlessIntruder(result, dice);
+            else if (roll <= 4) return Commander(result, dice);
+            else if (roll <= 5) return Explorer(result, dice);
+            else if (roll <= 6) return Psionic(result, dice);
+            else if (roll <= 7) return ScientistScholar(result, dice);
+            else if (roll <= 8) return Spellcaster(result, dice);
+            else if (roll <= 9) return Trader(result, dice);
+            else return Warrior(result, dice);
         }
 
-        Trait RollAttribute(Dice dice, int modifier = 0)
+        static Trait RollAttribute(Dice dice, int modifier = 0)
         {
             var roll = dice.D(12) + modifier;
             if (roll == 1) return new Trait("d4");
@@ -343,29 +355,201 @@ namespace SavageTools.Characters
             return new Trait("d12+" + (roll - 10));
         }
 
-        private static string Nature(Dice dice)
+        static void EssentialNature(Character result, Dice dice)
         {
-            string nature;
             var natureRoll = dice.D(3);
-            if (natureRoll == 1) nature = "Natural";
-            else if (natureRoll == 2) nature = "Magical";
-            else nature = "Technological";
-            return nature;
+            if (natureRoll == 1) result.Archetype = "Natural";
+            else if (natureRoll == 2) result.Archetype = "Magical";
+            else result.Archetype = "Technological";
         }
 
-        List<Character> SmallGroup(Dice dice)
+        [Flags]
+        enum FollowerTypes
         {
-            return null;
-
+            Civilians = 1,
+            Commandos = 2,
+            MindlessMinions = 4,
+            Soldiers = 8,
+            Any = -1
         }
-        List<Character> LargeGroup(Dice dice)
+
+        static void Civilians(Character result)
+        {
+            result.Skills.Add("Driving", "Agility", 4);
+            result.Skills.Add("Fighting", "Agility", 4);
+            result.Skills.Add("Notice", "Smarts", 6);
+            result.Skills.Add("Shooting", "Agility", 4);
+            result.Skills.Add("Stealth", "Agility", 4);
+            result.Skills.Add("Survival", "Smarts", 4);
+            result.Skills.Add("Throwing", "Agility", 4);
+
+            result.Gear.Add("Basic melee weapon", "Str+d4");
+            result.Gear.Add("Basic ranged weapon", "Range 12/24/48, Damage 2d6");
+        }
+
+        static void Commandos(Character result)
+        {
+            result.Skills.Add("Climbing", "Strength", 6);
+            result.Skills.Add("Driving", "Agility", 6);
+            result.Skills.Add("Fighting", "Agility", 8);
+            result.Skills.Add("Healing", "Smarts", 6);
+            result.Skills.Add("Notice", "Smarts", 8);
+            result.Skills.Add("Shooting", "Agility", 8);
+            result.Skills.Add("Stealth", "Agility", 8);
+            result.Skills.Add("Streetwise", "Smarts", 6);
+            result.Skills.Add("Survival", "Smarts", 8);
+            result.Skills.Add("Swimming", "Agility", 6);
+            result.Skills.Add("Throwing", "Agility", 6);
+            result.Skills.Add("Tracking", "Smarts", 8);
+            result.Gear.Add("Huntsman Armor");
+            result.Toughness += 1;
+            result.Armor += 5;
+            result.Gear.Add("Advanced melee weapon", "Str+d8, AP 2, Mega Damage");
+            result.Gear.Add("Advanced ranged weapon", "Range 15/30/60, Damage 3d6, RoF 1, AP 2");
+            result.Gear.Add("Advanced heavy ranged weapon", "Range  18/36/72, Damage 3d6 + 2, RoF 1, AP 2, Mega Damage");
+        }
+
+        static void MindlessMinions(Character result)
         {
 
-            return null;
+            result.Skills.Add("Climbing", "Strength", 4);
+            result.Skills.Add("Fighting", "Agility", 8);
+            result.Skills.Add("Notice", "Smarts", 6);
+            result.Skills.Add("Shooting", "Agility", 6);
+            result.Skills.Add("Stealth", "Agility", 6);
+            result.Gear.Add("Basic  melee  weapon", "Str+d6");
+            result.Gear.Add("Basic  ranged weapon", "Range 12/24/48, Damage 2d8");
+            result.Edges.Add("Natural Armor");
+            result.Armor += 2;
+            result.Edges.Add("Claws/Bite", "Str+d4");
+
         }
+        static void Soldiers(Character result)
+        {
+            result.Skills.Add("Driving", "Agility", 4);
+            result.Skills.Add("Fighting", "Agility", 6);
+            result.Skills.Add("Notice", "Smarts", 6);
+            result.Skills.Add("Shooting", "Agility", 8);
+            result.Skills.Add("Stealth", "Agility", 6);
+            result.Skills.Add("Survival", "Smarts", 4);
+            result.Skills.Add("Throwing", "Agility", 6);
+            result.Gear.Add("Huntsman Armor");
+            result.Toughness += 1;
+            result.Armor += 5;
+            result.Gear.Add("Advanced melee weapon", "Str+d6, AP 2, Mega Damage");
+            result.Gear.Add("Advanced ranged weapon", "Range 15/30/60, Damage 3d6, RoF 1, AP 2");
+            result.Gear.Add("Grenades (2)", "Range 5/10/20, Damage 3d6, Mega Damage, LBT");
+        }
+
+        void FollowerRole(Character result, Dice dice, FollowerTypes types)
+        {
+            var options = new List<Action>();
+
+            if (types.HasFlag(FollowerTypes.Civilians))
+                options.Add(() => Civilians(result));
+            if (types.HasFlag(FollowerTypes.Commandos))
+                options.Add(() => Commandos(result));
+            if (types.HasFlag(FollowerTypes.MindlessMinions))
+                options.Add(() => MindlessMinions(result));
+            if (types.HasFlag(FollowerTypes.Soldiers))
+                options.Add(() => Soldiers(result));
+
+            if (options.Count == 0)
+                FollowerRole(result, dice, FollowerTypes.Any);
+            else
+                dice.Choose(options).Invoke();
+
+        }
+
+        List<Character> Group(Dice dice, int quantity)
+        {
+            var leader = new Character() { Name = "It Came From the Rift" };
+
+            int sizeRoll = dice.D(6);
+            Size size;
+
+            if (sizeRoll == 1)
+            {
+                leader.Features.Add("Huge");
+                size = Size.Huge; leader.Size = 8;
+            }
+            else if (sizeRoll == 2)
+            {
+                leader.Features.Add("Large");
+                size = Size.Large; leader.Size = dice.D(4) + 3;
+            }
+            else if (sizeRoll <= 5)
+            {
+                size = Size.Normal; leader.Size = dice.D(4) + -1;
+            }
+            else
+            {
+                leader.Features.Add("Small");
+
+                if (dice.D(6) <= 4) leader.Size = -1;
+                else leader.Size = -2;
+                size = Size.Small;
+            }
+
+
+            RollAttributes(leader, dice, size);
+            EssentialNature(leader, dice);
+            GeneralAppearance(leader, dice);
+
+            var abilities = dice.D(4) + 1;
+            for (int i = 0; i < abilities; i++)
+                SpecialAbilities(leader, dice);
+
+            var followers = leader.Clone();
+            followers.Name = $"Followers ({quantity})";
+
+            var followerType = Role(leader, dice);
+
+            FollowerRole(leader, dice, followerType);
+
+
+            return new List<Character> { leader, followers };
+        }
+
         List<Character> Horde(Dice dice)
         {
-            return null;
+            var result = new Character() { Name = "A Horde Came From the Rift" };
+
+            int sizeRoll = dice.D(6);
+            Size size;
+
+            if (sizeRoll == 1)
+            {
+                result.Features.Add("Large");
+                size = Size.Large; result.Size = dice.D(4) + 3;
+            }
+            else if (sizeRoll <= 3)
+            {
+                size = Size.Normal; result.Size = dice.D(4) + -1;
+            }
+            else if (sizeRoll <= 5)
+            {
+                result.Features.Add("Small");
+
+                if (dice.D(6) <= 4) result.Size = -1;
+                else result.Size = -2;
+                size = Size.Small;
+            }
+            else
+            {
+                result.Size = -10;
+                size = Size.Swarm;
+            }
+
+            RollAttributes(result, dice, size);
+            EssentialNature(result, dice);
+            GeneralAppearance(result, dice);
+
+            var abilities = dice.D(4) + 1;
+            for (int i = 0; i < abilities; i++)
+                SpecialAbilities(result, dice);
+
+            return new List<Character> { result };
         }
 
         public List<Character> GenerateCharacter(Dice dice = null)
@@ -375,8 +559,8 @@ namespace SavageTools.Characters
             List<Character> result;
 
             if (dice.D(6) <= 2) result = SingleEntity(dice);
-            else if (dice.D(6) <= 4) result = SmallGroup(dice);
-            else if (dice.D(6) == 5) result = LargeGroup(dice);
+            else if (dice.D(6) <= 4) result = Group(dice, dice.D(2, 6));
+            else if (dice.D(6) == 5) result = Group(dice, dice.D(3, 12));
             else result = Horde(dice);
 
             return result;

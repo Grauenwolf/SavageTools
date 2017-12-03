@@ -6,6 +6,7 @@ namespace SavageTools.Characters
 
     public class PowerGroupCollection : ChangeTrackingModelCollection<PowerGroup>
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PowerGroupCollection()
         {
             ItemPropertyChanged += (s, e) => OnPropertyChanged("UnusedPowers");

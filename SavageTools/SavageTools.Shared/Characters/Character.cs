@@ -50,6 +50,9 @@ namespace SavageTools.Characters
         {
             get
             {
+                if (Size < -6)
+                    return "Swarm";
+
                 switch (Size)
                 {
                     case -6: return "1/2  to 2 oz ";
@@ -104,6 +107,9 @@ namespace SavageTools.Characters
         /// <returns><c>true</c> if the specified feature has feature; otherwise, <c>false</c>.</returns>
         public bool HasFeature(string feature, bool ignoreRank)
         {
+            if (string.IsNullOrEmpty(feature))
+                throw new ArgumentException($"{nameof(feature)} is null or empty.", nameof(feature));
+
             if (feature.Contains(" or "))
             {
                 var parts = feature.Split(new[] { " or " }, StringSplitOptions.None).Select(f => f.Trim());
@@ -197,6 +203,12 @@ namespace SavageTools.Characters
 
         public void Increment(string trait, int bonus, Dice dice)
         {
+            if (string.IsNullOrEmpty(trait))
+                throw new ArgumentException($"{nameof(trait)} is null or empty.", nameof(trait));
+
+            if (dice == null)
+                throw new ArgumentNullException(nameof(dice), $"{nameof(dice)} is null.");
+
             switch (trait)
             {
                 case "Vigor": Vigor += bonus; return;
@@ -321,9 +333,19 @@ namespace SavageTools.Characters
             return result;
         }
 
-        public void CopyToStory(StoryBuilder story)
+        public void CopyToStory(StoryBuilder story, bool indentAfterName = false)
         {
-            story.Append($"{Name} ({Gender})");
+            if (story == null)
+                throw new ArgumentNullException(nameof(story), $"{nameof(story)} is null.");
+
+            if (!string.IsNullOrEmpty(Gender))
+                story.Append($"{Name} ({Gender})");
+            else
+                story.Append($"{Name}");
+
+            if (indentAfterName)
+                story.IncreaseIndent();
+
             if (!string.IsNullOrWhiteSpace(Archetype) && Archetype != "(None)")
                 story.Append($", {Archetype}");
             if (Race != "Human")
@@ -355,8 +377,8 @@ namespace SavageTools.Characters
 
 
             story.AppendLine(string.Join(", ", Skills.Select(s => s.ShortName)));
-            story.AppendLine(string.Join(", ", Edges.Select(e => e.Name + ": " + e.Description)));
-            story.AppendLine(string.Join(", ", Hindrances.Select(h => h.Name + " " + h.LevelName + ": " + h.Description)));
+            story.AppendLine(string.Join(", ", Edges.Select(e => e.ToString())));
+            story.AppendLine(string.Join(", ", Hindrances.Select(h => h.ToString())));
             story.AppendLine(string.Join(", ", Features.Select(h => h.Name)));
             story.AppendLine(string.Join(", ", Personality.Select(h => h.Name)));
 
@@ -365,6 +387,8 @@ namespace SavageTools.Characters
 
             story.AppendLine(string.Join(", ", Gear.Select(h => h.Name + (string.IsNullOrEmpty(h.Description) ? "" : ": " + h.Description))));
 
+            if (indentAfterName)
+                story.DecreaseIndent();
         }
     }
 }

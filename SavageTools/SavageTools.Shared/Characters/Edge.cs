@@ -18,6 +18,14 @@ namespace SavageTools.Characters
                 UniqueGroup = UniqueGroup
             };
         }
+
+        public override string ToString()
+        {
+            if (!string.IsNullOrEmpty(Description))
+                return Name + ": " + Description;
+            else
+                return Name;
+        }
     }
 }
 

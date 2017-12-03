@@ -1,5 +1,6 @@
 ﻿namespace SavageTools
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1008:EnumsShouldHaveZeroValue")]
     public enum Rank
     {
         Two = 2,
