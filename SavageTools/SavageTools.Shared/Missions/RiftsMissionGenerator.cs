@@ -14,6 +14,14 @@ namespace SavageTools.Missions
             m_RiftsDemonGenerator = riftsDemonGenerator ?? throw new ArgumentNullException(nameof(riftsDemonGenerator));
         }
 
+        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
+        public string CreateLeyLineStorm(Dice dice, MissionOptions options)
+        {
+            var story = new StoryBuilder(options);
+            LeyLineStorm(story, dice);
+            return story.ToString();
+        }
+
         public string CreateMission(Dice dice, MissionOptions options = null)
         {
             if (dice == null)
@@ -43,15 +51,6 @@ namespace SavageTools.Missions
             Rift(story, dice);
             return story.ToString();
         }
-
-        [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        public string CreateLeyLineStorm(Dice dice, MissionOptions options)
-        {
-            var story = new StoryBuilder(options);
-            LeyLineStorm(story, dice);
-            return story.ToString();
-        }
-
         public string CreateTrouble(Dice dice, MissionOptions options)
         {
             var story = new StoryBuilder(options);
@@ -60,160 +59,10 @@ namespace SavageTools.Missions
             return story.ToString();
         }
 
-        void ArcaneAnomalies(StoryBuilder story, Dice dice)
+        static void Contact(StoryBuilder story)
         {
-            story.AppendLine("Arcane Anomalies");
-            using (story.Indent())
-            {
-
-                var d1 = Distance(dice);
-                story.AppendLine("Distance to site: " + DistanceText(d1));
-                TravelMiles(story, dice, d1);
-
-                var roll = dice.D(8);
-                if (roll == 1)
-                {
-                    story.Append("Arcane Artifact: ");
-                    var roll2 = dice.D(6);
-                    if (roll2 < 3) story.AppendLine("Nothing");
-                    else if (roll2 <= 5) story.AppendLine("Cheap TW gadget");
-                    else story.AppendLine("Unique and powerful");
-
-                }
-                else if (roll == 2)
-                {
-                    story.Append("Ghosts: ");
-                    var roll2 = dice.D(6);
-                    if (roll2 < 3) story.AppendLine("Hoax");
-                    else if (roll2 <= 5) story.AppendLine("Real");
-                    else story.AppendLine("Horror (e..g Neuron Beast or a Witchling)");
-                }
-                else if (roll == 3)
-                {
-                    story.AppendLine("Fadetown");
-                    using (story.Indent())
-                    {
-                        story.AppendLine("Roll for current flux effect. (page 66)");
-                    }
-                }
-                else if (roll == 4) story.AppendLine("Nonviolent Entity");
-                else if (roll == 5) story.AppendLine("Cache of Mystic Crystals");
-                else if (roll == 6)
-                {
-                    story.AppendLine("Ley Line Examination");
-                    using (story.Indent())
-                    {
-                        LeyLineSize(story, dice);
-
-                        int d2 = dice.D(8);
-                        story.AppendLine("Examination: " + d2 + " days. +1 day per failed Knowledge (Arcana) roll");
-                        var riftInvolved = false;
-                        Delay(story, dice, d2 + 10, ref riftInvolved);
-
-                    }
-                }
-                else
-                {
-                    story.AppendLine("A Rift Opens");
-                    using (story.Indent())
-                    {
-                        Rift(story, dice);
-                    }
-                }
-
-            }
+            story.AppendLine("Contact - FINISH ME Page 78");
         }
-
-        void CommunicationLines(StoryBuilder story, Dice dice)
-        {
-            story.AppendLine("Communication Lines");
-            using (story.Indent())
-            {
-                var d1 = Distance(dice);
-                story.AppendLine("Distance to site: " + DistanceText(d1));
-
-                TravelMiles(story, dice, d1);
-
-                int d2 = dice.D(8);
-                story.AppendLine("Repair duration: " + d2 + " days. +1 day per failed Knowledge (Electronics) or Repair roll");
-                var riftInvolved = false;
-                Delay(story, dice, d2 + 10, ref riftInvolved);
-            }
-
-        }
-
-        void CommunityOutreach(StoryBuilder story, Dice dice)
-        {
-            story.AppendLine("Community Outreach");
-            using (story.Indent())
-            {
-
-                var d1 = Distance(dice);
-                story.AppendLine("Distance to town: " + DistanceText(d1));
-                TravelMiles(story, dice, d1);
-
-                var roll = dice.D(6);
-                int d2;
-                if (roll <= 4)
-                {
-                    story.AppendLine("Town was previously visited");
-                    d2 = dice.D(6);
-                }
-                else
-                {
-                    story.AppendLine("First contact");
-                    d2 = dice.D(2, 6);
-                }
-
-                var riftInvolved = false;
-                Delay(story, dice, d2, ref riftInvolved);
-
-            }
-        }
-
-        void TravelDays(StoryBuilder story, Dice dice, int daysRemaining)
-        {
-            var day = 0;
-            using (story.Indent())
-            {
-                do
-                {
-                    for (int i = 0; i < story.Settings.EventFrequency && daysRemaining > 0; i++)
-                    {
-                        day += 1;
-                        daysRemaining -= 1;
-                    }
-                    story.AppendLine("Day " + day);
-                    MaybeTrouble(story, dice);
-
-                } while (daysRemaining > 0);
-            }
-        }
-
-        void Delay(StoryBuilder story, Dice dice, int daysRemaining, ref bool riftInvolved)
-        {
-            var day = 0;
-            using (story.Indent())
-            {
-                do
-                {
-                    for (int i = 0; i < story.Settings.EventFrequency && daysRemaining > 0; i++)
-                    {
-                        day += 1;
-                        daysRemaining -= 1;
-                    }
-                    story.AppendLine("Day " + day);
-                    MaybeTrouble(story, dice, ref riftInvolved);
-
-                } while (daysRemaining > 0);
-            }
-        }
-
-        //void DelayAtRift(StoryBuilder story, Dice dice, int daysRemaining)
-        //{
-        //    var riftInvolved = true;
-        //    Delay(story, dice, daysRemaining, ref riftInvolved);
-        //}
 
         static decimal Distance(Dice dice, int modifier = 0)
         {
@@ -224,286 +73,14 @@ namespace SavageTools.Missions
             else return dice.D(2, 10) * 100;
         }
 
+        //void DelayAtRift(StoryBuilder story, Dice dice, int daysRemaining)
+        //{
+        //    var riftInvolved = true;
+        //    Delay(story, dice, daysRemaining, ref riftInvolved);
+        //}
         static string DistanceText(decimal distance)
         {
             return distance.ToString("N0") + " Miles";
-        }
-        void EmergencyRelief(StoryBuilder story, Dice dice)
-        {
-            story.AppendLine("Emergency Relief");
-
-            using (story.Indent())
-            {
-
-                var d1 = Distance(dice);
-                story.AppendLine("Distance to town: " + DistanceText(d1));
-                TravelMiles(story, dice, d1);
-
-                var riftInvolved = false;
-
-                var roll = dice.D(20);
-                if (roll <= 3)
-                {
-                    var d2 = dice.D(2, 8);
-                    story.AppendLine("Wreckage. Repair duration: " + d2 + " days. +1 day per failed Knowledge(Engineering) or Repair roll");
-                    Delay(story, dice, d2 + 10, ref riftInvolved);
-                }
-                else if (roll <= 5)
-                {
-                    var d2 = dice.D(6);
-                    story.AppendLine("Starvation. Setup supply distribution duration: " + d2 + " days.");
-                    Delay(story, dice, d2, ref riftInvolved);
-                }
-                else if (roll <= 7)
-                {
-                    var d2 = dice.D(2, 6);
-                    story.AppendLine("Disease. Treatment duration: " + d2 + " days. +1 day per failed Knowledge(Medicine) roll.");
-                    Delay(story, dice, d2 + 10, ref riftInvolved);
-                }
-                else if (roll <= 9)
-                {
-                    story.AppendLine("Political Strife.");
-                    Delay(story, dice, 12, ref riftInvolved);
-                }
-                else if (roll <= 11)
-                {
-                    var d2 = dice.D(8);
-                    story.AppendLine("Dying Livestock. Treatment duration: " + d2 + " days. +1 day per failed Knowledge(Medicine) roll.");
-                    Delay(story, dice, d2 + 10, ref riftInvolved);
-                    story.AppendLine("Failure triggers starvation mission.");
-                }
-                else if (roll <= 13)
-                {
-                    var d2 = dice.D(8);
-                    story.AppendLine("Water Shortage. Repair duration: " + d2 + " days. +1 day per failed nowledge(Engineering) or Repair roll.");
-                    Delay(story, dice, d2 + 10, ref riftInvolved);
-                }
-                else if (roll <= 15)
-                {
-                    var d2 = dice.D(4);
-                    story.AppendLine("Slavers. Tracking duration: " + d2 + " days. +1 day per failed Tracking roll.");
-                    TravelDays(story, dice, d2 + 10);
-
-                    var d3 = dice.D(6);
-                    if (d3 <= 4)
-                        story.AppendLine("Slavers are Bandits");
-                    else if (d3 <= 5)
-                        story.AppendLine("Slavers are Black Market operation");
-                    else if (d3 <= 6)
-                        story.AppendLine("Slavers are Splugorth Slaver");
-                }
-                else if (roll <= 16)
-                {
-                    var d2 = dice.D(8);
-                    story.AppendLine("Dying Livestock. Treatment duration: " + d2 + " days. +1 day per failed Survival or Common Knowledge (farming) roll.");
-                    Delay(story, dice, d2 + 10, ref riftInvolved);
-                    story.AppendLine("Failure triggers starvation mission.");
-                }
-                else if (roll <= 17)
-                {
-                    var d3 = dice.D(6);
-                    if (d3 <= 4) story.AppendLine("Cult, harmless");
-                    else if (d3 <= 5) story.AppendLine("Dark cult, powerless");
-                    else if (d3 <= 6) story.AppendLine("Darl cult, powerful. (e.g. a necromancer and her Grim Reaper Cult followers)");
-                }
-                else if (roll <= 20)
-                {
-                    story.AppendLine("Monsters");
-                }
-
-            }
-        }
-
-        static void OppositionLeader(StoryBuilder story, Dice dice, int modifier = 0, bool usePrefix = true)
-        {
-            var roll = dice.D(6) + modifier;
-            if (usePrefix)
-                story.Append("Leader is ");
-
-            if (roll <= 1) story.AppendLine("War Weary");
-            else if (roll <= 3) story.AppendLine("Noncommittal");
-            else if (roll <= 5) story.AppendLine("Wary");
-            else story.AppendLine("Aggressive");
-        }
-
-        static void OtherAuthorityFigure(StoryBuilder story, Dice dice, int modifier = 0)
-        {
-            story.Append("Other authority figure is ");
-
-            var roll = dice.D(6) + modifier;
-            if (roll <= 1) OppositionLeader(story, dice, usePrefix: false);
-            else if (roll <= 2) story.AppendLine("Greedy");
-            else if (roll <= 3) story.AppendLine("Ambitious");
-            else if (roll <= 4) story.AppendLine("Cowardly");
-            else if (roll <= 5) story.AppendLine("Apathetic");
-            else story.AppendLine("Sympathetic");
-        }
-
-        void Encounter(StoryBuilder story, Dice dice)
-        {
-
-            var roll = dice.D(20);
-
-            if (roll == 1)
-            {
-                ThingsBadEnough(story, dice);
-                Encounter(story, dice);
-            }
-            else if (roll <= 3)
-            {
-                PlotThickens(story, dice);
-                Encounter(story, dice);
-            }
-            else if (roll <= 5)
-            {
-                RisksAndRewards(story, dice);
-                Encounter(story, dice);
-            }
-            else if (roll <= 7)
-            {
-                story.AppendLine("Bandits");
-
-                using (story.Indent())
-                {
-                    OppositionLeader(story, dice);
-                    OtherAuthorityFigure(story, dice);
-                }
-            }
-            else if (roll <= 8)
-            {
-                story.AppendLine("Simvan Monster Riders");
-            }
-            else if (roll <= 10)
-            {
-                story.AppendLine("Coalition Scouting Party");
-
-                using (story.Indent())
-                {
-                    OppositionLeader(story, dice);
-                    OtherAuthorityFigure(story, dice);
-                }
-            }
-            else if (roll <= 11)
-            {
-                story.AppendLine("Coalition Recon-in-Force");
-
-                using (story.Indent())
-                {
-                    OppositionLeader(story, dice);
-                    OtherAuthorityFigure(story, dice);
-                }
-            }
-            else if (roll <= 12)
-            {
-                story.AppendLine("Xiticix");
-            }
-            else if (roll <= 13)
-            {
-                story.AppendLine("Wandering Monsters");
-            }
-            else if (roll <= 14)
-            {
-                story.AppendLine("Brodkil");
-
-                using (story.Indent())
-                {
-                    OppositionLeader(story, dice, 2);
-                }
-            }
-            else if (roll <= 15)
-            {
-                story.AppendLine("Black Market Smuggling Operation");
-
-                using (story.Indent())
-                {
-                    OppositionLeader(story, dice);
-                    OtherAuthorityFigure(story, dice);
-                }
-            }
-            else if (roll <= 16)
-            {
-                story.AppendLine("Daemonix");
-
-                using (story.Indent())
-                {
-                    OppositionLeader(story, dice, 2);
-                }
-            }
-            else if (roll <= 17)
-            {
-                story.AppendLine("Grim Reaper Cult");
-
-                using (story.Indent())
-                {
-                    OppositionLeader(story, dice);
-                    OtherAuthorityFigure(story, dice);
-                }
-            }
-
-            else if (roll <= 18)
-            {
-                story.AppendLine("Splugorth Slaver");
-
-                using (story.Indent())
-                {
-                    story.AppendLine("Leader is Aggressive");
-                    OtherAuthorityFigure(story, dice);
-                }
-            }
-            else if (roll <= 19)
-            {
-                story.AppendLine("Wild Vampires");
-            }
-            else
-            {
-                ItCameFromTheRift(story, dice);
-            }
-
-        }
-
-        void Exploration(StoryBuilder story, Dice dice)
-        {
-            story.AppendLine("Exploration");
-
-            using (story.Indent())
-            {
-                var d1 = Distance(dice);
-                story.AppendLine("Distance to site: " + DistanceText(d1));
-
-                TravelMiles(story, dice, d1);
-
-                int d2 = dice.D(2, 12);
-                story.AppendLine("Survey duration: " + d2 + " days. +1 day per failed survival roll");
-
-                var riftInvolved = false;
-                Delay(story, dice, d2 + 10, ref riftInvolved);
-                RisksAndRewards(story, dice);
-            }
-
-        }
-
-        void Interdiction(StoryBuilder story, Dice dice)
-        {
-            story.AppendLine("Interdiction");
-            using (story.Indent())
-            {
-
-                var d1 = Distance(dice);
-                story.AppendLine("Distance to threat: " + DistanceText(d1));
-                TravelMiles(story, dice, d1);
-
-                Encounter(story, dice);
-            }
-        }
-
-
-
-
-        void ItCameFromTheRift(StoryBuilder story, Dice dice)
-        {
-            var characters = m_RiftsDemonGenerator.GenerateCharacter(dice);
-            foreach (var row in characters)
-                row.CopyToStory(story, true);
         }
 
         static void LeyLineSize(StoryBuilder story, Dice dice)
@@ -556,36 +133,29 @@ namespace SavageTools.Missions
             }
         }
 
-        void MaybeTrouble(StoryBuilder story, Dice dice)
+        static void OppositionLeader(StoryBuilder story, Dice dice, int modifier = 0, bool usePrefix = true)
         {
-            var riftInvolved = false;
-            MaybeTrouble(story, dice, ref riftInvolved);
+            var roll = dice.D(6) + modifier;
+            if (usePrefix)
+                story.Append("Leader is ");
+
+            if (roll <= 1) story.AppendLine("War Weary");
+            else if (roll <= 3) story.AppendLine("Noncommittal");
+            else if (roll <= 5) story.AppendLine("Wary");
+            else story.AppendLine("Aggressive");
         }
 
-        void MaybeTrouble(StoryBuilder story, Dice dice, ref bool riftInvolved)
+        static void OtherAuthorityFigure(StoryBuilder story, Dice dice, int modifier = 0)
         {
-            var card = dice.Card();
-            using (story.Indent())
-            {
-                if (card.Rank >= Rank.Jack)
-                    Trouble(story, dice, ref riftInvolved);
-                else
-                    story.AppendLine("No event");
-            }
-        }
+            story.Append("Other authority figure is ");
 
-        void MonsterHunting(StoryBuilder story, Dice dice)
-        {
-            story.AppendLine("Monster Hunting");
-            using (story.Indent())
-            {
-
-                var d1 = Distance(dice);
-                story.AppendLine("Distance to sighting: " + DistanceText(d1));
-                TravelMiles(story, dice, d1);
-
-                Encounter(story, dice);
-            }
+            var roll = dice.D(6) + modifier;
+            if (roll <= 1) OppositionLeader(story, dice, usePrefix: false);
+            else if (roll <= 2) story.AppendLine("Greedy");
+            else if (roll <= 3) story.AppendLine("Ambitious");
+            else if (roll <= 4) story.AppendLine("Cowardly");
+            else if (roll <= 5) story.AppendLine("Apathetic");
+            else story.AppendLine("Sympathetic");
         }
 
         static void PlotThickens(StoryBuilder story, Dice dice)
@@ -801,11 +371,6 @@ namespace SavageTools.Missions
             }
         }
 
-        static void Contact(StoryBuilder story)
-        {
-            story.AppendLine("Contact - FINISH ME Page 78");
-        }
-
         static void RisksAndRewards(StoryBuilder story, Dice dice)
         {
             var roll = dice.D(6);
@@ -823,6 +388,418 @@ namespace SavageTools.Missions
             else if (roll <= 4) story.AppendLine("A revelation of very important information.");
             else if (roll <= 5) story.AppendLine("A useful and safe location");
             else story.AppendLine("A large sum of credits");
+        }
+
+        void ArcaneAnomalies(StoryBuilder story, Dice dice)
+        {
+            story.AppendLine("Arcane Anomalies");
+            using (story.Indent())
+            {
+
+                var d1 = Distance(dice);
+                story.AppendLine("Distance to site: " + DistanceText(d1));
+                TravelMiles(story, dice, d1);
+
+                var roll = dice.D(8);
+                if (roll == 1)
+                {
+                    story.Append("Arcane Artifact: ");
+                    var roll2 = dice.D(6);
+                    if (roll2 < 3) story.AppendLine("Nothing");
+                    else if (roll2 <= 5) story.AppendLine("Cheap TW gadget");
+                    else story.AppendLine("Unique and powerful");
+
+                }
+                else if (roll == 2)
+                {
+                    story.Append("Ghosts: ");
+                    var roll2 = dice.D(6);
+                    if (roll2 < 3) story.AppendLine("Hoax");
+                    else if (roll2 <= 5) story.AppendLine("Real");
+                    else story.AppendLine("Horror (e..g Neuron Beast or a Witchling)");
+                }
+                else if (roll == 3)
+                {
+                    story.AppendLine("Fadetown");
+                    using (story.Indent())
+                    {
+                        story.AppendLine("Roll for current flux effect. (page 66)");
+                    }
+                }
+                else if (roll == 4) story.AppendLine("Nonviolent Entity");
+                else if (roll == 5) story.AppendLine("Cache of Mystic Crystals");
+                else if (roll == 6)
+                {
+                    story.AppendLine("Ley Line Examination");
+                    using (story.Indent())
+                    {
+                        LeyLineSize(story, dice);
+
+                        int d2 = dice.D(8);
+                        story.AppendLine("Examination: " + d2 + " days. +1 day per failed Knowledge (Arcana) roll");
+                        var riftInvolved = false;
+                        Delay(story, dice, d2 + 10, ref riftInvolved);
+
+                    }
+                }
+                else
+                {
+                    story.AppendLine("A Rift Opens");
+                    using (story.Indent())
+                    {
+                        Rift(story, dice);
+                    }
+                }
+
+            }
+        }
+
+        void CommunicationLines(StoryBuilder story, Dice dice)
+        {
+            story.AppendLine("Communication Lines");
+            using (story.Indent())
+            {
+                var d1 = Distance(dice);
+                story.AppendLine("Distance to site: " + DistanceText(d1));
+
+                TravelMiles(story, dice, d1);
+
+                int d2 = dice.D(8);
+                story.AppendLine("Repair duration: " + d2 + " days. +1 day per failed Knowledge (Electronics) or Repair roll");
+                var riftInvolved = false;
+                Delay(story, dice, d2 + 10, ref riftInvolved);
+            }
+
+        }
+
+        void CommunityOutreach(StoryBuilder story, Dice dice)
+        {
+            story.AppendLine("Community Outreach");
+            using (story.Indent())
+            {
+
+                var d1 = Distance(dice);
+                story.AppendLine("Distance to town: " + DistanceText(d1));
+                TravelMiles(story, dice, d1);
+
+                var roll = dice.D(6);
+                int d2;
+                if (roll <= 4)
+                {
+                    story.AppendLine("Town was previously visited");
+                    d2 = dice.D(6);
+                }
+                else
+                {
+                    story.AppendLine("First contact");
+                    d2 = dice.D(2, 6);
+                }
+
+                var riftInvolved = false;
+                Delay(story, dice, d2, ref riftInvolved);
+
+            }
+        }
+
+        void Delay(StoryBuilder story, Dice dice, int daysRemaining, ref bool riftInvolved)
+        {
+            var day = 0;
+            using (story.Indent())
+            {
+                do
+                {
+                    for (int i = 0; i < story.Settings.EventFrequency && daysRemaining > 0; i++)
+                    {
+                        day += 1;
+                        daysRemaining -= 1;
+                    }
+                    story.AppendLine("Day " + day);
+                    MaybeTrouble(story, dice, ref riftInvolved);
+
+                } while (daysRemaining > 0);
+            }
+        }
+
+        void EmergencyRelief(StoryBuilder story, Dice dice)
+        {
+            story.AppendLine("Emergency Relief");
+
+            using (story.Indent())
+            {
+
+                var d1 = Distance(dice);
+                story.AppendLine("Distance to town: " + DistanceText(d1));
+                TravelMiles(story, dice, d1);
+
+                var riftInvolved = false;
+
+                var roll = dice.D(20);
+                if (roll <= 3)
+                {
+                    var d2 = dice.D(2, 8);
+                    story.AppendLine("Wreckage. Repair duration: " + d2 + " days. +1 day per failed Knowledge(Engineering) or Repair roll");
+                    Delay(story, dice, d2 + 10, ref riftInvolved);
+                }
+                else if (roll <= 5)
+                {
+                    var d2 = dice.D(6);
+                    story.AppendLine("Starvation. Setup supply distribution duration: " + d2 + " days.");
+                    Delay(story, dice, d2, ref riftInvolved);
+                }
+                else if (roll <= 7)
+                {
+                    var d2 = dice.D(2, 6);
+                    story.AppendLine("Disease. Treatment duration: " + d2 + " days. +1 day per failed Knowledge(Medicine) roll.");
+                    Delay(story, dice, d2 + 10, ref riftInvolved);
+                }
+                else if (roll <= 9)
+                {
+                    story.AppendLine("Political Strife.");
+                    Delay(story, dice, 12, ref riftInvolved);
+                }
+                else if (roll <= 11)
+                {
+                    var d2 = dice.D(8);
+                    story.AppendLine("Dying Livestock. Treatment duration: " + d2 + " days. +1 day per failed Knowledge(Medicine) roll.");
+                    Delay(story, dice, d2 + 10, ref riftInvolved);
+                    story.AppendLine("Failure triggers starvation mission.");
+                }
+                else if (roll <= 13)
+                {
+                    var d2 = dice.D(8);
+                    story.AppendLine("Water Shortage. Repair duration: " + d2 + " days. +1 day per failed nowledge(Engineering) or Repair roll.");
+                    Delay(story, dice, d2 + 10, ref riftInvolved);
+                }
+                else if (roll <= 15)
+                {
+                    var d2 = dice.D(4);
+                    story.AppendLine("Slavers. Tracking duration: " + d2 + " days. +1 day per failed Tracking roll.");
+                    TravelDays(story, dice, d2 + 10);
+
+                    var d3 = dice.D(6);
+                    if (d3 <= 4)
+                        story.AppendLine("Slavers are Bandits");
+                    else if (d3 <= 5)
+                        story.AppendLine("Slavers are Black Market operation");
+                    else if (d3 <= 6)
+                        story.AppendLine("Slavers are Splugorth Slaver");
+                }
+                else if (roll <= 16)
+                {
+                    var d2 = dice.D(8);
+                    story.AppendLine("Dying Livestock. Treatment duration: " + d2 + " days. +1 day per failed Survival or Common Knowledge (farming) roll.");
+                    Delay(story, dice, d2 + 10, ref riftInvolved);
+                    story.AppendLine("Failure triggers starvation mission.");
+                }
+                else if (roll <= 17)
+                {
+                    var d3 = dice.D(6);
+                    if (d3 <= 4) story.AppendLine("Cult, harmless");
+                    else if (d3 <= 5) story.AppendLine("Dark cult, powerless");
+                    else if (d3 <= 6) story.AppendLine("Darl cult, powerful. (e.g. a necromancer and her Grim Reaper Cult followers)");
+                }
+                else if (roll <= 20)
+                {
+                    story.AppendLine("Monsters");
+                }
+
+            }
+        }
+
+        void Encounter(StoryBuilder story, Dice dice)
+        {
+
+            var roll = dice.D(20);
+
+            if (roll == 1)
+            {
+                ThingsBadEnough(story, dice);
+                Encounter(story, dice);
+            }
+            else if (roll <= 3)
+            {
+                PlotThickens(story, dice);
+                Encounter(story, dice);
+            }
+            else if (roll <= 5)
+            {
+                RisksAndRewards(story, dice);
+                Encounter(story, dice);
+            }
+            else if (roll <= 7)
+            {
+                story.AppendLine("Bandits");
+
+                using (story.Indent())
+                {
+                    OppositionLeader(story, dice);
+                    OtherAuthorityFigure(story, dice);
+                }
+            }
+            else if (roll <= 8)
+            {
+                story.AppendLine("Simvan Monster Riders");
+            }
+            else if (roll <= 10)
+            {
+                story.AppendLine("Coalition Scouting Party");
+
+                using (story.Indent())
+                {
+                    OppositionLeader(story, dice);
+                    OtherAuthorityFigure(story, dice);
+                }
+            }
+            else if (roll <= 11)
+            {
+                story.AppendLine("Coalition Recon-in-Force");
+
+                using (story.Indent())
+                {
+                    OppositionLeader(story, dice);
+                    OtherAuthorityFigure(story, dice);
+                }
+            }
+            else if (roll <= 12)
+            {
+                story.AppendLine("Xiticix");
+            }
+            else if (roll <= 13)
+            {
+                story.AppendLine("Wandering Monsters");
+            }
+            else if (roll <= 14)
+            {
+                story.AppendLine("Brodkil");
+
+                using (story.Indent())
+                {
+                    OppositionLeader(story, dice, 2);
+                }
+            }
+            else if (roll <= 15)
+            {
+                story.AppendLine("Black Market Smuggling Operation");
+
+                using (story.Indent())
+                {
+                    OppositionLeader(story, dice);
+                    OtherAuthorityFigure(story, dice);
+                }
+            }
+            else if (roll <= 16)
+            {
+                story.AppendLine("Daemonix");
+
+                using (story.Indent())
+                {
+                    OppositionLeader(story, dice, 2);
+                }
+            }
+            else if (roll <= 17)
+            {
+                story.AppendLine("Grim Reaper Cult");
+
+                using (story.Indent())
+                {
+                    OppositionLeader(story, dice);
+                    OtherAuthorityFigure(story, dice);
+                }
+            }
+
+            else if (roll <= 18)
+            {
+                story.AppendLine("Splugorth Slaver");
+
+                using (story.Indent())
+                {
+                    story.AppendLine("Leader is Aggressive");
+                    OtherAuthorityFigure(story, dice);
+                }
+            }
+            else if (roll <= 19)
+            {
+                story.AppendLine("Wild Vampires");
+            }
+            else
+            {
+                ItCameFromTheRift(story, dice);
+            }
+
+        }
+
+        void Exploration(StoryBuilder story, Dice dice)
+        {
+            story.AppendLine("Exploration");
+
+            using (story.Indent())
+            {
+                var d1 = Distance(dice);
+                story.AppendLine("Distance to site: " + DistanceText(d1));
+
+                TravelMiles(story, dice, d1);
+
+                int d2 = dice.D(2, 12);
+                story.AppendLine("Survey duration: " + d2 + " days. +1 day per failed survival roll");
+
+                var riftInvolved = false;
+                Delay(story, dice, d2 + 10, ref riftInvolved);
+                RisksAndRewards(story, dice);
+            }
+
+        }
+
+        void Interdiction(StoryBuilder story, Dice dice)
+        {
+            story.AppendLine("Interdiction");
+            using (story.Indent())
+            {
+
+                var d1 = Distance(dice);
+                story.AppendLine("Distance to threat: " + DistanceText(d1));
+                TravelMiles(story, dice, d1);
+
+                Encounter(story, dice);
+            }
+        }
+
+        void ItCameFromTheRift(StoryBuilder story, Dice dice)
+        {
+            var characters = m_RiftsDemonGenerator.GenerateCharacter(dice);
+            foreach (var row in characters)
+                row.CopyToStory(story, true);
+        }
+
+        void MaybeTrouble(StoryBuilder story, Dice dice)
+        {
+            var riftInvolved = false;
+            MaybeTrouble(story, dice, ref riftInvolved);
+        }
+
+        void MaybeTrouble(StoryBuilder story, Dice dice, ref bool riftInvolved)
+        {
+            var card = dice.Card();
+            using (story.Indent())
+            {
+                if (card.Rank >= Rank.Jack)
+                    Trouble(story, dice, ref riftInvolved);
+                else
+                    story.AppendLine("No event");
+            }
+        }
+
+        void MonsterHunting(StoryBuilder story, Dice dice)
+        {
+            story.AppendLine("Monster Hunting");
+            using (story.Indent())
+            {
+
+                var d1 = Distance(dice);
+                story.AppendLine("Distance to sighting: " + DistanceText(d1));
+                TravelMiles(story, dice, d1);
+
+                Encounter(story, dice);
+            }
         }
 
         void SecurityPatrol(StoryBuilder story, Dice dice)
@@ -878,6 +855,25 @@ namespace SavageTools.Missions
             {
                 ThingsBadEnough(story, dice);
                 ThingsBadEnough(story, dice);
+            }
+        }
+
+        void TravelDays(StoryBuilder story, Dice dice, int daysRemaining)
+        {
+            var day = 0;
+            using (story.Indent())
+            {
+                do
+                {
+                    for (int i = 0; i < story.Settings.EventFrequency && daysRemaining > 0; i++)
+                    {
+                        day += 1;
+                        daysRemaining -= 1;
+                    }
+                    story.AppendLine("Day " + day);
+                    MaybeTrouble(story, dice);
+
+                } while (daysRemaining > 0);
             }
         }
         void TravelMiles(StoryBuilder story, Dice dice, decimal distance)
