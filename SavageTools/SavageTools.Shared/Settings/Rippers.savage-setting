@@ -190,6 +190,12 @@
       <Skill Name="Streetwise" Level="6"/>
       <Skill Name="Persuasion" Level="4"/>
     </Archetype>
+   
+    <Archetype Name="Noble" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="5">
+      <Edge Name="Noble" />
+      <Edge Name="Rich" />
+    </Archetype>
+    
 
     <Archetype Name="Cook" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="5" >
       <Skill Name="Knowledge (Cooking)" Attribute="Smarts" Level="6"/>

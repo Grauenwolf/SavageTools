@@ -76,9 +76,10 @@ namespace SavageTools.Web.Controllers
             else
                 settings.SelectedArchetype = generator.Archetypes.Single(x => string.Equals(x.Name, archetype, StringComparison.OrdinalIgnoreCase));
 
+            var dice = new Dice();
             var models = new List<Character>();
             for (var i = 0; i < squadCount; i++)
-                models.Add(settings.GenerateCharacter());
+                models.Add(settings.GenerateCharacter(dice));
 
             return View(models);
         }

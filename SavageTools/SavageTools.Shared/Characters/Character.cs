@@ -333,6 +333,13 @@ namespace SavageTools.Characters
             return result;
         }
 
+        public string ToCompactString()
+        {
+            var s = new StoryBuilder(useHtml: true);
+            CopyToStory(s);
+            return s.ToString();
+        }
+
         public void CopyToStory(StoryBuilder story, bool indentAfterName = false)
         {
             if (story == null)
@@ -376,16 +383,22 @@ namespace SavageTools.Characters
                 story.AppendLine(string.Join(", ", additionTraits));
 
 
-            story.AppendLine(string.Join(", ", Skills.Select(s => s.ShortName)));
-            story.AppendLine(string.Join(", ", Edges.Select(e => e.ToString())));
-            story.AppendLine(string.Join(", ", Hindrances.Select(h => h.ToString())));
-            story.AppendLine(string.Join(", ", Features.Select(h => h.Name)));
-            story.AppendLine(string.Join(", ", Personality.Select(h => h.Name)));
+            if (Skills.Count > 0)
+                story.AppendLine(string.Join(", ", Skills.Select(s => s.ShortName)));
+            if (Edges.Count > 0)
+                story.AppendLine(string.Join(", ", Edges.Select(e => e.ToString())));
+            if (Hindrances.Count > 0)
+                story.AppendLine(string.Join(", ", Hindrances.Select(h => h.ToString())));
+            if (Features.Count > 0)
+                story.AppendLine(string.Join(", ", Features.Select(h => h.Name)));
+            if (Personality.Count > 0)
+                story.AppendLine(string.Join(", ", Personality.Select(h => h.Name)));
 
             foreach (var group in PowerGroups)
                 story.AppendLine($"{group.Skill}, Power Points {group.PowerPoints}, Powers: {string.Join(", ", group.Powers.Select(p => p.LongName))}");
 
-            story.AppendLine(string.Join(", ", Gear.Select(h => h.Name + (string.IsNullOrEmpty(h.Description) ? "" : ": " + h.Description))));
+            if (Gear.Count > 0)
+                story.AppendLine(string.Join(", ", Gear.Select(h => h.Name + (string.IsNullOrEmpty(h.Description) ? "" : ": " + h.Description))));
 
             if (indentAfterName)
                 story.DecreaseIndent();

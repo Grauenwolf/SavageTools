@@ -16,6 +16,11 @@ namespace SavageTools
         //TOOD: Add Markdown options
 
 
+        public StoryBuilder(bool useHtml) : this(new MissionOptions() { UseHtml = useHtml })
+        {
+
+        }
+
         public StoryBuilder(MissionOptions settings = null)
         {
             m_Settings = settings ?? new MissionOptions();

@@ -36,9 +36,9 @@ namespace SavageTools.Characters
         public SettingRank SelectedRank { get { return Get<SettingRank>(); } set { Set(value); } }
 
         public bool WildCard { get => GetDefault(false); set => Set(value); }
-        public Character GenerateCharacter()
+        public Character GenerateCharacter(Dice dice = null)
         {
-            return CharacterGenerator.GenerateCharacter(this);
+            return CharacterGenerator.GenerateCharacter(this, dice);
         }
 
         public void LoadSetting(FileInfo file)
