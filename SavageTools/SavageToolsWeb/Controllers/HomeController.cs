@@ -23,12 +23,7 @@ namespace SavageTools.Web.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
 
         public ActionResult RiftsMission(int pace = 6, int eventFrequency = 3, string type = "mission")
         {
