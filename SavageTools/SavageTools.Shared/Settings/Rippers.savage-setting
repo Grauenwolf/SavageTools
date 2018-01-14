@@ -13,7 +13,7 @@
   <Skills>
     <Skill Name="Knowledge (Rippertech)" Attribute="Smarts"/>
     <Skill Name="Knowledge (Occult)" Attribute="Smarts"/>
-    <!-- TODO: Add support for removing skills that don't apply to the setting-->
+    <!-- Task-9: Add support for removing skills that don't apply to the setting-->
     <Remove Name="Knowledge (Computers)" />
     <Remove Name="Knowledge (Electronics)" />
     <Remove Name="Piloting" />
@@ -175,7 +175,7 @@
       <Trait Name="PowerPoints:Magic" Bonus="15" />
       <Feature Name="Arcane Background" />
       <Edge Name="Gypsy Magic" Description="Boost/Lower Trait (Curse/Boon), Confusion (Hex), Detect/Conceal Arcana (True Seeing)" />
-      <!-- TODO: Create a way to specify known powers in an archetype. -->
+      <!-- Task-10: Create a way to specify known powers in an archetype. -->
 
     </Archetype>
 
@@ -258,7 +258,7 @@
       <Edge Name="Shape Change" Description="Turn into Hyde Monster when a face-card is drawn."/>
     </Archetype>
 
-    <!-- TODO: Add "alternate form" feature. This will copy a character and apply a set of changes to it. -->
+    <!-- Task-11: Add "alternate form" feature. This will copy a character and apply a set of changes to it. -->
     <Archetype Name="Hyde (Monster)" Agility="10" Smarts="4" Spirit="6" Strength="14" Vigor="10" UnusedAttributes="0" UnusedSkills="0" >
       <Skill Name="Climbing" Level="6"/>
       <Skill Name="Fighting" Level="8"/>

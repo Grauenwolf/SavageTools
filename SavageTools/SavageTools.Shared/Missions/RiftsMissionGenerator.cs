@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace SavageTools.Missions
 {
-
     public class RiftsMissionGenerator
     {
         readonly RiftsDemonGenerator m_RiftsDemonGenerator;
@@ -73,11 +72,6 @@ namespace SavageTools.Missions
             else return dice.D(2, 10) * 100;
         }
 
-        //void DelayAtRift(StoryBuilder story, Dice dice, int daysRemaining)
-        //{
-        //    var riftInvolved = true;
-        //    Delay(story, dice, daysRemaining, ref riftInvolved);
-        //}
         static string DistanceText(decimal distance)
         {
             return distance.ToString("N0") + " Miles";

@@ -57,6 +57,9 @@
     <h2>Mission Generator</h2>
     <table class="gridtable">
         <tr>
+            <th>Number of characters</th>
+            <td><input type="number" id="numberOfCharacters" value="4" /></td>
+
             <th>Slowest Pace</th>
             <td><input type="number" id="pace" value="6" /></td>
 
@@ -64,8 +67,10 @@
             <td><input type="number" id="eventFrequency" value="3" /></td>
         </tr>
         <tr>
-            <td colspan="2">This determines how many miles the group travels per day, which is important when the mission requires travelling.<br/>
-            If ridiing in a vehicle, use it's pace instead.
+            <td colspan="2"></td>
+            <td colspan="2">
+                This determines how many miles the group travels per day, which is important when the mission requires travelling.<br />
+                If ridiing in a vehicle, use it's pace instead.
             </td>
             <td colspan="2">Normally you draw 1 card every 3 days, with a Jack or better meaning trouble.</td>
         </tr>
@@ -79,9 +84,23 @@
                 <input type="button" value="Trouble" onclick="generateRiftsMission(readValueInt('pace'), readValueInt('eventFrequency'), 'trouble')" />
             </td>
         </tr>
-         <tr>
+        <tr>
             <td colspan="6">
                 <input type="button" value="It Came From the Rifts" onclick="generateRiftsDemon()" />
+            </td>
+        </tr>
+
+        <tr>
+            <th rowspan="2">Rippers</th>
+            <td rowspan="2">Requires Rippers Resurrected GM Handbook</td>
+            <td colspan="6">
+                <input type="button" value="Random Mission" onclick="generateRippersMission(readValueInt('numberOfCharacters'), 'Any')" />
+                <input type="button" value="Hunting" onclick="generateRippersMission(readValueInt('numberOfCharacters'), 'Hunting')" />
+                <input type="button" value="Investigation" onclick="generateRippersMission(readValueInt('numberOfCharacters'), 'Investigation')" />
+                <input type="button" value="Recruitment" onclick="generateRippersMission(readValueInt('numberOfCharacters'), 'Recruitment')" />
+                <input type="button" value="Research" onclick="generateRippersMission(readValueInt('numberOfCharacters'), 'Research')" />
+                <input type="button" value="Socializing" onclick="generateRippersMission(readValueInt('numberOfCharacters'), 'Socializing')" />
+
             </td>
         </tr>
     </table>

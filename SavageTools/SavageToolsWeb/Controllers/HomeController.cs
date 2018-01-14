@@ -42,6 +42,15 @@ namespace SavageTools.Web.Controllers
 
             return View("~/Views/Home/Story.cshtml", (object)result);
         }
+
+        public ActionResult RippersMission(int numberOfCharacters = 1, RipperMissionType missionType = RipperMissionType.Any)
+        {
+            var generator = new RippersMissionGenerator();
+            var settings = new MissionOptions() { NumberOfCharacters = numberOfCharacters, UseHtml = true };
+            string result = generator.CreateMission(new Dice(), settings, missionType);
+            return View("~/Views/Home/Story.cshtml", (object)result);
+        }
+
         public ActionResult RiftsDemon()
         {
             var generator = new RiftsDemonGenerator(Globals.GetCharacterGeneratorForSetting("Rifts"));

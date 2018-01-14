@@ -210,7 +210,7 @@
 
     <Edge Name="No Mercy" Requires="Seasoned" Description="May spend bennies on damage rolls"/>
 
-    <!-- Need way to wildcard these
+    <!-- Task-7: Need way to wildcard these
       <Edge Name="Professional [Trait]" Requires="Legendary, [Trait] d12" Description="Trait becomes d12+1"/>
       <Edge Name="Expert [Trait]" Requires="Legendary, Professional [Trait]" Description="Trait becomes d12+2"/>
       <Edge Name="Master [Trait]" Requires="Legendary, Wild Card, Expert [Trait]" Description="Wild Die is d10 for one trait"/>

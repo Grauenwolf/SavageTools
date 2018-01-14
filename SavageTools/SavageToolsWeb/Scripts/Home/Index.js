@@ -48,6 +48,9 @@ function generateSquad(setting, archetype, race, rank, squadCount) {
 function generateRiftsMission(pace, eventFrequency, type) {
     window.location.href = "/Home/RiftsMission?pace=" + pace + "&eventFrequency=" + eventFrequency + "&type=" + type;
 }
+function generateRippersMission(numberOfCharacters, missionType) {
+    window.location.href = "/Home/RippersMission?numberOfCharacters=" + numberOfCharacters + "&missionType=" + missionType;
+}
 function generateRiftsDemon() {
     window.location.href = "/Home/RiftsDemon";
 }

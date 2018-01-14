@@ -21,8 +21,8 @@
       <Feature Name="Arcane Background" />
     </Edge>
     
-    <!-- TODO The requirements for these edges are supported.-->
-    <Edge Name="Gadgeteer" Requires="Novice, Arcane Background (Weird Science), Smarts d8, Repair d8 Weird Science d8, two scientific Knowledge skills d6" Description="May “jury-rig” a device with any available power once per game session"/>
+    <!-- Task-13 The requirements for these edges are supported.-->
+    <Edge Name="Gadgeteer" Requires="Novice, Arcane Background (Weird Science), Smarts d8, Repair d8, Weird Science d8, two scientific Knowledge skills d6" Description="May “jury-rig” a device with any available power once per game session"/>
     <Edge Name="Mr. Fix It" Requires="Novice, Arcane Background (Weird Science), Smarts d10, Repair d8, Weird Science d8, two scientific Knowledge skills at d6" Description="+2 to Repair rolls, halve normal Repair time with raise"/>
 
 

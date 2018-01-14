@@ -739,7 +739,7 @@ namespace SavageTools.Characters
 
             foreach (var item in edgeList)
             {
-                //TODO: Some edges allow duplicates
+                //Task-5: Some edges allow duplicates
                 if (result.Edges.Any(e => e.Name == item.Name))
                     continue; //no dups
 
@@ -796,7 +796,7 @@ namespace SavageTools.Characters
             var table = new Table<SettingHindrance>();
             foreach (var item in Hindrances)
             {
-                //TODO: Some hindrances allow duplicates
+                //Task-6: Some hindrances allow duplicates
                 if (result.Hindrances.Any(e => e.Name == item.Name))
                     continue; //no dups
 
@@ -817,7 +817,7 @@ namespace SavageTools.Characters
 
             foreach (var item in archetype.IconicEdges)
             {
-                //TODO: Some edges allow duplicates
+                //Task-5: Some edges allow duplicates
                 if (result.Edges.Any(e => e.Name == item.Name))
                     continue; //no dups
 
@@ -894,7 +894,7 @@ namespace SavageTools.Characters
 
             foreach (var item in race.RacialEdges)
             {
-                //TODO: Some edges allow duplicates
+                //Task-5: Some edges allow duplicates
                 if (result.Edges.Any(e => e.Name == item.Name))
                     continue; //no dups
 

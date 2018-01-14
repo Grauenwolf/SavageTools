@@ -79,6 +79,8 @@
     <Compile Include="Characters\StringCollection.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Missions\RiftsMissionGenerator.cs" />
+    <Compile Include="Missions\RipperMissionType.cs" />
+    <Compile Include="Missions\RippersMissionGenerator.cs" />
     <Compile Include="Names\NameService.cs" />
     <Compile Include="PersonalityService.cs" />
     <Compile Include="Names\RandomPerson.cs" />

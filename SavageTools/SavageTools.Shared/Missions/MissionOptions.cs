@@ -6,5 +6,6 @@
         public int Pace { get; set; } = 6;
         public bool UseHtml { get; set; }
         public int EventFrequency { get; set; } = 3;
+        public int NumberOfCharacters { get; set; } = 1;
     }
 }
