@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Setting Name="Rippers" UseStatus="true" UseReason="true" NamePrefix="victorian">
+<Setting Name="Rippers" UseStatus="true" UseReason="true" NamePrefix="victorian" ShowSetting="true">
   <References>
     <Reference Name="Arcana" />
     <Reference Name="Magic" />
@@ -13,6 +13,10 @@
   <Skills>
     <Skill Name="Knowledge (Rippertech)" Attribute="Smarts"/>
     <Skill Name="Knowledge (Occult)" Attribute="Smarts"/>
+    <!-- TODO: Add support for removing skills that don't apply to the setting-->
+    <Remove Name="Knowledge (Computers)" />
+    <Remove Name="Knowledge (Electronics)" />
+    <Remove Name="Piloting" />
   </Skills>
 
   <Hindrances>

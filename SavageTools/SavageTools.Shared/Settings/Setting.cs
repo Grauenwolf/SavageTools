@@ -26,7 +26,8 @@ namespace SavageTools.Settings
         public bool UseReason { get; set; }
         [XmlAttribute]
         public bool UseStatus { get; set; }
-
+        [XmlAttribute]
+        public bool ShowSetting { get; set; }
         /// <remarks/>
         [XmlArrayItem("Skill", IsNullable = false)]
         public SettingSkillOption[] Skills { get; set; }

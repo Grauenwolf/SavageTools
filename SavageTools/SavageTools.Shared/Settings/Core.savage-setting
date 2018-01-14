@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Setting Name="Core">
+<Setting Name="Core" ShowSetting="true">
   <Skills>
     <Skill Name="Boating" Attribute="Agility"/>
     <Skill Name="Climbing" Attribute="Strength"/>
@@ -29,6 +29,9 @@
     <Skill Name="Taunt" Attribute="Smarts"/>
     <Skill Name="Throwing" Attribute="Agility"/>
     <Skill Name="Tracking" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Computers)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Electronics)" Attribute="Smarts"/>
+    <Skill Name="Piloting" Attribute="Agility"/>
   </Skills>
   <Hindrances>
     <Hindrance Name="All Thumbs" Type="Minor" Description="-2 Repair; Roll of 1 on a mechanical or electronic device causes malfunction" />

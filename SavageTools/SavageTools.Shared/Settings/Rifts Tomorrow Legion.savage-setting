@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Setting Name="Rifts Tomorrow Legion" BornAHero="true" UseStrain="true">
+<Setting Name="Rifts Tomorrow Legion" BornAHero="true" UseStrain="true" ShowSetting="false">
   <References>
-    <Reference Name="Modern" />
     <Reference Name="Arcana" />
     <Reference Name="Magic" />
     <Reference Name="Psionics" />

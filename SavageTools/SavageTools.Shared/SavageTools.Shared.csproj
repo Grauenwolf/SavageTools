@@ -99,9 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Settings\Modern.savage-setting">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Settings\Rifts.savage-setting">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

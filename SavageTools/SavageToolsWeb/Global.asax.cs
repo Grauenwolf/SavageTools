@@ -38,7 +38,8 @@ namespace SavageTools.Web
                 using (var stream = file.OpenRead())
                     book = (Setting)SettingXmlSerializer.Deserialize(stream);
 
-                settings.Add(book.Name, file);
+                if (book.ShowSetting)
+                    settings.Add(book.Name, file);
                 characterGenerators.Add(book.Name, new CharacterGenerator(file));
             }
             s_SettingFiles = settings;
