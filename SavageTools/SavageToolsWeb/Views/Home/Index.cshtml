@@ -3,7 +3,6 @@
     ViewBag.Title = "Home Page";
 }
 
-
 <div class="row">
     <h2>NPC Generator</h2>
     <table class="gridtable">
@@ -30,12 +29,13 @@
                 <input type="number" id="squadCount" value="1" />
             </td>
             <td rowspan="2" valign="middle">
-                <input id="showCharacterScreen" type="button" value="Generate Squad" onclick="generateSquad(readValue('setting'), readValue('archetype'), readValue('race'), readValue('rank'), readValueInt('squadCount'))" />
+                <input id="showCharacterScreen" type="button" value="Generate Squad" onclick="generateSquad(readValue('setting'), readValue('archetype'), readValue('race'), readValue('rank'), readValueInt('squadCount'), readChecked('useCoreSkills'))" />
             </td>
         </tr>
         <tr>
-            <td colspan="2"></td>
-
+            <td colspan="2">
+                <label><input id="useCoreSkills" type="checkbox" checked="checked" />Use Core Skills</label>
+            </td>
 
             <td colspan="2">
                 Leave blank for random.
@@ -47,9 +47,7 @@
                 Leave blank for random.
             </td>
             <td colspan="2"></td>
-
         </tr>
-
     </table>
 </div>
 
@@ -100,12 +98,10 @@
                 <input type="button" value="Recruitment" onclick="generateRippersMission(readValueInt('numberOfCharacters'), 'Recruitment')" />
                 <input type="button" value="Research" onclick="generateRippersMission(readValueInt('numberOfCharacters'), 'Research')" />
                 <input type="button" value="Socializing" onclick="generateRippersMission(readValueInt('numberOfCharacters'), 'Socializing')" />
-
             </td>
         </tr>
     </table>
 </div>
-
 
 <div>Names are based on <a href="https://github.com/RandomAPI/Randomuser.me-Node">RandomUser.me</a> and historic sources.</div>
 <div>Personality traits are based on <a href="https://www.roleplayingtips.com/tools/1000-npc-traits/">1,000 NPC Traits</a></div>

@@ -1,9 +1,7 @@
 ﻿using System.Xml.Serialization;
+
 namespace SavageTools.Settings
 {
-
-
-
     /// <remarks/>
     [XmlType(AnonymousType = true)]
     [XmlRoot(Namespace = "", IsNullable = false)]
@@ -22,12 +20,16 @@ namespace SavageTools.Settings
 
         [XmlAttribute]
         public bool UseStrain { get; set; }
+
         [XmlAttribute]
         public bool UseReason { get; set; }
+
         [XmlAttribute]
         public bool UseStatus { get; set; }
+
         [XmlAttribute]
         public bool ShowSetting { get; set; }
+
         /// <remarks/>
         [XmlArrayItem("Skill", IsNullable = false)]
         public SettingSkillOption[] Skills { get; set; }
@@ -69,7 +71,6 @@ namespace SavageTools.Settings
     [XmlType(AnonymousType = true)]
     public class SettingSkillOption
     {
-
         /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
@@ -77,13 +78,15 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public string Attribute { get; set; }
+
+        [XmlAttribute()]
+        public bool IsCore { get; set; }
     }
 
     /// <remarks/>
     [XmlType(AnonymousType = true)]
     public class SettingHindrance
     {
-
         /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
@@ -107,15 +110,12 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlElement("Feature")]
         public SettingFeature[] Features { get; set; }
-
-
     }
 
     /// <remarks/>
     [XmlType(AnonymousType = true)]
     public class SettingEdge
     {
-
         /// <remarks/>
         [XmlElement("Skill")]
         public SettingSkill[] Skills { get; set; }
@@ -183,7 +183,6 @@ namespace SavageTools.Settings
     [XmlType(AnonymousType = true)]
     public class SettingSkill
     {
-
         /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
@@ -201,7 +200,6 @@ namespace SavageTools.Settings
     [XmlType(AnonymousType = true)]
     public class SettingFeature
     {
-
         /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
@@ -211,10 +209,10 @@ namespace SavageTools.Settings
     [XmlType(AnonymousType = true)]
     public class SettingGear
     {
-
         /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
+
         /// <remarks/>
         [XmlAttribute()]
         public string Description { get; set; }
@@ -228,7 +226,6 @@ namespace SavageTools.Settings
     [XmlType(AnonymousType = true)]
     public class SettingAvailablePower
     {
-
         /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
@@ -242,7 +239,6 @@ namespace SavageTools.Settings
     [XmlType(AnonymousType = true)]
     public class SettingArchetype
     {
-
         /// <remarks/>
         [XmlElement("Skill")]
         public SettingSkill[] Skills { get; set; }
@@ -328,7 +324,6 @@ namespace SavageTools.Settings
     [XmlType(AnonymousType = true)]
     public partial class SettingRace
     {
-
         /// <remarks/>
         [XmlElement("Skill")]
         public SettingSkill[] Skills { get; set; }
@@ -348,7 +343,6 @@ namespace SavageTools.Settings
         [XmlArrayItem("Edge", IsNullable = false)]
         public SettingEdge[] RacialEdges { get; set; }
 
-
         /// <remarks/>
         [XmlElement("Power")]
         public SettingPower[] Powers { get; set; }
@@ -358,12 +352,10 @@ namespace SavageTools.Settings
         public string Name { get; set; }
     }
 
-
     /// <remarks/>
     [XmlType(AnonymousType = true)]
     public class SettingRank
     {
-
         /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
@@ -375,10 +367,7 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public int UnusedAdvances { get; set; }
-
-
     }
-
 
     /// <remarks/>
     [XmlType(AnonymousType = true)]
@@ -387,9 +376,5 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
-
     }
 }
-
-
-

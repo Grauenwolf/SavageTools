@@ -4,7 +4,6 @@ interface IRace {
     Name: string;
 }
 
-
 interface IRank {
     Name: string;
 }
@@ -15,7 +14,6 @@ interface IArchetype {
 
 //Calling REST endpoints
 //https://visualstudiomagazine.com/articles/2013/10/01/calling-web-services-with-typescript.aspx
-
 
 function readValue(controlName: string): string {
     var control = <HTMLSelectElement>$('#' + controlName)[0];
@@ -33,15 +31,12 @@ function readChecked(controlName: string): boolean {
 }
 
 function settingChanged(setting: string, archetype: HTMLSelectElement, race: HTMLSelectElement, rank: HTMLSelectElement) {
-
     $(archetype).empty();
     $(race).empty();
     $(rank).empty();
 
-
     $.getJSON("/SettingApi/Archetypes?setting=" + encodeURIComponent(setting),
         cs => {
-
             var myList = <IArchetype[]>cs;
 
             archetype.appendChild(new Option("", ""));
@@ -54,7 +49,6 @@ function settingChanged(setting: string, archetype: HTMLSelectElement, race: HTM
 
     $.getJSON("/SettingApi/Races?setting=" + encodeURIComponent(setting),
         cs => {
-
             var myList = <IRace[]>cs;
 
             race.appendChild(new Option("", ""));
@@ -67,7 +61,6 @@ function settingChanged(setting: string, archetype: HTMLSelectElement, race: HTM
 
     $.getJSON("/SettingApi/Ranks?setting=" + encodeURIComponent(setting),
         cs => {
-
             var myList = <IRank[]>cs;
 
             rank.appendChild(new Option("", ""));
@@ -79,20 +72,16 @@ function settingChanged(setting: string, archetype: HTMLSelectElement, race: HTM
         });
 }
 
-function generateSquad(setting: string, archetype: string, race: string, rank: string, squadCount: number) {
-    window.location.href = "/Home/Squad?setting=" + encodeURIComponent(setting) + "&archetype=" + encodeURIComponent(archetype) + "&race=" + encodeURIComponent(race) + "&rank=" + encodeURIComponent(rank) + "&squadCount=" + squadCount;
+function generateSquad(setting: string, archetype: string, race: string, rank: string, squadCount: number, useCoreSkills: boolean) {
+    window.location.href = "/Home/Squad?setting=" + encodeURIComponent(setting) + "&archetype=" + encodeURIComponent(archetype) + "&race=" + encodeURIComponent(race) + "&rank=" + encodeURIComponent(rank) + "&squadCount=" + squadCount + "&coreSkills=" + useCoreSkills;
 }
 
-function generateRiftsMission(pace: number, eventFrequency: number, type: string)
-{
+function generateRiftsMission(pace: number, eventFrequency: number, type: string) {
     window.location.href = "/Home/RiftsMission?pace=" + pace + "&eventFrequency=" + eventFrequency + "&type=" + type;
 }
-function generateRippersMission(numberOfCharacters: number, missionType: string)
-{
-    window.location.href = "/Home/RippersMission?numberOfCharacters=" + numberOfCharacters + "&missionType=" + missionType ;
+function generateRippersMission(numberOfCharacters: number, missionType: string) {
+    window.location.href = "/Home/RippersMission?numberOfCharacters=" + numberOfCharacters + "&missionType=" + missionType;
 }
-function generateRiftsDemon()
-{
+function generateRiftsDemon() {
     window.location.href = "/Home/RiftsDemon";
 }
-

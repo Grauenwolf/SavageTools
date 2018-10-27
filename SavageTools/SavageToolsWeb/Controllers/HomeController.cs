@@ -10,7 +10,6 @@ namespace SavageTools.Web.Controllers
 {
     public class HomeController : Controller
     {
-
         public ActionResult Index()
         {
             return View(new HomeIndexViewModel());
@@ -22,8 +21,6 @@ namespace SavageTools.Web.Controllers
 
             return View();
         }
-
-
 
         public ActionResult RiftsMission(int pace = 6, int eventFrequency = 3, string type = "mission")
         {
@@ -38,7 +35,6 @@ namespace SavageTools.Web.Controllers
                 case "leylinestorm": result = generator.CreateLeyLineStorm(new Dice(), settings); break;
                 case "trouble": result = generator.CreateTrouble(new Dice(), settings); break;
             }
-
 
             return View("~/Views/Home/Story.cshtml", (object)result);
         }
@@ -60,10 +56,12 @@ namespace SavageTools.Web.Controllers
             return View("~/Views/Home/Squad.cshtml", result);
         }
 
-        public ActionResult Squad(string setting, string archetype = null, string race = null, string rank = null, int squadCount = 1)
+        public ActionResult Squad(string setting, string archetype = null, string race = null, string rank = null, int squadCount = 1, bool coreSkills = true)
         {
             var generator = Globals.GetCharacterGeneratorForSetting(setting);
             var settings = new CharacterOptions(generator);
+
+            settings.UseCoreSkills = coreSkills;
 
             if (string.IsNullOrWhiteSpace(race))
                 settings.RandomRace = true;

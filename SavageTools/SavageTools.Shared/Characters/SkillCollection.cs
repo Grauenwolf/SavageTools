@@ -7,6 +7,8 @@ namespace SavageTools.Characters
     {
         public Skill this[string name] => this.FirstOrDefault(s => s.Name == name);
 
+        public bool Contains(string name) => this.Any(s => s.Name == name);
+
         public void Add(string name, string attribute)
         {
             var skill = this.SingleOrDefault(s => s.Name == name);
@@ -28,6 +30,4 @@ namespace SavageTools.Characters
                 Add(new Skill(name, attribute) { Trait = minLevel });
         }
     }
-
 }
-

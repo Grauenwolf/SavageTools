@@ -9,33 +9,30 @@
     <Reference Name="Core" />
   </References>
 
-
   <Skills>
-    <Skill Name="Knowledge (Arcana)" Attribute="Smarts"/>
-    <Skill Name="Knowledge (Computers)" Attribute="Smarts"/>
-    <Skill Name="Knowledge (Cybernetics)" Attribute="Smarts"/>
-    <Skill Name="Knowledge (Electronics)" Attribute="Smarts"/>
-    <Skill Name="Knowledge (Engineering)" Attribute="Smarts"/>
-    <Skill Name="Knowledge (History)" Attribute="Smarts"/>
-    <Skill Name="Knowledge (Medicine)" Attribute="Smarts"/>
-    <Skill Name="Knowledge (Politics)" Attribute="Smarts"/>
-    <Skill Name="Knowledge (Science)" Attribute="Smarts"/>
-    <Skill Name="Language (American)" Attribute="Smarts"/>
-    <Skill Name="Language (Spanish)" Attribute="Smarts"/>
-    <Skill Name="Language (Dragonese/Elven)" Attribute="Smarts"/>
-    <Skill Name="Language (Chinese)" Attribute="Smarts"/>
-    <Skill Name="Language (Gobblely)" Attribute="Smarts"/>
-    <Skill Name="Language (Japanese)" Attribute="Smarts"/>
-    <Skill Name="Language (Techno-Can)" Attribute="Smarts"/>
-    <Skill Name="Language (Faerie Speak)" Attribute="Smarts"/>
+    <Skill Name="Knowledge (Arcana)" Attribute="Smarts" />
+    <Skill Name="Knowledge (Computers)" Attribute="Smarts" />
+    <Skill Name="Knowledge (Cybernetics)" Attribute="Smarts" />
+    <Skill Name="Knowledge (Electronics)" Attribute="Smarts" />
+    <Skill Name="Knowledge (Engineering)" Attribute="Smarts" />
+    <Skill Name="Knowledge (History)" Attribute="Smarts" />
+    <Skill Name="Knowledge (Medicine)" Attribute="Smarts" />
+    <Skill Name="Knowledge (Politics)" Attribute="Smarts" />
+    <Skill Name="Knowledge (Science)" Attribute="Smarts" />
+    <Skill Name="Language (American)" Attribute="Smarts" />
+    <Skill Name="Language (Spanish)" Attribute="Smarts" />
+    <Skill Name="Language (Dragonese/Elven)" Attribute="Smarts" />
+    <Skill Name="Language (Chinese)" Attribute="Smarts" />
+    <Skill Name="Language (Gobblely)" Attribute="Smarts" />
+    <Skill Name="Language (Japanese)" Attribute="Smarts" />
+    <Skill Name="Language (Techno-Can)" Attribute="Smarts" />
+    <Skill Name="Language (Faerie Speak)" Attribute="Smarts" />
   </Skills>
   <Hindrances>
     <Hindrance Name="Mania" TType="Minor/Major" Description="-2 Charisma if mania is known" />
     <Hindrance Name="Monologuer" TType="Major" Description="On a Club, Test Smarts-2 to avoid talking instead of acting" />
-    
-    
-    </Hindrances>
-  
+  </Hindrances>
+
   <Races>
 
     <Race Name="Altara">
@@ -45,130 +42,124 @@
       <Edge Name="Blind" Description="Natural radar ability extending 1,200 feet (200”)" />
       <Hindrance Name="Instilled  Ignorance" Description="−2 to all Smarts rolls" />
       <Hindrance Name="Storm-Fouled  Senses" Description="−2 to Notice, Fighting, Shooting, and Throwing in bad weather" />
-      <Trait Name="Agility" Bonus="1"/>
-      <Trait Name="Strength" Bonus="1"/>
-      <Trait Name="Vigor" Bonus="1"/>
+      <Trait Name="Agility" Bonus="1" />
+      <Trait Name="Strength" Bonus="1" />
+      <Trait Name="Vigor" Bonus="1" />
 
-      <Trait Name="MaxAgility" Bonus="1"/>
-      <Trait Name="MaxStrength" Bonus="1"/>
-      <Trait Name="MaxVigor" Bonus="1"/>
+      <Trait Name="MaxAgility" Bonus="1" />
+      <Trait Name="MaxStrength" Bonus="1" />
+      <Trait Name="MaxVigor" Bonus="1" />
 
-      <Hindrance Name="Wanted" Level="1" Description="Splugorth"/>
-
-
+      <Hindrance Name="Wanted" Level="1" Description="Splugorth" />
     </Race>
     <Race Name="D’Norr">
-      <Hindrance Name="Distinctive  D-Bee"/>
-      <Trait Name="Smarts" Bonus="1"/>
-      <Trait Name="Spirit" Bonus="1"/>
+      <Hindrance Name="Distinctive  D-Bee" />
+      <Trait Name="Smarts" Bonus="1" />
+      <Trait Name="Spirit" Bonus="1" />
 
-      <Trait Name="MaxSmarts" Bonus="1"/>
-      <Trait Name="MaxSpirit" Bonus="1"/>
+      <Trait Name="MaxSmarts" Bonus="1" />
+      <Trait Name="MaxSpirit" Bonus="1" />
 
-      <Edge Name="Natural Arcane Affinity" >
+      <Edge Name="Natural Arcane Affinity">
         <Trait Name="PowerPoints:Magic" Bonus="5" />
       </Edge>
-      <Edge Name="Personable"/>
-      <Edge Name="Restricted Path" Description="No psionics"/>
-      <Edge Name="Sensitive" Description="Fear checks -2"/>
-
+      <Edge Name="Personable" />
+      <Edge Name="Restricted Path" Description="No psionics" />
+      <Edge Name="Sensitive" Description="Fear checks -2" />
     </Race>
     <Race Name="Dog Boy">
-      <Edge Name="Keen Sense of Smell" Description="+2 Notice, +2 Tracking"/>
-      <Edge Name="Natural  Weapons" Description="Str+d6 damage"/>
-      <Edge Name="Psychic  Sense" Description="Detect  arcana (Notice or Tracking)"/>
-      <Hindrance Name="Outsider"/>
-      <Hindrance Name="Restricted  Paths" Description="No arcane  magic"/>
-      <Hindrance Name="Wanted" Description="Coalition"/>
+      <Edge Name="Keen Sense of Smell" Description="+2 Notice, +2 Tracking" />
+      <Edge Name="Natural  Weapons" Description="Str+d6 damage" />
+      <Edge Name="Psychic  Sense" Description="Detect  arcana (Notice or Tracking)" />
+      <Hindrance Name="Outsider" />
+      <Hindrance Name="Restricted  Paths" Description="No arcane  magic" />
+      <Hindrance Name="Wanted" Description="Coalition" />
       <Hindrance Name="Weakness (Ley Line Hypersensitivity)" />
-      <Trait Name="UnusedRacialEdges" Bonus="1"/>
+      <Trait Name="UnusedRacialEdges" Bonus="1" />
 
       <RacialEdges>
         <Edge Name="Agile Breed" Requires="Novice">
-          <Trait Name="Agility" Bonus="1"/>
-          <Trait Name="MaxAgility" Bonus="1"/>
+          <Trait Name="Agility" Bonus="1" />
+          <Trait Name="MaxAgility" Bonus="1" />
         </Edge>
         <Edge Name="Strong Breed" Requires="Novice">
-          <Trait Name="Strength" Bonus="1"/>
-          <Trait Name="MaxStrength" Bonus="1"/>
+          <Trait Name="Strength" Bonus="1" />
+          <Trait Name="MaxStrength" Bonus="1" />
         </Edge>
         <Edge Name="Rugged Breed" Requires="Novice">
-          <Trait Name="Vigor" Bonus="1"/>
-          <Trait Name="MaxVigor" Bonus="1"/>
+          <Trait Name="Vigor" Bonus="1" />
+          <Trait Name="MaxVigor" Bonus="1" />
         </Edge>
         <Edge Name="Fast Breed" Requires="Novice">
-          <Trait Name="Pace" Bonus="2"/>
-          <Trait Name="Running" Bonus="1"/>
+          <Trait Name="Pace" Bonus="2" />
+          <Trait Name="Running" Bonus="1" />
         </Edge>
         <Edge Name="Tough Breed" Requires="Novice">
-          <Trait Name="Toughness" Bonus="2"/>
+          <Trait Name="Toughness" Bonus="2" />
         </Edge>
-        <Edge Name="Tracking Breed" Requires="Novice" Description="+2 Tracking"/>
+        <Edge Name="Tracking Breed" Requires="Novice" Description="+2 Tracking" />
         <Edge Name="Water Breed" Requires="Novice">
-          <Skill Name="Swimming" Level="6"/>
+          <Skill Name="Athletics" Level="6" />
         </Edge>
         <Edge Name="Hunter" Requires="Seasoned, Spirit d8, Vigor d8, Figthing d8" Description="Choose prey. +2 Notice/Tracking. d8 dmg for raise." />
       </RacialEdges>
-
     </Race>
 
-    <Race Name="Fennodi" >
-      <Hindrance Name="Distinctive  D-Bee" Description="-4 Charisma with CS citizens"/>
-      <Edge Name="Infravision"/>
-      <Hindrance Name="Issues With Cold" Description="-4 resist cold, +4 dmg"/>
+    <Race Name="Fennodi">
+      <Hindrance Name="Distinctive  D-Bee" Description="-4 Charisma with CS citizens" />
+      <Edge Name="Infravision" />
+      <Hindrance Name="Issues With Cold" Description="-4 resist cold, +4 dmg" />
       <Edge Name="Arcane Background (Psionics)" />
       <Trait Name="UnusedPowers:Psionics" Bonus="-3" />
       <Power Skill="Psionics" Name="Armor" />
       <Power Skill="Psionics" Name="Intangibility" />
       <Power Skill="Psionics" Name="Telepathy" />
-      <Edge Name="Natural Psionics" Description="+1 power if choosing an psionic framework"/>
-      <Edge Name="Visual  Acuity" Description="+2 to sight-based Notice"/>
+      <Edge Name="Natural Psionics" Description="+1 power if choosing an psionic framework" />
+      <Edge Name="Visual  Acuity" Description="+2 to sight-based Notice" />
     </Race>
 
     <Race Name="Grackle Tooth">
-      <Hindrance Name="Cyber Resistant" Description="Cannot use cybernetics"/>
-      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens"/>
-      <Hindrance Name="Issues With Cold" Description="-4 resist cold, +4 dmg"/>
-      <Hindrance Name="Just How I Was Raised" Description="Overconfident or Heroic"/>
-      <Edge Name="Natural Weapons" Description="Str+d6 damage bite, claws, or tail slap"/>
-      <Trait Name="Strength" Bonus="2"/>
-      <Trait Name="MaxStrength" Bonus="2"/>
-      <Trait Name="Vigor" Bonus="1"/>
-      <Trait Name="MaxVigor" Bonus="1"/>
-      <Edge Name="Prehensile Tail"/>
-      <Hindrance Name="Restricted Paths" Description="No magic/psionics"/>
-      <Hindrance Name="Stuff Ain’t Built for Me"/>
+      <Hindrance Name="Cyber Resistant" Description="Cannot use cybernetics" />
+      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens" />
+      <Hindrance Name="Issues With Cold" Description="-4 resist cold, +4 dmg" />
+      <Hindrance Name="Just How I Was Raised" Description="Overconfident or Heroic" />
+      <Edge Name="Natural Weapons" Description="Str+d6 damage bite, claws, or tail slap" />
+      <Trait Name="Strength" Bonus="2" />
+      <Trait Name="MaxStrength" Bonus="2" />
+      <Trait Name="Vigor" Bonus="1" />
+      <Trait Name="MaxVigor" Bonus="1" />
+      <Edge Name="Prehensile Tail" />
+      <Hindrance Name="Restricted Paths" Description="No magic/psionics" />
+      <Hindrance Name="Stuff Ain’t Built for Me" />
       <Edge Name="Size +2">
-        <Trait Name="Toughness" Bonus="2"/>
+        <Trait Name="Toughness" Bonus="2" />
       </Edge>
-
     </Race>
     <Race Name="Lyn-Srial">
-      <Hindrance Name="Cyber Resistant" Description="Cannot use cybernetics"/>
-      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens"/>
-      <Edge Name="Flight" Description="Pace+6"/>
+      <Hindrance Name="Cyber Resistant" Description="Cannot use cybernetics" />
+      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens" />
+      <Edge Name="Flight" Description="Pace+6" />
       <Edge Name="Four  Arms" Description="+1 Action/turn" />
-      <Hindrance Name="Wanted" Level="2" Description="Coalition"/>
-      <Hindrance Name="Heroic"/>
-      <Edge Name="Low Light Vision"/>
-      <Edge Name="Supernaturally Good"/>
-      <Hindrance Name="Non-Standard Physiology"/>
-      <Hindrance Name="Poor Ground Speed" Description="−2 Pace (ground only), d4 running die"/>
-      <Edge Name="Regeneration" Description="Natural healing role 1/day"/>
-      <Trait Name="Strength" Bonus="1"/>
-
+      <Hindrance Name="Wanted" Level="2" Description="Coalition" />
+      <Hindrance Name="Heroic" />
+      <Edge Name="Low Light Vision" />
+      <Edge Name="Supernaturally Good" />
+      <Hindrance Name="Non-Standard Physiology" />
+      <Hindrance Name="Poor Ground Speed" Description="−2 Pace (ground only), d4 running die" />
+      <Edge Name="Regeneration" Description="Natural healing role 1/day" />
+      <Trait Name="Strength" Bonus="1" />
     </Race>
 
     <Race  Name="Psi-Stalker">
-      <Edge Name="Ambidexterity"/>
-      <Edge Name="Animal Empathy"/>
-      <Trait Name="Pace" Bonus="2"/>
-      <Trait Name="Running" Bonus="1"/>
-      <Hindrance Name="Outsider"/>
+      <Edge Name="Ambidexterity" />
+      <Edge Name="Animal Empathy" />
+      <Trait Name="Pace" Bonus="2" />
+      <Trait Name="Running" Bonus="1" />
+      <Hindrance Name="Outsider" />
       <Edge Name="Psychic Sense"  Description="Notice" />
-      <Edge Name="Psychic Vampire"  Description="Needs 5 PPE/ISP per 24 hrs"/>
-      <Hindrance Name="Racial Enemy" Description="Simvan"/>
-      <Hindrance Name=" Restricted Paths" Description="No magic"/>
+      <Edge Name="Psychic Vampire"  Description="Needs 5 PPE/ISP per 24 hrs" />
+      <Hindrance Name="Racial Enemy" Description="Simvan" />
+      <Hindrance Name=" Restricted Paths" Description="No magic" />
       <RacialEdges>
         <Edge Name="Controlled Hunger" Requires="Novice, Spirit d6, Vigor d8" Description="Needs 3 PPE/ISP per 48 hrs" />
         <Edge Name="Hunter" Requires="Seasoned, Spirit d8, Vigor d8, Figthing d8" Description="Choose prey. +2 Notice/Tracking. d8 dmg for raise." />
@@ -176,398 +167,374 @@
     </Race>
 
     <Race Name="Quick Flex">
-      <Trait Name="Agility" Bonus="2"/>
-      <Trait Name="MaxAgility" Bonus="2"/>
-      <Edge Name="Ambidexterity"/>
-      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens"/>
-      <Trait Name="Parry" Bonus="1"/>
-      <Trait Name="Pace" Bonus="2"/>
-      <Trait Name="Running" Bonus="1"/>
-      <Hindrance Name="Restricted Paths" Description="No magic"/>
-      <Hindrance Name="Short Attention Span" Description="-1 Smarts Rolls"/>
-      <Hindrance Name="Overconfident"/>
-
+      <Trait Name="Agility" Bonus="2" />
+      <Trait Name="MaxAgility" Bonus="2" />
+      <Edge Name="Ambidexterity" />
+      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens" />
+      <Trait Name="Parry" Bonus="1" />
+      <Trait Name="Pace" Bonus="2" />
+      <Trait Name="Running" Bonus="1" />
+      <Hindrance Name="Restricted Paths" Description="No magic" />
+      <Hindrance Name="Short Attention Span" Description="-1 Smarts Rolls" />
+      <Hindrance Name="Overconfident" />
     </Race>
     <Race Name="Simvan">
-      <Edge Name="Beast Master"/>
+      <Edge Name="Beast Master" />
       <Skill Name="Riding" Level="6" />
-      <Hindrance Name="Bloodthirsty"/>
-      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens"/>
-      <Hindrance Name="Instincts  Over  Intellect" Description="-1 Smarts Rolls"/>
-      <Edge Name="Low  Light  Vision"/>
+      <Hindrance Name="Bloodthirsty" />
+      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens" />
+      <Hindrance Name="Instincts  Over  Intellect" Description="-1 Smarts Rolls" />
+      <Edge Name="Low  Light  Vision" />
       <Edge Name="Arcane Background (Psionics)" />
       <Trait Name="PowerPoints:Psionics" Bonus="5" />
       <Trait Name="UnusedPowers:Psionics" Bonus="-1" />
       <Power Skill="Psionics" Name="Beast Friend" />
-      <Edge Name="Natural Psionics" Description="+5 ISP if choosing an psionic framework"/>
-      <Hindrance Name="Racial Enemy" Description="Psi-Stalker"/>
-      
+      <Edge Name="Natural Psionics" Description="+5 ISP if choosing an psionic framework" />
+      <Hindrance Name="Racial Enemy" Description="Psi-Stalker" />
     </Race>
 
     <Race Name="Trimadore">
-      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens"/>
+      <Hindrance Name="Distinctive D-Bee" Description="-4 Charisma with CS citizens" />
       <Edge Name="Long Arms" Description="+1 Reach" />
       <Edge Name="Mr.  Fix  It  Edge" />
-      <Hindrance Name="Non-Standard  Physiology"/>
+      <Hindrance Name="Non-Standard  Physiology" />
       <Edge Name="Technically Savvy" Description="Knowledge (Computers, Cybernetics, Electronics, or Engineering) d6" />
-      <Skill Name="Repair" Level="6"/>
-      
+      <Skill Name="Repair" Level="6" />
     </Race>
-    
   </Races>
 
   <Powers>
-    <Power Name="Clairvoyance" Requires="Seasoned" Description="Allows the caster to sense people, places, and things outside of normal perception."/>
-    <Power Name="Illusion" Requires="Novice" Description="Makes a single target see something that isn’t there, or else see things 
-differently than they actually are."/>
-    <Power Name="Telepathy" Requires="Novice" Description="Used to communicate mentally with other people."/>
+    <Power Name="Clairvoyance" Requires="Seasoned" Description="Allows the caster to sense people, places, and things outside of normal perception." />
+    <Power Name="Illusion" Requires="Novice" Description="Makes a single target see something that isn’t there, or else see things
+differently than they actually are." />
+    <Power Name="Telepathy" Requires="Novice" Description="Used to communicate mentally with other people." />
   </Powers>
-
 
   <Edges>
 
-
     <Edge Name="Arcane Background (Psionics)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
       <!-- replaces the default version of this power-->
-      <Skill Name="Psionics" Attribute="Smarts" Level="4"/>
+      <Skill Name="Psionics" Attribute="Smarts" Level="4" />
       <Trait Name="UnusedSkills" Bonus="-1" />
       <Trait Name="PowerPoints:Psionics" Bonus="10" />
       <Trait Name="UnusedPowers:Psionics" Bonus="3" />
       <Feature Name="Arcane Background" />
 
-
-      <AvailablePower Skill="Psionics" Name="Armor"/>
-      <AvailablePower Skill="Psionics" Name="Barrier"/>
-      <AvailablePower Skill="Psionics" Name="Blind"/>
-      <AvailablePower Skill="Psionics" Name="Bolt"/>
-      <AvailablePower Skill="Psionics" Name="Boost/Lower Trait"/>
-      <AvailablePower Skill="Psionics" Name="Clairvoyance"/>
-      <AvailablePower Skill="Psionics" Name="Conceal Arcana"/>
-      <AvailablePower Skill="Psionics" Name="Confusion"/>
-      <AvailablePower Skill="Psionics" Name="Damage"/>
-      <AvailablePower Skill="Psionics" Name="Field"/>
-      <AvailablePower Skill="Psionics" Name="Darksight"/>
-      <AvailablePower Skill="Psionics" Name="Deflection"/>
-      <AvailablePower Skill="Psionics" Name="Disguise"/>
-      <AvailablePower Skill="Psionics" Name="Dispel"/>
-      <AvailablePower Skill="Psionics" Name="Divination"/>
-      <AvailablePower Skill="Psionics" Name="Drain Power Points"/>
-      <AvailablePower Skill="Psionics" Name="Entangle"/>
-      <AvailablePower Skill="Psionics" Name="Environmental Protection"/>
-      <AvailablePower Skill="Psionics" Name="Farsight"/>
-      <AvailablePower Skill="Psionics" Name="Fear"/>
-      <AvailablePower Skill="Psionics" Name="Fly"/>
-      <AvailablePower Skill="Psionics" Name="Havoc"/>
-      <AvailablePower Skill="Psionics" Name="Healing"/>
-      <AvailablePower Skill="Psionics" Name="Illusion"/>
-      <AvailablePower Skill="Psionics" Name="Intangibility"/>
-      <AvailablePower Skill="Psionics" Name="Invisibility"/>
-      <AvailablePower Skill="Psionics" Name="Mind Reading"/>
-      <AvailablePower Skill="Psionics" Name="Pummel"/>
-      <AvailablePower Skill="Psionics" Name="Puppet"/>
-      <AvailablePower Skill="Psionics" Name="Slow"/>
-      <AvailablePower Skill="Psionics" Name="Slumber"/>
-      <AvailablePower Skill="Psionics" Name="Smite"/>
-      <AvailablePower Skill="Psionics" Name="Speak Language"/>
-      <AvailablePower Skill="Psionics" Name="Stun"/>
-      <AvailablePower Skill="Psionics" Name="Telekinesis"/>
-      <AvailablePower Skill="Psionics" Name="Telepathy"/>
-      <AvailablePower Skill="Psionics" Name="Teleport"/>
-      <AvailablePower Skill="Psionics" Name="Warrior's Gift"/>
-
+      <AvailablePower Skill="Psionics" Name="Armor" />
+      <AvailablePower Skill="Psionics" Name="Barrier" />
+      <AvailablePower Skill="Psionics" Name="Blind" />
+      <AvailablePower Skill="Psionics" Name="Bolt" />
+      <AvailablePower Skill="Psionics" Name="Boost/Lower Trait" />
+      <AvailablePower Skill="Psionics" Name="Clairvoyance" />
+      <AvailablePower Skill="Psionics" Name="Conceal Arcana" />
+      <AvailablePower Skill="Psionics" Name="Confusion" />
+      <AvailablePower Skill="Psionics" Name="Damage" />
+      <AvailablePower Skill="Psionics" Name="Field" />
+      <AvailablePower Skill="Psionics" Name="Darksight" />
+      <AvailablePower Skill="Psionics" Name="Deflection" />
+      <AvailablePower Skill="Psionics" Name="Disguise" />
+      <AvailablePower Skill="Psionics" Name="Dispel" />
+      <AvailablePower Skill="Psionics" Name="Divination" />
+      <AvailablePower Skill="Psionics" Name="Drain Power Points" />
+      <AvailablePower Skill="Psionics" Name="Entangle" />
+      <AvailablePower Skill="Psionics" Name="Environmental Protection" />
+      <AvailablePower Skill="Psionics" Name="Farsight" />
+      <AvailablePower Skill="Psionics" Name="Fear" />
+      <AvailablePower Skill="Psionics" Name="Fly" />
+      <AvailablePower Skill="Psionics" Name="Havoc" />
+      <AvailablePower Skill="Psionics" Name="Healing" />
+      <AvailablePower Skill="Psionics" Name="Illusion" />
+      <AvailablePower Skill="Psionics" Name="Intangibility" />
+      <AvailablePower Skill="Psionics" Name="Invisibility" />
+      <AvailablePower Skill="Psionics" Name="Mind Reading" />
+      <AvailablePower Skill="Psionics" Name="Pummel" />
+      <AvailablePower Skill="Psionics" Name="Puppet" />
+      <AvailablePower Skill="Psionics" Name="Slow" />
+      <AvailablePower Skill="Psionics" Name="Slumber" />
+      <AvailablePower Skill="Psionics" Name="Smite" />
+      <AvailablePower Skill="Psionics" Name="Speak Language" />
+      <AvailablePower Skill="Psionics" Name="Stun" />
+      <AvailablePower Skill="Psionics" Name="Telekinesis" />
+      <AvailablePower Skill="Psionics" Name="Telepathy" />
+      <AvailablePower Skill="Psionics" Name="Teleport" />
+      <AvailablePower Skill="Psionics" Name="Warrior's Gift" />
     </Edge>
-
-
-
   </Edges>
 
   <Archetypes>
     <Archetype Name="Flame Wind Dragon Hatchling" UnusedAttributes="3" UnusedSkills="10" Agility="4" Smarts="4" Spirit="4" Strength="16" Vigor="8" Race="(Special)" WildCard="true">
-      <Edge Name="Arcane Background (Psionics)"/>
-      <Skill Name="Psionics" Level="6"/>
-      <Edge Name="Armored Hide" Description="+16 MDC Armor, +6 Toughness in dragon form"/>
-      <Edge Name="Claw/Bite" Description="Str+3d6 AP 4, MD in dragon form"/>
-      <Edge Name="Fear"/>
-      <Edge Name="Fire Breath" Description="Range 12/24/48 Damage 4D6 MD, Cone 2d10 MD"/>
+      <Edge Name="Arcane Background (Psionics)" />
+      <Skill Name="Psionics" Level="6" />
+      <Edge Name="Armored Hide" Description="+16 MDC Armor, +6 Toughness in dragon form" />
+      <Edge Name="Claw/Bite" Description="Str+3d6 AP 4, MD in dragon form" />
+      <Edge Name="Fear" />
+      <Edge Name="Fire Breath" Description="Range 12/24/48 Damage 4D6 MD, Cone 2d10 MD" />
       <Edge Name="Flying" Description="12&quot; Climb 0 in dragon form" />
-      <Edge Name="Impervious to Fire"/>
-      <Edge Name="Infravision"/>
+      <Edge Name="Impervious to Fire" />
+      <Edge Name="Infravision" />
       <Edge Name="Inherently Magical" Description="Power Points Edge gives +10 PPE instead of +5">
         <Trait Name="PowerPoints:Magic" Bonus="10" />
       </Edge>
-      <Edge Name="Limited Metamorphosis"/>
-      <Edge Name="Nigh-Immortality"/>
-      <Edge Name="Size +6" Description="Toughness +6 in dragon form"/>
-      <Edge Name="Slow Regeneration" Description="Natural healing role 1/day"/>
-      <Edge Name="Tail Lash" Description="Str+d8 MD in dragon form"/>
-      <Hindrance Name="No Cybernetics"/>
-      <Hindrance Name="Enemies: Coalition"/>
-      <Hindrance Name="Form Limits"/>
-      <Hindrance Name="Hatched"/>
-      <Hindrance Name="Large" Description="Opponents are +2 attack in dragon form"/>
-      <Hindrance Name="Outsider"/>
-      <Hindrance Name="Territorial"/>
-      <Hindrance Name="Untested"/>
+      <Edge Name="Limited Metamorphosis" />
+      <Edge Name="Nigh-Immortality" />
+      <Edge Name="Size +6" Description="Toughness +6 in dragon form" />
+      <Edge Name="Slow Regeneration" Description="Natural healing role 1/day" />
+      <Edge Name="Tail Lash" Description="Str+d8 MD in dragon form" />
+      <Hindrance Name="No Cybernetics" />
+      <Hindrance Name="Enemies: Coalition" />
+      <Hindrance Name="Form Limits" />
+      <Hindrance Name="Hatched" />
+      <Hindrance Name="Large" Description="Opponents are +2 attack in dragon form" />
+      <Hindrance Name="Outsider" />
+      <Hindrance Name="Territorial" />
+      <Hindrance Name="Untested" />
       <Trait Name="Size" Bonus="6" />
-
     </Archetype>
-
-
   </Archetypes>
 
-
-
   <Table Name="Narrative Hook" Roll="d20">
-    <Option Roll="1–3" Description="The Siege of Tolkeen."/>
-    <Option Roll="4" Description="Hidden Away."/>
-    <Option Roll="5–6" Description="Alistair Dunscon’s “True Federation.”"/>
-    <Option Roll="7" Description="Blood Is Thicker."/>
-    <Option Roll="8–9" Description="The Juicer Uprising."/>
-    <Option Roll="10" Description="Grudging Respect."/>
-    <Option Roll="11–12" Description="From Out of a Rift…"/>
-    <Option Roll="13" Description="The Black Market."/>
-    <Option Roll="14" Description="The Coalition."/>
-    <Option Roll="15" Description="Nearly Done For."/>
-    <Option Roll="16" Description="Should Old Acquaintances…"/>
-    <Option Roll="17" Description="Authority Issues."/>
-    <Option Roll="18" Description="A Battle Beyond the Rifts."/>
-    <Option Roll="19" Description="The Evil That Men Do."/>
-    <Option Roll="20" Description="Sometimes It Starts in a Bar."/>
+    <Option Roll="1–3" Description="The Siege of Tolkeen." />
+    <Option Roll="4" Description="Hidden Away." />
+    <Option Roll="5–6" Description="Alistair Dunscon’s “True Federation.”" />
+    <Option Roll="7" Description="Blood Is Thicker." />
+    <Option Roll="8–9" Description="The Juicer Uprising." />
+    <Option Roll="10" Description="Grudging Respect." />
+    <Option Roll="11–12" Description="From Out of a Rift…" />
+    <Option Roll="13" Description="The Black Market." />
+    <Option Roll="14" Description="The Coalition." />
+    <Option Roll="15" Description="Nearly Done For." />
+    <Option Roll="16" Description="Should Old Acquaintances…" />
+    <Option Roll="17" Description="Authority Issues." />
+    <Option Roll="18" Description="A Battle Beyond the Rifts." />
+    <Option Roll="19" Description="The Evil That Men Do." />
+    <Option Roll="20" Description="Sometimes It Starts in a Bar." />
   </Table>
 
-  <Table Name="Benefits" Roll="d11" >
+  <Table Name="Benefits" Roll="d11">
     <Option Roll="1">
       <TableRoll Name="Body Armor" />
     </Option>
     <Option Roll="2">
-      <TableRoll Name="Close Combat Weapons"  />
+      <TableRoll Name="Close Combat Weapons" />
     </Option>
     <Option Roll="3">
-      <TableRoll Name="Cybernetics"  />
+      <TableRoll Name="Cybernetics" />
     </Option>
     <Option Roll="4">
-      <TableRoll Name="Education"  />
+      <TableRoll Name="Education" />
     </Option>
     <Option Roll="5">
-      <TableRoll Name="Enchanted Items &amp; Mystic Gadgets"  />
+      <TableRoll Name="Enchanted Items &amp; Mystic Gadgets" />
     </Option>
     <Option Roll="6">
-      <TableRoll Name="Experience &amp; Wisdom"  />
+      <TableRoll Name="Experience &amp; Wisdom" />
     </Option>
     <Option Roll="7">
-      <TableRoll Name="Magic &amp; Mysticism"  />
+      <TableRoll Name="Magic &amp; Mysticism" />
     </Option>
     <Option Roll="8">
-      <TableRoll Name="Psionics"  />
+      <TableRoll Name="Psionics" />
     </Option>
     <Option Roll="9">
-      <TableRoll Name="Ranged Weapons"  />
+      <TableRoll Name="Ranged Weapons" />
     </Option>
     <Option Roll="10">
-      <TableRoll Name="Training"  />
+      <TableRoll Name="Training" />
     </Option>
     <Option Roll="11">
-      <TableRoll Name="Underworld &amp; Black Ops"  />
+      <TableRoll Name="Underworld &amp; Black Ops" />
     </Option>
-
   </Table>
 
   <Table Name="Body Armor" Roll="d20">
-    <Option Roll="1–4" Description="You may trade the starting Armor from your Iconic Framework for any other body armor (not power armor or robot armor) listed in this book. If this is not your first roll, apply all other results from rolling on this table to your newly chosen body armor."/>
-    <Option Roll="5–6" Description="Extra high-density plating and other design factors grant +3 Armor to your hero’s starting armor."/>
-    <Option Roll="7" Description="Specialized paint and camouflage patterns grant your hero +2 to Stealth checks in woodland settings. If the suit also has the urban patterns, your hero can switch between the two as an action."/>
-    <Option Roll="8" Description="Micro exoskeleton enhancements in the upper torso and arms give your hero a +1 to all Strength checks and fighting damage rolls."/>
-    <Option Roll="9–10" Description="Good for all combat situations, this armor suit has +1 embedded Toughness to handle the sharpest blades and most piercing lasers. This result may be applied up to two times."/>
-    <Option Roll="11" Description="Your suit has an enhanced communication system, providing a 20-mile range. If this result is rolled a second time, the range is increased to 100 miles, which is the maximum benefit."/>
-    <Option Roll="12" Description="Significant  environmental  system  improvements  grant  your  hero  +1  to  Vigor checks while wearing this suit. If your suit does not have Full Environmental Protection, this result provides that benefit instead."/>
-    <Option Roll="13–14" Description="Extraordinary craftsmanship and lightweight materials mean your adventurer’s suit has its Strength Minimum reduced by one die type, while still gaining +1 Armor. This result may be applied up to two times."/>
-    <Option Roll="15" Description="Specialized paint and camouflage patterns grant your hero +2 to Stealth checks in urban settings. If the suit also has woodland patterns, your hero can switch between the two as an action."/>
-    <Option Roll="16–17" Description="The  helmet  of  his  armor  has  exceptional  embedded  targeting  enhancements, granting your hero +2 on all ranged attacks."/>
-    <Option Roll="18" Description="Micro exoskeleton enhancements in the legs give your hero a +1 to Pace when wearing this suit."/>
-    <Option Roll="19–20" Description="You may choose any one of the results on this table."/>
+    <Option Roll="1–4" Description="You may trade the starting Armor from your Iconic Framework for any other body armor (not power armor or robot armor) listed in this book. If this is not your first roll, apply all other results from rolling on this table to your newly chosen body armor." />
+    <Option Roll="5–6" Description="Extra high-density plating and other design factors grant +3 Armor to your hero’s starting armor." />
+    <Option Roll="7" Description="Specialized paint and camouflage patterns grant your hero +2 to Stealth checks in woodland settings. If the suit also has the urban patterns, your hero can switch between the two as an action." />
+    <Option Roll="8" Description="Micro exoskeleton enhancements in the upper torso and arms give your hero a +1 to all Strength checks and fighting damage rolls." />
+    <Option Roll="9–10" Description="Good for all combat situations, this armor suit has +1 embedded Toughness to handle the sharpest blades and most piercing lasers. This result may be applied up to two times." />
+    <Option Roll="11" Description="Your suit has an enhanced communication system, providing a 20-mile range. If this result is rolled a second time, the range is increased to 100 miles, which is the maximum benefit." />
+    <Option Roll="12" Description="Significant  environmental  system  improvements  grant  your  hero  +1  to  Vigor checks while wearing this suit. If your suit does not have Full Environmental Protection, this result provides that benefit instead." />
+    <Option Roll="13–14" Description="Extraordinary craftsmanship and lightweight materials mean your adventurer’s suit has its Strength Minimum reduced by one die type, while still gaining +1 Armor. This result may be applied up to two times." />
+    <Option Roll="15" Description="Specialized paint and camouflage patterns grant your hero +2 to Stealth checks in urban settings. If the suit also has woodland patterns, your hero can switch between the two as an action." />
+    <Option Roll="16–17" Description="The  helmet  of  his  armor  has  exceptional  embedded  targeting  enhancements, granting your hero +2 on all ranged attacks." />
+    <Option Roll="18" Description="Micro exoskeleton enhancements in the legs give your hero a +1 to Pace when wearing this suit." />
+    <Option Roll="19–20" Description="You may choose any one of the results on this table." />
   </Table>
-
 
   <Table Name="Close Combat Weapons" Roll="d20">
-    <Option Roll="1–4" Description="You may add any Close Combat Weapon listed in this book to your character’s gear list. If this is not your first roll, apply any other results from rolling on this table to your newly chosen weapon as you wish."/>
-    <Option Roll="5–6" Description="Vibro-Swords are very popular, thanks to their combination of efficiency and deadliness."/>
-    <Option Roll="7" Description="Exceptional crafting and balance grants your hero a +1 Fighting with this weapon. This result may be applied up to two times."/>
-    <Option Roll="8–9" Description="With a Chain Long Sword, your character can cut even huge robot-armor foes down to size."/>
-    <Option Roll="10–11" Description="This weapon is extra deadly, granting a +1 to all damage rolls made with it. This result may be applied up to three times."/>
-    <Option Roll="12" Description="Your hero makes a serious impression (and probably some serious dents) with her Impact Hammer."/>
-    <Option Roll="13" Description="The crafter of this weapon knows something about vampires in the world, and she incorporated silver into its making."/>
-    <Option Roll="14" Description="Though wanton destruction and violence is rampant throughout the world, there are times when a non-lethal solution is called for. The Coalition developed the Neural Mace for exactly those times."/>
-    <Option Roll="15" Description="Advanced technology makes this weapon extra effective against armor, giving it +2 AP."/>
-    <Option Roll="16" Description="Going big certainly has its advantages, and nothing goes quite as big as a Chain Greatsword."/>
-    <Option Roll="17" Description="The design of the weapon incorporates special guards or other techniques to provide the wielder a +1 Parry."/>
-    <Option Roll="18" Description="For some, it’s about the surprise. For others, it’s about not having to switch weapons during an engagement. Your hero’s melee weapon has an embedded laser (Range 15/30/60, Damage 2d6, RoF 1, AP 2, Shots 16)."/>
-    <Option Roll="19–20" Description="You may choose any one of the previous results."/>
+    <Option Roll="1–4" Description="You may add any Close Combat Weapon listed in this book to your character’s gear list. If this is not your first roll, apply any other results from rolling on this table to your newly chosen weapon as you wish." />
+    <Option Roll="5–6" Description="Vibro-Swords are very popular, thanks to their combination of efficiency and deadliness." />
+    <Option Roll="7" Description="Exceptional crafting and balance grants your hero a +1 Fighting with this weapon. This result may be applied up to two times." />
+    <Option Roll="8–9" Description="With a Chain Long Sword, your character can cut even huge robot-armor foes down to size." />
+    <Option Roll="10–11" Description="This weapon is extra deadly, granting a +1 to all damage rolls made with it. This result may be applied up to three times." />
+    <Option Roll="12" Description="Your hero makes a serious impression (and probably some serious dents) with her Impact Hammer." />
+    <Option Roll="13" Description="The crafter of this weapon knows something about vampires in the world, and she incorporated silver into its making." />
+    <Option Roll="14" Description="Though wanton destruction and violence is rampant throughout the world, there are times when a non-lethal solution is called for. The Coalition developed the Neural Mace for exactly those times." />
+    <Option Roll="15" Description="Advanced technology makes this weapon extra effective against armor, giving it +2 AP." />
+    <Option Roll="16" Description="Going big certainly has its advantages, and nothing goes quite as big as a Chain Greatsword." />
+    <Option Roll="17" Description="The design of the weapon incorporates special guards or other techniques to provide the wielder a +1 Parry." />
+    <Option Roll="18" Description="For some, it’s about the surprise. For others, it’s about not having to switch weapons during an engagement. Your hero’s melee weapon has an embedded laser (Range 15/30/60, Damage 2d6, RoF 1, AP 2, Shots 16)." />
+    <Option Roll="19–20" Description="You may choose any one of the previous results." />
   </Table>
-
 
   <Table Name="Cybernetics" Roll="d20">
-    <Option Roll="1" Description="Your hero wanted maximum capabilities, never mind others seeing her as a freak. She got an Extra Set of Arms installed."/>
-    <Option Roll="2–3" Description="When the armor piercing lasers and flechettes fly, your cyborg’s level of Reinforced Frame is the best."/>
-    <Option Roll="4" Description="Your hero wants to give that Juicer a run for his money, so he got a level of Cyber-Wired Reflexes installed."/>
-    <Option Roll="5–6" Description="Your cyborg is the one everyone wants on watch since she has the Expanded Detection and Security Array."/>
-    <Option Roll="7" Description="Instantaneously knowing how to do what he needs makes your hero extra useful with his Wired Skill Port and four-step skill load."/>
-    <Option Roll="8" Description="Who has time to actually train? Not your character, which is why he has a level of 
-Embedded Combat Coding."/>
-    <Option Roll="9 Booster Jets make for great tactical options, and they’re a lot of fun, too!"/>
-    <Option Roll="10–11" Description="Nothing like a Range Data System to make hitting all those pesky enemy targets diving for cover that much easier."/>
-    <Option Roll="12" Description="There’s a good chance your cyborg was meant for amphibious operations with his Aquatic Mode Upgrade."/>
-    <Option Roll="13–14" Description="Stronger is always better as far as your character is concerned, so he has a level of Bionic Strength Augmentation."/>
-    <Option Roll="15" Description="Whoever put your hero back together didn’t want her checking out any time soon. She has the Nano-Repair System."/>
-    <Option Roll="16" Description="It’s not all about combat efficiency for your cyborg. He has a Subject Matter Expert Port and a four-step skill load on hand."/>
-    <Option Roll="17–18" Description="Let’s face it, everyone expects your hero to take point, so that extra level of Armor Plating is always a good idea."/>
-    <Option Roll="19–20" Description="Choose any single cybernetic upgrade you wish and qualify for."/>
+    <Option Roll="1" Description="Your hero wanted maximum capabilities, never mind others seeing her as a freak. She got an Extra Set of Arms installed." />
+    <Option Roll="2–3" Description="When the armor piercing lasers and flechettes fly, your cyborg’s level of Reinforced Frame is the best." />
+    <Option Roll="4" Description="Your hero wants to give that Juicer a run for his money, so he got a level of Cyber-Wired Reflexes installed." />
+    <Option Roll="5–6" Description="Your cyborg is the one everyone wants on watch since she has the Expanded Detection and Security Array." />
+    <Option Roll="7" Description="Instantaneously knowing how to do what he needs makes your hero extra useful with his Wired Skill Port and four-step skill load." />
+    <Option Roll="8" Description="Who has time to actually train? Not your character, which is why he has a level of
+Embedded Combat Coding." />
+    <Option Roll="9 Booster Jets make for great tactical options, and they’re a lot of fun, too!" />
+    <Option Roll="10–11" Description="Nothing like a Range Data System to make hitting all those pesky enemy targets diving for cover that much easier." />
+    <Option Roll="12" Description="There’s a good chance your cyborg was meant for amphibious operations with his Aquatic Mode Upgrade." />
+    <Option Roll="13–14" Description="Stronger is always better as far as your character is concerned, so he has a level of Bionic Strength Augmentation." />
+    <Option Roll="15" Description="Whoever put your hero back together didn’t want her checking out any time soon. She has the Nano-Repair System." />
+    <Option Roll="16" Description="It’s not all about combat efficiency for your cyborg. He has a Subject Matter Expert Port and a four-step skill load on hand." />
+    <Option Roll="17–18" Description="Let’s face it, everyone expects your hero to take point, so that extra level of Armor Plating is always a good idea." />
+    <Option Roll="19–20" Description="Choose any single cybernetic upgrade you wish and qualify for." />
   </Table>
-
 
   <Table Name="Education" Roll="d20">
-    <Option Roll="1–2" Description="Your  hero’s  voracious  appetite  for  knowledge  led  to  her  picking  up  a  little something about pretty much everything. She has the Jack-of-All-Trades Edge."/>
-    <Option Roll="3–4" Description="Your character is a talented medic and a huge boon for any group he runs with. He has the Healer Edge and the Healing skill at d6."/>
-    <Option Roll="5" Description="Your character has a passion for languages, and a real gift for them as well. She has the Linguist Edge. She also has a strong likelihood of getting paid work as a translator in most civilized areas (what there are of them)."/>
-    <Option Roll="6–7" Description="Following in the footsteps of Erin Tarn, your character is a student of the past. Only by understanding what has come before can he hope to make the most of what is to come. He gets Knowledge (History) at d8 and +2 on all Common Knowledge checks."/>
-    <Option Roll="8" Description="The principles of technology are vital to building a future out of the catastrophes of the past. Your hero has the necessary foundation to be a part of that with a d8 in Knowledge (Electronics). She also gains +1 on any Repair rolls with electronic machinery."/>
-    <Option Roll="9–10" Description="He’s traveled far and wide, and he knows a lot about the world that could come in handy. Your character gains a +2 on any Common Knowledge rolls related to geography and understanding the people and places of North America. He also gains a +2 on Survival and Streetwise checks in North America."/>
-    <Option Roll="11" Description="Understanding the ebb and flow of power in the habitable lands of North America may very well mean the difference between life and death, making your hero’s grasp of such matters extremely valuable. She gains Knowledge (Politics) at d8. She also gains +2 to Persuasion."/>
-    <Option Roll="12" Description="The world was ended in war, reborn in war, and war remains the most prevalent truth of the age. Your character understands this better than anyone, and he gains a d8 in Knowledge (Battle) to prove it. He also has the Command Edge (or one Leadership Edge of her choice if she already has Command)."/>
-    <Option Roll="13–14" Description="Your character’s innate understanding of computers makes her one of the most valuable people in the world, whether most folks understand that or not. She gains Knowledge (Computers) at d8, as well as +2 when dealing with electronic security."/>
-    <Option Roll="15–16" Description="Born with a natural inquisitiveness, your hero has a gift for research and finding things out. He has the Investigator Edge and the Investigation skill at d6."/>
-    <Option Roll="17–18" Description="Either her parents did everything they could to educate her, she attended one of the few schools left in the world, or she might even have found and lived in an ancient library. However managed, she has five additional skill points to spend at character creation, but they may only be spent on Healing, Investigation, and Knowledge skills."/>
-    <Option Roll="19–20" Description="You may choose any one of the previous results."/>
+    <Option Roll="1–2" Description="Your  hero’s  voracious  appetite  for  knowledge  led  to  her  picking  up  a  little something about pretty much everything. She has the Jack-of-All-Trades Edge." />
+    <Option Roll="3–4" Description="Your character is a talented medic and a huge boon for any group he runs with. He has the Healer Edge and the Healing skill at d6." />
+    <Option Roll="5" Description="Your character has a passion for languages, and a real gift for them as well. She has the Linguist Edge. She also has a strong likelihood of getting paid work as a translator in most civilized areas (what there are of them)." />
+    <Option Roll="6–7" Description="Following in the footsteps of Erin Tarn, your character is a student of the past. Only by understanding what has come before can he hope to make the most of what is to come. He gets Knowledge (History) at d8 and +2 on all Common Knowledge checks." />
+    <Option Roll="8" Description="The principles of technology are vital to building a future out of the catastrophes of the past. Your hero has the necessary foundation to be a part of that with a d8 in Knowledge (Electronics). She also gains +1 on any Repair rolls with electronic machinery." />
+    <Option Roll="9–10" Description="He’s traveled far and wide, and he knows a lot about the world that could come in handy. Your character gains a +2 on any Common Knowledge rolls related to geography and understanding the people and places of North America. He also gains a +2 on Survival and Streetwise checks in North America." />
+    <Option Roll="11" Description="Understanding the ebb and flow of power in the habitable lands of North America may very well mean the difference between life and death, making your hero’s grasp of such matters extremely valuable. She gains Knowledge (Politics) at d8. She also gains +2 to Persuasion." />
+    <Option Roll="12" Description="The world was ended in war, reborn in war, and war remains the most prevalent truth of the age. Your character understands this better than anyone, and he gains a d8 in Knowledge (Battle) to prove it. He also has the Command Edge (or one Leadership Edge of her choice if she already has Command)." />
+    <Option Roll="13–14" Description="Your character’s innate understanding of computers makes her one of the most valuable people in the world, whether most folks understand that or not. She gains Knowledge (Computers) at d8, as well as +2 when dealing with electronic security." />
+    <Option Roll="15–16" Description="Born with a natural inquisitiveness, your hero has a gift for research and finding things out. He has the Investigator Edge and the Investigation skill at d6." />
+    <Option Roll="17–18" Description="Either her parents did everything they could to educate her, she attended one of the few schools left in the world, or she might even have found and lived in an ancient library. However managed, she has five additional skill points to spend at character creation, but they may only be spent on Healing, Investigation, and Knowledge skills." />
+    <Option Roll="19–20" Description="You may choose any one of the previous results." />
   </Table>
-
 
   <Table Name="Enchanted Items &amp; Mystic Gadgets" Roll="d20">
-    <Option Roll="1" Description="Made of a wood unknown to most of the world, your character’s elegant staff is a powerful weapon and tool for magic work. The staff has 10 PPE (which regenerate at the same rate as the caster), grants a +1 to all spellcasting rolls for AB: Magic and AB: Miracles, and contains two spells (powers) of the player’s choice, which can come from any list. Finally, it’s a combat-worthy staff (Str+d6, Reach 1, Parry +1, two-handed) that even does Mega Damage if 2 PPE is channeled through it that round."/>
-    <Option Roll="2–3" Description="Things get ugly out in the world, and the Ley Line Walker Medium Armor is a good insurance policy for dealing with a lot of those things. Cyber-Knights should re-roll on this result.4 Going covert is much easier with a Shadow Cloak on."/>
-    <Option Roll="5–6" Description="Great for both damaging and slowing down enemies, an Iceblast Shotgun is an arcane favorite."/>
-    <Option Roll="7–8" Description="When it’s time to negotiate with strange visitors just arrived through a new Rift, your character’s Communications Band is a vital asset. This upgraded item also enhances the user’s vocal output, granting him a +2 Charisma whenever he is speaking or otherwise using his voice."/>
-    <Option Roll="9–10" Description="Your hero is in good shape with a TW Shard Pistol at her side."/>
-    <Option Roll="11" Description="For up-close and personal encounters, a Flaming Sword is a good thing to have. It’s also great for barbecues."/>
-    <Option Roll="12–13" Description="A  cunning  pair  of  goggles  that  speaks  of  a  fashion  that  never  goes  out of  style,  your  character’s  Magic  Optic  System  is  a  favorite  accessory."/>
-    <Option Roll="14–15" Description="The TK Revolver is a favorite among Techno-Wizards and those who don’t like keeping up with ammunition."/>
-    <Option Roll="16" Description="Your hero has a rare and coveted suit of TW Combat Mage Armor, which may or may not place him on a few bounty lists in both the Coalition and the Federation of Magic. Alternately, if he’s a Cyber-Knight, he gains a suit of TW Cyber-Knight Heavy Armor."/>
-    <Option Roll="17" Description="One of the nastier weapons created by Techno-Wizards, the Draining Blade is just the thing for evening the odds against a superior physical combatant."/>
-    <Option Roll="18" Description="Whether your character’s a Techno-Wizard or just wants to travel like one, the Wingboard is a great choice for him."/>
-    <Option Roll="19–20" Description="You may choose any one of the previous results."/>
+    <Option Roll="1" Description="Made of a wood unknown to most of the world, your character’s elegant staff is a powerful weapon and tool for magic work. The staff has 10 PPE (which regenerate at the same rate as the caster), grants a +1 to all spellcasting rolls for AB: Magic and AB: Miracles, and contains two spells (powers) of the player’s choice, which can come from any list. Finally, it’s a combat-worthy staff (Str+d6, Reach 1, Parry +1, two-handed) that even does Mega Damage if 2 PPE is channeled through it that round." />
+    <Option Roll="2–3" Description="Things get ugly out in the world, and the Ley Line Walker Medium Armor is a good insurance policy for dealing with a lot of those things. Cyber-Knights should re-roll on this result.4 Going covert is much easier with a Shadow Cloak on." />
+    <Option Roll="5–6" Description="Great for both damaging and slowing down enemies, an Iceblast Shotgun is an arcane favorite." />
+    <Option Roll="7–8" Description="When it’s time to negotiate with strange visitors just arrived through a new Rift, your character’s Communications Band is a vital asset. This upgraded item also enhances the user’s vocal output, granting him a +2 Charisma whenever he is speaking or otherwise using his voice." />
+    <Option Roll="9–10" Description="Your hero is in good shape with a TW Shard Pistol at her side." />
+    <Option Roll="11" Description="For up-close and personal encounters, a Flaming Sword is a good thing to have. It’s also great for barbecues." />
+    <Option Roll="12–13" Description="A  cunning  pair  of  goggles  that  speaks  of  a  fashion  that  never  goes  out of  style,  your  character’s  Magic  Optic  System  is  a  favorite  accessory." />
+    <Option Roll="14–15" Description="The TK Revolver is a favorite among Techno-Wizards and those who don’t like keeping up with ammunition." />
+    <Option Roll="16" Description="Your hero has a rare and coveted suit of TW Combat Mage Armor, which may or may not place him on a few bounty lists in both the Coalition and the Federation of Magic. Alternately, if he’s a Cyber-Knight, he gains a suit of TW Cyber-Knight Heavy Armor." />
+    <Option Roll="17" Description="One of the nastier weapons created by Techno-Wizards, the Draining Blade is just the thing for evening the odds against a superior physical combatant." />
+    <Option Roll="18" Description="Whether your character’s a Techno-Wizard or just wants to travel like one, the Wingboard is a great choice for him." />
+    <Option Roll="19–20" Description="You may choose any one of the previous results." />
   </Table>
-
-
 
   <Table Name="Experience &amp; Wisdom" Roll="d20">
-    <Option Roll="1–2" Description="Your  hero  knows  how  to  make  the  most  of  second  chances.  He  has  Elan."/>
-    <Option Roll="3–4" Description="Your character doesn’t take kindly to threats, and no one messes with her head. She is Strong Willed."/>
-    <Option Roll="5" Description="With a nose for opportunities, horse-trading, and five-fingered discounts, your hero is the go-to person for getting what’s needed in a crunch. He has the Scrounger Edge and Connections (Black Market)."/>
-    <Option Roll="6" Description="Some folks come to understand that lone wolves don’t make it in a world as dangerous as this one. Your hero has Common Bond."/>
-    <Option Roll="7–8" Description="She always gets a strange tingling in the back of her neck when things are about to go all pear-shaped. She’s seen enough trouble to know when it’s coming. Your character has the Danger Sense Edge."/>
-    <Option Roll="9" Description="A  split  second  often  means  the  difference  between  alive  and  a  smear  on  the landscape. Your character has the Quick Edge. If he already has that Edge, he gains the Level Headed Edge instead."/>
-    <Option Roll="10–11" Description="Some experiences take a person back to the beginning, reconnecting her to her foundations. Select one Background Edge, regardless of requirements, so long as it makes sense and the GM agrees with it."/>
-    <Option Roll="12–13" Description="He’s traveled far and wide, and he knows a lot about the world that could come in handy. Your character gains a +2 on any Common Knowledge rolls related to geography and understanding the people and places of North America. He also gains a +2 on Survival and Streetwise checks in North America."/>
-    <Option Roll="14" Description="There are times when no amount of skill, talent, or training is enough. Fortunately for your character, she has a bit of Luck (as in the Edge) on her side. Take Great Luck instead if she already has Luck."/>
-    <Option Roll="15–16" Description="Life on the road, in the wilderness, and wandering the streets of the cities that remain  gave  your  character  special  insight  and  some  key  experience  with  a particular calling. You may give her one Professional Edge, ignoring requirements, subject to the GM’s approval and it making at least some kind of sense."/>
-    <Option Roll="17–18" Description="There are moments when everything comes together and an opportunity presents itself. You’re hero knows how to make the most of just such a moment; choose one Wild Card Edge, regardless of requirements."/>
-    <Option Roll="19–20" Description="You may choose any one of the previous results."/>
+    <Option Roll="1–2" Description="Your  hero  knows  how  to  make  the  most  of  second  chances.  He  has  Elan." />
+    <Option Roll="3–4" Description="Your character doesn’t take kindly to threats, and no one messes with her head. She is Strong Willed." />
+    <Option Roll="5" Description="With a nose for opportunities, horse-trading, and five-fingered discounts, your hero is the go-to person for getting what’s needed in a crunch. He has the Scrounger Edge and Connections (Black Market)." />
+    <Option Roll="6" Description="Some folks come to understand that lone wolves don’t make it in a world as dangerous as this one. Your hero has Common Bond." />
+    <Option Roll="7–8" Description="She always gets a strange tingling in the back of her neck when things are about to go all pear-shaped. She’s seen enough trouble to know when it’s coming. Your character has the Danger Sense Edge." />
+    <Option Roll="9" Description="A  split  second  often  means  the  difference  between  alive  and  a  smear  on  the landscape. Your character has the Quick Edge. If he already has that Edge, he gains the Level Headed Edge instead." />
+    <Option Roll="10–11" Description="Some experiences take a person back to the beginning, reconnecting her to her foundations. Select one Background Edge, regardless of requirements, so long as it makes sense and the GM agrees with it." />
+    <Option Roll="12–13" Description="He’s traveled far and wide, and he knows a lot about the world that could come in handy. Your character gains a +2 on any Common Knowledge rolls related to geography and understanding the people and places of North America. He also gains a +2 on Survival and Streetwise checks in North America." />
+    <Option Roll="14" Description="There are times when no amount of skill, talent, or training is enough. Fortunately for your character, she has a bit of Luck (as in the Edge) on her side. Take Great Luck instead if she already has Luck." />
+    <Option Roll="15–16" Description="Life on the road, in the wilderness, and wandering the streets of the cities that remain  gave  your  character  special  insight  and  some  key  experience  with  a particular calling. You may give her one Professional Edge, ignoring requirements, subject to the GM’s approval and it making at least some kind of sense." />
+    <Option Roll="17–18" Description="There are moments when everything comes together and an opportunity presents itself. You’re hero knows how to make the most of just such a moment; choose one Wild Card Edge, regardless of requirements." />
+    <Option Roll="19–20" Description="You may choose any one of the previous results." />
   </Table>
   <Table Name="Magic &amp; Mysticism" Roll="d20">
-    <Option Roll="1" Description="There are times to put it all on the line, no matter the cost. Your character is always prepared to do just that, thanks to having the Soul Drain Edge. Techno-Wizards gain +5 PPE instead."/>
-    <Option Roll="2–3" Description="In this world, combat proficiency with magic is highly valued and often necessary for survival. Your spell-weaving hero gains the effects of the Marksman Edge, but with her spellcasting skill (instead of Shooting and Throwing)."/>
-    <Option Roll="4–7" Description="More PPE means more power to work with, and your character has it. He gains +5 PPE to his base."/>
-    <Option Roll="8–10" Description="Arcane casters benefit most from the sheer variety of spells they have at hand. Your hero knows one more power of a Rank she can access."/>
-    <Option Roll="11–13" Description="Often, one crisis is quickly followed by another, and your caster needs to get his energy back quickly. He has the Rapid Recharge Edge, or Improved Rapid Recharge if he already has the former."/>
-    <Option Roll="14" Description="Some arcane wielders learn how to use certain spells as almost second nature. Choose one power your hero knows; if she casts it successfully, she automatically gains the raise effect."/>
-    <Option Roll="15–16" Description="Conservation of magical energy is a subtle, yet incredibly powerful talent to develop. Your hero knows how to do the most with the least, granting him the Wizard Edge."/>
-    <Option Roll="17" Description="Born  to  fight  the  biggest  and  toughest  threats,  your  hero’s  combat  spells  are inherently  potent.  All  of  her  damage-dealing  spells  and  magical  effects  are automatically Mega Damage, even the non-Mega Power versions."/>
-    <Option Roll="18" Description="Putting down opponents before they end you is a powerful lesson to learn in this dangerous world. Your hero gains +2 on any damage-dealing spells he casts."/>
-    <Option Roll="19–20" Description="You may choose any one of the previous results."/>
+    <Option Roll="1" Description="There are times to put it all on the line, no matter the cost. Your character is always prepared to do just that, thanks to having the Soul Drain Edge. Techno-Wizards gain +5 PPE instead." />
+    <Option Roll="2–3" Description="In this world, combat proficiency with magic is highly valued and often necessary for survival. Your spell-weaving hero gains the effects of the Marksman Edge, but with her spellcasting skill (instead of Shooting and Athletics (Throwing))." />
+    <Option Roll="4–7" Description="More PPE means more power to work with, and your character has it. He gains +5 PPE to his base." />
+    <Option Roll="8–10" Description="Arcane casters benefit most from the sheer variety of spells they have at hand. Your hero knows one more power of a Rank she can access." />
+    <Option Roll="11–13" Description="Often, one crisis is quickly followed by another, and your caster needs to get his energy back quickly. He has the Rapid Recharge Edge, or Improved Rapid Recharge if he already has the former." />
+    <Option Roll="14" Description="Some arcane wielders learn how to use certain spells as almost second nature. Choose one power your hero knows; if she casts it successfully, she automatically gains the raise effect." />
+    <Option Roll="15–16" Description="Conservation of magical energy is a subtle, yet incredibly powerful talent to develop. Your hero knows how to do the most with the least, granting him the Wizard Edge." />
+    <Option Roll="17" Description="Born  to  fight  the  biggest  and  toughest  threats,  your  hero’s  combat  spells  are inherently  potent.  All  of  her  damage-dealing  spells  and  magical  effects  are automatically Mega Damage, even the non-Mega Power versions." />
+    <Option Roll="18" Description="Putting down opponents before they end you is a powerful lesson to learn in this dangerous world. Your hero gains +2 on any damage-dealing spells he casts." />
+    <Option Roll="19–20" Description="You may choose any one of the previous results." />
   </Table>
 
-
   <Table Name="Psionics" Roll="d20">
-    <Option Roll="1" Description="Some  psionics  learn  to  dig  deep  within,  risking  their  very  lives  in  order to  call  on  even  more  power.  Your  character  has  the  Soul  Drain  Edge."/>
-    <Option Roll="2–3" Description="With deep concentration, meditation, or prayer, your hero regains her ISP at a faster rate than most. She gains the Rapid Recharge Edge (or improved Rapid Recharge if she already has the former)."/>
-    <Option Roll="4–6" Description="More ISP means more power to work with, and your character has it. He gains +10 ISP to his base."/>
-    <Option Roll="7" Description="Psychic awareness leads many to the ability to sense the feelings of others. This empathy allows your psionic to determine the general emotional state of another being within Smarts range by making an opposed Spirit check. On a raise, she can tell if another character is lying or being evasive in a conversation."/>
-    <Option Roll="8–10" Description="Variety of techniques is a power all its own; your psionic knows one additional power of a Rank he can access."/>
-    <Option Roll="11" Description="Some powers become second-nature to the psionic. Choose a power your character knows; when she successfully activates it, she gains the raise effect automatically."/>
-    <Option Roll="12" Description="Some psionic characters become expert at breaking the influence others have on people. As an action, your character can give an ally an immediate attempt to break out of illusion (and deadly illusion) or puppet (and mind control) at +2, and he can do this once per round until they break free. This benefit also aids anyone under the mind walk Mega Power."/>
-    <Option Roll="13–15" Description="Overcoming the will of others is something many psionics strive to perfect. Your 
-hero is a master of such techniques, granting her the Mentalist Edge."/>
-    <Option Roll="16" Description="Many psionics strive for a level of enlightenment that transcends matters physical, focusing ever more energy and effort via their will. Your hero is able to spend a Benny to use her Spirit in place of any other Trait roll for a round."/>
-    <Option Roll="17–18" Description="Many psionics develop a powerful presence that aids them in influencing and unnerving others. Your hero gains +2 on all Intimidation and Persuasion checks. As well, if he has the fear power, he gains +2 when using it."/>
-    <Option Roll="19–20" Description="You may choose any one of the previous results."/>
+    <Option Roll="1" Description="Some  psionics  learn  to  dig  deep  within,  risking  their  very  lives  in  order to  call  on  even  more  power.  Your  character  has  the  Soul  Drain  Edge." />
+    <Option Roll="2–3" Description="With deep concentration, meditation, or prayer, your hero regains her ISP at a faster rate than most. She gains the Rapid Recharge Edge (or improved Rapid Recharge if she already has the former)." />
+    <Option Roll="4–6" Description="More ISP means more power to work with, and your character has it. He gains +10 ISP to his base." />
+    <Option Roll="7" Description="Psychic awareness leads many to the ability to sense the feelings of others. This empathy allows your psionic to determine the general emotional state of another being within Smarts range by making an opposed Spirit check. On a raise, she can tell if another character is lying or being evasive in a conversation." />
+    <Option Roll="8–10" Description="Variety of techniques is a power all its own; your psionic knows one additional power of a Rank he can access." />
+    <Option Roll="11" Description="Some powers become second-nature to the psionic. Choose a power your character knows; when she successfully activates it, she gains the raise effect automatically." />
+    <Option Roll="12" Description="Some psionic characters become expert at breaking the influence others have on people. As an action, your character can give an ally an immediate attempt to break out of illusion (and deadly illusion) or puppet (and mind control) at +2, and he can do this once per round until they break free. This benefit also aids anyone under the mind walk Mega Power." />
+    <Option Roll="13–15" Description="Overcoming the will of others is something many psionics strive to perfect. Your
+hero is a master of such techniques, granting her the Mentalist Edge." />
+    <Option Roll="16" Description="Many psionics strive for a level of enlightenment that transcends matters physical, focusing ever more energy and effort via their will. Your hero is able to spend a Benny to use her Spirit in place of any other Trait roll for a round." />
+    <Option Roll="17–18" Description="Many psionics develop a powerful presence that aids them in influencing and unnerving others. Your hero gains +2 on all Intimidation and Persuasion checks. As well, if he has the fear power, he gains +2 when using it." />
+    <Option Roll="19–20" Description="You may choose any one of the previous results." />
   </Table>
 
   <Table Name="Ranged Weapons" Roll="d20">
-    <Option Roll="1–3" Description="You may add any Ranged Combat Weapon listed in this book to your character’s gear list. Apply all other results from rolling on this table to your new weapon as you wish."/>
-    <Option Roll="4" Description="Your hero came across a cache of grenades, and she knows those can come in handy! She’s got 1d6 armor piercing, 1d8 fragmentation, 1d6 high explosive, and 1d4 plasma grenades. Even after these are gone, she always seems to find more, beginning each session with 1d4 fragmentation grenades."/>
-    <Option Roll="5–6" Description="Exceptional crafting and fine-tuning grants your hero a +1 Shooting with this weapon. This result may be applied a maximum of two times."/>
-    <Option Roll="7–8" Description="The NG-LG6 Laser Rifle combines exceptional firearm capabilities with a handy grenade launcher, making your character a favored squad support member as well as a favored target for enemy shooters."/>
-    <Option Roll="9–10" Description="This weapon is extra deadly, granting a +1 to all damage rolls made with it. This result may be applied a maximum of three times."/>
-    <Option Roll="11" Description="Likely taken from a former foe, your hero has a TX-5 Pump Pistol as part of his personal arsenal."/>
-    <Option Roll="12" Description="The JA-11 Energy Rifle is a marvel of design and effectiveness. Most Juicers give any non-Juicer the side-eye if they’re carrying one."/>
-    <Option Roll="13" Description="Throwing grenades is fine, but shooting them in rapid succession is better. Your hero loves his WI-GL20 Automatic Grenade Launcher, which comes with a full load of his choice of grenades."/>
-    <Option Roll="14" Description="Your hero, ready for vampires, carries a modified crossbow that serves to launch wooden stakes (Range 12/24/48, Damage 2d6+2, RoF 1). It has a small clip-feeder, giving it five shots before reloading, which takes an action."/>
-    <Option Roll="15" Description="Advanced technology makes this weapon extra effective against armor, giving it +2 AP."/>
-    <Option Roll="16" Description="This weapon has a Vibro-Knife embedded, bayonet-style (Str+d6, AP 4, Mega Damage)."/>
-    <Option Roll="17" Description="It’s big, it’s bulky, and it’s a pain to fire while on the move. Nonetheless, your hero’s NG-E4 Plasma Ejector is exactly what the team needs when the gates of Hell open or a Coalition Death’s Head transport flies overhead."/>
-    <Option Roll="18" Description="When your bullets and blasts are splashing off the giant machine’s M.D.C. armor or the horrific demon’s carapace, it’s time to grab the Portable Rocket Launcher."/>
-    <Option Roll="19–20" Description="You may choose any one of the previous results."/>
+    <Option Roll="1–3" Description="You may add any Ranged Combat Weapon listed in this book to your character’s gear list. Apply all other results from rolling on this table to your new weapon as you wish." />
+    <Option Roll="4" Description="Your hero came across a cache of grenades, and she knows those can come in handy! She’s got 1d6 armor piercing, 1d8 fragmentation, 1d6 high explosive, and 1d4 plasma grenades. Even after these are gone, she always seems to find more, beginning each session with 1d4 fragmentation grenades." />
+    <Option Roll="5–6" Description="Exceptional crafting and fine-tuning grants your hero a +1 Shooting with this weapon. This result may be applied a maximum of two times." />
+    <Option Roll="7–8" Description="The NG-LG6 Laser Rifle combines exceptional firearm capabilities with a handy grenade launcher, making your character a favored squad support member as well as a favored target for enemy shooters." />
+    <Option Roll="9–10" Description="This weapon is extra deadly, granting a +1 to all damage rolls made with it. This result may be applied a maximum of three times." />
+    <Option Roll="11" Description="Likely taken from a former foe, your hero has a TX-5 Pump Pistol as part of his personal arsenal." />
+    <Option Roll="12" Description="The JA-11 Energy Rifle is a marvel of design and effectiveness. Most Juicers give any non-Juicer the side-eye if they’re carrying one." />
+    <Option Roll="13" Description="Throwing grenades is fine, but shooting them in rapid succession is better. Your hero loves his WI-GL20 Automatic Grenade Launcher, which comes with a full load of his choice of grenades." />
+    <Option Roll="14" Description="Your hero, ready for vampires, carries a modified crossbow that serves to launch wooden stakes (Range 12/24/48, Damage 2d6+2, RoF 1). It has a small clip-feeder, giving it five shots before reloading, which takes an action." />
+    <Option Roll="15" Description="Advanced technology makes this weapon extra effective against armor, giving it +2 AP." />
+    <Option Roll="16" Description="This weapon has a Vibro-Knife embedded, bayonet-style (Str+d6, AP 4, Mega Damage)." />
+    <Option Roll="17" Description="It’s big, it’s bulky, and it’s a pain to fire while on the move. Nonetheless, your hero’s NG-E4 Plasma Ejector is exactly what the team needs when the gates of Hell open or a Coalition Death’s Head transport flies overhead." />
+    <Option Roll="18" Description="When your bullets and blasts are splashing off the giant machine’s M.D.C. armor or the horrific demon’s carapace, it’s time to grab the Portable Rocket Launcher." />
+    <Option Roll="19–20" Description="You may choose any one of the previous results." />
   </Table>
 
   <Table Name="Fortune &amp; Glory" Roll="d12">
-    <Option Roll="1" Description="A Mighty Weapon: Your hero may choose any single weapon from the Close Combat  or  Ranged  Weapons—Personal  sections.  Alternately,  you  gain  the Trademark Weapon Edge for one of your starting weapons."/>
-    <Option Roll="2" Description="A Strong Suit of Armor: Your hero may choose any one suit of Body Armor and add two of the modifiers listed under Body Armor in the Hero’s Journey section. They must be two different modifiers, not the same one twice."/>
-    <Option Roll="3" Description="A Way to Get Around: Your hero begins with a d6 in either Driving or Piloting. She also starts with any one vehicle of her choice."/>
-    <Option Roll="4" Description="Agile and Dexterous: Your hero adds one die type to Agility and begins with either the Ambidextrous or Quick Edge."/>
-    <Option Roll="5" Description="Smart and Learned: Your hero adds one die type to Smarts and begins with a d6 in any three Smarts-linked skills."/>
-    <Option Roll="6" Description="Spiritual and Determined: Your hero adds one type to Spirit and begins with the Strong Willed Edge."/>
-    <Option Roll="7" Description="Strong and Powerful: Your hero adds one die type to Strength and begins with the Brawny Edge."/>
-    <Option Roll="8" Description="Vigorous and Tough: You hero adds one die type to Vigor and begins with the Nerves of Steel Edge."/>
-    <Option Roll="9" Description="Wealthy and Connected: You hero begins with the Rich Edge and the Connections Edge with two factions."/>
-    <Option Roll="10" Description="Charming and Well-Traveled: Your hero begins with the Charismatic and I Know a Guy Edges."/>
-    <Option Roll="11" Description="Fortune Favors the Bold: Your hero begins with the Brave Edge. He also begins each session with one additional Benny."/>
+    <Option Roll="1" Description="A Mighty Weapon: Your hero may choose any single weapon from the Close Combat  or  Ranged  Weapons—Personal  sections.  Alternately,  you  gain  the Trademark Weapon Edge for one of your starting weapons." />
+    <Option Roll="2" Description="A Strong Suit of Armor: Your hero may choose any one suit of Body Armor and add two of the modifiers listed under Body Armor in the Hero’s Journey section. They must be two different modifiers, not the same one twice." />
+    <Option Roll="3" Description="A Way to Get Around: Your hero begins with a d6 in either Driving or Piloting. She also starts with any one vehicle of her choice." />
+    <Option Roll="4" Description="Agile and Dexterous: Your hero adds one die type to Agility and begins with either the Ambidextrous or Quick Edge." />
+    <Option Roll="5" Description="Smart and Learned: Your hero adds one die type to Smarts and begins with a d6 in any three Smarts-linked skills." />
+    <Option Roll="6" Description="Spiritual and Determined: Your hero adds one type to Spirit and begins with the Strong Willed Edge." />
+    <Option Roll="7" Description="Strong and Powerful: Your hero adds one die type to Strength and begins with the Brawny Edge." />
+    <Option Roll="8" Description="Vigorous and Tough: You hero adds one die type to Vigor and begins with the Nerves of Steel Edge." />
+    <Option Roll="9" Description="Wealthy and Connected: You hero begins with the Rich Edge and the Connections Edge with two factions." />
+    <Option Roll="10" Description="Charming and Well-Traveled: Your hero begins with the Charismatic and I Know a Guy Edges." />
+    <Option Roll="11" Description="Fortune Favors the Bold: Your hero begins with the Brave Edge. He also begins each session with one additional Benny." />
     <Option Roll="12" Description="Choose Your Fate: Select any other result on this table, or gain two rolls on the Hero’s Journey tables of your choice.">
-      <TableRoll Name="Fortune &amp; Glory"/>
-      <TableRoll Name="Fortune &amp; Glory"/>
+      <TableRoll Name="Fortune &amp; Glory" />
+      <TableRoll Name="Fortune &amp; Glory" />
     </Option>
   </Table>
 
   <Table Name ="Training" Roll="d20">
 
-    <Option Roll="1–3" Description="After serving in a military, paramilitary, militia, or security force for some time, your hero has some solid combat training. She gains +5 Skill Points, which may be spent on Fighting, Shooting, or Throwing in any combination."/>
+    <Option Roll="1–3" Description="After serving in a military, paramilitary, militia, or security force for some time, your hero has some solid combat training. She gains +5 Skill Points, which may be spent on Fighting, Shooting, or Athletics (Throwing) in any combination." />
     <Option Roll="4–5" Description="Whether via formal training in a dedicated school, learning at the hands of a master, or just surviving a dangerous world, your hero’s picked up some serious fighting skills. He’s got the  Edge (or Improved Martial Artist, if he already had the former), as well as the  Edge.">
-      <Edge Name="Martial Artist"/>
-      <Edge Name="Brawler"/>
+      <Edge Name="Martial Artist" />
+      <Edge Name="Brawler" />
     </Option>
-    <Option Roll="6–7" Description="Part of your character’s extensive training including full understanding of a particular occupation or area of focus. You may give her one Professional Edge, ignoring requirements, subject to the GM’s approval and it making at least some kind of sense."/>
+    <Option Roll="6–7" Description="Part of your character’s extensive training including full understanding of a particular occupation or area of focus. You may give her one Professional Edge, ignoring requirements, subject to the GM’s approval and it making at least some kind of sense." />
     <Option Roll="8–9" Description="While the cities of Savage Rifts® are deadly in their own right, your hero understands the dangers of the wilderness in ways few ever grasp. He has the Woodsman Edge and gains one die increase each in Survival and Tracking.">
-      <Edge Name="Woodsman"/>
+      <Edge Name="Woodsman" />
       <Skill Name="Survival" Bonus="1" />
       <Skill Name="Tracking" Bonus="1" />
     </Option>
     <Option Roll="10–11" Description="Functional machines and technology often mean the difference between life and death in the world of Savage Rifts®. Fortunately for any group your hero runs with, she’s pretty good with tech, giving her a bonus die increase for the Repair skill, as
     well as +1 on Knowledge (Electronics) and Knowledge (Engineering) rolls.">
-      <Skill Name="Repair" Bonus="1"/>
+      <Skill Name="Repair" Bonus="1" />
     </Option>
-    <Option Roll="12–13" Description="There are a lot of broken elevators and overgrown mountain trails across the world, making trained climbers a valuable addition to any group. Your character is one of those folks who knows his way around ropes and clamps, granting him a d6 Climbing, or +2 to the skill if he already has it. He also has a good set of climbing gear for a party of four.">
-      <Skill Name="Climbing" Bonus="2"/>
+    <Option Roll="12–13" Description="There are a lot of broken elevators and overgrown mountain trails across the world, making trained climbers a valuable addition to any group. Your character is one of those folks who knows his way around ropes and clamps, granting him a d6 Athletics (Climbing), or +2 to the skill if he already has it. He also has a good set of climbing gear for a party of four.">
+      <Skill Name="Athletics" Bonus="2" />
     </Option>
 
     <Option Roll="14" Description="When it gets up-close and ugly, your hero knows how to set up her opponents for a nasty fall, while protecting herself. She has the Dirty Fighter Edge (or Tricky Fighter, if she already has Dirty Fighter). She also gains +1 to Parry.">
-      <Trait Name="Parry" Bonus="1"/>
-      <Edge Name="Dirty Fighter"/>
+      <Trait Name="Parry" Bonus="1" />
+      <Edge Name="Dirty Fighter" />
     </Option>
-    <Option Roll="15–16" Description="Constant battle, for cause or survival, means your hero knows a great deal about combat. Select one Combat Edge; you may ignore all requirements except where an Edge has a specific predecessor (such as with Improved Frenzy; your character must have Frenzy first)."/>
+    <Option Roll="15–16" Description="Constant battle, for cause or survival, means your hero knows a great deal about combat. Select one Combat Edge; you may ignore all requirements except where an Edge has a specific predecessor (such as with Improved Frenzy; your character must have Frenzy first)." />
     <Option Roll="17" Description="Though lots of folks can jump behind a wheel or grab a stick, your hero understands the nuances of guiding a machine effectively through the worst conditions. She gains the Ace Edge (or Combat Ace, if she already has Ace), as well as a free die
     type increase in her choice of Boating, Driving, or Piloting.">
-      <Edge Name="Ace"/>
+      <Edge Name="Ace" />
     </Option>
-    <Option Roll="18" Description="There are moments when everything comes together and an opportunity presents itself. You’re hero knows how to make the most of just such a moment; choose one Wild Card Edge, regardless of requirements."/>
-    <!--<Option Roll="19–20 You may choose any one of the previous results."/>-->
-    <Option Roll="19-20" >
+    <Option Roll="18" Description="There are moments when everything comes together and an opportunity presents itself. You’re hero knows how to make the most of just such a moment; choose one Wild Card Edge, regardless of requirements." />
+    <!--<Option Roll="19–20 You may choose any one of the previous results." />-->
+    <Option Roll="19-20">
       <TableRoll Name="Training" />
       <TableRoll Name="Training" />
     </Option>
@@ -575,23 +542,23 @@ hero is a master of such techniques, granting her the Mentalist Edge."/>
 
   <Table Name="Underworld &amp; Black Ops" Roll="d20">
     <Option Roll="1–2" Description="When all else fails, your hero knows how to take any available resources and jury-rig her way into or out of situations. She has the McGyver Edge, and she gains a die type in Repair.">
-      <Edge Name="McGyver"/>
-      <Skill Name="Repair" Bonus="1"/>
+      <Edge Name="McGyver" />
+      <Skill Name="Repair" Bonus="1" />
     </Option>
     <Option Roll="3–4" Description="Your character’s innate understanding of computers makes him one of the most valuable people in the world. He gains Knowledge (Computers) d8, as well as +2 when dealing with electronic security.">
       <Skill Name="Knowledge (Computers)" Level="d8" />
     </Option>
 
     <Option Roll="5–7" Description="She’s done more and traveled more than anyone, and she always seems to know someone, somewhere, she can call on for information or aid. Your hero has the I Know a Guy Edge, and she gains +2 on all Connections rolls to contact and gain assistance.">
-      <Edge Name="I Know a Guy"/>
+      <Edge Name="I Know a Guy" />
     </Option>
     <Option Roll="8" Description="Your character has a knack for taking full advantage of his opponents. He has the Dirty Fighter Edge (or Tricky Fighter, if he already has Dirty Fighter), and whenever he gets a raise on a Trick attempt, he may spend a Benny to gain The Drop on his opponent on that round.">
-      <Edge Name="Dirty Fighter"/>
+      <Edge Name="Dirty Fighter" />
     </Option>
     <Option Roll="9–10" Description="Though few and far between, the cites of Rifts Earth are the hubs of what remains of civilization, vital as sources of information. Your character understands the ebb and flow of their streets and alleyways, gaining a d8 in Streetwise. She is also good at creating fakes of necessary papers, badges, and the like; she’s got experience and training in Forgery (treat as Common Knowledge), with a +2 to related checks.">
       <Skill Name="Streetwise" Level="d8" />
     </Option>
-    <Option Roll="11–13" Description="Your character is inherently gifted at larceny, possessing the Thief Edge without concern for requirements. He also gains +3 Skill Points to spend on Climbing, Lockpicking, and Stealth as he chooses.">
+    <Option Roll="11–13" Description="Your character is inherently gifted at larceny, possessing the Thief Edge without concern for requirements. He also gains +3 Skill Points to spend on Athletics (Climbing), Thievery (Lockpicking), and Stealth as he chooses.">
       <Edge Name="Thief" />
     </Option>
     <Option Roll="14" Description="Your hero is an infiltration specialist, skilled at blending into a culture or group for undercover work. She gains a +1 to any Investigation, Persuasion, Stealth, and Streetwise rolls related to being undercover, and a +2 to any Common Knowledge rolls for disguising herself and playing the role. She also gains two additional languages on top of what she already knows.">
@@ -604,15 +571,13 @@ hero is a master of such techniques, granting her the Mentalist Edge."/>
     <Option Roll="17" Description="Spies and provocateurs are regularly called upon to do just about anything to accomplish a mission; your hero’s made it a point to learn a little something about everything. She has the Jack-of-All-Trades Edge.">
       <Edge Name="Jack-of-All-Trades" />
     </Option>
-    <Option Roll="18" Description="There are many killers in the world, but your character is a wetwork expert with a particular set of skills. He gains the Assassin Edge. He also gains +2 for Fighting, Shooting, and Throwing rolls, but only to offset Called Shot penalties.">
-      <Edge Name="Assassin"/>
+    <Option Roll="18" Description="There are many killers in the world, but your character is a wetwork expert with a particular set of skills. He gains the Assassin Edge. He also gains +2 for Fighting, Shooting, and Athletics (Throwing) rolls, but only to offset Called Shot penalties.">
+      <Edge Name="Assassin" />
     </Option>
-    <!--<Option Roll="19–20" Description="Underworld &amp; Black Ops: You may choose any one of the previous results."/>-->
-    <Option Roll="19-20" >
+    <!--<Option Roll="19–20" Description="Underworld &amp; Black Ops: You may choose any one of the previous results." />-->
+    <Option Roll="19-20">
       <TableRoll Name="Underworld &amp; Black Ops" />
       <TableRoll Name="Underworld &amp; Black Ops" />
     </Option>
   </Table>
-
 </Setting>
-

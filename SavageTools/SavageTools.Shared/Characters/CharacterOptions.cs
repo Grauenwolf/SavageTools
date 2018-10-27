@@ -18,6 +18,9 @@ namespace SavageTools.Characters
         public bool RandomArchetype { get => GetDefault(false); set => Set(value); }
         public bool RandomRace { get => GetDefault(false); set => Set(value); }
         public bool RandomRank { get => GetDefault(false); set => Set(value); }
+
+        public bool UseCoreSkills { get => GetDefault(false); set => Set(value); }
+
         public SettingArchetype SelectedArchetype
         {
             get { return Get<SettingArchetype>(); }
@@ -36,6 +39,7 @@ namespace SavageTools.Characters
         public SettingRank SelectedRank { get { return Get<SettingRank>(); } set { Set(value); } }
 
         public bool WildCard { get => GetDefault(false); set => Set(value); }
+
         public Character GenerateCharacter(Dice dice = null)
         {
             return CharacterGenerator.GenerateCharacter(this, dice);
@@ -49,7 +53,6 @@ namespace SavageTools.Characters
 
             CharacterGenerator.LoadSetting(file);
 
-
             if (currentArchetype != null && SelectedArchetype == null) //selected archetype was replaced so we need to reselect it
                 SelectedArchetype = CharacterGenerator.Archetypes.Single(a => a.Name == currentArchetype);
 
@@ -61,9 +64,6 @@ namespace SavageTools.Characters
 
             if (CharacterGenerator.BornAHeroSetting)
                 BornAHero = true;
-
         }
     }
-
-
 }
