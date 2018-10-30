@@ -3,7 +3,7 @@
   <Skills>
     <Skill Name="Athletics" Attribute="Agility" IsCore="true" />
     <Skill Name="Boating" Attribute="Agility" />
-    <Skill Name="Common Knowledge" Attribute="Agility" IsCore="true" />
+    <Skill Name="Common Knowledge" Attribute="Smarts" IsCore="true" />
     <Skill Name="Driving" Attribute="Agility" />
     <Skill Name="Fighting" Attribute="Agility" />
     <Skill Name="Gambling" Attribute="Smarts" />
