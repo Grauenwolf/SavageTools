@@ -218,6 +218,36 @@
     <Edge Name="Two-Fisted" Requires="Novice, Agility d8" Description="Make one extra Fighting roll with a second melee weapon in the off-hand at no Multi-Action penalty." />
     <Edge Name="Two-Gun Kid" Requires="Novice, Agility d8" Description="Make one extra Shooting (or Athletics (throwing) roll with a second ranged weapon in the off-hand at no Multi-Action penalty." />
 
+    <!-- Leadership Edges -->
+    <Edge Name="Command" Requires="Novice, Smarts d6" Description="+1 to Extras’ Shaken or Stunned recovery rolls. Range 5″ (10 yards)." />
+    <Edge Name="Command Presence" Requires="Seasoned, Command" Description="Increase Command Range to 10″ (20 yards)" />
+    <Edge Name="Fervor" Requires="Veteran, Spirit d8, Command" Description="Extras in range add +1 to their Fighting damage rolls" />
+    <Edge Name="Hold the Line" Requires="Seasoned, Smarts d8, Command" Description="+1 to Extras’ Toughness in Command Range." />
+    <Edge Name="Inspire" Requires="Seasoned, Command" Description="Once per turn, the hero may roll his Battle skill to Support one type of Trait roll, and apply it to everyone in Command Range" />
+    <Edge Name="Natural Leader" Requires="Seasoned, Spirit d8, Command" Description="Leadership Edges now apply to Wild Cards." />
+    <Edge Name="Tactician" Requires="Seasoned, Smarts d8, Command, Battle d6" Description="Draw an extra Action Card each turn that may be assigned to any allied Extra in Command Range." />
+    <Edge Name="Master Tactician" Requires="Veteran, Tactician" Description="Draw and distribute two extra Action Cards instead of one." />
+
+    <!-- ProfessionaL Edges -->
+    <Edge Name="Ace" Requires="Novice, Agility d8" Description="Character may spend Bennies to Soak damage for his vehicle and ignores up to 2 points of penalties." />
+    <Edge Name="Acrobat" Requires="Novice, Agility d8, Athletics d8" Description="Free reroll on acrobatic Athletics attempts." />
+    <Edge Name="Combat Acrobat" Requires="Seasoned, Acrobat" Description="−1 to hit with ranged and melee attacks." />
+    <Edge Name="Assassin" Requires="Novice, Agility d8, Fighting d6, Stealth d8" Description="+2 to damage foes when Vulnerable or assassin has The Drop." />
+    <Edge Name="Investigator" Requires="Novice, Smarts d8, Research d8" Description="+2 to Research and certain types of Notice rolls." />
+    <Edge Name="Jack-of-all-Trades" Requires="Novice, Smarts d10" Description="Gain d4 in a skill (or d6 with a raise) until replaced." />
+    <Edge Name="McGyver" Requires="Novice, Smarts d6, Repair d6, Notice d8" Description="Quickly create improvised devices from scraps." />
+    <Edge Name="Mr. Fix It" Requires="Novice, Repair d8" Description="+2 to Repair rolls, half the time required with a raise." />
+    <Edge Name="Scholar" Requires="Novice, Research d8" Description="+2 to any one “knowledge” skill." />
+    <Edge Name="Soldier" Requires="Novice, Strength d6, Vigor d6" Description=" Strength is one die type higher for Encumbrance and Min Str. Reroll Vigor rolls when resisting environmental Hazards." />
+    <Edge Name="Thief" Requires="Novice, Agility d8, Stealth d6, Thievery d6" Description="+1 Thievery, Athletics rolls made to climb, Stealth in urban environments." />
+    <Edge Name="Woodsman" Requires="Novice, Spirit d6, Survival d8" Description="+2 to Survival and Stealth in the wilds." />
+
+    <!-- Social Edges -->
+
+    <!-- Weird Edges -->
+
+    <!-- Legendary Edges -->
+
     <!--<Edge Name="Acrobat" Requires="Novice, Agility d8, Strength d6" Description="+2 to Agility tricks; +1 Parry if unencumbered" />
     <Edge Name="Assassin" Requires="Novice, Agility d8, Athletics d6, Fighting d6, Stealth d8" Description="+2 to damage when striking a foe unawares" />
 
@@ -349,8 +379,9 @@
   </Edges>
 
   <Archetypes>
-    <Archetype Name="(None)" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="15" />
+    <Archetype Name="(None)" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="12" />
 
+    <!--
     <Archetype Name="Driver" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="7">
       <Skill Name="Driving" Level="8" />
       <Skill Name="Fighting" Level="4" />
@@ -441,6 +472,7 @@
       <Trait Name="UnusedHindrances" Bonus="4" />
       <Trait Name="UnusedEdges" Bonus="-1" />
     </Archetype>
+    -->
   </Archetypes>
 
   <Races>

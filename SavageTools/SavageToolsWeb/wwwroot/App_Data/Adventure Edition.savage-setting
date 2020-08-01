@@ -5,6 +5,7 @@
     <Reference Name="Arcana" />
     <Reference Name="Magic" />
     <Reference Name="Gifted" />
+    <Reference Name="Miracles" />
     <Reference Name="Psionics" />
     <Reference Name="Weird Science" />
   </References>

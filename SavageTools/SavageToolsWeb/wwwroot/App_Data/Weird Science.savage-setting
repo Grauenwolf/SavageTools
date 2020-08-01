@@ -4,4 +4,44 @@
     <Reference Name="Core" />
     <Reference Name="Arcana" />
   </References>
+
+  <Edges>
+    <Edge Name="Arcane Background (Weird Science)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+      <Skill Name="Weird Science" Attribute="Smarts" Level="4" />
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints:Weird Science" Bonus="15" />
+      <Trait Name="UnusedPowers:Weird Science" Bonus="2" />
+      <Feature Name="Arcane Background" />
+    </Edge>
+
+    <!-- Common -->
+    <Edge Name="Artificer (Weird Science)" Requires="Seasoned, Arcane Background (Weird Science)" Description="Allows user to create Arcane Devices." />
+    <Edge Name="Channeling (Weird Science)" Requires="Seasoned, Arcane Background (Weird Science)" Description="Reduce Power Point cost by 1 with a raise on the activation roll." />
+    <Edge Name="Concentration (Weird Science)" Requires="Seasoned, Arcane Background (Weird Science)" Description="Double Duration of non-Instant powers." />
+    <Edge Name="New Power (Weird Science)" Requires="Novice, Arcane Background (Weird Science)" Description="Your character knows two new powers.">
+      <Trait Name="UnusedPowers:Weird Science" Bonus="2" />
+    </Edge>
+    <Edge Name="Power Points (Weird Science/Novice)" Requires="Novice, Arcane Background (Weird Science)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Weird Science" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Weird Science/Seasoned)" Requires="Seasoned, Arcane Background (Weird Science)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Weird Science" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Weird Science/Veteran)" Requires="Veteran, Arcane Background (Weird Science)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Weird Science" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Weird Science/Heroic)" Requires="Heroic, Arcane Background (Weird Science)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Weird Science" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Weird Science/Legendary)" Requires="Legendary, Arcane Background (Weird Science)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Weird Science" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Surge (Weird Science)" Requires="Wild Card, Novice, Arcane Background (Weird Science), Weird Science d8" Description="Recover 10 Power Points when dealt a Joker in combat." />
+    <Edge Name="Rapid Recharge (Weird Science)" Requires="Seasoned, Spirit d6, Arcane Background (Weird Science)" Description="Recover 10 Power Points per hour." />
+    <Edge Name="Improved Rapid Recharge (Weird Science)" Requires="Veteran, Rapid Recharge (Weird Science)" Description="Recover 20 Power Points per hour." />
+    <Edge Name="Soul Drain (Weird Science)" Requires="Seasoned, Arcane Background (Weird Science), Weird Science d10" Description="Recover 5 Power Points for a level of Fatigue." />
+
+    <!-- Arcane Background Specific -->
+    <Edge Name="Gadgeteer (Weird Science)" Requires="Seasoned, Arcane Background (Weird Science), Weird Science d6" Description="Spend 3 Power Points to create a device that replicates another power." />
+  </Edges>
 </Setting>

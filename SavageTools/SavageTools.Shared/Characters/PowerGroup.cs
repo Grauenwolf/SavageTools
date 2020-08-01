@@ -29,7 +29,7 @@ namespace SavageTools.Characters
         /// <value>The prohibited trappings.</value>
         public StringCollection ProhibitedTrappings => GetNew<StringCollection>();
 
-        public string Skill { get => Get<string>(); set => Set(value); }
+        public string PowerType { get => Get<string>(); set => Set(value); }
 
         public int UnusedPowers { get => Get<int>(); set => Set(value); }
 
@@ -37,7 +37,7 @@ namespace SavageTools.Characters
 
         public PowerGroup Clone()
         {
-            var result = new PowerGroup() { PowerPoints = PowerPoints, Skill=Skill, UnusedPowers=UnusedPowers };
+            var result = new PowerGroup() { PowerPoints = PowerPoints, PowerType=PowerType, UnusedPowers=UnusedPowers };
 
             result.ProhibitedTrappings.AddRange(ProhibitedTrappings);
             result.AvailableTrappings.AddRange(AvailableTrappings);

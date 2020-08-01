@@ -4,4 +4,48 @@
     <Reference Name="Core" />
     <Reference Name="Arcana" />
   </References>
+
+  <Edges>
+    <Edge Name="Arcane Background (Gifted)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+      <Skill Name="Focus" Attribute="Spirit" Level="4" />
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints:Gifted" Bonus="15" />
+      <Trait Name="UnusedPowers:Gifted" Bonus="1" />
+      <Feature Name="Arcane Background" />
+    </Edge>
+
+    <!-- Common -->
+    <Edge Name="Artificer (Gifted)" Requires="Seasoned, Arcane Background (Gifted)" Description="Allows user to create Arcane Devices." />
+    <Edge Name="Channeling (Gifted)" Requires="Seasoned, Arcane Background (Gifted)" Description="Reduce Power Point cost by 1 with a raise on the activation roll." />
+    <Edge Name="Concentration (Gifted)" Requires="Seasoned, Arcane Background (Gifted)" Description="Double Duration of non-Instant powers." />
+    <Edge Name="New Power (Gifted)" Requires="Novice, Arcane Background (Gifted)" Description="Your character knows two new powers.">
+      <Trait Name="UnusedPowers:Gifted" Bonus="2" />
+    </Edge>
+    <Edge Name="Power Points (Gifted/Novice)" Requires="Novice, Arcane Background (Gifted)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Gifted" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Gifted/Seasoned)" Requires="Seasoned, Arcane Background (Gifted)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Gifted" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Gifted/Veteran)" Requires="Veteran, Arcane Background (Gifted)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Gifted" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Gifted/Heroic)" Requires="Heroic, Arcane Background (Gifted)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Gifted" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Gifted/Legendary)" Requires="Legendary, Arcane Background (Gifted)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Gifted" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Surge (Gifted)" Requires="Wild Card, Novice, Arcane Background (Gifted), Focus d8" Description="Recover 10 Power Points when dealt a Joker in combat." />
+    <Edge Name="Rapid Recharge (Gifted)" Requires="Seasoned, Spirit d6, Arcane Background (Gifted)" Description="Recover 10 Power Points per hour." />
+    <Edge Name="Improved Rapid Recharge (Gifted)" Requires="Veteran, Rapid Recharge (Gifted)" Description="Recover 20 Power Points per hour." />
+    <Edge Name="Soul Drain (Gifted)" Requires="Seasoned, Arcane Background (Gifted), Focus d10" Description="Recover 5 Power Points for a level of Fatigue." />
+
+    <!-- Arcane Background Specific -->
+    <Edge Name="Extra Effort (Gifted)" Requires="Seasoned, Arcane Background (Gifted), Focus d6" Description="Increase Focus by +1 for 1 Power Point or +2 for 3 Power Points." />
+    <Edge Name="Gadgeteer (Weird Science)" Requires="Seasoned, Arcane Background (Weird Science), Weird Science d6" Description="Spend 3 Power Points to create a device that replicates another power." />
+    <Edge Name="Holy/Unholy Warrior (Miracles)" Requires="Seasoned, Arcane Background (Miracles), Faith d6" Description="Add +1 to +4 to Soak rolls for each Power Point spent." />
+    <Edge Name="Mentalist (Psionics)" Requires="Seasoned, Arcane Background (Psionics), Psionics d6" Description="+2 to opposed Psionics rolls." />
+    <Edge Name="Wizard (Magic)" Requires="Seasoned, Arcane Background (Magic), Spellcasting d6" Description="Spend 1 extra Power Point to change a spell’s Trapping." />
+  </Edges>
 </Setting>

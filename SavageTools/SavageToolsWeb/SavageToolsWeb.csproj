@@ -17,9 +17,11 @@
     <Content Remove="wwwroot\App_Data\last.txt" />
     <Content Remove="wwwroot\App_Data\Magic.savage-setting" />
     <Content Remove="wwwroot\App_Data\male-first.txt" />
+    <Content Remove="wwwroot\App_Data\Miracles.savage-setting" />
     <Content Remove="wwwroot\App_Data\Modern.savage-setting" />
     <Content Remove="wwwroot\App_Data\personality.txt" />
     <Content Remove="wwwroot\App_Data\Psionics.savage-setting" />
+    <Content Remove="wwwroot\App_Data\Urban Fantasy.savage-setting" />
     <Content Remove="wwwroot\App_Data\victorian-female-first.txt" />
     <Content Remove="wwwroot\App_Data\victorian-last.txt" />
     <Content Remove="wwwroot\App_Data\victorian-male-first.txt" />
@@ -40,12 +42,14 @@
     <None Include="wwwroot\App_Data\last.txt" />
     <None Include="wwwroot\App_Data\Magic.savage-setting" />
     <None Include="wwwroot\App_Data\male-first.txt" />
+    <None Include="wwwroot\App_Data\Urban Fantasy.savage-setting" />
     <None Include="wwwroot\App_Data\Modern.savage-setting" />
     <None Include="wwwroot\App_Data\personality.txt" />
     <None Include="wwwroot\App_Data\Psionics.savage-setting" />
     <None Include="wwwroot\App_Data\victorian-female-first.txt" />
     <None Include="wwwroot\App_Data\victorian-last.txt" />
     <None Include="wwwroot\App_Data\victorian-male-first.txt" />
+    <None Include="wwwroot\App_Data\Miracles.savage-setting" />
     <None Include="wwwroot\App_Data\Weird Science.savage-setting" />
   </ItemGroup>
 

@@ -902,7 +902,7 @@ namespace SavageTools.Characters
 
             if (powers.Count == 0 || trappings.Count == 0)
             {
-                result.Features.Add($"Has {group.UnusedPowers} unused powers for {group.Skill}.");
+                result.Features.Add($"Has {group.UnusedPowers} unused powers for {group.PowerType}.");
                 group.UnusedPowers = 0;
                 return;
             }

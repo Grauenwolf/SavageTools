@@ -564,7 +564,7 @@ namespace SavageTools.Characters
                 AppendList("**Personality:** ", Personality, p => p.Name);
 
             foreach (var group in PowerGroups)
-                AppendList($"**{group.Skill}**: Power Points {group.PowerPoints}, Powers: ", group.Powers, p => p.LongName);
+                AppendList($"**{group.PowerType}**: Power Points {group.PowerPoints}, Powers: ", group.Powers, p => p.LongName);
 
             if (Gear.Count > 0)
                 AppendList("**Gear:** ", Gear, g => g.Name + (string.IsNullOrEmpty(g.Description) ? "" : ": " + g.Description));
@@ -627,7 +627,7 @@ namespace SavageTools.Characters
                 story.AppendLine(string.Join(", ", Personality.Select(h => h.Name)));
 
             foreach (var group in PowerGroups)
-                story.AppendLine($"{group.Skill}, Power Points {group.PowerPoints}, Powers: {string.Join(", ", group.Powers.Select(p => p.LongName))}");
+                story.AppendLine($"{group.PowerType}, Power Points {group.PowerPoints}, Powers: {string.Join(", ", group.Powers.Select(p => p.LongName))}");
 
             if (Gear.Count > 0)
                 story.AppendLine(string.Join(", ", Gear.Select(h => h.Name + (string.IsNullOrEmpty(h.Description) ? "" : ": " + h.Description))));
