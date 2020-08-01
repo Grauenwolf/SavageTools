@@ -1,0 +1,286 @@
+﻿<h3 class="do-not-print">Character Builder</h3>
+
+@if (Options == null)
+{
+    <div>ERROR CharacterBuilderForm is missing the Options parameter.</div>
+}
+else
+{
+    <div class="do-not-print">
+        <EditForm Model="@Options" OnValidSubmit="@SubmitChanges">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <table class="gridtable">
+                <tr>
+                    <th>Archetype</th>
+                    <td>
+                        <InputSelect id="parentSection" @bind-Value="Options.SelectedArchetypeString">
+                            <option value="">(Random)</option>
+                            @foreach (var archetype in Options.CharacterGenerator.Archetypes)
+                                {
+                                    if (Options.SelectedArchetypeString == archetype.Name)
+                                    {
+                                    <option value="@(archetype.Name)" selected> @(archetype.Name)</option>
+                                    }
+                                    else
+                                    {
+                                    <option value="@(archetype.Name)"> @(archetype.Name)</option>
+                                    }
+                                }
+                        </InputSelect>
+                    </td>
+                    <th>Race</th>
+                    <td>
+                        <InputSelect id="parentSection" @bind-Value="Options.SelectedRaceString">
+                            <option value="">(Random)</option>
+                            @foreach (var race in Options.CharacterGenerator.Races)
+                                {
+                                    if (Options.SelectedRaceString == race.Name)
+                                    {
+                                    <option value="@(race.Name)" selected> @(race.Name)</option>
+                                    }
+                                    else
+                                    {
+                                    <option value="@(race.Name)"> @(race.Name)</option>
+                                    }
+                                }
+                        </InputSelect>
+                    </td>
+                    <th>Rank</th>
+                    <td>
+                        <InputSelect id="parentSection" @bind-Value="Options.SelectedRankString">
+                            <option value="">(Random)</option>
+                            @foreach (var rank in Options.CharacterGenerator.Ranks)
+                                {
+                                    if (Options.SelectedRankString == rank.Name)
+                                    {
+                                    <option value="@(rank.Name)" selected> @(rank.Name)</option>
+                                    }
+                                    else
+                                    {
+                                    <option value="@(rank.Name)"> @(rank.Name)</option>
+                                    }
+                                }
+                        </InputSelect>
+                    </td>
+                    <th>Count</th>
+                    <td><InputNumber id="displayOrder" @bind-Value="Options.Count" /></td>
+                    <td rowspan="3">
+                        <button type="submit">Generate Squad</button>
+                    </td>
+                </tr>
+                @*<tr>
+                        <td colspan="2">Leave blank for random.</td>
+                        <td colspan="2">Leave blank for random.</td>
+                        <td colspan="2">Leave blank for random.</td>
+                        <td colspan="2"></td>
+                    </tr>*@
+                <tr>
+                    <td colspan="2">
+                        <label> <InputCheckbox @bind-Value="Options.WildCard" /> Is Wildcard </label>
+                    </td>
+                    <td colspan="2">
+                        <label> <InputCheckbox @bind-Value="Options.BornAHero" /> Is Born a Hero</label>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                Display Mode: <InputSelect id="parentSection" @bind-Value="DisplayMode" @onclick="OnClick" @onkeyup="OnKeyUp">
+                    <option value="HTML" selected>HTML</option>
+                    <option value="Formatted">Formatted</option>
+                    <option value="Formatted_Compact">Formatted, Compact</option>
+                    <option value="Markdown">Markdown</option>
+                    <option value="Markdown_Compact">Markdown, Compact</option>
+                </InputSelect>
+            </div>
+        </EditForm>
+
+        @if (!string.IsNullOrEmpty(ErrorDisplay))
+        {
+            <p style="color:red">@ErrorDisplay</p>
+        }
+        <hr />
+    </div>
+
+    if (Squad.Count > 0)
+    {
+        @foreach (var chr in Squad)
+        {
+            if (DisplayMode == "HTML")
+            {
+                <h2 style="page-break-before: always">@(chr.Name)</h2>
+
+                <table class="gridtable">
+                    <tr><th>Gender</th><th>Archetype</th><th>Race</th><th>Rank</th><th>Personality</th></tr>
+                    <tr><td>@(chr.Gender)</td><td>@(chr.Archetype)</td><td>@(chr.Race)</td><td>@(chr.Rank)</td><td>@(string.Join(", ", chr.Personality.Select(x => x.Name)))</td></tr>
+                </table>
+
+                <table class="gridtable">
+                    <tr><th>Agility</th><th>Smarts</th><th>Strength</th><th>Spirit</th><th>Vigor</th></tr>
+                    <tr><td>@(chr.Agility)</td><td>@(chr.Smarts)</td><td>@(chr.Strength)</td><td>@(chr.Spirit)</td><td>@(chr.Vigor)</td></tr>
+                </table>
+
+                <table class="gridtable">
+                    <tr>
+                        <th>Parry</th>
+                        <th>Toughness</th>
+                        <th>Pace</th>
+                        @if (chr.UseStrain)
+                        {
+                            <th>Strain/Max</th>
+                        }
+                        @if (chr.UseStatus)
+                        {
+                            <th>Status</th>
+                        }
+                        @if (chr.UseReason)
+                        {
+                            <th>Reason</th>
+                        }
+                        @if (chr.Size != 0)
+                        {
+                            <th>Size</th>
+                        }
+                    </tr>
+
+                    <tr>
+                        <td>@(chr.ParryTotal)</td>
+                        @if (chr.Armor == 0)
+                        {
+                            <td>@(chr.ToughnessTotal)</td>
+                        }
+                        else
+                        {
+                            <td>@(chr.ToughnessTotal) (@(chr.Armor))</td>
+                        }
+
+                        <td>@(chr.Pace)+@(chr.Running)</td>
+                        @if (chr.UseStrain)
+                        {
+                            <td>@(chr.Strain)/@(chr.MaximumStrainTotal)</td>
+                        }
+                        @if (chr.UseStatus)
+                        {
+                            <td>@(chr.Status)</td>
+                        }
+                        @if (chr.UseReason)
+                        {
+                            <td>@(chr.ReasonTotal)</td>
+                        }
+                        @if (chr.Size != 0)
+                        {
+                            <td>@(chr.Size + " (" + chr.HeightFromSize + " " + chr.WeightFromSize + ")")</td>
+                        }
+                    </tr>
+                </table>
+                <div>&nbsp;</div>
+                <table>
+                    <tr>
+                        <td valign="top">
+                            <table class="gridtable">
+                                <tr><th>Skill</th> <th>Attribute</th><th>Rank</th></tr>
+
+                                @foreach (var skill in chr.Skills)
+                                {
+                                    <tr><td>@(skill.Name)</td> <td>@(skill.Attribute)</td><td>@(skill.Trait)</td></tr>
+                                }
+                            </table>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td valign="top">
+                            @if (chr.Edges.Count > 0)
+                            {<h4>Edges</h4>
+                                <ul>
+                                    @foreach (var item in chr.Edges)
+                                    {
+                                        <li><b>@(item.Name)</b> @(item.Description)</li>
+                                    }
+                                </ul>
+                            }
+
+                            @if (chr.Hindrances.Count > 0)
+                            {
+                                <h4>Hindrances</h4>
+                                <ul>
+                                    @foreach (var item in chr.Hindrances)
+                                    {
+                                        <li><b>@(item.Name)</b> @((item.Level == 2 ? "(major)" : "")) @(item.Description)</li>
+                                    }
+                                </ul>
+                            }
+
+                            @if (chr.Features.Count > 0)
+                            {<h4>Features</h4>
+                                <ul>
+                                    @foreach (var item in chr.Features)
+                                    {
+                                        <li> @(item.Name)</li>
+                                    }
+                                </ul>
+                            }
+
+                            @if (chr.PowerGroups.Count > 0)
+                            {
+                                <h4>Powers</h4>
+
+                                foreach (var item in chr.PowerGroups)
+                                {
+
+                                    <table class="gridtable">
+                                        <tr>
+                                            <th>Skill</th>
+                                            <th>Power Points</th>
+                                        </tr>
+                                        <tr><td>@(item.Skill)</td><td>@(item.PowerPoints)</td></tr>
+                                        @foreach (var power in item.Powers)
+                                        {
+                                            <tr>
+                                                <td colspan="2">
+                                                    @(power.LongName)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                    <div>&nbsp;</div>
+
+                                }
+                            }
+
+                            @if (chr.Gear.Count > 0)
+                            {<h4>Gear</h4>
+                                <ul>
+                                    @foreach (var item in chr.Gear)
+                                    {
+                                        <li><b>@(item.Name)</b> @(item.Description)</li>
+
+                                    }
+                                </ul>
+                            }
+                        </td>
+                    </tr>
+                </table>
+
+            }
+            else if (DisplayMode == "Formatted")
+            {
+                <MarkdownView Content="@(chr.ToMarkdownString(false))" />
+            }
+            else if (DisplayMode == "Formatted_Compact")
+            {
+                <MarkdownView Content="@(chr.ToMarkdownString(true))" />
+            }
+            else if (DisplayMode == "Markdown")
+            {
+                <pre>@(chr.ToMarkdownString(false))</pre>
+            }
+            else if (DisplayMode == "Markdown_Compact")
+            {
+                <pre>@(chr.ToMarkdownString(true))</pre>
+            }
+            <hr />
+
+        }
+
+    }
+}

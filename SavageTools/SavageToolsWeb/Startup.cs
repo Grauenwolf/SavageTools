@@ -1,3 +1,4 @@
+using Ganss.XSS;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,15 @@ namespace SavageToolsWeb
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddScoped<IHtmlSanitizer, HtmlSanitizer>(x =>
+            {
+                // Configure sanitizer rules as needed here.
+                // For now, just use default rules + allow class attributes
+                var sanitizer = new HtmlSanitizer();
+                sanitizer.AllowedAttributes.Add("class");
+                return sanitizer;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

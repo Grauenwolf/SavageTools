@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using Tortuga.Anchor;
 using Tortuga.Anchor.Modeling;
 
 namespace SavageTools.Characters
@@ -441,6 +443,7 @@ namespace SavageTools.Characters
             throw new ArgumentException("Unknown attribute " + attribute);
         }
 
+        [Obsolete]
         public string ToCompactString(bool useHtml)
         {
             var s = new StoryBuilder(useHtml);
@@ -448,6 +451,128 @@ namespace SavageTools.Characters
             return s.ToString();
         }
 
+        public string ToMarkdownString(bool isCompact)
+        {
+            var output = new StringBuilder();
+            //helper functions
+            void Append(string content)
+            {
+                output.Append(content);
+            }
+            void AppendLine(string content = null)
+            {
+                output.AppendLine(content).AppendLine();
+            }
+            void AppendBullet(string content)
+            {
+                output.AppendLine("* " + content);
+            }
+            void AppendList<T>(string header, IEnumerable<T> items, Func<T, string> formatter = null)
+            {
+                if (formatter == null)
+                    AppendLine(header + string.Join(", ", items.Select(e => e.ToString())));
+                else
+                    AppendLine(header + string.Join(", ", items.Select(formatter)));
+            }
+
+            AppendLine($"### {Name}");
+
+            {
+                var additionTraits = new List<string>();
+
+                if (!string.IsNullOrWhiteSpace(Archetype) && Archetype != "(None)")
+                    additionTraits.Add($"**Archetype**: {Archetype}");
+
+                if (!string.IsNullOrEmpty(Gender))
+                    additionTraits.Add($"**Race**: {Race} ({Gender})");
+                else
+                    additionTraits.Add($"**Race**: {Race}");
+
+                if (!string.IsNullOrWhiteSpace(Rank) && Rank != "Novice")
+                    additionTraits.Add($"**Rank**: {Rank}");
+
+                if (IsWildCard)
+                    additionTraits.Add($"**Wild Card**");
+
+                if (additionTraits.Count > 0)
+                    AppendLine(string.Join(" ", additionTraits));
+            }
+
+            AppendLine($"**Attributes:** Agility {Agility}, Smarts {Smarts}, Strength {Strength}, Spirt {Spirit}, Vigor {Vigor}");
+
+            Append($"**Parry** {ParryTotal}, **Toughness** {ToughnessTotal}, **Pace** {Pace}+{Running}");
+            if (Size != 0)
+                Append($", **Size** {Size} ({HeightFromSize}, {WeightFromSize})");
+            AppendLine();
+
+            {
+                var additionTraits = new List<string>();
+
+                if (Fear == 0)
+                    additionTraits.Add($"**Fear**");
+                else if (Fear.HasValue)
+                    additionTraits.Add($"**Fear** {Fear}");
+
+                if (UseReason)
+                    additionTraits.Add($"**Reason** {ReasonTotal}");
+                if (UseStatus)
+                    additionTraits.Add($"**Status** {Status}");
+                if (UseStrain)
+                    additionTraits.Add($"**Strain** {Strain}/{MaximumStrainTotal}");
+
+                if (additionTraits.Count > 0)
+                    AppendList(null, additionTraits);
+            }
+
+            if (Skills.Count > 0)
+                AppendList("**Skills:** ", Skills, s => s.ShortName);
+            if (Edges.Count > 0)
+            {
+                if (isCompact)
+                    AppendList("**Edges:** ", Edges, e => e.Name);
+                else
+                {
+                    AppendLine("#### Edges");
+                    foreach (var edge in Edges)
+                        if (edge.Description.IsNullOrEmpty())
+                            AppendBullet($"**{edge.Name}**");
+                        else
+                            AppendBullet($"**{edge.Name}:** {edge.Description}");
+                    AppendLine();
+                }
+            }
+
+            if (Hindrances.Count > 0)
+            {
+                if (isCompact)
+                    AppendList("**Hindrances:** ", Hindrances, h => h.Name + (h.Level == 2 ? " (major)" : ""));
+                else
+                {
+                    AppendLine("#### Hindrances");
+                    foreach (var hindrance in Hindrances)
+                        if (hindrance.Description.IsNullOrEmpty())
+                            AppendBullet($"**{hindrance.Name}**" + (hindrance.Level == 2 ? " (major)" : ""));
+                        else
+                            AppendBullet($"**{hindrance.Name}:**" + (hindrance.Level == 2 ? " (major) " : " ") + hindrance.Description);
+                    AppendLine();
+                }
+            }
+
+            if (Features.Count > 0)
+                AppendList("**Features:** ", Features, f => f.Name);
+            if (Personality.Count > 0)
+                AppendList("**Personality:** ", Personality, p => p.Name);
+
+            foreach (var group in PowerGroups)
+                AppendList($"**{group.Skill}**: Power Points {group.PowerPoints}, Powers: ", group.Powers, p => p.LongName);
+
+            if (Gear.Count > 0)
+                AppendList("**Gear:** ", Gear, g => g.Name + (string.IsNullOrEmpty(g.Description) ? "" : ": " + g.Description));
+
+            return output.ToString();
+        }
+
+        [Obsolete]
         public void CopyToStory(StoryBuilder story, bool indentAfterName = false)
         {
             if (story == null)

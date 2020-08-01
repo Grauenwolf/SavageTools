@@ -3,9 +3,8 @@ using SavageTools;
 using SavageTools.Characters;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace SavageToolsWeb.Shared
+namespace SavageToolsWeb.Controls
 {
     partial class CharacterBuilderForm
     {
@@ -13,6 +12,7 @@ namespace SavageToolsWeb.Shared
 
         public List<Character> Squad = new List<Character>();
         public string? ErrorDisplay;
+        public string DisplayMode = "HTML";
 
         protected void SubmitChanges()
         {
@@ -34,6 +34,16 @@ namespace SavageToolsWeb.Shared
             {
                 ErrorDisplay = "Unable to create character: " + ex.Message;
             }
+        }
+
+        protected void OnClick()
+        {
+            StateHasChanged();
+        }
+
+        protected void OnKeyUp()
+        {
+            StateHasChanged();
         }
     }
 }

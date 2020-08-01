@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# RCS1018: Add accessibility modifiers.
+dotnet_diagnostic.RCS1018.severity = none

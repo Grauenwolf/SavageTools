@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Core">
+  <References>
+    <Reference Name="Core" />
+    <Reference Name="Arcana" />
+    <Reference Name="Magic" />
+    <Reference Name="Gifted" />
+    <Reference Name="Psionics" />
+    <Reference Name="Weird Science" />
+  </References>
+</Setting>
