@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Core">
+  <Skills>
+    <Skill Name="Academics" Attribute="Smarts" />
+    <Skill Name="Athletics" Attribute="Agility" IsCore="true" />
+    <Skill Name="Battle" Attribute="Smarts" />
+    <Skill Name="Boating" Attribute="Agility" />
+    <Skill Name="Common Knowledge" Attribute="Smarts" IsCore="true" />
+    <Skill Name="Driving" Attribute="Agility" />
+    <Skill Name="Electronics" Attribute="Smarts" />
+    <Skill Name="Fighting" Attribute="Agility" />
+    <Skill Name="Gambling" Attribute="Smarts" />
+    <Skill Name="Hacking" Attribute="Smarts" />
+    <Skill Name="Healing" Attribute="Smarts" />
+    <Skill Name="Intimidation" Attribute="Spirit" />
+    <Skill Name="Notice" Attribute="Smarts" IsCore="true" />
+    <Skill Name="Occult" Attribute="Smarts" />
+    <Skill Name="Performance" Attribute="Spirit" />
+    <Skill Name="Persuasion" Attribute="Spirit" IsCore="true" />
+    <Skill Name="Piloting" Attribute="Agility" />
+    <Skill Name="Repair" Attribute="Smarts" />
+    <Skill Name="Research" Attribute="Smarts" />
+    <Skill Name="Riding" Attribute="Agility" />
+    <Skill Name="Science" Attribute="Smarts" />
+    <Skill Name="Shooting" Attribute="Agility" />
+    <Skill Name="Stealth" Attribute="Agility" IsCore="true" />
+    <Skill Name="Survival" Attribute="Smarts" />
+    <Skill Name="Taunt" Attribute="Smarts" />
+    <Skill Name="Thievery" Attribute="Agility" />
+  </Skills>
+  <Hindrances>
+    <Hindrance Name="All Thumbs" Type="Minor" Description="–2 to use mechanical or electrical devices." />
+    <Hindrance Name="Anemic" Type="Minor" Description="–2 Vigor when resisting Fatigue." />
+    <Hindrance Name="Arrogant" Type="Major" Description="Likes to dominate his opponent, challenge the most powerful foe in combat." />
+    <Hindrance Name="Bad Eyes" Type="Minor" Description="–1 to all Trait rolls dependent on vision. Eyewear negates penalty but have a 50% chance of breaking when the hero suffers trauma." />
+    <Hindrance Name="Bad Eyes" Type="Major" Description="–2 to all Trait rolls dependent on vision. Eyewear negates penalty but have a 50% chance of breaking when the hero suffers trauma." />
+    <Hindrance Name="Bad Luck" Type="Major" Description="The characters starts with one less Benny per session." />
+    <Hindrance Name="Big Mouth" Type="Minor" Description="Unable to keep secrets and constantly gives away private information." />
+
+    <Hindrance Name="Blind" Type="Major" Description="–6 to all tasks that require vision (but choice of a free Edge to offset).">
+      <Trait Name="UnusedEdges" Bonus="1" />
+    </Hindrance>
+    <Hindrance Name="Bloodthirsty" Type="Major" Description="Never takes prisoners." />
+    <Hindrance Name="Can't Swim" Type="Minor" Description="–2 to swimming (Athletics) rolls; Each inch moved in water costs 3” of Pace." />
+    <Hindrance Name="Cautious" Type="Minor" Description="The character plans extensively and/or is overly careful." />
+    <Hindrance Name="Clueless" Type="Major" Description="–1 to Common Knowledge and Notice rolls." />
+    <Hindrance Name="Clumsy" Type="Major" Description="–2 to Athletics and Stealth rolls." />
+    <Hindrance Name="Code of Honor" Type="Major" Description="The character keeps his word and acts like a gentleman." />
+    <Hindrance Name="Curious" Type="Major" Description="The character wants to know about everything." />
+    <Hindrance Name="Death Wish" Type="Minor" Description="The hero wants to die after or while completing some epic task." />
+    <Hindrance Name="Delusional" Type="Minor/Major" Description="The individual believes something strange that causes him occasional or frequent trouble." />
+    <Hindrance Name="Doubting Thomas" Type="Minor" Description="The character doesn’t believe in the supernatural, often exposing him to unnecessary risks." />
+    <Hindrance Name="Driven" Type="Minor/Major" Description="The hero’s actions are driven by some important goal or belief." />
+    <Hindrance Name="Elderly" Type="Major" Description="–1 to Pace, running, Agility, Strength, and Vigor. Hero gets 5 extra skill points.">
+      <Trait Name="Pace" Bonus="-1" />
+      <Trait Name="Running" Bonus="-1" />
+      <Trait Name="Vigor" Bonus="-1" />
+      <Trait Name="Agility" Bonus="-1" />
+      <Trait Name="Strength" Bonus="-1" />
+      <Trait Name="UnusedSmartSkills" Bonus="5" />
+    </Hindrance>
+    <Hindrance Name="Enemy" Type="Minor/Major" Description="The character has a recurring nemesis." />
+    <Hindrance Name="Greedy" Type="Minor/Major" Description="The individual is obsessed with wealth and material possessions." />
+    <Hindrance Name="Habit" Type="Minor/Major" Description="Addicted to something, suffers Fatigue if deprived." />
+    <Hindrance Name="Hard of Hearing" Type="Minor/Major" Description="–4 to Notice sounds; automatic failure if completely deaf." />
+    <Hindrance Name="Heroic" Type="Major" Description="The character always helps those in need." />
+    <Hindrance Name="Hesitant" Type="Minor" Description="Draw two Action Cards and take the lowest (except Jokers, which may be kept)." />
+    <Hindrance Name="Illiterate" Type="Major" Description="The character cannot read or write." />
+    <Hindrance Name="Impulsive" Type="Major" Description="The hero leaps before he looks." />
+    <Hindrance Name="Jealous" Type="Minor/Major" Description="The individual covets what others have." />
+    <Hindrance Name="Loyal" Type="Minor" Description="The hero is loyal to his friends and allies." />
+    <Hindrance Name="Mean" Type="Minor" Description="–1 to Persuasion rolls." />
+    <Hindrance Name="Mild Mannered" Type="Minor" Description="–2 to Intimidation rolls." />
+    <Hindrance Name="Mute" Type="Major" Description="The hero cannot speak." />
+    <Hindrance Name="Obese" Type="Minor" Description="Size +1, Pace –1 and running die of d4. Treat Str as one die type lower for Min Str.">
+      <Trait Name="Size" Bonus="1" />
+      <Trait Name="Pace" Bonus="-1" />
+      <Trait Name="Running" Level="4" />
+    </Hindrance>
+    <Hindrance Name="Obligation" Type="Minor" Description="The character has a weekly obligation of 20 hours." />
+    <Hindrance Name="Obligation" Type="Major" Description="The character has a weekly obligation of 40 hours." />
+    <Hindrance Name="One Arm" Type="Major" Description="–4 to tasks (such as Athletics) that require two hands." />
+    <Hindrance Name="One Eye" Type="Major" Description="–2 to actions at 5″ (10 yards) or more distance." />
+
+    <Hindrance Name="Outsider" Type="Minor" Description="The character doesn’t fit in to the local environment and subtracts 2 from Persuasion rolls." />
+    <Hindrance Name="Outsider" Type="Major" Description="The character doesn’t fit in to the local environment and subtracts 2 from Persuasion rolls. As a Major Hindrance she has no legal rights or other serious consequences." />
+    <Hindrance Name="Overconfident" Type="Major" Description="The hero believes she can do anything." />
+    <Hindrance Name="Pacifist" Type="Minor/Major" Description="Fights only in self-defense." />
+    <Hindrance Name="Pacifist" Type="Major" Description="Won’t fight at all." />
+    <Hindrance Name="Phobia" Type="Minor" Description="The character is afraid of something, and subtracts –1 from all Trait rolls in its presence." />
+    <Hindrance Name="Phobia" Type="Major" Description="The character is afraid of something, and subtracts –2 from all Trait rolls in its presence." />
+    <Hindrance Name="Poverty" Type="Minor" Description="Half starting funds and the character is always broke." />
+    <Hindrance Name="Quirk" Type="Minor" Description="The individual has some minor but persistent foible that often annoys others." />
+    <Hindrance Name="Ruthless" Type="Minor/Major" Description="The character does what it takes to get her way." />
+    <Hindrance Name="Secret" Type="Minor/Major" Description="The hero has a dark secret of some kind." />
+    <Hindrance Name="Shamed" Type="Minor/Major" Description="The individual is haunted by some tragic event from her past." />
+    <Hindrance Name="Slow" Type="Minor" Description="Pace –1, reduce running die one step.">
+      <Trait Name="Pace" Bonus="-1" />
+      <Trait Name="Running" Level="-1" />
+    </Hindrance>
+    <Hindrance Name="Slow" Type="Major" Description="Pace –2, –2 to Athletics and rolls to resist Athletics. Neither may take the Fleet-Footed Edge.">
+      <Trait Name="Pace" Bonus="-2" />
+      <Trait Name="Running" Level="-3" />
+    </Hindrance>
+    <Hindrance Name="Small" Type="Minor" Description="Size and Toughness are reduced by 1. Size cannot be reduced below –1.">
+      <Trait Name="Size" Bonus="-1" />
+    </Hindrance>
+    <Hindrance Name="Stubborn" Type="Minor" Description="The character wants his way and rarely admits his mistakes." />
+    <Hindrance Name="Suspicious" Type="Minor/Major" Description="The individual is paranoid." />
+    <Hindrance Name="Suspicious" Type="Major" Description="The individual is paranoid. Allies subtract 2 when rolling to Support him." />
+    <Hindrance Name="Thin Skinned" Type="Minor" Description="The character is particularly susceptible to personal attacks, -2 when resisting Taunt attacks." />
+    <Hindrance Name="Thin Skinned" Type="Major" Description="The character is particularly susceptible to personal attacks. -4 when resisting Taunt attacks." />
+    <Hindrance Name="Tongue-Tied" Type="Major" Description="The character often misspeaks or can’t get her words out. –1 to Intimidation, Persuasion, and Taunt rolls." />
+    <Hindrance Name="Ugly" Type="Minor" Description="The character is physically unattractive and subtracts 1 from Persuasion rolls." />
+    <Hindrance Name="Ugly" Type="Major" Description="The character is physically unattractive and subtracts 2 from Persuasion rolls." />
+    <Hindrance Name="Vengeful" Type="Minor" Description="The adventurer seeks payback for slights against her." />
+    <Hindrance Name="Vengeful" Type="Major" Description="The adventurer seeks payback for slights against her. She’ll cause physical harm to get it." />
+    <Hindrance Name="Vow" Type="Minor/Major" Description="The individual has pledged himself to some cause." />
+    <Hindrance Name="Wanted" Type="Minor/Major" Description="The character is wanted by the authorities." />
+    <Hindrance Name="Yellow" Type="Major" Description="–2 to Fear checks and resisting Intimidation." />
+
+    <Hindrance Name="Young" Type="Minor" Description="Young has 4 attribute points and 10 skill points, extra Benny per session, and the Small Hindrance.">
+      <Trait Name="UnusedAttributes" Bonus="-1" />
+      <Trait Name="UnusedSkills" Bonus="-5" />
+      <Edge Name="Small" />
+    </Hindrance>
+
+    <Hindrance Name="Young" Type="Major" Description="Very young has 3 attribute points, 10 skill points, and two extra Bennies per session., and the Small Hindrance.">
+      <Trait Name="UnusedAttributes" Bonus="-2" />
+      <Trait Name="UnusedSkills" Bonus="-5" />
+      <Edge Name="Small" />
+    </Hindrance>
+  </Hindrances>
+
+  <Edges>
+    <!--Background Edges-->
+    <Edge Name="Alertness" Requires="Novice" Description="+2 to Notice rolls." />
+    <Edge Name="Ambidextrous" Requires="Novice, Agility d8" Description="Ignore –2 penalty when making Trait rolls with off-hand." />
+    <Edge Name="Aristocrat" Requires="Novice" Description="+2 to Common Knowledge and networking with upper class." />
+    <Edge Name="Attractive" Requires="Novice, Vigor d6" Description="+1 to Performance and Persuasion rolls." />
+    <Edge Name="Very Attractive" Requires="Novice, Attractive" Description="+2 to Performance and Persuasion rolls." />
+    <Edge Name="Berserk" Requires="Novice" Description="After being Shaken or Wounded, melee attacks must be Wild Attacks, +1 die type to Strength, +2 to Toughness, ignore one level of Wound penalties, Critical Failure on Fighting roll hits random target. Take Fatigue after every five consecutive rounds, may choose to end rage with Smarts roll –2." />
+    <Edge Name="Brave" Requires="Novice, Spirit d6" Description="+2 to Fear checks and –2 to rolls on the Fear Table." />
+    <Edge Name="Brawny" Requires="Novice, Strength d6, Vigor d6" Description="Size (and therefore Toughness) +1. Treat Strength as one die type higher for Encumbrance and Minimum Strength to use weapons, armor, or equipment.">
+      <Trait Name="Size" Bonus="1" />
+    </Edge>
+    <!-- TODO: Alter the Athletics skill when someone has the Brute edge. -->
+    <Edge Name="Brute" Requires="Novice, Strength d6, Vigor d6" Description="Link Athletics to Strength instead of Agility (including resistance). Short Range of any thrown item increased by +1. Double that for the adjusted Medium Range, and double again for Long Range." />
+    <Edge Name="Charismatic" Requires="Novice, Spirit d8" Description="Free reroll when using Persuasion." />
+    <Edge Name="Elan" Requires="Novice, Spirit d8" Description="+2 when spending a Benny to reroll a Trait roll." />
+    <Edge Name="Fame" Requires="Novice" Description="+1 Persuasion rolls when recognized (Common Knowledge), double usual fee for Performance." />
+    <Edge Name="Famous" Requires="Novice, Fame" Description="+2 Persuasion when recognized, 5× or more usual fee for Performance" />
+    <Edge Name="Fast Healer" Requires="Novice, Vigor d8" Description="+2 Vigor when rolling for natural healing; check every 3 days." />
+    <Edge Name="Fleet-Footed" Requires="Novice, Agility d6" Description="Pace +2, increase running die one step.">
+      <Trait Name="Pace" Bonus="2" />
+      <Trait Name="Running" Bonus="1" />
+    </Edge>
+    <!-- TODO: Add ability to pick langauges using this.-->
+    <Edge Name="Linguist" Requires="Novice, Smarts d6" Description="Character has d6 in languages equal to half her Smarts die." />
+    <Edge Name="Luck" Requires="Novice" Description="+1 Benny at the start of each session." />
+    <Edge Name="Great Luck" Requires="Novice, Luck" Description="+2 Bennies at the start of each session." />
+    <Edge Name="Quick" Requires="Novice, Agility d8" Description="The hero may discard and redraw Action Cards of 5 or lower." />
+    <Edge Name="Rich" Requires="Novice" Description="Character starts with three times the starting funds and a $150K annual salary." />
+    <Edge Name="Filthy Rich" Requires="Novice, Rich" Description="Five times starting funds and $500K average salary." />
+
+    <!--Combat Edges-->
+    <Edge Name="Block" Requires="Seasoned, Fighting d8" Description="+1 Parry, ignore 1 point of Gang Up bonus.">
+      <Trait Name="Parry" Bonus="1" />
+    </Edge>
+    <Edge Name="Improved Block" Requires="Veteran, Block" Description="+2 Parry, ignore 2 points of Gang Up bonus.">
+      <Trait Name="Parry" Bonus="1" />
+    </Edge>
+    <Edge Name="Brawler" Requires="Novice, Strength d8, Vigor d8" Description="Toughness +1, add d4 to damage from fists; or increase it a die type if combined with Martial Artist, Claws, or similar abilities.">
+      <Trait Name="Toughness" Bonus="1" />
+    </Edge>
+    <Edge Name="Bruiser" Requires="Seasoned, Brawler" Description="Increase unarmed Strength damage a die type and Toughness another +1.">
+      <Trait Name="Toughness" Bonus="1" />
+    </Edge>
+    <Edge Name="Calculating" Requires="Novice, Smarts d8" Description="Ignore up to 2 points of penalties on one action with an Action Card of Five or less." />
+    <Edge Name="Combat Reflexes" Requires="Seasoned" Description="+2 Spirit to recover from being Shaken or Stunned." />
+    <Edge Name="Counterattack" Requires="Seasoned, Fighting d8" Description="Free attack against one foe per turn who failed a Fighting roll." />
+    <Edge Name="Improved Counterattack" Requires="Veteran, Counterattack" Description="As Counterattack, but against three failed attacks per turn." />
+    <Edge Name="Dead Shot" Requires="Wild Card, Novice, Athletics d8 or Shooting d8" Description="First successful Athletics (throwing) or Shooting roll, double damage from when dealt a Joker." />
+    <Edge Name="Dodge" Requires="Seasoned, Agility d8" Description="−2 to be hit by ranged attacks." />
+    <Edge Name="Improved Dodge" Requires="Seasoned, Dodge" Description="+2 to Evasion totals." />
+    <Edge Name="Double Tap" Requires="Seasoned, Shooting d6" Description="+1 to hit and damage when firing no more than RoF 1 per action." />
+    <Edge Name="Extraction" Requires="Novice, Agility d8" Description="One adjacent foe doesn’t get a free attack when you withdraw from close combat." />
+    <Edge Name="Improved Extraction" Requires="Seasoned, Extraction" Description="Three adjacent foes don’t get free attacks when you withdraw from combat." />
+    <Edge Name="Feint" Requires="Novice, Fighting d8" Description="You may choose to make foe resist with Smarts instead of Agility during a Fighting Test." />
+    <Edge Name="First Strike" Requires="Novice, Agility d8" Description="Free Fighting attack once per round when foe moves within Reach." />
+    <Edge Name="Improved First Strike" Requires="Heroic, First Strike" Description="Free Fighting attack against up to three foes when they move within Reach." />
+    <Edge Name="Free Runner" Requires="Novice, Agility d8" Description="Ignore Difficult Ground and add +2 to Athletics in foot chases and Athletics (climbing)." />
+    <Edge Name="Frenzy" Requires="Seasoned, Fighting d8" Description="Roll a second Fighting die with one melee attack per turn." />
+    <Edge Name="Improved Frenzy" Requires="Veteran, Frenzy" Description="Roll a second Fighting die with up to two melee attacks per turn." />
+    <Edge Name="Giant Killer" Requires="Veteran" Description="+1d6 damage vs. creatures three Sizes larger or more." />
+    <Edge Name="Hard to Kill" Requires="Novice, Spirit d8" Description="Ignore Wound penalties when making Vigor rolls to avoid Bleeding Out." />
+    <Edge Name="Harder to Kill" Requires="Veteran, Hard to Kill" Description="Roll a die if the character perishes. Even if he’s Incapacitated, he survives somehow." />
+    <Edge Name="Improvisational Fighter" Requires="Seasoned, Smarts d6" Description="Ignore –2 penalty when attacking with improvised weapons." />
+    <Edge Name="Iron Jaw" Requires="Novice, Vigor d8" Description="+2 to Soak and Vigor rolls to avoid Knockout Blows." />
+    <Edge Name="Killer Instinct" Requires="Seasoned" Description="The hero gets a free reroll in any opposed Test he initiates." />
+    <Edge Name="Level Headed" Requires="Seasoned, Smarts d8" Description="Draw an additional Action Card each round in combat and choose which one to use." />
+    <Edge Name="Improved Level Headed" Requires="Seasoned, Level Headed" Description="Draw two additional Action Cards each round in combat and choose which one to use." />
+    <Edge Name="Marksman" Requires="Seasoned, Athletics d8 or Shooting d8" Description="Ignore up to 2 points of penalties from Range, Cover, Called Shot, Scale, or Speed; or add +1 to first Athletics (throwing) or Shooting roll. Character may not move or fire greater than RoF 1." />
+    <Edge Name="Martial Artist" Requires="Novice, Fighting d6" Description="Unarmed Fighting +1, fists and feet count as Natural Weapons, add d4 damage die to unarmed Fighting attacks (or increase die a step if you already have it)." />
+    <Edge Name="Martial Warrior" Requires="Seasoned, Martial Artist" Description="Unarmed Fighting +2, increase damage die type a step." />
+    <Edge Name="Mighty Blow" Requires="Wild Card, Novice, Fighting d8" Description="On first successful Fighting roll, double damage when dealt a Joker." />
+    <Edge Name="Nerves of Steel" Requires="Novice, Vigor d8" Description="Ignore one level of Wound penalties." />
+    <Edge Name="Improved Nerves of Steel" Requires="Novice, Nerves of Steel" Description="Ignore up to two levels of Wound penalties." />
+    <Edge Name="No Mercy" Requires="Seasoned" Description="+2 damage when spending a Benny to reroll damage." />
+    <Edge Name="Rapid Fire" Requires="Seasoned, Shooting d6" Description="Increase RoF by 1 for one Shooting attack per turn." />
+    <Edge Name="Improved Rapid Fire" Requires="Veteran, Rapid Fire" Description="Increase RoF by 1 for up to two Shooting attacks per turn." />
+    <Edge Name="Rock and Roll!" Requires="Seasoned, Shooting d8" Description="Ignore the Recoil penalty when firing weapons with a RoF of 2 or more. Character may not move." />
+    <Edge Name="Steady Hands" Requires="Novice, Agility d8" Description="Ignore Unstable Platform penalty; reduce running penalty to –1." />
+    <Edge Name="Sweep" Requires="Novice, Strength d8, Fighting d8" Description="Fighting roll at –2 to hit all targets in weapon’s Reach, no more than once per turn." />
+    <Edge Name="Improved Sweep" Requires="Veteran, Sweep" Description="Fighting roll to hit all targets in weapon’s Reach, no more than once per turn." />
+    <Edge Name="Trademark Weapon" Requires="Novice, Athletics d8 or Fighting d8 or Shooting d8" Description="+1 to Athletics (throwing), Fighting, or Shooting total with a specific weapon; +1 Parry while weapon is readied." />
+    <Edge Name="Improved Trademark Weapon" Requires="Seasoned, Trademark Weapon" Description="Additional +1 to Athletics (throwing), Fighting, or Shooting total with a specific weapon; Additional +1 Parry while weapon is readied." />
+    <Edge Name="Two-Fisted" Requires="Novice, Agility d8" Description="Make one extra Fighting roll with a second melee weapon in the off-hand at no Multi-Action penalty." />
+    <Edge Name="Two-Gun Kid" Requires="Novice, Agility d8" Description="Make one extra Shooting (or Athletics (throwing) roll with a second ranged weapon in the off-hand at no Multi-Action penalty." />
+
+    <!--<Edge Name="Acrobat" Requires="Novice, Agility d8, Strength d6" Description="+2 to Agility tricks; +1 Parry if unencumbered" />
+    <Edge Name="Assassin" Requires="Novice, Agility d8, Athletics d6, Fighting d6, Stealth d8" Description="+2 to damage when striking a foe unawares" />
+
+    <Edge Name="Very Attractive" Requires="Novice, Attractive" Description="Charisma +4">
+      <Trait Name="Charisma" Bonus="2" />
+    </Edge>
+    <Edge Name="Beast Bond" Requires="Novice" Description="Character may spend bennies for his animals" />
+    <Edge Name="Beast Master" Requires="Novice, Spirit d8" Description="You gain an animal companion" />
+    <Edge Name="Block" Requires="Seasoned, Fighting d8" Description="Parry +1">
+      <Trait Name="Parry" Bonus="1" />
+    </Edge>
+    <Edge Name="Improved Block" Requires="Veteran, Block" Description="Parry +2">
+      <Trait Name="Parry" Bonus="1" />
+    </Edge>
+
+    <Edge Name="Brawler"	Requires="Novice, Strength d8" 	Description="+2 to unarmed damage rolls" />
+    <Edge Name="Bruiser"	Requires="Seasoned, Brawler" 	Description="Bonus die to unarmed damage is d8 instead of d6" />
+
+    <Edge Name="Charismatic" Requires="Novice, Spirit d8" Description="Charisma +2">
+      <Trait Name="Charisma" Bonus="2" />
+    </Edge>
+    <Edge Name="Combat Reflexes" Requires="Seasoned" Description="+2 to recover from being Shaken" />
+    <Edge Name="Command" Requires="Novice, Smarts d6" Description="+1 to troops recovering from being Shaken within 5”" />
+    <Edge Name="Command Presence" Requires="Novice, Command" Description="Increase command radius to 10" />
+    <Edge Name="Counterattack" Requires="Seasoned, Fighting d8" Description="Receive free Fighting attack at -2 once per round when a foe fails a Fighting attack" />
+    <Edge Name="Improved Counterattack" Requires="Veteran, Counterattack" Description="As Coutnerattack but ignore the -2 penalty" />
+    <Edge Name="Common Bond" Requires="Novice, Wild Card, Spirit d8" Description="May give bennies to companions in communication" />
+    <Edge Name="Connections" Requires="Novice" Description="Call upon powerful friends with Persuasion roll" />
+    <Edge Name="Danger Sense" Requires="Novice" Description="Notice-2 to detect surprise attacks/danger" />
+    <Edge Name="Dead Shot" Requires="Wild Card, Seasoned, Shooting d10 or Athletics d10" Description="Double ranged damage when dealt Joker" />
+    <Edge Name="Dodge" Requires="Seasoned, Agility d8" Description="-1 to be hit with ranged attacks" />
+    <Edge Name="Elan" Requires="Novice, Spirit d8" Description="+2 when spending a Benny on a Trait roll (including Soak rolls)" />
+    <Edge Name="Extraction" Requires="Novice, Agility d8" Description="Ignore one foe's free attack when withdrawing from melee with an Agility roll" />
+    <Edge Name="Improved Extraction" Requires="Novice, Extraction" Description="As above. With a raise, no foes get their free melee attack." />
+    <Edge Name="Improved Dodge" Requires="Veteran, Dodge" Description="-2 to be hit with ranged attacks" />
+    <Edge Name="Fast Healer" Requires="Novice, Vigor d8" Description="+2 to natural healing rolls" />
+    <Edge Name="Fervor" Requires="Veteran, Spirit d8, Command" Description="+1 melee damage to troops in command" />
+    <Edge Name="First Strike" Requires="Novice, Agility d8" Description="Automatically attack one foe who moves adjacent per round" />
+    <Edge Name="Improved First Strike" Requires="Heroic, First Strike" Description="Automatically attack all foes who move adjacent" />
+    <Edge Name="Fleet-Footed" Requires="Novice, Agility d6" Description="+2 Pace, d10 running die instead of d6">
+      <Trait Name="Pace" Bonus="2" />
+      <Trait Name="Running" Bonus="2" />
+    </Edge>
+    <Edge Name="Florentine" Requires="Novice, Agility d8, Fighting d8" Description="+1 vs. foes with single weapon and no shield, ignore 1 point of gang up bonus" />
+    <Edge Name="Followers" Requires="Legendary, Wild Card" Description="Attract 5 henchmen" />
+    <Edge Name="Frenzy" Requires="Seasoned, Fighting d10" Description="1 extra Fighting attack at -2" />
+    <Edge Name="Improved Frenzy" Requires="Veteran, Frenzy" Description="As above but no penalty" />
+
+    <Edge Name="Giant Killer" Requires="Veteran" Description="+1d6 damage when attacking large creatures" />
+    <Edge Name="Hard to Kill" Requires="Novice, Wild Card, Spirit d8" Description="Ignore wound penalties for Vigor rolls made on the Knockout or Injury tables" />
+    <Edge Name="Harder to Kill" Requires="Veteran, Hard to Kill" Description="50% chance of surviving “death” by some unlikely means" />
+    <Edge Name="Healer" Requires="Novice, Spirit d8" Description="+2 to all Healing rolls and the healing power if applicable." />
+    <Edge Name="Hold the Line!" Requires="Seasoned, Smarts d8, Command" Description="Troops have +1 Toughness" />
+
+    <Edge Name="Inspire" Requires="Seasoned, Command" Description="+1 to Spirit rolls of all troops in command" />
+    <Edge Name="Investigator" Requires="Novice, Smarts d8, Research d8, Streetwise d8" Description="+2 Research and Streetwise" />
+    <Edge Name="Improvisational Fighter" Requires="Seasoned, Smarts d6" Description="lgnores the usual -1 penalty to attack and Parry for improvised weapons" />
+    <Edge Name="Leader of Men" Requires="Veteran, Command" Description="Roll a d 10 as the Wild Die for subordinates' group rolls" />
+    <Edge Name="Linguist" Requires="Novice, Smarts d6" Description="Begin play with a number of languages equal to Smarts; Smarts -2 to be understood in any language heard for a week" />
+    <Edge Name="Jack of All Trades" Requires="Novice, Smarts d10" Description="Ignore -2 untrained penalty for skills linked to Smarts" />
+    <Edge Name="Level Headed" Requires="Seasoned, Smarts d8" Description="Act on best of two cards in combat" />
+    <Edge Name="Improved Level Headed" Requires="Seasoned, Level Headed" Description="Act on best of three cards in combat" />
+    <Edge Name="Killer Instinct" Requires="Heroic" Description="Wins tied opposed rolls, may reroll opposed skill die if it comes up a 1" />
+    <Edge Name="Luck" Requires="Novice" Description="+1 benny per session" />
+    <Edge Name="Liquid Courage" Requires="Novice, Vigor d8" Description="Gain Vigor die type after imbibing at least 8oz of alcohol" />
+
+    <Edge Name="Great Luck" Requires="Novice, Luck" Description="+2 bennies per session" />
+    <Edge Name="Marksman" Requires="Seasoned" Description="Character gets the aim maneuver (+2 Shooting) if he does not move" />
+    <Edge Name="Martial Artist" Requires="Novice, Fighting d6" Description="Never considered unarmed, +d4 to unarmed damage rolls" />
+    <Edge Name="Improved Martial Artist" Requires="Veteran, Fighting 10, Martial Artist" Description="+d6 fo unarmed damage rolls" />
+    <Edge Name="Martial Arts Master" Requires="Legendary, Improved Martial Artist, Fighting d12" Description="+2 to unarmed damage rolls;" />
+    <Edge Name="Martial Arts Master 2" Requires="Martial Arts Master" Description="+4 to unarmed damage rolls;" />
+    <Edge Name="Martial Arts Master 3" Requires="Martial Arts Master 2" Description="+6 to unarmed damage rolls;" />
+    <Edge Name="Martial Arts Master 4" Requires="Martial Arts Master 3" Description="+8 to unarmed damage rolls;" />
+    <Edge Name="Martial Arts Master 5" Requires="Martial Arts Master 4" Description="+10 to unarmed damage rolls;" />
+
+    <Edge Name="McGyver" Requires="Novice, Smarts d6, Repair d6, Notice d8" Description="No penalties due to lack of equipment" />
+    <Edge Name="Mighty Blow" Requires="Seasoned, Wild Card, Fighting d10" Description="Double melee damage when dealt Joker" />
+    <Edge Name="Natural Leader" Requires="Novice, Spirit d8, Command" Description="Leader may give bennies to troops in command" />
+    <Edge Name="Nerves of Steel" Requires="Novice, Wild Card, Vigor d8" Description="Ignore 1 point of wound penalties" />
+    <Edge Name="Improved Nerves of Steel" Requires="Novice, Nerves of Steel" Description="Ignore 2 points of wound penalties" />
+    <Edge Name="Noble" Requires="Novice" Description="+2 Charisma; Character is noble born with status and wealth">
+      <Trait Name="Charisma" Bonus="2" />
+    </Edge>
+
+    <Edge Name="No Mercy" Requires="Seasoned" Description="May spend bennies on damage rolls" />
+
+    -->
+    <!-- Task-7: Need way to wildcard these
+      <Edge Name="Professional [Trait]" Requires="Legendary, [Trait] d12" Description="Trait becomes d12+1" />
+      <Edge Name="Expert [Trait]" Requires="Legendary, Professional [Trait]" Description="Trait becomes d12+2" />
+      <Edge Name="Master [Trait]" Requires="Legendary, Wild Card, Expert [Trait]" Description="Wild Die is d10 for one trait" />
+    -->
+    <!--
+
+    <Edge Name="Quick" Requires="Novice, Agility d8" Description="Discard draw of 5 or less for new card" />
+    <Edge Name="Quick Draw" Requires="Novice, Agility d8" Description="May automatically draw weapon as a free action" />
+    <Edge Name="Rich" Requires="Novice" Description="3x starting funds, $75K annual salary" />
+    <Edge Name="Filthy Rich" Requires="Novice, Noble or Rich" Description="5x starting funds, $250K annual salary" />
+    <Edge Name="Rock and Roll!" Requires="Seasoned, Shooting d8" Description="Full-auto penalty is -1 instead of -2" />
+    -->
+    <!--<Edge Name="Scholar" Requires="Novice, d8 in affected skills" Description="+2 to two different Knowledge skills" />-->
+    <!--
+    <Edge Name="Sidekick" Requires="Legendary, Wild Card" Description="Characters gains a Novice Wild Card sidekick" />
+    <Edge Name="Steady Hands" Requires="Novice, Agility d8" Description="Ignore unstable platform penalty for mounts or vehicles" />
+    <Edge Name="Sweep" Requires="Novice, Strength d8, Fighting d8" Description="Attack all adjacent foes at -2" />
+    <Edge Name="Improved Sweep" Requires="Veteran, Sweep" Description="As above but with no penalty" />
+    <Edge Name="Strong Willed" Requires="Novice, Intimidate d6, Taunt d6" Description="+2 Intimidate and Taunt, +2 to resist" />
+    <Edge Name="Scavenger" Requires="Novice, Luck" Description="Find an essential piece of equipment once per session" />
+
+    <Edge Name="Thief" Requires="Novice, Agility d8, Climb d6, Lockpick d6, Stealth d8" Description="+2 Climb, Lockpick, Stealth, rolls made to trick or deceive, detecting or disarming traps" />
+    <Edge Name="Tough as Nails" Requires="Legendary" Description="Toughness +1">
+      <Trait Name="Toughness" Bonus="1" />
+    </Edge>
+    <Edge Name="Improved Tough as Nails" Requires="Legendary, Tough as Nails" Description="Toughness +2">
+      <Trait Name="Toughness" Bonus="1" />
+    </Edge>
+    <Edge Name="Tactician" Requires="Seasoned" Description="Make a Knowledge (Battle) roll at the beginning of a fight to get an Action Card per success and raise; these may be given to any allies throughout the course of the battle" />
+    <Edge Name="Trademark Weapon" Requires="Novice, Fighting d10 or Shooting d10" Description="+1 Fighting or Shooting with one particular weapon" />
+    <Edge Name="Improved Trademark Weapon" Requires="Veteran, Trademark Weapon" Description="+2 Fighting or Shooting with one particular weapon" />
+    <Edge Name="Two-Fisted" Requires="Novice, Agility d8" Description="May attack with a weapon in each hand without multi-action penalty." />
+    <Edge Name="Weapon Master" Requires="Legendary, Fighting d12" Description="Parry +1">
+      <Trait Name="Parry" Bonus="1" />
+    </Edge>
+    <Edge Name="Master of Arms" Requires="Legendary, Weapon Master" Description="Parry +2">
+      <Trait Name="Parry" Bonus="1" />
+    </Edge>
+    <Edge Name="Woodsman" Requires="Novice, Spirit d6, Survival d8, Tracking d8" Description="+2 Tracking, Survival, and Stealth (while in Wilderness)" />-->
+  </Edges>
+
+  <Archetypes>
+    <Archetype Name="(None)" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="15" />
+
+    <Archetype Name="Driver" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="7">
+      <Skill Name="Driving" Level="8" />
+      <Skill Name="Fighting" Level="4" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Shooting" Level="6" />
+      <Edge Name="Ace" />
+      <Edge Name="Quick" />
+      <Trait Name="UnusedHindrances" Bonus="4" />
+      <Trait Name="UnusedEdges" Bonus="-1" />
+    </Archetype>
+
+    <Archetype Name="Face" Agility="6" Smarts="6" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Fighting" Level="4" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="10" />
+      <Skill Name="Shooting" Level="4" />
+      <Edge Name="Streetwise" />
+      <Skill Name="Taunt" Level="6" />
+      <Edge Name="Attractive" />
+      <Edge Name="Strong Willed" />
+      <Trait Name="UnusedHindrances" Bonus="4" />
+      <Trait Name="UnusedEdges" Bonus="-2" />
+    </Archetype>
+
+    <Archetype Name="Fighter, Fencer" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Fighting" Level="12" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+      <Skill Name="Taunt" Level="8" />
+      <Edge Name="Florentine" />
+      <Edge Name="Two-Fisted" />
+      <Trait Name="UnusedHindrances" Bonus="4" />
+      <Trait Name="UnusedEdges" Bonus="-1" />
+    </Archetype>
+
+    <Archetype Name="Fighter, Great Weapon" Agility="6" Smarts="4" Spirit="6" Strength="10" Vigor="6" UnusedAttributes="0" UnusedSkills="4">
+      <Skill Name="Fighting" Level="10" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Edge Name="Brawny" />
+      <Edge Name="Sweep" />
+      <Trait Name="UnusedHindrances" Bonus="4" />
+      <Trait Name="UnusedEdges" Bonus="-1" />
+    </Archetype>
+
+    <Archetype Name="Investigator" Agility="6" Smarts="8" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Research" Level="8" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Shooting" Level="6" />
+      <Edge Name="Streetwise" />
+      <Edge Name="Connections" />
+      <Edge Name="Investigator" />
+      <Trait Name="UnusedHindrances" Bonus="4" />
+      <Trait Name="UnusedEdges" Bonus="-2" />
+    </Archetype>
+
+    <Archetype Name="Leader" Agility="6" Smarts="6" Spirit="8" Strength="4" Vigor="6" UnusedAttributes="0" UnusedSkills="3">
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Battle" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Shooting" Level="6" />
+      <Edge Name="Command" />
+      <Edge Name="Natural Leader" />
+      <Trait Name="UnusedHindrances" Bonus="4" />
+      <Trait Name="UnusedEdges" Bonus="-1" />
+    </Archetype>
+
+    <Archetype Name="Marksman" Agility="10" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="5">
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Shooting" Level="10" />
+      <Skill Name="Taunt" Level="6" />
+      <Edge Name="Alertness" />
+      <Trait Name="UnusedHindrances" Bonus="4" />
+      <Trait Name="UnusedEdges" Bonus="-1" />
+    </Archetype>
+
+    <Archetype Name="Martial Artist" Agility="8" Smarts="6" Spirit="6" Strength="8" Vigor="6" UnusedAttributes="0" UnusedSkills="6">
+      <Skill Name="Fighting" Level="10" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Edge Name="Martial Artist" />
+      <Trait Name="UnusedHindrances" Bonus="4" />
+      <Trait Name="UnusedEdges" Bonus="-1" />
+    </Archetype>
+  </Archetypes>
+
+  <Races>
+    <Race Name="Human">
+      <Trait Name="UnusedEdges" Bonus="1" />
+    </Race>
+    <!--<Race Name="(Special)" />-->
+  </Races>
+
+  <Ranks>
+    <Rank Name="Novice" Experience="0" UnusedAdvances="0" />
+    <Rank Name="Seasoned" Experience="20" UnusedAdvances="4" />
+    <Rank Name="Veteran" Experience="40" UnusedAdvances="8" />
+    <Rank Name="Heroic" Experience="60" UnusedAdvances="12" />
+    <Rank Name="Legendary" Experience="80" UnusedAdvances="16" />
+  </Ranks>
+</Setting>

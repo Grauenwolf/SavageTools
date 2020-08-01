@@ -1,6 +1,5 @@
 ﻿using SavageTools.Settings;
 using System;
-using System.IO;
 using System.Linq;
 using Tortuga.Anchor.Modeling;
 
@@ -15,11 +14,29 @@ namespace SavageTools.Characters
 
         public bool BornAHero { get => GetDefault(false); set => Set(value); }
         public CharacterGenerator CharacterGenerator { get; }
-        public bool RandomArchetype { get => GetDefault(false); set => Set(value); }
-        public bool RandomRace { get => GetDefault(false); set => Set(value); }
-        public bool RandomRank { get => GetDefault(false); set => Set(value); }
 
-        public bool UseCoreSkills { get => GetDefault(false); set => Set(value); }
+        public int Count
+        {
+            get { return GetDefault(1); }
+            set
+            {
+                if (value > 10)
+                    Set(10);
+                else if (value <= 0)
+                    Set(1);
+                else
+                    Set(value);
+            }
+        }
+
+        [CalculatedField("SelectedArchetype")]
+        public bool RandomArchetype => SelectedArchetypeString == "";
+
+        [CalculatedField("SelectedRace")]
+        public bool RandomRace => SelectedRaceString == "";
+
+        [CalculatedField("SelectedRank")]
+        public bool RandomRank => SelectedRankString == "";
 
         public SettingArchetype SelectedArchetype
         {
@@ -35,9 +52,50 @@ namespace SavageTools.Characters
             }
         }
 
+        [CalculatedField("SelectedArchetype")]
+        public string SelectedArchetypeString
+        {
+            get => SelectedArchetype?.Name ?? "";
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    SelectedArchetype = null;
+                else
+                    SelectedArchetype = CharacterGenerator.Archetypes.Single(a => a.Name == value);
+            }
+        }
+
         public SettingRace SelectedRace { get { return Get<SettingRace>(); } set { Set(value); } }
+
+        [CalculatedField("SelectedRace")]
+        public string SelectedRaceString
+        {
+            get => SelectedRace?.Name ?? "";
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    SelectedRace = null;
+                else
+                    SelectedRace = CharacterGenerator.Races.Single(r => r.Name == value);
+            }
+        }
+
         public SettingRank SelectedRank { get { return Get<SettingRank>(); } set { Set(value); } }
 
+        [CalculatedField("SelectedRank")]
+        public string SelectedRankString
+        {
+            get => SelectedRank?.Name ?? "";
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    SelectedRank = null;
+                else
+                    SelectedRank = CharacterGenerator.Ranks.Single(r => r.Name == value);
+            }
+        }
+
+        public bool UseCoreSkills { get => GetDefault(true); set => Set(value); }
         public bool WildCard { get => GetDefault(false); set => Set(value); }
 
         public Character GenerateCharacter(Dice dice = null)
@@ -45,13 +103,14 @@ namespace SavageTools.Characters
             return CharacterGenerator.GenerateCharacter(this, dice);
         }
 
+        /*
         public void LoadSetting(FileInfo file)
         {
             var currentArchetype = SelectedArchetype?.Name;
             var currentRace = SelectedRace?.Name;
             var currentRank = SelectedRank?.Name;
 
-            CharacterGenerator.LoadSetting(file);
+            CharacterGenerator.LoadSetting(file, true);
 
             if (currentArchetype != null && SelectedArchetype == null) //selected archetype was replaced so we need to reselect it
                 SelectedArchetype = CharacterGenerator.Archetypes.Single(a => a.Name == currentArchetype);
@@ -65,5 +124,6 @@ namespace SavageTools.Characters
             if (CharacterGenerator.BornAHeroSetting)
                 BornAHero = true;
         }
+        */
     }
 }

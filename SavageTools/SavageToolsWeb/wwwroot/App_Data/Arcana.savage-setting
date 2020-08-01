@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Arcana">
+  <References>
+    <Reference Name="Core" />
+  </References>
+
+  <Hindrances>
+    <Hindrance Name="Doubting Thomas" Type="Minor" Description="The character doesn’t believe in the supernatural, often exposing him to unnecessary risks." />
+  </Hindrances>
+</Setting>

@@ -1,7 +1,7 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Tortuga.Anchor;
 
@@ -10,7 +10,12 @@ namespace SavageTools
     public class Dice : RandomExtended
     {
         ImmutableArray<Card> m_Deck;
-        public Dice()
+
+        public Dice(int seed) : base(seed) => Setup();
+
+        public Dice() => Setup();
+
+        void Setup()
         {
             var deck = new List<Card>();
             for (var rank = Rank.Two; rank <= Rank.Ace; rank++)
@@ -26,7 +31,7 @@ namespace SavageTools
             return Choose(m_Deck);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "D")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "D")]
         public int D(int count, int die)
         {
             var result = 0;
@@ -36,10 +41,10 @@ namespace SavageTools
             return result;
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "D")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "D")]
         public int D(int die) => D(1, die);
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "D")]
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "D")]
         public int D(string dieCode)
         {
             if (string.IsNullOrWhiteSpace(dieCode))
@@ -58,7 +63,6 @@ namespace SavageTools
                     {
                         var isNegative = 1;
                         var fixedExpression = expression;
-
 
                         if (expression.StartsWith("-"))
                         {
@@ -94,31 +98,7 @@ namespace SavageTools
         }
 
         public int D66() => (Next(1, 7) * 10) + Next(1, 7);
+
         public bool NextBoolean() => Next(0, 2) == 1;
-
-        //public T ChooseWithOdds<T>(ICollection<T> list) where T : IHasOdds
-        //{
-        //    var max = list.Sum(option => option.Odds);
-        //    var roll = Next(1, max + 1);
-        //    foreach (var option in list)
-        //    {
-        //        roll -= option.Odds;
-        //        if (roll <= 0)
-        //            return option;
-        //    }
-        //    throw new Exception("This cannot happen");
-        //}
-
-        //public T ChooseByRoll<T>(ICollection<T> list, string dieCode) where T : ITablePick
-        //{
-        //    var roll = D(dieCode);
-
-        //    var result = list.SingleOrDefault(x => x.IsMatch(roll));
-        //    if (result == null)
-        //        throw new Exception($"No entry for a roll of {roll}");
-        //    return result;
-        //}
     }
 }
-
-

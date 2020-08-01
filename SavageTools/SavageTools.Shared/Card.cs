@@ -12,5 +12,3 @@
         public Suit Suit { get; }
     }
 }
-
-

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Magic">
+  <References>
+    <Reference Name="Core" />
+    <Reference Name="Arcana" />
+  </References>
+
+  <Edges>
+
+    <Edge Name="Arcane Background (Magic)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+      <Skill Name="Spellcasting" Attribute="Smarts" Level="4" />
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints:Magic" Bonus="10" />
+      <Trait Name="UnusedPowers:Magic" Bonus="3" />
+      <Feature Name="Arcane Background" />
+    </Edge>
+    <!--<Edge Name="Wizard" Requires="Novice, Arcane Background (Magic), Smarts d8, Knowledge (arcana) d8, Spellcasting d6" Description="Each Spellcasting raise reduces cost of spell by 1 point" />-->
+  </Edges>
+</Setting>

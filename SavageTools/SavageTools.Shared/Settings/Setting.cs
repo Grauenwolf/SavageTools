@@ -1,5 +1,7 @@
 ﻿using System.Xml.Serialization;
 
+#pragma warning disable RCS1139 // Add summary element to documentation comment.
+
 namespace SavageTools.Settings
 {
     /// <remarks/>
@@ -27,8 +29,8 @@ namespace SavageTools.Settings
         [XmlAttribute]
         public bool UseStatus { get; set; }
 
-        [XmlAttribute]
-        public bool ShowSetting { get; set; }
+        //[XmlAttribute]
+        //public bool ShowSetting { get; set; }
 
         /// <remarks/>
         [XmlArrayItem("Skill", IsNullable = false)]

@@ -1,0 +1,19 @@
+﻿@page "/setting/modern"
+@inherits SettingPage
+
+@if (Model != null)
+{
+    PageTitle = Model.CharacterGenerator.SettingName;
+    <h1 class="do-not-print"> @(Model.CharacterGenerator.SettingName) </h1>
+
+    <CharacterBuilderForm Options="@Model" />
+
+}
+else if (LoadFailed)
+{
+    <h1>Error loading page.</h1>
+}
+else
+{
+    <h1>Loading</h1>
+}

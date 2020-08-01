@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Tortuga.Anchor.Modeling;
 
@@ -11,17 +10,102 @@ namespace SavageTools.Characters
         public Trait Agility { get => Get<Trait>(); set => Set(value); }
         public string Archetype { get { return Get<string>(); } set { Set(value); } }
         public int Armor { get { return Get<int>(); } set { Set(value); } }
-        public int Charisma { get { return Get<int>(); } set { Set(value); } }
-        public int? Fear { get { return Get<int?>(); } set { Set(value); } }
+
         public EdgeCollection Edges => GetNew<EdgeCollection>();
         public int Experience { get => Get<int>(); set => Set(value); }
+
+        [CalculatedField("Size")]
+        public int ExtraWoundsFromSize
+        {
+            get
+            {
+                if (Size <= 3)
+                    return 0;
+                else if (4 <= Size && Size <= 7)
+                    return 1;
+                else if (8 <= Size && Size <= 11)
+                    return 2;
+                else if (12 <= Size && Size <= 20)
+                    return 3;
+                else
+                    return 4;
+            }
+        }
+
+        [CalculatedField("Size")]
+        public int ScaleModifierFromSize
+        {
+            get
+            {
+                if (Size <= -4)
+                    return -6;
+                else if (Size == -3)
+                    return -4;
+                else if (Size == -2)
+                    return -2;
+                else if (-1 <= Size && Size <= 3)
+                    return 0;
+                else if (4 <= Size && Size <= 7)
+                    return 2;
+                else if (8 <= Size && Size <= 11)
+                    return 4;
+                else if (12 <= Size && Size <= 20)
+                    return 6;
+                else
+                    return 4;
+            }
+        }
+
+        public int? Fear { get { return Get<int?>(); } set { Set(value); } }
         public FeatureCollection Features => GetNew<FeatureCollection>();
         public GearCollection Gear => GetNew<GearCollection>();
         public string Gender { get => Get<string>(); set => Set(value); }
+
+        [CalculatedField("Size")]
+        public string HeightFromSize
+        {
+            get
+            {
+                if (Size < -6)
+                    return "Swarm";
+
+                switch (Size)
+                {
+                    case -4: return "Up to 6\"";
+                    case -3: return "Up to 18\"";
+                    case -2: return "Up to 3'";
+                    case -1: return "Up to 4'";
+                    case 0: return "Up to 6'";
+                    case 1: return "Up to 8'";
+                    case 2: return "Up to 9'";
+                    case 3: return "Up to 12'";
+                    case 4: return "Up to 15'";
+                    case 5: return "Up to 18'";
+                    case 6: return "Up to 24'";
+                    case 7: return "Up to 30'";
+                    case 8: return "Up to 36'";
+                    case 9: return "Up to 50'";
+                    case 10: return "Up to 63'";
+                    case 11: return "Up to 75'";
+                    case 12: return "Up to 100'";
+                    case 13: return "Up to 125'";
+                    case 14: return "Up to 150'";
+                    case 15: return "Up to 200'";
+                    case 16: return "Up to 250'";
+                    case 17: return "Up to 300'";
+                    case 18: return "Up to 400'";
+                    case 19: return "Up to 500'";
+                    case 20: return "Up to 600'";
+                    default: return "";
+                }
+            }
+        }
+
         public HindranceCollection Hindrances => GetNew<HindranceCollection>();
         public bool IsWildCard { get { return Get<bool>(); } set { Set(value); } }
         public Trait MaxAgility { get => GetDefault<Trait>(12); set => Set(value); }
         public int MaximumStrain { get { return Get<int>(); } set { Set(value); } }
+
         [CalculatedField("MaximumStrain,Spirit,Vigor")]
         public int MaximumStrainTotal => MaximumStrain + Math.Min(Spirit.Score, Vigor.Score);
 
@@ -39,14 +123,56 @@ namespace SavageTools.Characters
         public string Race { get { return Get<string>(); } set { Set(value); } }
         public string Rank { get { return Get<string>(); } set { Set(value); } }
         public int Reason { get { return Get<int>(); } set { Set(value); } }
+
         [CalculatedField("Reason,Spirit")]
         public int ReasonTotal => 2 + Spirit.HalfScore + Reason;
 
         public Trait Running { get { return GetDefault<Trait>(6); } set { Set(value); } }
         public int Size { get { return Get<int>(); } set { Set(value); } }
 
+        public SkillCollection Skills => GetNew<SkillCollection>();
+
+        public Trait Smarts { get => Get<Trait>(); set => Set(value); }
+
+        public Trait Spirit { get => Get<Trait>(); set => Set(value); }
+
+        public int Status { get { return GetDefault(2); } set { Set(value); } }
+
+        public int Strain { get { return Get<int>(); } set { Set(value); } }
+
+        public Trait Strength { get => Get<Trait>(); set => Set(value); }
+
+        public int Toughness { get { return Get<int>(); } set { Set(value); } }
+
+        [CalculatedField("Vigor,Armor,Toughness")]
+        public int ToughnessTotal => 2 + Vigor.HalfScore + Toughness + Size + Armor;
+
+        public int UnusedAdvances { get { return Get<int>(); } set { Set(value); } }
+
+        public int UnusedAttributes { get { return Get<int>(); } set { Set(value); } }
+
+        public int UnusedEdges { get { return Get<int>(); } set { Set(value); } }
+
+        public int UnusedHindrances { get { return Get<int>(); } set { Set(value); } }
+
+        public int UnusedIconicEdges { get { return Get<int>(); } set { Set(value); } }
+
+        public int UnusedRacialEdges { get { return Get<int>(); } set { Set(value); } }
+
+        public int UnusedSkills { get { return Get<int>(); } set { Set(value); } }
+
+        public int UnusedSmartSkills { get { return Get<int>(); } set { Set(value); } }
+
+        public bool UseReason { get => Get<bool>(); set => Set(value); }
+
+        public bool UseStatus { get => Get<bool>(); set => Set(value); }
+
+        public bool UseStrain { get => Get<bool>(); set => Set(value); }
+
+        public Trait Vigor { get => Get<Trait>(); set => Set(value); }
+
         [CalculatedField("Size")]
-        public string SizeDescription
+        public string WeightFromSize
         {
             get
             {
@@ -55,50 +181,91 @@ namespace SavageTools.Characters
 
                 switch (Size)
                 {
-                    case -6: return "1/2  to 2 oz ";
-                    case -5: return "2  to 8 oz ";
-                    case -4: return "8 oz  to 2 lbs";
-                    case -3: return "2  to 8 lbs";
-                    case -2: return "8 to 31 lbs";
-                    case -1: return "31 to 125 lbs";
-                    case 0: return "125  to 250 lbs";
-                    case 1: return "250  to 500 lbs";
-                    case 2: return "500  to 1,000 lbs";
-                    case 3: return "1,000 lbs to 1 ton ";
-                    case 4: return "1  to 2 tons";
-                    case 5: return "2  to 4 tons";
-                    case 6: return "4  to 8 tons";
-                    case 7: return "8  to 16 tons";
-                    case 8: return "16  to 32 tons";
-                    case 9: return "32  to 64 tons";
-                    case 10: return "64 tons+";
+                    case -4: return "Up to 4 lbs";
+                    case -3: return "Up to 16 lbs";
+                    case -2: return "Up to 32 lbs";
+                    case -1: return "Up to 125 lbs";
+                    case 0: return "Up to 250 lbs";
+                    case 1: return "Up to 500 lbs";
+                    case 2: return "Up to 1,000 lbs";
+                    case 3: return "Up to 1 ton ";
+                    case 4: return "Up to 2 tons";
+                    case 5: return "Up to 4 tons";
+                    case 6: return "Up to 8 tons";
+                    case 7: return "Up to 16 tons";
+                    case 8: return "Up to 32 tons";
+                    case 9: return "Up to 64 tons";
+                    case 10: return "Up to 125 tons";
+                    case 11: return "Up to 250 tons";
+                    case 12: return "Up to 500 tons";
+                    case 13: return "Up to 1K tons";
+                    case 14: return "Up to 2K tons";
+                    case 15: return "Up to 4K tons";
+                    case 16: return "Up to 8K tons";
+                    case 17: return "Up to 16K tons";
+                    case 18: return "Up to 32K tons";
+                    case 19: return "Up to 64K tons";
+                    case 20: return "Up to 125K tons";
                     default: return "";
                 }
             }
         }
 
-        public SkillCollection Skills => GetNew<SkillCollection>();
-        public Trait Smarts { get => Get<Trait>(); set => Set(value); }
-        public Trait Spirit { get => Get<Trait>(); set => Set(value); }
-        public int Status { get { return GetDefault(2); } set { Set(value); } }
-        public int Strain { get { return Get<int>(); } set { Set(value); } }
-        public Trait Strength { get => Get<Trait>(); set => Set(value); }
-        public int Toughness { get { return Get<int>(); } set { Set(value); } }
+        public Character Clone()
+        {
+            var result = new Character()
+            {
+                Agility = Agility,
+                Archetype = Archetype,
+                Armor = Armor,
+                Experience = Experience,
+                Fear = Fear,
+                Gender = Gender,
+                IsWildCard = IsWildCard,
+                MaxAgility = MaxAgility,
+                MaximumStrain = MaximumStrain,
+                MaxSmarts = MaxSmarts,
+                MaxSpirit = MaxSpirit,
+                MaxVigor = MaxVigor,
+                MaxStrength = MaxStrength,
+                Name = Name,
+                Pace = Pace,
+                Parry = Parry,
+                Race = Race,
+                Rank = Rank,
+                Reason = Reason,
+                Size = Size,
+                Smarts = Smarts,
+                Spirit = Spirit,
+                Status = Status,
+                Strain = Strain,
+                Strength = Strength,
+                Toughness = Toughness,
+                UnusedAdvances = UnusedAdvances,
+                UnusedAttributes = UnusedAttributes,
+                UnusedEdges = UnusedEdges,
+                UnusedHindrances = UnusedHindrances,
+                UnusedIconicEdges = UnusedIconicEdges,
+                UnusedRacialEdges = UnusedRacialEdges,
+                UnusedSkills = UnusedSkills,
+                UnusedSmartSkills = UnusedSmartSkills,
+                UseReason = UseReason,
+                UseStatus = UseStatus,
+                UseStrain = UseStrain,
+                Running = Running,
+                Vigor = Vigor,
+            };
 
-        [CalculatedField("Vigor,Armor,Toughness")]
-        public int ToughnessTotal => 2 + Vigor.HalfScore + Toughness + Armor;
-        public int UnusedAdvances { get { return Get<int>(); } set { Set(value); } }
-        public int UnusedAttributes { get { return Get<int>(); } set { Set(value); } }
-        public int UnusedEdges { get { return Get<int>(); } set { Set(value); } }
-        public int UnusedHindrances { get { return Get<int>(); } set { Set(value); } }
-        public int UnusedIconicEdges { get { return Get<int>(); } set { Set(value); } }
-        public int UnusedRacialEdges { get { return Get<int>(); } set { Set(value); } }
-        public int UnusedSkills { get { return Get<int>(); } set { Set(value); } }
-        public int UnusedSmartSkills { get { return Get<int>(); } set { Set(value); } }
-        public bool UseReason { get => Get<bool>(); set => Set(value); }
-        public bool UseStatus { get => Get<bool>(); set => Set(value); }
-        public bool UseStrain { get => Get<bool>(); set => Set(value); }
-        public Trait Vigor { get => Get<Trait>(); set => Set(value); }
+            result.Edges.AddRange(Edges.Select(e => e.Clone()));
+            result.Features.AddRange(Features.Select(e => e.Clone()));
+            result.Skills.AddRange(Skills.Select(e => e.Clone()));
+            result.PowerGroups.AddRange(PowerGroups.Select(e => e.Clone()));
+            result.Gear.AddRange(Gear.Select(e => e.Clone()));
+            result.Hindrances.AddRange(Hindrances.Select(e => e.Clone()));
+
+            return result;
+        }
+
         /// <summary>
         /// Determines whether the specified feature has feature.
         /// </summary>
@@ -195,7 +362,7 @@ namespace SavageTools.Characters
             if (Features.Any(e => e.Name == name))
                 return true;
 
-            Debug.WriteLine("Does not have feature " + feature);
+            //Debug.WriteLine("Does not have feature " + feature);
             return false;
         }
 
@@ -225,7 +392,6 @@ namespace SavageTools.Characters
 
                 case "Pace": Pace += bonus; return;
                 case "Running": Running += bonus; return;
-                case "Charisma": Charisma += bonus; return;
                 case "Fear": Fear += bonus; return;
                 case "Parry": Parry += bonus; return;
                 case "Toughness": Toughness += bonus; return;
@@ -235,7 +401,6 @@ namespace SavageTools.Characters
                 case "Status": Status += bonus; return;
                 case "Size": Size += bonus; return;
                 case "Armor": Armor += bonus; return;
-
 
                 case "UnusedAttributes": UnusedAttributes += bonus; return;
                 case "UnusedSkills": UnusedSkills += bonus; return;
@@ -276,66 +441,9 @@ namespace SavageTools.Characters
             throw new ArgumentException("Unknown attribute " + attribute);
         }
 
-        public Character Clone()
+        public string ToCompactString(bool useHtml)
         {
-            var result = new Character()
-            {
-                Agility = Agility,
-                Archetype = Archetype,
-                Armor = Armor,
-                Charisma = Charisma,
-                Experience = Experience,
-                Fear = Fear,
-                Gender = Gender,
-                IsWildCard = IsWildCard,
-                MaxAgility = MaxAgility,
-                MaximumStrain = MaximumStrain,
-                MaxSmarts = MaxSmarts,
-                MaxSpirit = MaxSpirit,
-                MaxVigor = MaxVigor,
-                MaxStrength = MaxStrength,
-                Name = Name,
-                Pace = Pace,
-                Parry = Parry,
-                Race = Race,
-                Rank = Rank,
-                Reason = Reason,
-                Size = Size,
-                Smarts = Smarts,
-                Spirit = Spirit,
-                Status = Status,
-                Strain = Strain,
-                Strength = Strength,
-                Toughness = Toughness,
-                UnusedAdvances = UnusedAdvances,
-                UnusedAttributes = UnusedAttributes,
-                UnusedEdges = UnusedEdges,
-                UnusedHindrances = UnusedHindrances,
-                UnusedIconicEdges = UnusedIconicEdges,
-                UnusedRacialEdges = UnusedRacialEdges,
-                UnusedSkills = UnusedSkills,
-                UnusedSmartSkills = UnusedSmartSkills,
-                UseReason = UseReason,
-                UseStatus = UseStatus,
-                UseStrain = UseStrain,
-                Running = Running,
-                Vigor = Vigor,
-
-            };
-
-            result.Edges.AddRange(Edges.Select(e => e.Clone()));
-            result.Features.AddRange(Features.Select(e => e.Clone()));
-            result.Skills.AddRange(Skills.Select(e => e.Clone()));
-            result.PowerGroups.AddRange(PowerGroups.Select(e => e.Clone()));
-            result.Gear.AddRange(Gear.Select(e => e.Clone()));
-            result.Hindrances.AddRange(Hindrances.Select(e => e.Clone()));
-
-            return result;
-        }
-
-        public string ToCompactString()
-        {
-            var s = new StoryBuilder(useHtml: true);
+            var s = new StoryBuilder(useHtml);
             CopyToStory(s);
             return s.ToString();
         }
@@ -363,7 +471,7 @@ namespace SavageTools.Characters
 
             story.AppendLine($"Agility {Agility}, Smarts {Smarts}, Strength {Strength}, Spirt {Spirit}, Vigor {Vigor}");
 
-            story.Append($"Charisma {Charisma}, Parry {ParryTotal}, Toughness {ToughnessTotal}, Pace {Pace}+{Running}, Size {Size}, ");
+            story.Append($"Parry {ParryTotal}, Toughness {ToughnessTotal}, Pace {Pace}+{Running}, Size {Size}, ");
 
             var additionTraits = new List<string>();
 
@@ -381,7 +489,6 @@ namespace SavageTools.Characters
 
             if (additionTraits.Count > 0)
                 story.AppendLine(string.Join(", ", additionTraits));
-
 
             if (Skills.Count > 0)
                 story.AppendLine(string.Join(", ", Skills.Select(s => s.ShortName)));
@@ -405,4 +512,3 @@ namespace SavageTools.Characters
         }
     }
 }
-

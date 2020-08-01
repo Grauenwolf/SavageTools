@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using Tortuga.Anchor;
 using Tortuga.Anchor.Collections;
 using Tortuga.Anchor.Modeling;
 
@@ -21,7 +22,7 @@ namespace SavageTools.Characters
 
         public CharacterGenerator(FileInfo setting)
         {
-            LoadSetting(setting);
+            LoadSetting(setting, true);
 
             NameService = new LocalNameService(setting.DirectoryName, NamePrefix);
             PersonalityService = new PersonalityService(setting.DirectoryName);
@@ -30,8 +31,16 @@ namespace SavageTools.Characters
         public ObservableCollectionExtended<SettingArchetype> Archetypes => GetNew<ObservableCollectionExtended<SettingArchetype>>();
         public bool BornAHeroSetting { get => GetDefault(false); private set => Set(value); }
         public ObservableCollectionExtended<SettingEdge> Edges => GetNew<ObservableCollectionExtended<SettingEdge>>();
-        public ObservableCollectionExtended<SettingHindrance> Hindrances => GetNew<ObservableCollectionExtended<SettingHindrance>>();
+
+        //public ObservableCollectionExtended<SettingHindrance> Hindrances => GetNew<ObservableCollectionExtended<SettingHindrance>>();
+        public ObservableCollectionExtended<SettingHindrance> MinorHindrances => GetNew<ObservableCollectionExtended<SettingHindrance>>();
+
+        public ObservableCollectionExtended<SettingHindrance> MajorHindrances => GetNew<ObservableCollectionExtended<SettingHindrance>>();
+
         public string NamePrefix { get => Get<string>(); set => Set(value); }
+
+        public string SettingName { get => Get<string>(); set => Set(value); }
+
         public ObservableCollectionExtended<SettingPower> Powers => GetNew<ObservableCollectionExtended<SettingPower>>();
         public ObservableCollectionExtended<SettingRace> Races => GetNew<ObservableCollectionExtended<SettingRace>>();
 
@@ -99,15 +108,19 @@ namespace SavageTools.Characters
         {
             dice = dice ?? new Dice();
 
+            var selectedArchetype = options.SelectedArchetype;
+            var selectedRace = options.SelectedRace;
+            var selectedRank = options.SelectedRank;
+
             if (options.RandomArchetype)
             {
                 var list = Archetypes.Where(a => options.WildCard || !a.WildCard).ToList(); //Don't pick wildcard archetypes unless WildCard is checked.
-                options.SelectedArchetype = dice.Choose(list);
+                selectedArchetype = dice.Choose(list);
             }
-            if (options.RandomRace && string.IsNullOrEmpty(options.SelectedArchetype.Race))
+            if (options.RandomRace && string.IsNullOrEmpty(selectedArchetype.Race))
             {
-                var list = Races.Where(r => r.Name != "(Special)").ToList();
-                options.SelectedRace = dice.Choose(list);
+                //var list = Races.Where(r => r.Name != "(Special)").ToList();
+                selectedRace = dice.Choose(Races);
             }
             if (options.RandomRank)
             {
@@ -115,10 +128,10 @@ namespace SavageTools.Characters
                 foreach (var item in Ranks)
                     table.Add(item, 100 - item.Experience); //this should weigh it towards novice
 
-                options.SelectedRank = table.RandomChoose(dice);
+                selectedRank = table.RandomChoose(dice);
             }
 
-            var result = new Character() { Rank = options.SelectedRank.Name, IsWildCard = options.WildCard, UseReason = UseReason, UseStatus = UseStatus, UseStrain = UseStrain };
+            var result = new Character() { Rank = selectedRank.Name, IsWildCard = options.WildCard, UseReason = UseReason, UseStatus = UseStatus, UseStrain = UseStrain };
 
             var name = NameService.CreateRandomPerson(dice);
             result.Name = name.FullName;
@@ -128,13 +141,13 @@ namespace SavageTools.Characters
             foreach (var item in Skills)
                 result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = (item.IsCore && options.UseCoreSkills) ? 4 : 0 });
 
-            ApplyArchetype(result, dice, options.SelectedArchetype);
+            ApplyArchetype(result, dice, selectedArchetype);
 
-            ApplyRace(result, dice, options.SelectedRace);
+            ApplyRace(result, dice, selectedRace);
 
             //Add the rank
-            result.UnusedAdvances = options.SelectedRank.UnusedAdvances;
-            result.Experience = options.SelectedRank.Experience;
+            result.UnusedAdvances = selectedRank.UnusedAdvances;
+            result.Experience = selectedRank.Experience;
 
             if (result.UnusedHindrances == 0)//Add some hindrances to make it interesting
             {
@@ -169,10 +182,10 @@ namespace SavageTools.Characters
 
                 //Pick up racial and iconic edges early because they can grant skills
                 if (result.UnusedRacialEdges > 0)
-                    PickRacialEdge(result, dice, options.SelectedRace, options.BornAHero);
+                    PickRacialEdge(result, dice, selectedRace, options.BornAHero);
 
                 if (result.UnusedIconicEdges > 0)
-                    PickIconicEdge(result, dice, options.SelectedArchetype, options.BornAHero);
+                    PickIconicEdge(result, dice, selectedArchetype, options.BornAHero);
 
                 if (result.UnusedAttributes > 0)
                     PickAttribute(result, dice);
@@ -184,7 +197,7 @@ namespace SavageTools.Characters
                     PickSkill(result, dice);
 
                 if (result.UnusedEdges > 0)
-                    PickEdge(result, dice, options.SelectedArchetype, options.SelectedRace, options.BornAHero);
+                    PickEdge(result, dice, selectedArchetype, selectedRace, options.BornAHero);
 
                 //only apply an advance when everything else has been used
                 if (result.UnusedAdvances > 0 && result.UnusedAttributes <= 0 && result.UnusedSkills <= 0 && result.UnusedEdges <= 0 && result.UnusedSmartSkills <= 0)
@@ -240,7 +253,7 @@ namespace SavageTools.Characters
             return Skills.Where(x => x.Name.StartsWith("Knowledge "));
         }
 
-        public void LoadSetting(FileInfo file)
+        public void LoadSetting(FileInfo file, bool isPrimarySetting)
         {
             if (file == null)
                 throw new ArgumentNullException(nameof(file), $"{nameof(file)} is null.");
@@ -249,6 +262,9 @@ namespace SavageTools.Characters
             // Open document
             using (var stream = file.OpenRead())
                 book = (Setting)s_SettingXmlSerializer.Deserialize(stream);
+
+            if (isPrimarySetting)
+                SettingName = book.Name;
 
             if (Settings.Any(s => s == book.Name))
                 return; //already loaded
@@ -272,7 +288,7 @@ namespace SavageTools.Characters
                 {
                     var referencedBook = new FileInfo(Path.Combine(file.DirectoryName, item.Name + ".savage-setting"));
                     if (referencedBook.Exists)
-                        LoadSetting(referencedBook);
+                        LoadSetting(referencedBook, false);
                 }
 
             //Adding a book overwrites the previous book.
@@ -289,11 +305,23 @@ namespace SavageTools.Characters
                     Edges.Add(item);
                 }
             if (book.Hindrances != null)
+            {
+                //If a setting adds a hindrance at either level, it overwrites both.
                 foreach (var item in book.Hindrances)
                 {
-                    Hindrances.RemoveAll(s => s.Name == item.Name);
-                    Hindrances.Add(item);
+                    MinorHindrances.RemoveAll(s => s.Name == item.Name);
+                    MajorHindrances.RemoveAll(s => s.Name == item.Name);
                 }
+
+                foreach (var item in book.Hindrances.Where(h => h.IsMinor()))
+                {
+                    MinorHindrances.Add(item);
+                }
+                foreach (var item in book.Hindrances.Where(h => h.IsMajor()))
+                {
+                    MajorHindrances.Add(item);
+                }
+            }
             if (book.Archetypes != null)
             {
                 foreach (var item in book.Archetypes)
@@ -341,7 +369,7 @@ namespace SavageTools.Characters
             PickEdge(result, dice, null, null, bornAHero);
         }
 
-        private static void ApplyEdge(Character result, SettingEdge edge, Dice dice)
+        public static void ApplyEdge(Character result, SettingEdge edge, Dice dice)
         {
             result.Edges.Add(new Edge() { Name = edge.Name, Description = edge.Description, UniqueGroup = edge.UniqueGroup });
 
@@ -616,7 +644,7 @@ namespace SavageTools.Characters
                 }
         }
 
-        private static void ApplyHindrance(Character result, SettingHindrance hindrance, int level, Dice dice)
+        public static void ApplyHindrance(Character result, SettingHindrance hindrance, int level, Dice dice)
         {
             result.Hindrances.Add(new Hindrance() { Name = hindrance.Name, Description = hindrance.Description, Level = level });
 
@@ -708,15 +736,21 @@ namespace SavageTools.Characters
 
         private SettingHindrance FindHindrance(SettingHindrance prototype)
         {
-            //If any of these are set, assume its a custom edge
+            //If any of these are set, assume its a custom hindrance
             if (!string.IsNullOrEmpty(prototype.Description))
                 return prototype;
             if (prototype.Features?.Length > 0)
                 return prototype;
 
-            //Look for a shared hindrance
-            var result = Hindrances.FirstOrDefault(e => e.Name == prototype.Name);
-            return result ?? prototype;
+            //Look for a shared hindrances
+            var minor = MinorHindrances.FirstOrDefault(e => e.Name == prototype.Name);
+            var major = MajorHindrances.FirstOrDefault(e => e.Name == prototype.Name);
+
+            if (major != null && prototype.Type == "Major")
+                return major;
+
+            //Perfer the minor version if both are available and major wasn't asked for.
+            return minor ?? major ?? prototype;
         }
 
         private void PickEdge(Character result, Dice dice, SettingArchetype archetype, SettingRace race, bool bornAHero)
@@ -749,7 +783,7 @@ namespace SavageTools.Characters
             }
             else
             {
-                Debug.WriteLine($"Found {table.Count} edges");
+                //Debug.WriteLine($"Found {table.Count} edges");
                 var edge = table.RandomChoose(dice);
                 ApplyEdge(result, edge, dice);
 
@@ -786,17 +820,21 @@ namespace SavageTools.Characters
             }
 
             var table = new Table<SettingHindrance>();
-            foreach (var item in Hindrances)
-            {
-                //Task-6: Some hindrances allow duplicates
-                if (result.Hindrances.Any(e => e.Name == item.Name))
-                    continue; //no dups
 
-                if ((item.Type == "Minor" && !useMajor)
-                || (item.Type == "Major" && useMajor)
-                || (item.Type == "Minor/Major"))
+            if (useMajor)
+                foreach (var item in MajorHindrances)
+                {
+                    if (result.Hindrances.Any(e => e.Name == item.Name))
+                        continue; //no dups
                     table.Add(item, 1);
-            }
+                }
+            else
+                foreach (var item in MinorHindrances)
+                {
+                    if (result.Hindrances.Any(e => e.Name == item.Name))
+                        continue; //no dups
+                    table.Add(item, 1);
+                }
 
             var hindrance = table.RandomChoose(dice);
             ApplyHindrance(result, hindrance, useMajor ? 2 : 1, dice);
@@ -828,7 +866,7 @@ namespace SavageTools.Characters
             }
             else
             {
-                Debug.WriteLine($"Found {table.Count} edges");
+                //Debug.WriteLine($"Found {table.Count} edges");
                 var edge = table.RandomChoose(dice);
                 ApplyEdge(result, edge, dice);
 
@@ -869,7 +907,7 @@ namespace SavageTools.Characters
                 return;
             }
 
-            TryAgain:
+        TryAgain:
             var trapping = dice.Choose(Trappings);
             var power = dice.Choose(powers);
 
@@ -905,7 +943,7 @@ namespace SavageTools.Characters
             }
             else
             {
-                Debug.WriteLine($"Found {table.Count} edges");
+                //Debug.WriteLine($"Found {table.Count} edges");
                 var edge = table.RandomChoose(dice);
                 ApplyEdge(result, edge, dice);
 

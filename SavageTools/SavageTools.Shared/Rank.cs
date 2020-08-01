@@ -1,6 +1,9 @@
-﻿namespace SavageTools
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+
+namespace SavageTools
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1008:EnumsShouldHaveZeroValue")]
+    [SuppressMessage("Microsoft.Design", "CA1008:EnumsShouldHaveZeroValue")]
     public enum Rank
     {
         Two = 2,
@@ -19,5 +22,3 @@
         Joker = 15
     }
 }
-
-

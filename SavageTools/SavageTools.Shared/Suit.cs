@@ -1,10 +1,10 @@
-﻿
-using System;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace SavageTools
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1714:FlagsEnumsShouldHavePluralNames")]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1008:EnumsShouldHaveZeroValue")]
+    [SuppressMessage("Microsoft.Naming", "CA1714:FlagsEnumsShouldHavePluralNames")]
+    [SuppressMessage("Microsoft.Design", "CA1008:EnumsShouldHaveZeroValue")]
     [Flags]
     public enum Suit
     {
@@ -17,5 +17,3 @@ namespace SavageTools
         Club = 4
     }
 }
-
-
