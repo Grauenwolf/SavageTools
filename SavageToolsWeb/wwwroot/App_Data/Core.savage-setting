@@ -144,7 +144,7 @@
     <Edge Name="Brawny" Requires="Novice, Strength d6, Vigor d6" Description="Size (and therefore Toughness) +1. Treat Strength as one die type higher for Encumbrance and Minimum Strength to use weapons, armor, or equipment.">
       <Trait Name="Size" Bonus="1" />
     </Edge>
-    <!-- TODO: Alter the Athletics skill when someone has the Brute edge. -->
+    <!-- TODO-15: Alter the Athletics skill when someone has the Brute edge. -->
     <Edge Name="Brute" Requires="Novice, Strength d6, Vigor d6" Description="Link Athletics to Strength instead of Agility (including resistance). Short Range of any thrown item increased by +1. Double that for the adjusted Medium Range, and double again for Long Range." />
     <Edge Name="Charismatic" Requires="Novice, Spirit d8" Description="Free reroll when using Persuasion." />
     <Edge Name="Elan" Requires="Novice, Spirit d8" Description="+2 when spending a Benny to reroll a Trait roll." />
@@ -155,7 +155,7 @@
       <Trait Name="Pace" Bonus="2" />
       <Trait Name="Running" Bonus="1" />
     </Edge>
-    <!-- TODO: Add ability to pick langauges using this.-->
+    <!-- TODO-16: Add ability to pick langauges using this.-->
     <Edge Name="Linguist" Requires="Novice, Smarts d6" Description="Character has d6 in languages equal to half her Smarts die." />
     <Edge Name="Luck" Requires="Novice" Description="+1 Benny at the start of each session." />
     <Edge Name="Great Luck" Requires="Novice, Luck" Description="+2 Bennies at the start of each session." />
@@ -270,8 +270,8 @@
     <!-- Legendary Edges -->
     <Edge Name="Followers" Requires="Wild Card, Legendary" Description="May find a needed item once per encounter." />
 
-    <!-- TODO: Implement wild card traits for Professional.-->
-    <!-- TODO: Implement max trait requirement for Professional.-->
+    <!-- TODO-7: Implement wild card traits for Professional. This is to say, it matches with any attribute or skill.-->
+    <!-- TODO-7: Implement max trait requirement for Professional.-->
     <Edge Name="Professional" Requires="Legendary" Description="The character’s Trait and its limit increases one step." />
     <Edge Name="Expert" Requires="Legendary, Professional" Description="The character’s Trait and its limit increases one step." />
     <Edge Name="Master" Requires="Wild Card, Legendary, Expert" Description="The character’s Wild Die is a d10 with a chosen Trait." />

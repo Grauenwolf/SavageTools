@@ -440,8 +440,7 @@ namespace SavageTools.Characters
                             var table = new Table<Skill>();
                             foreach (var skill in result.Skills)
                             {
-                                //TODO: Add ability to increase skills above 12. This is needed for non-humans and the Professional edge
-                                if (skill.Trait >= result.GetAttribute(skill.Attribute) && skill.Trait < 12)
+                                if (skill.Trait >= result.GetAttribute(skill.Attribute) && skill.Trait < skill.MaxLevel)
                                     table.Add(skill, skill.Trait.Score);
                             }
                             if (table.Count == 0)
@@ -455,7 +454,7 @@ namespace SavageTools.Characters
                             var table = new Table<Skill>();
                             foreach (var skill in result.Skills)
                             {
-                                if (skill.Trait < result.GetAttribute(skill.Attribute) && skill.Trait < 12)
+                                if (skill.Trait < result.GetAttribute(skill.Attribute) && skill.Trait < skill.MaxLevel)
                                     table.Add(skill, skill.Trait.Score);
                             }
                             if (table.Count >= 2)

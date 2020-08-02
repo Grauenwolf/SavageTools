@@ -24,7 +24,7 @@ namespace SavageToolsWeb.Controls
 
             try
             {
-                var dice = new Dice(); //TODO: Capture seed
+                var dice = new Dice();
                 for (var i = 0; i < Options.Count; i++)
                 {
                     Squad.Insert(0, Options.CharacterGenerator.GenerateCharacter(Options, dice));
