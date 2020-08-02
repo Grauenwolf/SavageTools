@@ -3,7 +3,6 @@ using Tortuga.Anchor.Modeling;
 
 namespace SavageTools.Characters
 {
-
     public class Skill : ChangeTrackingModelBase
     {
         public Skill(string name, string attribute)
@@ -23,11 +22,14 @@ namespace SavageTools.Characters
         public string Name { get => Get<string>(); set => Set(value); }
         public string ShortName => $"{Name} {Trait}";
         public Trait Trait { get => GetDefault<Trait>(4); set => Set(value); }
+
+        public Trait MaxLevel { get => GetDefault<Trait>(12); set => Set(value); }
+
         public override string ToString() => LongName;
-        public Skill Clone()
-        {
-            return new Skill(Name, Attribute) { Trait = Trait };
-        }
+
+        //public Skill Clone()
+        //{
+        //    return new Skill(Name, Attribute) { Trait = Trait };
+        //}
     }
 }
-

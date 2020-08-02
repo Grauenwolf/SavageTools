@@ -1,0 +1,18 @@
+﻿@page "/setting/fantasy"
+@inherits SettingPage
+
+@if (Model != null)
+{
+    <SettingHeader CharacterOptions="@Model" />
+
+    <CharacterBuilderForm Options="@Model" />
+
+}
+else if (LoadFailed)
+{
+    <h1>Error loading page.</h1>
+}
+else
+{
+    <h1>Loading</h1>
+}

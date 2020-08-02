@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Arcana">
+  <References>
+    <Reference Name="Core" />
+  </References>
+
+  <Hindrances>
+    <Hindrance Name="Doubting Thomas" Type="Minor" Description="The character doesn’t believe in the supernatural, often exposing him to unnecessary risks." />
+  </Hindrances>
+
+  <Edges>
+    <Edge Name="Champion" Requires="Novice, Spirit d8, Fighting d6" Description="+2 damage vs. supernaturally evil creatures." />
+  </Edges>
+
+  <Powers>
+    <Power Name="Arcane Protection" Requires="Novice" PowerPoints="1" Range="Smarts" Duration="5" Description="Enemy casters subtract 2 (4 with a raise) when targeting this character; reduces damage a like amount." />
+    <Power Name="Banish" Requires="Veteran" PowerPoints="1" Range="Smarts" Duration="5" Description="Enemy casters subtract 2 (4 with a raise) when targeting this character; reduces damage a like amount." />
+    <Power Name="Banish" Requires="Veteran" PowerPoints="3" Range="Smarts" Duration="I" Description="Opposed roll vs Spirit to banish entities." />
+    <Power Name="Barrier" Requires="Seasoned" PowerPoints="2" Range="Smarts" Duration="5" Description="Creates 5″ (10 yards) long, 1″ (2 yards) tall, Hardness 10 barrier." />
+    <Power Name="Beast Friend" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="10m" Description="Controls animals." />
+    <Power Name="Blast" Requires="Seasoned" PowerPoints="3" Range="Smarts×2" Duration="I" Description="2d6 damage in Medium Blast Template." />
+    <Power Name="Blind" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="I" Description="Inflicts –2/–4 penalty to victims." />
+    <Power Name="Bolt" Requires="Novice" PowerPoints="1" Range="Smarts×2" Duration="I" Description="2d6 ranged attack." />
+    <Power Name="Boost/Lower Trait" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="5/I" Description="Increases or decreases a skill or attribute." />
+    <Power Name="Burrow" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="5" Description="Target tunnels through the earth." />
+    <Power Name="Burst" Requires="Novice" PowerPoints="2" Range="Cone" Dureation="I" Description="Cone-shaped attack for 2d6 damage." />
+    <Power Name="Confusion" Requires="Novice" PowerPoints="1" Range="Smarts" Duration="S" Description="Makes target Distracted and Vulnerable." />
+    <Power Name="Damage Field" Requires="Seasoned" PowerPoints="4" Range="Smarts" Duration="5" Description="Creates aura that causes 2d4 damage." />
+    <Power Name="Darksight" Requires="Novice" PowerPoints="1" Range="Smarts" Duration="1H" Description="Ignore up to 4 points of illumination penalties, or 6 with a raise." />
+    <Power Name="Deflection" Requires="Novice" PowerPoints="3" Range="Smarts" Duration="5" Description="−2/–4 to attack recipient." />
+    <Power Name="Detect/Conceal Arcana" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="S" Description="Detects magic for Duration 5 or conceals it for one hour." />
+    <Power Name="Disguise" Requires="Seasoned" PowerPoints="2" Range="Smarts" Duration="10m" Description="Target looks like someone else." />
+    <Power Name="Dispel" Requires="Seasoned" PowerPoints="1" Range="Smarts" Duration="I" Description="Negates magical effects." />
+    <Power Name="Divination" Requires="Heroic" PowerPoints="5" Range="Self" Duration="5m" Description="Caster asks questions of entities." />
+    <Power Name="Drain Power Points" Requires="Veteran" PowerPoints="2" Range="Smarts" Duration="I" Description="Drains d6 Power Points from enemy with successful opposed roll of arcane skills." />
+    <Power Name="Elemental Manipulation" Requires="Novice" PowerPoints="1" Range="Smarts" Duration="5" Description="Allows minor manipulation of basic elements." />
+    <Power Name="Empathy" Requires="Novice" PowerPoints="1" Range="Smarts" Duration="5" Description="Opposed roll vs Spirit to add +2 to social attacks for the Duration of the power." />
+    <Power Name="Entangle" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="I" Description="Bind or Entangle foes." />
+    <Power Name="Environmental Protection" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="1H" Description="Protect target from hazardous environments." />
+    <Power Name="Farsight" Requires="Seasoned" PowerPoints="2" Range="Smarts" Duration="5" Description="See detail at great distance; halves Range penalties with a raise." />
+    <Power Name="Fear" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="I" Description="Causes Fear check." />
+    <Power Name="Fly" Requires="Veteran" PowerPoints="3" Range="Smarts" Duration="5" Description="Target flies at Pace 12″." />
+    <Power Name="Growth/Shrink" Requires="Seasoned" PowerPoints="2" Range="Smarts" Duration="5" Description="Increases or decreases Size." />
+    <Power Name="Havoc" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="I" Description="Targets in MBT or Cone are Distracted and may be hurled." />
+    <Power Name="Healing" Requires="Novice" PowerPoints="3" Range="T" Duration="I" Description="Restores Wounds less than an hour old." />
+    <Power Name="Illusion" Requires="Novice" PowerPoints="3" Range="Smarts" Duration="5" Description="Creates imaginary images." />
+    <Power Name="Intangibility" Requires="Heroic" PowerPoints="5" Range="Smarts" Duration="5" Description="Target becomes incorporeal." />
+    <Power Name="Invisibility" Requires="Seasoned" PowerPoints="5" Range="Smarts" Duration="5" Description="Target is invisible (–4/–6 to affect)." />
+    <Power Name="Light/Darkness" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="10m" Description="Creates or dispels illumination." />
+    <Power Name="Mind Link" Requires="Novice" PowerPoints="1" Range="Smarts" Duration="30m" Description="Mental link within one mile (5 with raise)." />
+    <Power Name="Mind Reading" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="I" Description="Opposed roll vs Smarts to read mind." />
+    <Power Name="Mind Wipe" Requires="Veteran" PowerPoints="3" Range="Smarts" Duration="I" Description="Removes and alters memories." />
+    <Power Name="Object Reading" Requires="Seasoned" PowerPoints="2" Range="T" Duration="S" Description="Reveals last five years of an object’s history (100 years with a raise)." />
+    <Power Name="Protection" Requires="Novice" PowerPoints="1" Range="Smarts" Duration="5" Description="Grants Armor +2/+4." />
+    <Power Name="Puppet" Requires="Veteran" PowerPoints="3" Range="Smarts" Duration="5" Description="Opposed roll vs Spirit to control target." />
+    <Power Name="Relief" Requires="Novice" PowerPoints="1" Range="Smarts" Duration="I" Description="Removes Fatigue, Shaken; &amp; Stun with raise" />
+    <Power Name="Resurrection" Requires="Heroic" PowerPoints="30" Range="T" Duration="I" Description="Brings the dead back to life." />
+    <Power Name="Shape Change" Requires="Novice"  Range="Self"  Duration="5" Description="Caster takes on the form of various beings." />
+    <Power Name="Sloth/Speed" Requires="Seasoned" PowerPoints="2" Range="Smarts" Duration="I/5" Description="Increases or decreases movement." />
+    <Power Name="Slumber" Requires="Seasoned" PowerPoints="2" Range="Smarts" Duration="1H" Description="Puts victims to sleep." />
+    <Power Name="Smite" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="5" Description="Increase a weapon’s damage by +2/+4." />
+    <Power Name="Sound/Silence" Requires="Novice" PowerPoints="1" Range="Sm×5/Sm" Duration="I/5" Description="Create or mute sound." />
+    <Power Name="Speak Language" Requires="Novice" PowerPoints="1" Range="Smarts" Duration="10m" Description="Caster can speak and understand languages." />
+    <Power Name="Stun" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="I" Description="Target is Stunned." />
+    <Power Name="Summon Ally" Requires="Novice"  Range="Smarts" Duration="5" Description="Conjures an ally of various sorts." />
+    <Power Name="Telekinesis" Requires="Seasoned" PowerPoints="5" Range="Smarts×2" Duration="5" Description="Moves items with Strength of d10 (d12 with a raise)." />
+    <Power Name="Teleport" Requires="Seasoned" PowerPoints="2" Range="Smarts" Duration="I" Description="Character teleports up to 12″ distant." />
+    <Power Name="Wall Walker" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="5" Description="Character can walk on walls at half Pace (full pace with raise)." />
+    <Power Name="Warrior’s Gift" Requires="Seasoned" PowerPoints="4" Range="Smarts" Duration="5" Description="Grant target a Combat Edge." />
+    <Power Name="Zombie" Requires="Veteran" PowerPoints="3" Range="Smarts" Duration="1H" Description="Raises and controls the undead." />
+  </Powers>
+
+  <Trappings>
+    <Trapping Name="Acid" />
+    <Trapping Name="Cold" />
+    <Trapping Name="Ice" />
+    <Trapping Name="Darkness" />
+    <Trapping Name="Electricity" />
+    <Trapping Name="Fire" />
+    <Trapping Name="Heat" />
+    <Trapping Name="Light" />
+    <Trapping Name="Necromantic" />
+    <Trapping Name="Sound" />
+    <Trapping Name="Water" />
+    <Trapping Name="Air" />
+    <Trapping Name="Earth" />
+    <Trapping Name="Stone" />
+    <Trapping Name="Metal" />
+  </Trappings>
+</Setting>

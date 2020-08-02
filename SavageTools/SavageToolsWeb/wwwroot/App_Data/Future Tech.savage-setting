@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Future Tech">
+  <References>
+    <Reference Name="Core" />
+    <Reference Name="Weird Science" />
+  </References>
+
+  <Races>
+    <Race Name="Android">
+      <Hindrance Name="Pacifist" Type="Major" />
+      <Hindrance Name="Outsider" Type="Major" />
+      <Hindrance Name="Vow" Type="Major" />
+      <Edge Name="Construct" Description="Add +2 to recover from being Shaken, don’t breathe, ignore one level of Wound modifiers, and are immune to poison and disease." />
+    </Race>
+  </Races>
+</Setting>

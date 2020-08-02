@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Psionics">
+  <References>
+    <Reference Name="Core" />
+    <Reference Name="Arcana" />
+  </References>
+
+  <Edges>
+    <Edge Name="Arcane Background (Psionics)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Psionics">
+      <Skill Name="Psionics" Attribute="Smarts" Level="4" />
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints:Psionics" Bonus="10" />
+      <Trait Name="UnusedPowers:Psionics" Bonus="3" />
+      <Feature Name="Arcane Background" />
+
+      <Trigger Name="Invocation" />
+      <Trigger Name="Chant" />
+      <Trigger Name="Stare" />
+      <Trigger Name="Gesture" />
+      <Trigger Name="Concentration" />
+    </Edge>
+
+    <!-- Common -->
+    <Edge Name="Artificer (Psionics)" Requires="Seasoned, Arcane Background (Psionics)" Description="Allows user to create Arcane Devices." />
+    <Edge Name="Channeling (Psionics)" Requires="Seasoned, Arcane Background (Psionics)" Description="Reduce Power Point cost by 1 with a raise on the activation roll." />
+    <Edge Name="Concentration (Psionics)" Requires="Seasoned, Arcane Background (Psionics)" Description="Double Duration of non-Instant powers." />
+    <Edge Name="New Power (Psionics)" Requires="Novice, Arcane Background (Psionics)" Description="Your character knows two new powers.">
+      <Trait Name="UnusedPowers:Psionics" Bonus="2" />
+    </Edge>
+    <Edge Name="Power Points (Psionics/Novice)" Requires="Novice, Arcane Background (Psionics)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Psionics" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Psionics/Seasoned)" Requires="Seasoned, Arcane Background (Psionics)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Psionics" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Psionics/Veteran)" Requires="Veteran, Arcane Background (Psionics)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Psionics" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Psionics/Heroic)" Requires="Heroic, Arcane Background (Psionics)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Psionics" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Psionics/Legendary)" Requires="Legendary, Arcane Background (Psionics)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Psionics" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Surge (Psionics)" Requires="Wild Card, Novice, Arcane Background (Psionics), Psionics d8" Description="Recover 10 Power Points when dealt a Joker in combat." />
+    <Edge Name="Rapid Recharge (Psionics)" Requires="Seasoned, Spirit d6, Arcane Background (Psionics)" Description="Recover 10 Power Points per hour." />
+    <Edge Name="Improved Rapid Recharge (Psionics)" Requires="Veteran, Rapid Recharge (Psionics)" Description="Recover 20 Power Points per hour." />
+    <Edge Name="Soul Drain (Psionics)" Requires="Seasoned, Arcane Background (Psionics), Psionics d10" Description="Recover 5 Power Points for a level of Fatigue." />
+
+    <!-- Arcane Background Specific -->
+    <Edge Name="Mentalist (Psionics)" Requires="Seasoned, Arcane Background (Psionics), Psionics d6" Description="+2 to opposed Psionics rolls." />
+  </Edges>
+</Setting>

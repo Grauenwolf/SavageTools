@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Adventure Edition">
+  <References>
+    <Reference Name="Core" />
+    <Reference Name="Arcana" />
+    <Reference Name="Magic" />
+    <Reference Name="Gifted" />
+    <Reference Name="Miracles" />
+    <Reference Name="Psionics" />
+    <Reference Name="Weird Science" />
+  </References>
+</Setting>

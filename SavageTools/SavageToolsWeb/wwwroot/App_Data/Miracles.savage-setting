@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Miracles">
+  <References>
+    <Reference Name="Core" />
+    <Reference Name="Arcana" />
+  </References>
+
+  <Edges>
+    <Edge Name="Arcane Background (Miracles)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Miracles">
+      <Skill Name="Faith" Attribute="Spirit" Level="4" />
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints:Miracles" Bonus="10" />
+      <Trait Name="UnusedPowers:Miracles" Bonus="3" />
+      <Feature Name="Arcane Background" />
+
+      <Trigger Name="Invocation" />
+      <Trigger Name="Chant" />
+      <Trigger Name="Prayer" />
+      <Trigger Name="Gesture" />
+      <Trigger Name="Holy Water" />
+      <Trigger Name="Holy Object" />
+      <Trigger Name="Talisman" />
+    </Edge>
+
+    <!-- Common -->
+    <Edge Name="Artificer (Miracles)" Requires="Seasoned, Arcane Background (Miracles)" Description="Allows user to create Arcane Devices." />
+    <Edge Name="Channeling (Miracles)" Requires="Seasoned, Arcane Background (Miracles)" Description="Reduce Power Point cost by 1 with a raise on the activation roll." />
+    <Edge Name="Concentration (Miracles)" Requires="Seasoned, Arcane Background (Miracles)" Description="Double Duration of non-Instant powers." />
+    <Edge Name="New Power (Miracles)" Requires="Novice, Arcane Background (Miracles)" Description="Your character knows two new powers.">
+      <Trait Name="UnusedPowers:Miracles" Bonus="2" />
+    </Edge>
+    <Edge Name="Power Points (Miracles/Novice)" Requires="Novice, Arcane Background (Miracles)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Miracles" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Miracles/Seasoned)" Requires="Seasoned, Arcane Background (Miracles)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Miracles" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Miracles/Veteran)" Requires="Veteran, Arcane Background (Miracles)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Miracles" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Miracles/Heroic)" Requires="Heroic, Arcane Background (Miracles)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Miracles" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Miracles/Legendary)" Requires="Legendary, Arcane Background (Miracles)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Miracles" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Surge (Miracles)" Requires="Wild Card, Novice, Arcane Background (Miracles), Faith d8" Description="Recover 10 Power Points when dealt a Joker in combat." />
+    <Edge Name="Rapid Recharge (Miracles)" Requires="Seasoned, Spirit d6, Arcane Background (Miracles)" Description="Recover 10 Power Points per hour." />
+    <Edge Name="Improved Rapid Recharge (Miracles)" Requires="Veteran, Rapid Recharge (Miracles)" Description="Recover 20 Power Points per hour." />
+    <Edge Name="Soul Drain (Miracles)" Requires="Seasoned, Arcane Background (Miracles), Faith d10" Description="Recover 5 Power Points for a level of Fatigue." />
+
+    <!-- Arcane Background Specific -->
+    <Edge Name="Holy/Unholy Warrior (Miracles)" Requires="Seasoned, Arcane Background (Miracles), Faith d6" Description="Add +1 to +4 to Soak rolls for each Power Point spent." />
+  </Edges>
+</Setting>
