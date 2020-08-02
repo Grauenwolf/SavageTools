@@ -2,10 +2,111 @@
 <Setting Name="Fantasy">
   <References>
     <Reference Name="Core" />
-    <Reference Name="Arcana" />
     <Reference Name="Magic" />
-    <Reference Name="Gifted" />
-    <Reference Name="Psionics" />
-    <Reference Name="Weird Science" />
+    <Reference Name="Miracles" />
   </References>
+
+  <Races>
+
+    <Race Name ="Aquarian">
+      <Edge Name="Aquatic" Description="Aquarians cannot drown in water and move at their full Pace when swimming." />
+      <Hindrance Name="Dependency" Description="Must immerse themselves in water one hour out of every 24 or become automatically Fatigued." />
+      <Edge Name="Low Light Vision" Description="Ignore penalties for Dim and Dark Illumination." />
+      <Edge Name="Toughness" Description="Add +1 to their Toughness.">
+        <Trait Name="Toughness" Bonus="1" />
+      </Edge>
+    </Race>
+
+    <Race Name="Avion">
+      <Hindrance Name="Can't Swim" Description="They subtract 2 from Athletics (swimming) rolls and each inch moved in water costs them 3″ of Pace." />
+      <Edge Name="Flight" Description="Avions fly at Pace 12 per round. Use Athletics when maneuvering." />
+      <Edge Name="Frail" Description="−1 Toughness due to their hollow bones.">
+        <Trait Name="Toughness" Bonus="-1" />
+      </Edge>
+
+      <Edge Name="Keen Senses" Description="−1 Toughness due to their hollow bones.">
+        <Skill Name="Notice" Level="6" MaxLevelBonus="1" />
+      </Edge>
+
+      <Hindrance Name="Reduced Pace" Description="Dependence on flight and bulky wings make you slightly slower when walking.">
+        <Trait Name="Pace" Bonus="-1" />
+        <Trait Name="Running" Bonus="-1" />
+      </Hindrance>
+    </Race>
+
+    <Race Name="Dwarf">
+      <Edge Name="Low Light Vision" Description="Ignore penalties for Dim and Dark Illumination." />
+      <Hindrance Name="Reduced Pace" Description="Short legs compared to most races">
+        <Trait Name="Pace" Bonus="-1" />
+        <Trait Name="Running" Bonus="-1" />
+      </Hindrance>
+      <Edge Name="Tough" Description="Add +1 to their Vigor/Max Vigor.">
+        <Trait Name="Vigor" Bonus="1" />
+        <Trait Name="MaxVigor" Bonus="1" />
+      </Edge>
+    </Race>
+
+    <Race Name="Elf">
+      <Edge Name="Low Light Vision" Description="Ignore penalties for Dim and Dark Illumination." />
+      <Hindrance Name="All Thumbs" Description="They shun most mechanical items and designs." />
+      <Edge Name="Agile" Description="Add +1 to their Agility/Max Agility.">
+        <Trait Name="Agility" Bonus="1" />
+        <Trait Name="MaxAgility" Bonus="1" />
+      </Edge>
+    </Race>
+
+    <Race Name="Half-elf (Elf-favored)">
+      <Edge Name="Low Light Vision" Description="Ignore penalties for Dim and Dark Illumination." />
+      <Hindrance Name="Outsider" Type="Minor" />
+      <Edge Name="Agile" Description="Add +1 to their Agility/Max Agility.">
+        <Trait Name="Agility" Bonus="1" />
+        <Trait Name="MaxAgility" Bonus="1" />
+      </Edge>
+    </Race>
+
+    <Race Name="Half-elf (Human-favored)">
+      <Edge Name="Low Light Vision" Description="Ignore penalties for Dim and Dark Illumination." />
+      <Hindrance Name="Outsider" Type="Minor" />
+      <Trait Name="UnusedEdges" Bonus="1" />
+    </Race>
+
+    <Race Name="Half-folk">
+      <Edge Name="Luck" />
+      <Hindrance Name="Reduced Pace" Description="Short legs compared to most races">
+        <Trait Name="Pace" Bonus="-1" />
+        <Trait Name="Running" Bonus="-1" />
+      </Hindrance>
+
+      <Hindrance Name="Small People" Type="Minor" Description="Size and Toughness are reduced by 1.">
+        <Trait Name="Size" Bonus="-1" />
+      </Hindrance>
+
+      <Edge Name="Spirited" Description="Add +1 to their Spirit/Max Spirit.">
+        <Trait Name="Spirit" Bonus="1" />
+        <Trait Name="MaxSpirit" Bonus="1" />
+      </Edge>
+    </Race>
+
+    <Race Name="Rakashan">
+      <Edge Name="Agile" Description="Add +1 to their Agility/Max Agility.">
+        <Trait Name="Agility" Bonus="1" />
+        <Trait Name="MaxAgility" Bonus="1" />
+      </Edge>
+      <Edge Name="Bite/Claws" Description="Fangs and claws are Natural Weapons that cause Strength+d4 damage." />
+      <Hindrance Name="Bloodthirsty" />
+      <Hindrance Name="Can't Swim" Description="They subtract 2 from Athletics (swimming) rolls and each inch moved in water costs them 3″ of Pace." />
+      <Edge Name="Low Light Vision" Description="Ignore penalties for Dim and Dark Illumination." />
+      <Hindrance Name="Racial Enemy" Description="Members of each culture subtract 2 from Persuasion when dealing with each other and often attack on sight." />
+    </Race>
+
+    <Race Name="Saurian">
+      <Edge Name="Scaly Skin">
+        <Trait Name="Armor" Bonus="2" />
+      </Edge>
+      <Edge Name="Bite" Description="Fangs are Natural Weapons that cause Strength+d4 damage." />
+      <Hindrance Name="Environmental Weakness" Description="They suffer a −4 penalty to resist cold environmental effects, and suffer +4 damage from cold-based attacks." />
+      <Edge Name="Alertness" />
+      <Hindrance Name="Outsider" Type="Minor" />
+    </Race>
+  </Races>
 </Setting>

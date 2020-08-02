@@ -86,23 +86,23 @@ namespace SavageTools.Characters
         //    group.Powers.Add(new Power(power, trapping.Name));
         //}
 
-        public void ApplyEdge(Character result, Dice dice, string edgeName, string description = null)
-        {
-            if (result == null)
-                throw new ArgumentNullException(nameof(result), $"{nameof(result)} is null.");
+        //public void ApplyEdge(Character result, Dice dice, string edgeName, string description = null)
+        //{
+        //    if (result == null)
+        //        throw new ArgumentNullException(nameof(result), $"{nameof(result)} is null.");
 
-            if (string.IsNullOrEmpty(edgeName))
-                throw new ArgumentException($"{nameof(edgeName)} is null or empty.", nameof(edgeName));
+        //    if (string.IsNullOrEmpty(edgeName))
+        //        throw new ArgumentException($"{nameof(edgeName)} is null or empty.", nameof(edgeName));
 
-            if (dice == null)
-                throw new ArgumentNullException(nameof(dice), $"{nameof(dice)} is null.");
+        //    if (dice == null)
+        //        throw new ArgumentNullException(nameof(dice), $"{nameof(dice)} is null.");
 
-            var edge = Edges.SingleOrDefault(x => string.Equals(x.Name, edgeName, StringComparison.OrdinalIgnoreCase));
-            if (edge == null)
-                result.Edges.Add(edgeName, description);
-            else
-                ApplyEdge(result, edge, dice);
-        }
+        //    var edge = Edges.SingleOrDefault(x => string.Equals(x.Name, edgeName, StringComparison.OrdinalIgnoreCase));
+        //    if (edge == null)
+        //        result.Edges.Add(edgeName, description);
+        //    else
+        //        ApplyEdge(result, edge, dice);
+        //}
 
         public Character GenerateCharacter(CharacterOptions options, Dice dice = null)
         {
@@ -248,10 +248,10 @@ namespace SavageTools.Characters
             return result;
         }
 
-        public IEnumerable<SettingSkillOption> KnowledgeSkills()
-        {
-            return Skills.Where(x => x.Name.StartsWith("Knowledge "));
-        }
+        //public IEnumerable<SettingSkillOption> KnowledgeSkills()
+        //{
+        //    return Skills.Where(x => x.Name.StartsWith("Knowledge "));
+        //}
 
         public void LoadSetting(FileInfo file, bool isPrimarySetting)
         {
@@ -395,12 +395,15 @@ namespace SavageTools.Characters
                     var skill = result.Skills.FirstOrDefault(s => s.Name == item.Name);
                     if (skill == null)
                     {
-                        result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = item.Level });
+                        skill = new Skill(item.Name, item.Attribute) { Trait = item.Level };
+
+                        result.Skills.Add(skill);
                     }
                     else if (skill.Trait < item.Level)
-                    {
                         skill.Trait = item.Level;
-                    }
+
+                    if (item.MaxLevelBonus != 0)
+                        skill.MaxLevel += item.MaxLevelBonus;
                 }
         }
 

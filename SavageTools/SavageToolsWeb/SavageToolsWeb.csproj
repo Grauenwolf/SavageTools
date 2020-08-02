@@ -13,6 +13,7 @@
     <Content Remove="wwwroot\App_Data\Core.savage-setting" />
     <Content Remove="wwwroot\App_Data\Fantasy.savage-setting" />
     <Content Remove="wwwroot\App_Data\female-first.txt" />
+    <Content Remove="wwwroot\App_Data\Future Tech.savage-setting" />
     <Content Remove="wwwroot\App_Data\Gifted.savage-setting" />
     <Content Remove="wwwroot\App_Data\last.txt" />
     <Content Remove="wwwroot\App_Data\Magic.savage-setting" />
@@ -35,6 +36,7 @@
   <ItemGroup>
     <None Include="wwwroot\App_Data\Adventure Edition.savage-setting" />
     <None Include="wwwroot\App_Data\Arcana.savage-setting" />
+    <None Include="wwwroot\App_Data\Future Tech.savage-setting" />
     <None Include="wwwroot\App_Data\Fantasy.savage-setting" />
     <None Include="wwwroot\App_Data\Core.savage-setting" />
     <None Include="wwwroot\App_Data\female-first.txt" />

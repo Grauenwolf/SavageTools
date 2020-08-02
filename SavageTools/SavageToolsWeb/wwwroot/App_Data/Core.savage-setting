@@ -102,7 +102,7 @@
       <Trait Name="Pace" Bonus="-2" />
       <Trait Name="Running" Level="-3" />
     </Hindrance>
-    <Hindrance Name="Small" Type="Minor" Description="Size and Toughness are reduced by 1. Size cannot be reduced below –1.">
+    <Hindrance Name="Small" Type="Minor" Description="Size and Toughness are reduced by 1.">
       <Trait Name="Size" Bonus="-1" />
     </Hindrance>
     <Hindrance Name="Stubborn" Type="Minor" Description="The character wants his way and rarely admits his mistakes." />

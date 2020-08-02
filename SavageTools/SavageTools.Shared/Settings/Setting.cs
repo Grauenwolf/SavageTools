@@ -219,6 +219,10 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public int Level { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public int MaxLevelBonus { get; set; }
     }
 
     /// <remarks/>

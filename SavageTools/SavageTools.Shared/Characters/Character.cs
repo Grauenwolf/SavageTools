@@ -500,7 +500,11 @@ namespace SavageTools.Characters
 
             AppendLine($"**Attributes:** Agility {Agility}, Smarts {Smarts}, Strength {Strength}, Spirt {Spirit}, Vigor {Vigor}");
 
-            Append($"**Parry** {ParryTotal}, **Toughness** {ToughnessTotal}, **Pace** {Pace}+{Running}");
+            Append($"**Parry** {ParryTotal}, **Toughness** {ToughnessTotal}");
+            if (Armor > 0)
+                Append($" ({Armor})");
+            Append($", **Pace** {Pace}+{Running}");
+
             if (Size != 0)
                 Append($", **Size** {Size} ({HeightFromSize}, {WeightFromSize})");
             AppendLine();

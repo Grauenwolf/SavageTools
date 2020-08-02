@@ -118,7 +118,13 @@ else
 
                 <table class="gridtable">
                     <tr><th>Agility</th><th>Smarts</th><th>Strength</th><th>Spirit</th><th>Vigor</th></tr>
-                    <tr><td>@(chr.Agility)</td><td>@(chr.Smarts)</td><td>@(chr.Strength)</td><td>@(chr.Spirit)</td><td>@(chr.Vigor)</td></tr>
+                    <tr>
+                        <td>@(chr.Agility + (chr.MaxAgility != 12 ? " (Max " + chr.MaxAgility + ")" : null ))</td>
+                        <td>@(chr.Smarts + (chr.MaxSmarts != 12 ? " (Max " + chr.MaxSmarts + ")" : null ))</td>
+                        <td>@(chr.Strength + (chr.MaxStrength != 12 ? " (Max " + chr.MaxStrength + ")" : null ))</td>
+                        <td>@(chr.Spirit + (chr.MaxSpirit != 12 ? " (Max " + chr.MaxSpirit + ")" : null ))</td>
+                        <td>@(chr.Vigor + (chr.MaxVigor != 12 ? " (Max " + chr.MaxVigor + ")" : null ))</td>
+                    </tr>
                 </table>
 
                 <table class="gridtable">
@@ -183,7 +189,7 @@ else
 
                                 @foreach (var skill in chr.Skills)
                                 {
-                                    <tr><td>@(skill.Name)</td> <td>@(skill.Attribute)</td><td>@(skill.Trait)</td></tr>
+                                    <tr><td>@(skill.Name)</td> <td>@(skill.Attribute)</td><td>@(skill.Trait + (skill.MaxLevel != 12 ? " (Max " + skill.MaxLevel + ")" : null ) )</td></tr>
                                 }
                             </table>
                         </td>
