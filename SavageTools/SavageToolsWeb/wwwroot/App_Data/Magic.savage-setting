@@ -6,12 +6,23 @@
   </References>
 
   <Edges>
-    <Edge Name="Arcane Background (Magic)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+    <Edge Name="Arcane Background (Magic)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Magic">
       <Skill Name="Spellcasting" Attribute="Smarts" Level="4" />
       <Trait Name="UnusedSkills" Bonus="-1" />
       <Trait Name="PowerPoints:Magic" Bonus="10" />
       <Trait Name="UnusedPowers:Magic" Bonus="3" />
       <Feature Name="Arcane Background" />
+
+      <Trigger Name="Invocation" />
+      <Trigger Name="Chant" />
+      <Trigger Name="Stare" />
+      <Trigger Name="Gesture" />
+      <Trigger Name="Powder" />
+      <Trigger Name="Potion" />
+      <Trigger Name="Wand/staff" />
+      <Trigger Name="Talisman" />
+      <Trigger Name="Ring" />
+      <Trigger Name="Concentration" />
     </Edge>
   </Edges>
 

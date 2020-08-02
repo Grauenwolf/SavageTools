@@ -213,60 +213,60 @@ namespace SavageTools.Characters
             }
         }
 
-        public Character Clone()
-        {
-            var result = new Character()
-            {
-                Agility = Agility,
-                Archetype = Archetype,
-                Armor = Armor,
-                Experience = Experience,
-                Fear = Fear,
-                Gender = Gender,
-                IsWildCard = IsWildCard,
-                MaxAgility = MaxAgility,
-                MaximumStrain = MaximumStrain,
-                MaxSmarts = MaxSmarts,
-                MaxSpirit = MaxSpirit,
-                MaxVigor = MaxVigor,
-                MaxStrength = MaxStrength,
-                Name = Name,
-                Pace = Pace,
-                Parry = Parry,
-                Race = Race,
-                Rank = Rank,
-                Reason = Reason,
-                Size = Size,
-                Smarts = Smarts,
-                Spirit = Spirit,
-                Status = Status,
-                Strain = Strain,
-                Strength = Strength,
-                Toughness = Toughness,
-                UnusedAdvances = UnusedAdvances,
-                UnusedAttributes = UnusedAttributes,
-                UnusedEdges = UnusedEdges,
-                UnusedHindrances = UnusedHindrances,
-                UnusedIconicEdges = UnusedIconicEdges,
-                UnusedRacialEdges = UnusedRacialEdges,
-                UnusedSkills = UnusedSkills,
-                UnusedSmartSkills = UnusedSmartSkills,
-                UseReason = UseReason,
-                UseStatus = UseStatus,
-                UseStrain = UseStrain,
-                Running = Running,
-                Vigor = Vigor,
-            };
+        //public Character Clone()
+        //{
+        //    var result = new Character()
+        //    {
+        //        Agility = Agility,
+        //        Archetype = Archetype,
+        //        Armor = Armor,
+        //        Experience = Experience,
+        //        Fear = Fear,
+        //        Gender = Gender,
+        //        IsWildCard = IsWildCard,
+        //        MaxAgility = MaxAgility,
+        //        MaximumStrain = MaximumStrain,
+        //        MaxSmarts = MaxSmarts,
+        //        MaxSpirit = MaxSpirit,
+        //        MaxVigor = MaxVigor,
+        //        MaxStrength = MaxStrength,
+        //        Name = Name,
+        //        Pace = Pace,
+        //        Parry = Parry,
+        //        Race = Race,
+        //        Rank = Rank,
+        //        Reason = Reason,
+        //        Size = Size,
+        //        Smarts = Smarts,
+        //        Spirit = Spirit,
+        //        Status = Status,
+        //        Strain = Strain,
+        //        Strength = Strength,
+        //        Toughness = Toughness,
+        //        UnusedAdvances = UnusedAdvances,
+        //        UnusedAttributes = UnusedAttributes,
+        //        UnusedEdges = UnusedEdges,
+        //        UnusedHindrances = UnusedHindrances,
+        //        UnusedIconicEdges = UnusedIconicEdges,
+        //        UnusedRacialEdges = UnusedRacialEdges,
+        //        UnusedSkills = UnusedSkills,
+        //        UnusedSmartSkills = UnusedSmartSkills,
+        //        UseReason = UseReason,
+        //        UseStatus = UseStatus,
+        //        UseStrain = UseStrain,
+        //        Running = Running,
+        //        Vigor = Vigor,
+        //    };
 
-            result.Edges.AddRange(Edges.Select(e => e.Clone()));
-            result.Features.AddRange(Features.Select(e => e.Clone()));
-            result.Skills.AddRange(Skills.Select(e => e.Clone()));
-            result.PowerGroups.AddRange(PowerGroups.Select(e => e.Clone()));
-            result.Gear.AddRange(Gear.Select(e => e.Clone()));
-            result.Hindrances.AddRange(Hindrances.Select(e => e.Clone()));
+        //    result.Edges.AddRange(Edges.Select(e => e.Clone()));
+        //    result.Features.AddRange(Features.Select(e => e.Clone()));
+        //    result.Skills.AddRange(Skills.Select(e => e.Clone()));
+        //    result.PowerGroups.AddRange(PowerGroups.Select(e => e.Clone()));
+        //    result.Gear.AddRange(Gear.Select(e => e.Clone()));
+        //    result.Hindrances.AddRange(Hindrances.Select(e => e.Clone()));
 
-            return result;
-        }
+        //    return result;
+        //}
 
         /// <summary>
         /// Determines whether the specified feature has feature.

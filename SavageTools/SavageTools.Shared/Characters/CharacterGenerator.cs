@@ -53,38 +53,38 @@ namespace SavageTools.Characters
         public bool UseStatus { get => Get<bool>(); set => Set(value); }
         public bool UseStrain { get => Get<bool>(); set => Set(value); }
 
-        public void AddPower(Character result, string arcaneSkill, string power, Dice dice)
-        {
-            if (result == null)
-                throw new ArgumentNullException(nameof(result), $"{nameof(result)} is null.");
-            if (string.IsNullOrEmpty(arcaneSkill))
-                throw new ArgumentException($"{nameof(arcaneSkill)} is null or empty.", nameof(arcaneSkill));
-            if (string.IsNullOrEmpty(power))
-                throw new ArgumentException($"{nameof(power)} is null or empty.", nameof(power));
-            if (dice == null)
-                throw new ArgumentNullException(nameof(dice), $"{nameof(dice)} is null.");
+        //public void AddPower(Character result, string arcaneSkill, string power, Dice dice)
+        //{
+        //    if (result == null)
+        //        throw new ArgumentNullException(nameof(result), $"{nameof(result)} is null.");
+        //    if (string.IsNullOrEmpty(arcaneSkill))
+        //        throw new ArgumentException($"{nameof(arcaneSkill)} is null or empty.", nameof(arcaneSkill));
+        //    if (string.IsNullOrEmpty(power))
+        //        throw new ArgumentException($"{nameof(power)} is null or empty.", nameof(power));
+        //    if (dice == null)
+        //        throw new ArgumentNullException(nameof(dice), $"{nameof(dice)} is null.");
 
-            var trappings = new List<SettingTrapping>();
-            var group = result.PowerGroups[arcaneSkill];
+        //    var trappings = new List<SettingTrapping>();
+        //    var group = result.PowerGroups[arcaneSkill];
 
-            foreach (var item in Trappings)
-            {
-                if (group.AvailableTrappings.Count > 0 && !group.AvailableTrappings.Contains(item.Name))
-                    continue;
+        //    foreach (var item in Trappings)
+        //    {
+        //        if (group.AvailableTrappings.Count > 0 && !group.AvailableTrappings.Contains(item.Name))
+        //            continue;
 
-                if (group.ProhibitedTrappings.Contains(item.Name))
-                    continue;
+        //        if (group.ProhibitedTrappings.Contains(item.Name))
+        //            continue;
 
-                trappings.Add(item);
-            }
+        //        trappings.Add(item);
+        //    }
 
-            if (trappings.Count == 0)
-                trappings.Add(new SettingTrapping() { Name = "None" });
+        //    if (trappings.Count == 0)
+        //        trappings.Add(new SettingTrapping() { Name = "None" });
 
-            var trapping = dice.Choose(Trappings);
+        //    var trapping = dice.Choose(Trappings);
 
-            group.Powers.Add(new Power(power, trapping.Name));
-        }
+        //    group.Powers.Add(new Power(power, trapping.Name));
+        //}
 
         public void ApplyEdge(Character result, Dice dice, string edgeName, string description = null)
         {
@@ -383,7 +383,11 @@ namespace SavageTools.Characters
 
             if (edge.AvailablePowers != null)
                 foreach (var item in edge.AvailablePowers)
-                    result.PowerGroups[item.Skill].AvailablePowers.Add(item.Name);
+                    result.PowerGroups[edge.PowerType].AvailablePowers.Add(item.Name);
+
+            if (edge.Triggers != null)
+                foreach (var item in edge.Triggers)
+                    result.PowerGroups[edge.PowerType].AvailableTriggers.Add(item.Name);
 
             if (edge.Skills != null)
                 foreach (var item in edge.Skills)
@@ -425,6 +429,7 @@ namespace SavageTools.Characters
                             var table = new Table<Skill>();
                             foreach (var skill in result.Skills)
                             {
+                                //TODO: Add ability to increase skills above 12. This is needed for non-humans and the Professional edge
                                 if (skill.Trait >= result.GetAttribute(skill.Attribute) && skill.Trait < 12)
                                     table.Add(skill, skill.Trait.Score);
                             }
@@ -553,28 +558,11 @@ namespace SavageTools.Characters
             }
         }
 
-        private void AddPower(Character result, SettingPower power, Dice dice)
+        private void AddFixedPower(Character result, SettingPower power)
         {
-            var trappings = new List<SettingTrapping>();
-            var group = result.PowerGroups[power.Skill];
+            var group = result.PowerGroups[power.PowerType];
 
-            foreach (var item in Trappings)
-            {
-                if (group.AvailableTrappings.Count > 0 && !group.AvailableTrappings.Contains(item.Name))
-                    continue;
-
-                if (group.ProhibitedTrappings.Contains(item.Name))
-                    continue;
-
-                trappings.Add(item);
-            }
-
-            if (trappings.Count == 0)
-                trappings.Add(new SettingTrapping() { Name = "None" });
-
-            var trapping = dice.Choose(Trappings);
-
-            group.Powers.Add(new Power(power.Name, trapping.Name));
+            group.Powers.Add(new Power(power, power.Trapping, power.Trigger));
         }
 
         private void ApplyArchetype(Character result, Dice dice, SettingArchetype archetype)
@@ -714,7 +702,7 @@ namespace SavageTools.Characters
 
             if (race.Powers != null)
                 foreach (var item in race.Powers)
-                    AddPower(result, item, dice);
+                    AddFixedPower(result, item);
         }
 
         private SettingEdge FindEdge(SettingEdge prototype)
@@ -908,13 +896,14 @@ namespace SavageTools.Characters
             }
 
         TryAgain:
-            var trapping = dice.Choose(Trappings);
+            var trapping = dice.Choose(trappings);
+            var trigger = dice.Choose(group.AvailableTriggers);
             var power = dice.Choose(powers);
 
             if (result.PowerGroups.ContainsPower(power.Name, trapping.Name))
                 goto TryAgain;
 
-            group.Powers.Add(new Power(power.Name, trapping.Name));
+            group.Powers.Add(new Power(power, trapping.Name, trigger));
 
             group.UnusedPowers -= 1;
         }

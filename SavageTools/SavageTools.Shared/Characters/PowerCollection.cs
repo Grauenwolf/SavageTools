@@ -4,11 +4,9 @@ namespace SavageTools.Characters
 {
     public class PowerCollection : ChangeTrackingModelCollection<Power>
     {
-        public void Add(string name, string trapping)
-        {
-            Add(new Power(name, trapping));
-        }
-
+        //public void Add(string name, string trapping, string trigger)
+        //{
+        //    Add(new Power(name, trapping, trigger));
+        //}
     }
 }
-

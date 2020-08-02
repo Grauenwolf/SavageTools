@@ -6,12 +6,20 @@
   </References>
 
   <Edges>
-    <Edge Name="Arcane Background (Miracles)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+    <Edge Name="Arcane Background (Miracles)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Miracles">
       <Skill Name="Faith" Attribute="Spirit" Level="4" />
       <Trait Name="UnusedSkills" Bonus="-1" />
       <Trait Name="PowerPoints:Miracles" Bonus="10" />
       <Trait Name="UnusedPowers:Miracles" Bonus="3" />
       <Feature Name="Arcane Background" />
+
+      <Trigger Name="Invocation" />
+      <Trigger Name="Chant" />
+      <Trigger Name="Prayer" />
+      <Trigger Name="Gesture" />
+      <Trigger Name="Holy Water" />
+      <Trigger Name="Holy Object" />
+      <Trigger Name="Talisman" />
     </Edge>
 
     <!-- Common -->

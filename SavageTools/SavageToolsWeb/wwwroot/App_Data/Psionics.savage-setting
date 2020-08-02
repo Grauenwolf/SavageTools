@@ -6,12 +6,18 @@
   </References>
 
   <Edges>
-    <Edge Name="Arcane Background (Psionics)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+    <Edge Name="Arcane Background (Psionics)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Psionics">
       <Skill Name="Psionics" Attribute="Smarts" Level="4" />
       <Trait Name="UnusedSkills" Bonus="-1" />
       <Trait Name="PowerPoints:Psionics" Bonus="10" />
       <Trait Name="UnusedPowers:Psionics" Bonus="3" />
       <Feature Name="Arcane Background" />
+
+      <Trigger Name="Invocation" />
+      <Trigger Name="Chant" />
+      <Trigger Name="Stare" />
+      <Trigger Name="Gesture" />
+      <Trigger Name="Concentration" />
     </Edge>
 
     <!-- Common -->

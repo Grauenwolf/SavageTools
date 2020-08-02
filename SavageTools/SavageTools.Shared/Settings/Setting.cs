@@ -1,4 +1,5 @@
 ﻿using System.Xml.Serialization;
+using Tortuga.Anchor;
 
 #pragma warning disable RCS1139 // Add summary element to documentation comment.
 
@@ -131,8 +132,12 @@ namespace SavageTools.Settings
         public SettingFeature[] Features { get; set; }
 
         /// <remarks/>
-        [XmlElement("AvaialblePower")]
+        [XmlElement("AvailablePower")]
         public SettingAvailablePower[] AvailablePowers { get; set; }
+
+        /// <remarks/>
+        [XmlElement("Trigger")]
+        public SettingTrigger[] Triggers { get; set; }
 
         /// <remarks/>
         [XmlAttribute()]
@@ -149,6 +154,10 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public string UniqueGroup { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public string PowerType { get; set; }
     }
 
     /// <remarks/>
@@ -165,11 +174,25 @@ namespace SavageTools.Settings
 
         /// <remarks/>
         [XmlAttribute()]
-        public string Skill { get; set; }
+        public string PowerType { get; set; }
 
         /// <remarks/>
         [XmlAttribute()]
         public string Description { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public string Trapping { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public string Trigger { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute("PowerPoints")]
+        public string PowerPointsString { get; set; }
+
+        public int? PowerPoints => !PowerPointsString.IsNullOrEmpty() ? (int?)int.Parse(PowerPointsString) : null;
     }
 
     /// <remarks/>
@@ -231,10 +254,15 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
+    }
 
+    /// <remarks/>
+    [XmlType(AnonymousType = true)]
+    public class SettingTrigger
+    {
         /// <remarks/>
         [XmlAttribute()]
-        public string Skill { get; set; }
+        public string Name { get; set; }
     }
 
     /// <remarks/>

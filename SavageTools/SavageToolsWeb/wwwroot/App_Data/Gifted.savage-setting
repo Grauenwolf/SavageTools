@@ -6,12 +6,18 @@
   </References>
 
   <Edges>
-    <Edge Name="Arcane Background (Gifted)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+    <Edge Name="Arcane Background (Gifted)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Gifted">
       <Skill Name="Focus" Attribute="Spirit" Level="4" />
       <Trait Name="UnusedSkills" Bonus="-1" />
       <Trait Name="PowerPoints:Gifted" Bonus="15" />
       <Trait Name="UnusedPowers:Gifted" Bonus="1" />
       <Feature Name="Arcane Background" />
+
+      <Trigger Name="Invocation" />
+      <Trigger Name="Stare" />
+      <Trigger Name="Gesture" />
+      <Trigger Name="Transformation" />
+      <Trigger Name="Concentration" />
     </Edge>
 
     <!-- Common -->

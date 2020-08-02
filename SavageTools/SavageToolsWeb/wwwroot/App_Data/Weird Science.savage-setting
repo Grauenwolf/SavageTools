@@ -6,12 +6,20 @@
   </References>
 
   <Edges>
-    <Edge Name="Arcane Background (Weird Science)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background">
+    <Edge Name="Arcane Background (Weird Science)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Weird Science">
       <Skill Name="Weird Science" Attribute="Smarts" Level="4" />
       <Trait Name="UnusedSkills" Bonus="-1" />
       <Trait Name="PowerPoints:Weird Science" Bonus="15" />
       <Trait Name="UnusedPowers:Weird Science" Bonus="2" />
       <Feature Name="Arcane Background" />
+
+      <Trigger Name="Ray Gun" />
+      <Trigger Name="Grenade" />
+      <Trigger Name="Powder" />
+      <Trigger Name="Potion" />
+      <Trigger Name="Pill" />
+      <Trigger Name="Handheld Scanner" />
+      <Trigger Name="Goggles/glasses" />
     </Edge>
 
     <!-- Common -->

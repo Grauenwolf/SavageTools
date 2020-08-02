@@ -230,15 +230,20 @@ else
                                     <table class="gridtable">
                                         <tr>
                                             <th>Power</th>
-                                            <th>Power Points</th>
+                                            <th>Power Points (@(item.PowerPoints))</th>
                                         </tr>
-                                        <tr><td>Power Points</td><td>@(item.PowerPoints)</td></tr>
                                         @foreach (var power in item.Powers)
                                         {
                                             <tr>
-                                                <td colspan="2">
+                                                <td>
                                                     @(power.LongName)
                                                 </td>
+                                                <td>
+                                                    @(power.PowerPoints)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">@(power.Description)</td>
                                             </tr>
                                         }
                                     </table>
