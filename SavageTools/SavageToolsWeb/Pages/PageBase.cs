@@ -20,6 +20,7 @@ namespace SavageToolsWeb.Pages
         protected bool IsConnected { get; set; }
 
         protected bool LoadFailed { get; private set; }
+        protected string? LastError { get; private set; }
         protected string? PageTitle { get; set; }
 
         protected virtual void AfterRender(bool firstRender)
@@ -38,6 +39,7 @@ namespace SavageToolsWeb.Pages
             catch (Exception ex)
             {
                 LoadFailed = true;
+                LastError = ex.ToString();
                 Logger.LogError(ex, $"Internal error, loading failed during {nameof(AfterRender)}");
             }
         }
@@ -56,6 +58,7 @@ namespace SavageToolsWeb.Pages
             catch (Exception ex)
             {
                 LoadFailed = true;
+                LastError = ex.ToString();
                 Logger.LogError(ex, $"Internal error, loading failed during {nameof(AfterRenderAsync)}");
             }
         }
@@ -81,6 +84,7 @@ namespace SavageToolsWeb.Pages
             catch (Exception ex)
             {
                 LoadFailed = true;
+                LastError = ex.ToString();
                 Logger.LogError(ex, $"Internal error, loading failed during {nameof(InitializedAsync)}");
             }
         }
@@ -100,6 +104,7 @@ namespace SavageToolsWeb.Pages
             catch (Exception ex)
             {
                 LoadFailed = true;
+                LastError = ex.ToString();
                 Logger.LogError(ex, $"Internal error, loading failed during {nameof(Initialized)}");
             }
         }
@@ -119,6 +124,7 @@ namespace SavageToolsWeb.Pages
             catch (Exception ex)
             {
                 LoadFailed = true;
+                LastError = ex.ToString();
                 Logger.LogError(ex, $"Internal error, loading failed during {nameof(ParametersSet)}");
             }
             base.OnParametersSet();
@@ -136,6 +142,7 @@ namespace SavageToolsWeb.Pages
             catch (Exception ex)
             {
                 LoadFailed = true;
+                LastError = ex.ToString();
                 Logger.LogError(ex, $"Internal error, loading failed during {nameof(ParametersSetAsync)}");
             }
         }
