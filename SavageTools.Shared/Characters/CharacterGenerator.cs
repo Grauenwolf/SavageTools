@@ -507,7 +507,10 @@ namespace SavageTools.Characters
             if (result.Spirit < result.MaxSpirit)
                 table.Add("Spirit", result.Spirit.Score);
 
-            result.Increment(table.RandomChoose(dice), dice);
+            if (table.Count == 0) //out of attributes that can be increased
+                result.UnusedAdvances += 1; //reassign somewhere else
+            else
+                result.Increment(table.RandomChoose(dice), dice);
 
             result.UnusedAttributes -= 1;
         }
