@@ -16,6 +16,23 @@ namespace SavageTools.Characters
         public EdgeCollection Edges => GetNew<EdgeCollection>();
         public int Experience { get => Get<int>(); set => Set(value); }
 
+        public int Wounds { get => Get<int>(); set => Set(value); }
+
+        [CalculatedField("Size,Wounds,IsWildCard")]
+        public int? TotalWounds
+        {
+            get
+            {
+                //Some very large non-wild cards still get wounds
+
+                var total = Wounds + ExtraWoundsFromSize;
+                if (IsWildCard)
+                    total += 3;
+
+                return total > 0 ? (int?)total : null;
+            }
+        }
+
         [CalculatedField("Size")]
         public int ExtraWoundsFromSize
         {
@@ -403,6 +420,7 @@ namespace SavageTools.Characters
                 case "Status": Status += bonus; return;
                 case "Size": Size += bonus; return;
                 case "Armor": Armor += bonus; return;
+                case "Wounds": Wounds += bonus; return;
 
                 case "UnusedAttributes": UnusedAttributes += bonus; return;
                 case "UnusedSkills": UnusedSkills += bonus; return;
@@ -503,6 +521,8 @@ namespace SavageTools.Characters
             Append($"**Parry** {ParryTotal}, **Toughness** {ToughnessTotal}");
             if (Armor > 0)
                 Append($" ({Armor})");
+            if (TotalWounds > 0)
+                Append($", **Wounds** {TotalWounds}");
             Append($", **Pace** {Pace}+{Running}");
 
             if (Size != 0)

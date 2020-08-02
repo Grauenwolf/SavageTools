@@ -119,10 +119,13 @@ namespace SavageTools.Characters
                 var list = Archetypes.Where(a => options.WildCard || !a.WildCard).ToList(); //Don't pick wildcard archetypes unless WildCard is checked.
                 selectedArchetype = dice.Choose(list);
             }
-            if (options.RandomRace && string.IsNullOrEmpty(selectedArchetype.Race))
+            if (options.RandomRace)
             {
+                if (string.IsNullOrEmpty(selectedArchetype.Race))
+                    selectedRace = dice.Choose(Races);
+                else
+                    selectedRace = Races.Single(r => r.Name == selectedArchetype.Race);
                 //var list = Races.Where(r => r.Name != "(Special)").ToList();
-                selectedRace = dice.Choose(Races);
             }
             if (options.RandomRank)
             {
@@ -412,6 +415,9 @@ namespace SavageTools.Characters
 
                     if (item.MaxLevelBonus != 0)
                         skill.MaxLevel += item.MaxLevelBonus;
+
+                    if (skill.MaxLevel < skill.Trait)
+                        skill.MaxLevel = skill.Trait;
                 }
         }
 
@@ -440,7 +446,9 @@ namespace SavageTools.Characters
                             var table = new Table<Skill>();
                             foreach (var skill in result.Skills)
                             {
-                                if (skill.Trait >= result.GetAttribute(skill.Attribute) && skill.Trait < skill.MaxLevel)
+                                var trait = result.GetAttribute(skill.Attribute);
+
+                                if (skill.Trait >= trait && skill.Trait < skill.MaxLevel)
                                     table.Add(skill, skill.Trait.Score);
                             }
                             if (table.Count == 0)
@@ -586,6 +594,7 @@ namespace SavageTools.Characters
             result.Spirit = archetype.Spirit;
             result.Strength = archetype.Strength;
             result.Vigor = archetype.Vigor;
+            result.IsWildCard = result.IsWildCard || archetype.IsWildCard;
 
             //then edges first because they can create new skills
             if (archetype.Edges != null)
@@ -622,10 +631,25 @@ namespace SavageTools.Characters
                         skill.Trait = Math.Max(skill.Trait.Score, item.Level);
                     else
                         result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = item.Level });
+
+                    if (skill.MaxLevel < skill.Trait)
+                        skill.MaxLevel = skill.Trait;
                 }
             if (archetype.Traits != null)
                 foreach (var item in archetype.Traits)
                     result.Increment(item.Name, item.Bonus, dice);
+
+            //Set max traits to at least match the archetype
+            if (result.MaxAgility < result.Agility)
+                result.MaxAgility = result.Agility;
+            if (result.MaxSmarts < result.Smarts)
+                result.MaxSmarts = result.Smarts;
+            if (result.MaxSpirit < result.Spirit)
+                result.MaxSpirit = result.Spirit;
+            if (result.MaxStrength < result.Strength)
+                result.MaxStrength = result.Strength;
+            if (result.MaxVigor < result.Vigor)
+                result.MaxVigor = result.Vigor;
 
             if (archetype.Features != null)
                 foreach (var item in archetype.Features)

@@ -108,5 +108,74 @@
       <Edge Name="Alertness" />
       <Hindrance Name="Outsider" Type="Minor" />
     </Race>
+
+    <Race Name="Goblin">
+      <Hindrance Name="Greedy" Type="Major" />
+      <Edge Name="Infravision" Description="Halve penalties for Illumination when attacking warm targets." />
+
+      <Hindrance Name="Small People" Type="Minor" Description="Size and Toughness are reduced by 1.">
+        <Trait Name="Size" Bonus="-1" />
+      </Hindrance>
+    </Race>
+
+    <Race Name="Hobgoblin">
+      <Hindrance Name="Greedy" Type="Major" />
+      <Edge Name="Infravision" Description="Halve penalties for Illumination when attacking warm targets." />
+    </Race>
+
+    <Race Name="Dragon">
+      <Edge Name="Scaly Hide">
+        <Trait Name="Armor" Bonus="4" />
+      </Edge>
+      <Edge Name="Bite/Claws" Description="Str+d8" />
+      <Trait Name="Fear" Bonus="-2" />
+      <Edge Name="Fiery Breath" Description="Dragons breathe fire for 3d6 damage" />
+      <Edge Name="Flight" Description="Dragons have a Flying Pace of 24″" />
+      <Edge Name="Hardy" Description="Does not suffer a Wound from being Shaken twice" />
+      <Trait Name="Size" Bonus="8" />
+      <Edge Name="Swat" Description="Dragons ignore up to 4 points of Scale penalties when attacking with their claws." />
+      <Edge Name="Tail Lash" Description="Str+d4. The creature may make a free attack against up to two foes to its side or rear at no penalty." />
+      <Edge Name="Improved Frenzy" />
+      <Edge Name="Level Headed" />
+    </Race>
   </Races>
+
+  <Archetypes>
+    <Archetype Name="Goblin Warrior" Race="Goblin" Agility="8" Smarts="6" Spirit="6" Strength="4" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="10" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Shooting" Level="8" />
+      <Skill Name="Stealth" Level="10" />
+      <Skill Name="Taunt" Level="6" />
+      <Gear Name="Short spear" Description="Damage Str+d4" />
+      <Gear Name="Bow" Description="Range 12/24/48, Damage 2d6" />
+    </Archetype>
+
+    <Archetype Name="Hobgoblin Warrior" Race="Hobgoblin" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="10" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Shooting" Level="8" />
+      <Skill Name="Stealth" Level="6" />
+      <Skill Name="Taunt" Level="6" />
+      <Gear Name="Boiled leather jacket/cap" Description="Armor 2, Legs are exposed" />
+      <Gear Name="Long sword" Description="Damage Str+d8" />
+    </Archetype>
+
+    <Archetype Name="Dragon" Race="Dragon" Agility="8" Smarts="8" Spirit="10" Strength="20" Vigor="12" UnusedAttributes="0" UnusedSkills="0" IsWildCard="true">
+
+      <Skill Name="Athletics" Level="10" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="10" />
+      <Skill Name="Intimidation" Level="12" />
+      <Skill Name="Notice" Level="12" />
+      <Skill Name="Persuasion" Level="10" />
+      <Skill Name="Stealth" Level="8" />
+    </Archetype>
+  </Archetypes>
 </Setting>

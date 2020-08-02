@@ -134,6 +134,10 @@ else
                     <tr>
                         <th>Parry</th>
                         <th>Toughness</th>
+                        @if (chr.TotalWounds.HasValue)
+                        {
+                            <th>Wounds</th>
+                        }
                         <th>Pace</th>
                         @if (chr.UseStrain)
                         {
@@ -163,7 +167,10 @@ else
                         {
                             <td>@(chr.ToughnessTotal) (@(chr.Armor))</td>
                         }
-
+                        @if (chr.TotalWounds.HasValue)
+                        {
+                            <td>@(chr.TotalWounds)</td>
+                        }
                         <td>@(chr.Pace)+@(chr.Running)</td>
                         @if (chr.UseStrain)
                         {

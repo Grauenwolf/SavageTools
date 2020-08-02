@@ -333,6 +333,10 @@ namespace SavageTools.Settings
 
         /// <remarks/>
         [XmlAttribute()]
+        public bool IsWildCard { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
         public string Race { get; set; }
 
         /// <remarks/>

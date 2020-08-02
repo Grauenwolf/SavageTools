@@ -12,6 +12,8 @@ namespace SavageTools.Characters
             CharacterGenerator = characterGenerator ?? throw new ArgumentNullException(nameof(characterGenerator));
             BornAHero = characterGenerator.BornAHeroSetting;
             MoreSkills = characterGenerator.MoreSkillsSetting;
+            SelectedArchetype = characterGenerator.Archetypes.SingleOrDefault(a => a.Name == "(None)");
+            //SelectedRank = characterGenerator.Ranks.SingleOrDefault(a => a.Name == "Novice");
         }
 
         public bool BornAHero { get => GetDefault(false); set => Set(value); }

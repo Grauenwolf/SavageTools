@@ -277,8 +277,12 @@
     <Edge Name="Master" Requires="Wild Card, Legendary, Expert" Description="The character’s Wild Die is a d10 with a chosen Trait." />
 
     <Edge Name="Sidekick" Requires="Wild Card, Legendary" Description="The character gains a Wild Card sidekick." />
-    <Edge Name="Tough as Nails" Requires="Legendary, Vigor d8" Description="The hero can take four Wounds before being Incapacitated." />
-    <Edge Name="Tougher than Nails" Requires="Legendary, Tough as Nails, Vigor d12" Description="The hero can take five Wounds before being Incapacitated." />
+    <Edge Name="Tough as Nails" Requires="Legendary, Vigor d8" Description="The hero can take four Wounds before being Incapacitated.">
+      <Trait Name="Wounds" Bonus="1" />
+    </Edge>
+    <Edge Name="Tougher than Nails" Requires="Legendary, Tough as Nails, Vigor d12" Description="The hero can take five Wounds before being Incapacitated.">
+      <Trait Name="Wounds" Bonus="1" />
+    </Edge>
     <Edge Name="Weapon Master" Requires="Legendary, Fighting d12" Description="Parry increases by +1 and Fighting bonus damage die is d8.">
       <Trait Name="Parry" Bonus="1" />
     </Edge>
