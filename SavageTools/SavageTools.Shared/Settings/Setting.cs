@@ -22,6 +22,9 @@ namespace SavageTools.Settings
         public bool BornAHero { get; set; }
 
         [XmlAttribute]
+        public bool MoreSkills { get; set; }
+
+        [XmlAttribute]
         public bool UseStrain { get; set; }
 
         [XmlAttribute]

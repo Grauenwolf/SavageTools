@@ -10,9 +10,12 @@ namespace SavageTools.Characters
         public CharacterOptions(CharacterGenerator characterGenerator)
         {
             CharacterGenerator = characterGenerator ?? throw new ArgumentNullException(nameof(characterGenerator));
+            BornAHero = characterGenerator.BornAHeroSetting;
+            MoreSkills = characterGenerator.MoreSkillsSetting;
         }
 
         public bool BornAHero { get => GetDefault(false); set => Set(value); }
+        public bool MoreSkills { get => GetDefault(false); set => Set(value); }
         public CharacterGenerator CharacterGenerator { get; }
 
         public int Count

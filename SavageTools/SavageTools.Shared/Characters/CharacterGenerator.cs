@@ -30,6 +30,8 @@ namespace SavageTools.Characters
 
         public ObservableCollectionExtended<SettingArchetype> Archetypes => GetNew<ObservableCollectionExtended<SettingArchetype>>();
         public bool BornAHeroSetting { get => GetDefault(false); private set => Set(value); }
+        public bool MoreSkillsSetting { get => GetDefault(false); private set => Set(value); }
+
         public ObservableCollectionExtended<SettingEdge> Edges => GetNew<ObservableCollectionExtended<SettingEdge>>();
 
         //public ObservableCollectionExtended<SettingHindrance> Hindrances => GetNew<ObservableCollectionExtended<SettingHindrance>>();
@@ -144,6 +146,9 @@ namespace SavageTools.Characters
             ApplyArchetype(result, dice, selectedArchetype);
 
             ApplyRace(result, dice, selectedRace);
+
+            if (options.MoreSkills)
+                result.UnusedSkills += 3;
 
             //Add the rank
             result.UnusedAdvances = selectedRank.UnusedAdvances;
@@ -273,6 +278,9 @@ namespace SavageTools.Characters
 
             if (book.BornAHero)
                 BornAHeroSetting = true;
+
+            if (book.MoreSkills)
+                MoreSkillsSetting = true;
 
             if (book.UseReason)
                 UseReason = true;
