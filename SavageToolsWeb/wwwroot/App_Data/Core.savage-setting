@@ -1,32 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Setting Name="Core">
   <Skills>
-    <Skill Name="Academics" Attribute="Smarts" />
+    <Skill Name="Academics" Attribute="Smarts" NoAnimals="true" />
     <Skill Name="Athletics" Attribute="Agility" IsCore="true" />
-    <Skill Name="Battle" Attribute="Smarts" />
-    <Skill Name="Boating" Attribute="Agility" />
-    <Skill Name="Common Knowledge" Attribute="Smarts" IsCore="true" />
-    <Skill Name="Driving" Attribute="Agility" />
-    <Skill Name="Electronics" Attribute="Smarts" />
+    <Skill Name="Battle" Attribute="Smarts" NoAnimals="true" />
+    <Skill Name="Boating" Attribute="Agility" NoAnimals="true" />
+    <Skill Name="Common Knowledge" Attribute="Smarts" IsCore="true" NoAnimals="true" />
+    <Skill Name="Driving" Attribute="Agility" NoAnimals="true" />
+    <Skill Name="Electronics" Attribute="Smarts" NoAnimals="true" />
     <Skill Name="Fighting" Attribute="Agility" />
-    <Skill Name="Gambling" Attribute="Smarts" />
-    <Skill Name="Hacking" Attribute="Smarts" />
-    <Skill Name="Healing" Attribute="Smarts" />
+    <Skill Name="Gambling" Attribute="Smarts" NoAnimals="true" />
+    <Skill Name="Hacking" Attribute="Smarts" NoAnimals="true" />
+    <Skill Name="Healing" Attribute="Smarts" NoAnimals="true" />
     <Skill Name="Intimidation" Attribute="Spirit" />
     <Skill Name="Notice" Attribute="Smarts" IsCore="true" />
-    <Skill Name="Occult" Attribute="Smarts" />
     <Skill Name="Performance" Attribute="Spirit" />
     <Skill Name="Persuasion" Attribute="Spirit" IsCore="true" />
-    <Skill Name="Piloting" Attribute="Agility" />
-    <Skill Name="Repair" Attribute="Smarts" />
-    <Skill Name="Research" Attribute="Smarts" />
-    <Skill Name="Riding" Attribute="Agility" />
-    <Skill Name="Science" Attribute="Smarts" />
-    <Skill Name="Shooting" Attribute="Agility" />
+    <Skill Name="Piloting" Attribute="Agility" NoAnimals="true" />
+    <Skill Name="Repair" Attribute="Smarts" NoAnimals="true" />
+    <Skill Name="Research" Attribute="Smarts" NoAnimals="true" />
+    <Skill Name="Riding" Attribute="Agility" NoAnimals="true" />
+    <Skill Name="Science" Attribute="Smarts" NoAnimals="true" />
+    <Skill Name="Shooting" Attribute="Agility" NoAnimals="true" />
     <Skill Name="Stealth" Attribute="Agility" IsCore="true" />
     <Skill Name="Survival" Attribute="Smarts" />
     <Skill Name="Taunt" Attribute="Smarts" />
-    <Skill Name="Thievery" Attribute="Agility" />
+    <Skill Name="Thievery" Attribute="Agility" NoAnimals="true" />
   </Skills>
   <Hindrances>
     <Hindrance Name="All Thumbs" Type="Minor" Description="–2 to use mechanical or electrical devices." />
@@ -294,98 +293,18 @@
   <Archetypes>
     <Archetype Name="(None)" Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="12" />
 
-    <!--
-    <Archetype Name="Driver" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="7">
-      <Skill Name="Driving" Level="8" />
-      <Skill Name="Fighting" Level="4" />
-      <Skill Name="Notice" Level="6" />
-      <Skill Name="Shooting" Level="6" />
-      <Edge Name="Ace" />
-      <Edge Name="Quick" />
-      <Trait Name="UnusedHindrances" Bonus="4" />
-      <Trait Name="UnusedEdges" Bonus="-1" />
-    </Archetype>
-
-    <Archetype Name="Face" Agility="6" Smarts="6" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
-      <Skill Name="Fighting" Level="4" />
-      <Skill Name="Intimidation" Level="6" />
-      <Skill Name="Notice" Level="6" />
-      <Skill Name="Persuasion" Level="10" />
-      <Skill Name="Shooting" Level="4" />
-      <Edge Name="Streetwise" />
-      <Skill Name="Taunt" Level="6" />
-      <Edge Name="Attractive" />
-      <Edge Name="Strong Willed" />
-      <Trait Name="UnusedHindrances" Bonus="4" />
-      <Trait Name="UnusedEdges" Bonus="-2" />
-    </Archetype>
-
-    <Archetype Name="Fighter, Fencer" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
-      <Skill Name="Fighting" Level="12" />
-      <Skill Name="Notice" Level="6" />
-      <Skill Name="Stealth" Level="6" />
-      <Skill Name="Taunt" Level="8" />
-      <Edge Name="Florentine" />
-      <Edge Name="Two-Fisted" />
-      <Trait Name="UnusedHindrances" Bonus="4" />
-      <Trait Name="UnusedEdges" Bonus="-1" />
-    </Archetype>
-
-    <Archetype Name="Fighter, Great Weapon" Agility="6" Smarts="4" Spirit="6" Strength="10" Vigor="6" UnusedAttributes="0" UnusedSkills="4">
-      <Skill Name="Fighting" Level="10" />
-      <Skill Name="Intimidation" Level="6" />
-      <Skill Name="Notice" Level="6" />
-      <Edge Name="Brawny" />
-      <Edge Name="Sweep" />
-      <Trait Name="UnusedHindrances" Bonus="4" />
-      <Trait Name="UnusedEdges" Bonus="-1" />
-    </Archetype>
-
-    <Archetype Name="Investigator" Agility="6" Smarts="8" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
-      <Skill Name="Fighting" Level="6" />
-      <Skill Name="Research" Level="8" />
-      <Skill Name="Notice" Level="8" />
-      <Skill Name="Persuasion" Level="6" />
-      <Skill Name="Shooting" Level="6" />
-      <Edge Name="Streetwise" />
-      <Edge Name="Connections" />
-      <Edge Name="Investigator" />
-      <Trait Name="UnusedHindrances" Bonus="4" />
-      <Trait Name="UnusedEdges" Bonus="-2" />
-    </Archetype>
-
-    <Archetype Name="Leader" Agility="6" Smarts="6" Spirit="8" Strength="4" Vigor="6" UnusedAttributes="0" UnusedSkills="3">
+    <Archetype Name="Soldier"  Agility="6" Smarts="4" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
       <Skill Name="Fighting" Level="6" />
       <Skill Name="Intimidation" Level="6" />
-      <Skill Name="Battle" Level="6" />
       <Skill Name="Notice" Level="6" />
       <Skill Name="Persuasion" Level="6" />
       <Skill Name="Shooting" Level="6" />
-      <Edge Name="Command" />
-      <Edge Name="Natural Leader" />
-      <Trait Name="UnusedHindrances" Bonus="4" />
-      <Trait Name="UnusedEdges" Bonus="-1" />
-    </Archetype>
+      <Skill Name="Stealth" Level="4" />
 
-    <Archetype Name="Marksman" Agility="10" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="5">
-      <Skill Name="Fighting" Level="6" />
-      <Skill Name="Notice" Level="6" />
-      <Skill Name="Shooting" Level="10" />
-      <Skill Name="Taunt" Level="6" />
-      <Edge Name="Alertness" />
-      <Trait Name="UnusedHindrances" Bonus="4" />
-      <Trait Name="UnusedEdges" Bonus="-1" />
+      <Edge Name ="Soldier" />
     </Archetype>
-
-    <Archetype Name="Martial Artist" Agility="8" Smarts="6" Spirit="6" Strength="8" Vigor="6" UnusedAttributes="0" UnusedSkills="6">
-      <Skill Name="Fighting" Level="10" />
-      <Skill Name="Intimidation" Level="6" />
-      <Skill Name="Notice" Level="6" />
-      <Edge Name="Martial Artist" />
-      <Trait Name="UnusedHindrances" Bonus="4" />
-      <Trait Name="UnusedEdges" Bonus="-1" />
-    </Archetype>
-    -->
   </Archetypes>
 
   <Races>

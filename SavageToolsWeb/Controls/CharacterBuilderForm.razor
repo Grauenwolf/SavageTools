@@ -123,12 +123,14 @@ else
                     <tr><th>Agility</th><th>Smarts</th><th>Strength</th><th>Spirit</th><th>Vigor</th></tr>
                     <tr>
                         <td>@(chr.Agility + (chr.MaxAgility != 12 ? " (Max " + chr.MaxAgility + ")" : null ))</td>
-                        <td>@(chr.Smarts + (chr.MaxSmarts != 12 ? " (Max " + chr.MaxSmarts + ")" : null ))</td>
+                        <td>@(chr.Smarts + (chr.AnimalIntelligence ? " (A)" : "") + (chr.MaxSmarts != 12 ? " (Max " + chr.MaxSmarts + ")" : null ))</td>
                         <td>@(chr.Strength + (chr.MaxStrength != 12 ? " (Max " + chr.MaxStrength + ")" : null ))</td>
                         <td>@(chr.Spirit + (chr.MaxSpirit != 12 ? " (Max " + chr.MaxSpirit + ")" : null ))</td>
                         <td>@(chr.Vigor + (chr.MaxVigor != 12 ? " (Max " + chr.MaxVigor + ")" : null ))</td>
                     </tr>
                 </table>
+
+                <!-- Calculated Traits -->
 
                 <table class="gridtable">
                     <tr>
@@ -139,18 +141,6 @@ else
                             <th>Wounds</th>
                         }
                         <th>Pace</th>
-                        @if (chr.UseStrain)
-                        {
-                            <th>Strain/Max</th>
-                        }
-                        @if (chr.UseStatus)
-                        {
-                            <th>Status</th>
-                        }
-                        @if (chr.UseReason)
-                        {
-                            <th>Reason</th>
-                        }
                         @if (chr.Size != 0)
                         {
                             <th>Size</th>
@@ -172,24 +162,58 @@ else
                             <td>@(chr.TotalWounds)</td>
                         }
                         <td>@(chr.Pace)+@(chr.Running)</td>
-                        @if (chr.UseStrain)
-                        {
-                            <td>@(chr.Strain)/@(chr.MaximumStrainTotal)</td>
-                        }
-                        @if (chr.UseStatus)
-                        {
-                            <td>@(chr.Status)</td>
-                        }
-                        @if (chr.UseReason)
-                        {
-                            <td>@(chr.ReasonTotal)</td>
-                        }
                         @if (chr.Size != 0)
                         {
                             <td>@(chr.Size + " (" + chr.HeightFromSize + " " + chr.WeightFromSize + ")")</td>
                         }
                     </tr>
                 </table>
+
+                <!-- Additional Traits -->
+                @if (chr.Fear.HasValue || chr.UseStrain || chr.UseStatus || chr.UseReason)
+                {
+
+                    <table class="gridtable">
+                        <tr>
+                            @if (chr.Fear.HasValue)
+                            {
+                                <th>Fear</th>
+                            }
+                            @if (chr.UseStrain)
+                            {
+                                <th>Strain/Max</th>
+                            }
+                            @if (chr.UseStatus)
+                            {
+                                <th>Status</th>
+                            }
+                            @if (chr.UseReason)
+                            {
+                                <th>Reason</th>
+                            }
+                        </tr>
+
+                        <tr>
+                            @if (chr.Fear.HasValue)
+                            {
+                                <td>@(chr.Fear)</td>
+                            }
+                            @if (chr.UseStrain)
+                            {
+                                <td>@(chr.Strain)/@(chr.MaximumStrainTotal)</td>
+                            }
+                            @if (chr.UseStatus)
+                            {
+                                <td>@(chr.Status)</td>
+                            }
+                            @if (chr.UseReason)
+                            {
+                                <td>@(chr.ReasonTotal)</td>
+                            }
+                        </tr>
+                    </table>
+                }
+
                 <div>&nbsp;</div>
                 <table>
                     <tr>

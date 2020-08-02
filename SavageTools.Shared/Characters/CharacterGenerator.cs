@@ -122,7 +122,11 @@ namespace SavageTools.Characters
             if (options.RandomRace)
             {
                 if (string.IsNullOrEmpty(selectedArchetype.Race))
-                    selectedRace = dice.Choose(Races);
+                {
+                    //Limited races are only available for their matching Archetype
+                    //For example, a Lion can't be a Wizard.
+                    selectedRace = dice.Choose(Races.Where(r => !r.IsLimited).ToList());
+                }
                 else
                     selectedRace = Races.Single(r => r.Name == selectedArchetype.Race);
                 //var list = Races.Where(r => r.Name != "(Special)").ToList();
@@ -143,7 +147,8 @@ namespace SavageTools.Characters
             result.Gender = name.Gender;
 
             //Add all possible skills (except ones created by edges)
-            foreach (var item in Skills)
+            //Filter out the ones not available to animal intelligences
+            foreach (var item in Skills.Where(s => !selectedRace.AnimalIntelligence || !s.NoAnimals))
                 result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = (item.IsCore && options.UseCoreSkills) ? 4 : 0 });
 
             ApplyArchetype(result, dice, selectedArchetype);
@@ -253,6 +258,14 @@ namespace SavageTools.Characters
             for (var i = 0; i < personalityTraits; i++)
                 result.Personality.Add(PersonalityService.CreateRandomPersonality(dice));
 
+            //Sorting
+            result.Skills.Sort(s => s.Name);
+            result.Edges.Sort(e => e.Name);
+            result.Hindrances.Sort(h => h.Name);
+            result.Features.Sort(f => f.Name);
+            foreach (var group in result.PowerGroups)
+                group.Powers.Sort(p => p.LongName);
+
             return result;
         }
 
@@ -308,6 +321,11 @@ namespace SavageTools.Characters
                 {
                     Skills.RemoveAll(s => s.Name == item.Name);
                     Skills.Add(item);
+                }
+            if (book.RemoveSkills != null)
+                foreach (var item in book.RemoveSkills)
+                {
+                    Skills.RemoveAll(s => s.Name == item.Name);
                 }
             if (book.Edges != null)
                 foreach (var item in book.Edges)
@@ -697,6 +715,7 @@ namespace SavageTools.Characters
         {
             //Add the race
             result.Race = race.Name;
+            result.AnimalIntelligence = race.AnimalIntelligence;
 
             if (race.Edges != null)
                 foreach (var item in race.Edges)

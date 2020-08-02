@@ -18,7 +18,13 @@ namespace SavageTools.Characters
 
         public int Wounds { get => Get<int>(); set => Set(value); }
 
-        [CalculatedField("Size,Wounds,IsWildCard")]
+        /// <summary>
+        /// Gets or sets the resilient wounds.
+        /// </summary>
+        /// <remarks>These are ignored for wild cards. Only extras benefit from resilient wounds</remarks>
+        public int ResilientWounds { get => Get<int>(); set => Set(value); }
+
+        [CalculatedField("Size,Wounds,IsWildCard,ResilientWounds")]
         public int? TotalWounds
         {
             get
@@ -28,6 +34,8 @@ namespace SavageTools.Characters
                 var total = Wounds + ExtraWoundsFromSize;
                 if (IsWildCard)
                     total += 3;
+                else
+                    total += ResilientWounds;
 
                 return total > 0 ? (int?)total : null;
             }
@@ -119,6 +127,8 @@ namespace SavageTools.Characters
                 }
             }
         }
+
+        public bool AnimalIntelligence { get { return Get<bool>(); } set { Set(value); } }
 
         public HindranceCollection Hindrances => GetNew<HindranceCollection>();
         public bool IsWildCard { get { return Get<bool>(); } set { Set(value); } }
@@ -411,7 +421,7 @@ namespace SavageTools.Characters
 
                 case "Pace": Pace += bonus; return;
                 case "Running": Running += bonus; return;
-                case "Fear": Fear += bonus; return;
+                case "Fear": Fear = (Fear ?? 0) + bonus; return; //A bonus of 0 will set it to 0
                 case "Parry": Parry += bonus; return;
                 case "Toughness": Toughness += bonus; return;
                 case "Strain": Strain += bonus; return;
@@ -421,6 +431,7 @@ namespace SavageTools.Characters
                 case "Size": Size += bonus; return;
                 case "Armor": Armor += bonus; return;
                 case "Wounds": Wounds += bonus; return;
+                case "ResilientWounds": ResilientWounds += bonus; return;
 
                 case "UnusedAttributes": UnusedAttributes += bonus; return;
                 case "UnusedSkills": UnusedSkills += bonus; return;
@@ -461,13 +472,13 @@ namespace SavageTools.Characters
             throw new ArgumentException("Unknown attribute " + attribute);
         }
 
-        [Obsolete]
-        public string ToCompactString(bool useHtml)
-        {
-            var s = new StoryBuilder(useHtml);
-            CopyToStory(s);
-            return s.ToString();
-        }
+        //[Obsolete]
+        //public string ToCompactString(bool useHtml)
+        //{
+        //    var s = new StoryBuilder(useHtml);
+        //    CopyToStory(s);
+        //    return s.ToString();
+        //}
 
         public string ToMarkdownString(bool isCompact)
         {
@@ -536,7 +547,6 @@ namespace SavageTools.Characters
                     additionTraits.Add($"**Fear**");
                 else if (Fear.HasValue)
                     additionTraits.Add($"**Fear** {Fear}");
-
                 if (UseReason)
                     additionTraits.Add($"**Reason** {ReasonTotal}");
                 if (UseStatus)
@@ -596,68 +606,68 @@ namespace SavageTools.Characters
             return output.ToString();
         }
 
-        [Obsolete]
-        public void CopyToStory(StoryBuilder story, bool indentAfterName = false)
-        {
-            if (story == null)
-                throw new ArgumentNullException(nameof(story), $"{nameof(story)} is null.");
+        //[Obsolete]
+        //public void CopyToStory(StoryBuilder story, bool indentAfterName = false)
+        //{
+        //    if (story == null)
+        //        throw new ArgumentNullException(nameof(story), $"{nameof(story)} is null.");
 
-            if (!string.IsNullOrEmpty(Gender))
-                story.Append($"{Name} ({Gender})");
-            else
-                story.Append($"{Name}");
+        //    if (!string.IsNullOrEmpty(Gender))
+        //        story.Append($"{Name} ({Gender})");
+        //    else
+        //        story.Append($"{Name}");
 
-            if (indentAfterName)
-                story.IncreaseIndent();
+        //    if (indentAfterName)
+        //        story.IncreaseIndent();
 
-            if (!string.IsNullOrWhiteSpace(Archetype) && Archetype != "(None)")
-                story.Append($", {Archetype}");
-            if (Race != "Human")
-                story.Append($", {Race}");
-            if (Rank != "Novice")
-                story.Append($", Rank {Rank}");
-            story.AppendLine();
+        //    if (!string.IsNullOrWhiteSpace(Archetype) && Archetype != "(None)")
+        //        story.Append($", {Archetype}");
+        //    if (Race != "Human")
+        //        story.Append($", {Race}");
+        //    if (Rank != "Novice")
+        //        story.Append($", Rank {Rank}");
+        //    story.AppendLine();
 
-            story.AppendLine($"Agility {Agility}, Smarts {Smarts}, Strength {Strength}, Spirt {Spirit}, Vigor {Vigor}");
+        //    story.AppendLine($"Agility {Agility}, Smarts {Smarts}{ (AnimalIntelligence ? " (A)" : "")}, Strength {Strength}, Spirt {Spirit}, Vigor {Vigor}");
 
-            story.Append($"Parry {ParryTotal}, Toughness {ToughnessTotal}, Pace {Pace}+{Running}, Size {Size}, ");
+        //    story.Append($"Parry {ParryTotal}, Toughness {ToughnessTotal}, Pace {Pace}+{Running}, Size {Size}, ");
 
-            var additionTraits = new List<string>();
+        //    var additionTraits = new List<string>();
 
-            if (Fear == 0)
-                additionTraits.Add($"Fear");
-            else if (Fear.HasValue)
-                additionTraits.Add($"Fear {Fear}");
+        //    if (Fear == 0)
+        //        additionTraits.Add($"Fear");
+        //    else if (Fear.HasValue)
+        //        additionTraits.Add($"Fear {Fear}");
 
-            if (UseReason)
-                additionTraits.Add($"Reason {ReasonTotal}");
-            if (UseStatus)
-                additionTraits.Add($"Status {Status}");
-            if (UseStrain)
-                additionTraits.Add($"Strain {Strain}/{MaximumStrainTotal}");
+        //    if (UseReason)
+        //        additionTraits.Add($"Reason {ReasonTotal}");
+        //    if (UseStatus)
+        //        additionTraits.Add($"Status {Status}");
+        //    if (UseStrain)
+        //        additionTraits.Add($"Strain {Strain}/{MaximumStrainTotal}");
 
-            if (additionTraits.Count > 0)
-                story.AppendLine(string.Join(", ", additionTraits));
+        //    if (additionTraits.Count > 0)
+        //        story.AppendLine(string.Join(", ", additionTraits));
 
-            if (Skills.Count > 0)
-                story.AppendLine(string.Join(", ", Skills.Select(s => s.ShortName)));
-            if (Edges.Count > 0)
-                story.AppendLine(string.Join(", ", Edges.Select(e => e.ToString())));
-            if (Hindrances.Count > 0)
-                story.AppendLine(string.Join(", ", Hindrances.Select(h => h.ToString())));
-            if (Features.Count > 0)
-                story.AppendLine(string.Join(", ", Features.Select(h => h.Name)));
-            if (Personality.Count > 0)
-                story.AppendLine(string.Join(", ", Personality.Select(h => h.Name)));
+        //    if (Skills.Count > 0)
+        //        story.AppendLine(string.Join(", ", Skills.Select(s => s.ShortName)));
+        //    if (Edges.Count > 0)
+        //        story.AppendLine(string.Join(", ", Edges.Select(e => e.ToString())));
+        //    if (Hindrances.Count > 0)
+        //        story.AppendLine(string.Join(", ", Hindrances.Select(h => h.ToString())));
+        //    if (Features.Count > 0)
+        //        story.AppendLine(string.Join(", ", Features.Select(h => h.Name)));
+        //    if (Personality.Count > 0)
+        //        story.AppendLine(string.Join(", ", Personality.Select(h => h.Name)));
 
-            foreach (var group in PowerGroups)
-                story.AppendLine($"{group.PowerType}, Power Points {group.PowerPoints}, Powers: {string.Join(", ", group.Powers.Select(p => p.LongName))}");
+        //    foreach (var group in PowerGroups)
+        //        story.AppendLine($"{group.PowerType}, Power Points {group.PowerPoints}, Powers: {string.Join(", ", group.Powers.Select(p => p.LongName))}");
 
-            if (Gear.Count > 0)
-                story.AppendLine(string.Join(", ", Gear.Select(h => h.Name + (string.IsNullOrEmpty(h.Description) ? "" : ": " + h.Description))));
+        //    if (Gear.Count > 0)
+        //        story.AppendLine(string.Join(", ", Gear.Select(h => h.Name + (string.IsNullOrEmpty(h.Description) ? "" : ": " + h.Description))));
 
-            if (indentAfterName)
-                story.DecreaseIndent();
-        }
+        //    if (indentAfterName)
+        //        story.DecreaseIndent();
+        //}
     }
 }

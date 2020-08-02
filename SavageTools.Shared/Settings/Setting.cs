@@ -41,6 +41,10 @@ namespace SavageTools.Settings
         public SettingSkillOption[] Skills { get; set; }
 
         /// <remarks/>
+        [XmlArrayItem("Skill", IsNullable = false)]
+        public SettingRemoveSkill[] RemoveSkills { get; set; }
+
+        /// <remarks/>
         [XmlArrayItem("Hindrance", IsNullable = false)]
         public SettingHindrance[] Hindrances { get; set; }
 
@@ -75,6 +79,15 @@ namespace SavageTools.Settings
 
     /// <remarks/>
     [XmlType(AnonymousType = true)]
+    public class SettingRemoveSkill
+    {
+        /// <remarks/>
+        [XmlAttribute()]
+        public string Name { get; set; }
+    }
+
+    /// <remarks/>
+    [XmlType(AnonymousType = true)]
     public class SettingSkillOption
     {
         /// <remarks/>
@@ -87,6 +100,9 @@ namespace SavageTools.Settings
 
         [XmlAttribute()]
         public bool IsCore { get; set; }
+
+        [XmlAttribute()]
+        public bool NoAnimals { get; set; }
     }
 
     /// <remarks/>
@@ -391,6 +407,14 @@ namespace SavageTools.Settings
         /// <remarks/>
         [XmlAttribute()]
         public string Name { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public bool AnimalIntelligence { get; set; }
+
+        /// <remarks/>
+        [XmlAttribute()]
+        public bool IsLimited { get; set; }
     }
 
     /// <remarks/>

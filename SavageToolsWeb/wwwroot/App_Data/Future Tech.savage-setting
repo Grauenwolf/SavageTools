@@ -5,6 +5,10 @@
     <Reference Name="Weird Science" />
   </References>
 
+  <RemoveSkills>
+    <Skill Name="Occult" />
+  </RemoveSkills>
+
   <Races>
     <Race Name="Android">
       <Hindrance Name="Pacifist" Type="Major" />

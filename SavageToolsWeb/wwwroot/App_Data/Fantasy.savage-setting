@@ -6,8 +6,14 @@
     <Reference Name="Miracles" />
   </References>
 
-  <Races>
+  <RemoveSkills>
+    <Skill Name="Driving" />
+    <Skill Name="Electronics" />
+    <Skill Name="Hacking" />
+    <Skill Name="Piloting" />
+  </RemoveSkills>
 
+  <Races>
     <Race Name ="Aquarian">
       <Edge Name="Aquatic" Description="Aquarians cannot drown in water and move at their full Pace when swimming." />
       <Hindrance Name="Dependency" Description="Must immerse themselves in water one hour out of every 24 or become automatically Fatigued." />
@@ -109,7 +115,7 @@
       <Hindrance Name="Outsider" Type="Minor" />
     </Race>
 
-    <Race Name="Goblin">
+    <Race Name="Goblin" IsLimited="true">
       <Hindrance Name="Greedy" Type="Major" />
       <Edge Name="Infravision" Description="Halve penalties for Illumination when attacking warm targets." />
 
@@ -118,12 +124,12 @@
       </Hindrance>
     </Race>
 
-    <Race Name="Hobgoblin">
+    <Race Name="Hobgoblin" IsLimited="true">
       <Hindrance Name="Greedy" Type="Major" />
       <Edge Name="Infravision" Description="Halve penalties for Illumination when attacking warm targets." />
     </Race>
 
-    <Race Name="Dragon">
+    <Race Name="Dragon" IsLimited="true">
       <Edge Name="Scaly Hide">
         <Trait Name="Armor" Bonus="4" />
       </Edge>
@@ -137,6 +143,55 @@
       <Edge Name="Tail Lash" Description="Str+d4. The creature may make a free attack against up to two foes to its side or rear at no penalty." />
       <Edge Name="Improved Frenzy" />
       <Edge Name="Level Headed" />
+    </Race>
+    <Race Name="Drake" AnimalIntelligence="true" IsLimited="true">
+      <Edge Name="Scaly Hide">
+        <Trait Name="Armor" Bonus="4" />
+      </Edge>
+      <Edge Name="Bite/Claws" Description="Str+d8" />
+      <Trait Name="Fear" Bonus="0" />
+      <Edge Name="Fiery Breath" Description="Drakes breathe fire for 3d6 damage" />
+      <Trait Name="Size" Bonus="6" />
+      <Edge Name="Resilient">
+        <Trait Name="ResilientWounds" Bonus="1" />
+      </Edge>
+      <Edge Name="Tail Lash" Description="Str. The creature may make a free attack against up to two foes to its side or rear at no penalty." />
+    </Race>
+
+    <Race Name="Minotaur" IsLimited="true">
+      <Edge Name="Horns" Description="Str+d4" />
+      <Trait Name="Size" Bonus="3" />
+      <Edge Name="Resilient">
+        <Trait Name="ResilientWounds" Bonus="1" />
+      </Edge>
+      <Edge Name="Fleet-Footed" />
+    </Race>
+
+    <Race Name="Ogre" IsLimited="true">
+      <Trait Name="Size" Bonus="2" />
+      <Edge Name="Resilient">
+        <Trait Name="ResilientWounds" Bonus="1" />
+      </Edge>
+      <Edge Name="Brute" />
+      <Edge Name="Sweep" />
+    </Race>
+
+    <Race Name="Orc" IsLimited="true">
+      <Trait Name="Size" Bonus="1" />
+      <Edge Name="Infravision" Description="Halve penalties for Illumination when attacking warm targets." />
+      <Edge Name="Brute" />
+    </Race>
+
+    <Race Name="Troll" IsLimited="true">
+      <Edge Name="Rubbery hide" Description="Armor +1" />
+      <Edge Name="Bite/Claws" Description="Str+d4" />
+      <Edge Name="Brute" />
+      <Edge Name="Sweep" />
+      <Edge Name="Fast Regeneration" Description="Trolls may attempt a natural healing roll every round, even if Incapacitated" />
+      <Trait Name="Size" Bonus="1" />
+      <Edge Name="Resilient">
+        <Trait Name="ResilientWounds" Bonus="1" />
+      </Edge>
     </Race>
   </Races>
 
@@ -168,7 +223,6 @@
     </Archetype>
 
     <Archetype Name="Dragon" Race="Dragon" Agility="8" Smarts="8" Spirit="10" Strength="20" Vigor="12" UnusedAttributes="0" UnusedSkills="0" IsWildCard="true">
-
       <Skill Name="Athletics" Level="10" />
       <Skill Name="Common Knowledge" Level="6" />
       <Skill Name="Fighting" Level="10" />
@@ -176,6 +230,76 @@
       <Skill Name="Notice" Level="12" />
       <Skill Name="Persuasion" Level="10" />
       <Skill Name="Stealth" Level="8" />
+    </Archetype>
+
+    <Archetype Name="Drake" Race="Drake" Agility="6" Smarts="6" Spirit="10" Strength="18" Vigor="12" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Fighting" Level="10" />
+      <Skill Name="Intimidation" Level="12" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Stealth" Level="6" />
+    </Archetype>
+
+    <Archetype Name="Minotaur" Race="Minotaur" Agility="8" Smarts="6" Spirit="8" Strength="15" Vigor="12" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="10" />
+      <Skill Name="Intimidation" Level="12" />
+      <Skill Name="Notice" Level="10" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Stealth" Level="8" />
+
+      <Gear Name="Leather armor" Description="Armor 1" />
+      <Gear Name="Spear" Description="Str+d6, Reach 1, Parry+1" />
+    </Archetype>
+
+    <Archetype Name="Ogre" Race="Ogre" Agility="6" Smarts="4" Spirit="6" Strength="14" Vigor="12" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Intimidation" Level="8" />
+      <Skill Name="Notice" Level="4" />
+      <Skill Name="Persuasion" Level="4" />
+      <Gear Name="Thick hides" Description="Armor 1" />
+      <Gear Name="Massive club" Description="Str+d8" />
+    </Archetype>
+
+    <Archetype Name="Orc" Race="Orc" Agility="6" Smarts="4" Spirit="6" Strength="8" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Intimidation" Level="8" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+      <Gear Name="Leather armor" Description="Armor 1" />
+      <Gear Name="Scimitar" Description="Str+d8" />
+    </Archetype>
+
+    <Archetype Name="Orc Chieftain" Race="Orc" Agility="8" Smarts="6" Spirit="6" Strength="10" Vigor="10" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Common Knowledge" Level="8" />
+      <Skill Name="Fighting" Level="12" />
+      <Skill Name="Intimidation" Level="10" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Shooting" Level="8" />
+      <Skill Name="Stealth" Level="6" />
+      <Edge Name="Sweep" />
+      <Gear Name="Plate corselet" Description="Armor +4" />
+      <Gear Name="Chain arms and legs" Description="Armor +3" />
+      <Gear Name="Great axe" Description="Str+d10, Parry -1" />
+    </Archetype>
+
+    <Archetype Name="Troll" Race="Troll" Agility="6" Smarts="4" Spirit="6" Strength="14" Vigor="10" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="8" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Intimidation" Level="10" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Stealth" Level="4" />
+      <Gear Name="Spiked club" Description="Str+d8" />
     </Archetype>
   </Archetypes>
 </Setting>

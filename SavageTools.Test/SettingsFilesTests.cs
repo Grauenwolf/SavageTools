@@ -55,7 +55,7 @@ namespace SavageTools.Test
             foreach (var hindrance in characterGenerator.MajorHindrances)
                 CharacterGenerator.ApplyHindrance(character, hindrance, 2, dice);
 
-            Debug.WriteLine(character.ToCompactString(false));
+            Debug.WriteLine(character.ToMarkdownString(false));
         }
 
         [DataRow("Core.savage-setting")]
@@ -77,7 +77,7 @@ namespace SavageTools.Test
             foreach (var hindrance in characterGenerator.MinorHindrances)
                 CharacterGenerator.ApplyHindrance(character, hindrance, 1, dice);
 
-            Debug.WriteLine(character.ToCompactString(false));
+            Debug.WriteLine(character.ToMarkdownString(false));
         }
 
         [DataRow("Core.savage-setting")]
@@ -99,7 +99,7 @@ namespace SavageTools.Test
             foreach (var edge in characterGenerator.Edges)
                 CharacterGenerator.ApplyEdge(character, edge, dice);
 
-            Debug.WriteLine(character.ToCompactString(false));
+            Debug.WriteLine(character.ToMarkdownString(false));
         }
 
         const int Iterations = 100;
@@ -115,7 +115,7 @@ namespace SavageTools.Test
             for (var i = 0; i < Iterations; i++)
             {
                 Character character = MakeCharacter(characterGenerator, dice, selectedArchetype, null, null);
-                Debug.WriteLine(character.ToCompactString(false));
+                Debug.WriteLine(character.ToMarkdownString(false));
             }
         }
 
