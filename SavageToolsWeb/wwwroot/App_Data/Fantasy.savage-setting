@@ -277,7 +277,7 @@
       <Gear Name="Scimitar" Description="Str+d8" />
     </Archetype>
 
-    <Archetype Name="Orc Chieftain" Race="Orc" Agility="8" Smarts="6" Spirit="6" Strength="10" Vigor="10" UnusedAttributes="0" UnusedSkills="0">
+    <Archetype Name="Orc Chieftain" Race="Orc" Agility="8" Smarts="6" Spirit="6" Strength="10" Vigor="10" UnusedAttributes="0" UnusedSkills="0" IsWildCard="true">
       <Skill Name="Athletics" Level="8" />
       <Skill Name="Common Knowledge" Level="8" />
       <Skill Name="Fighting" Level="12" />

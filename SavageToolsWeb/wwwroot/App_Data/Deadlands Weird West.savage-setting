@@ -48,6 +48,79 @@
   </Powers>
 
   <Edges>
+
+    <Edge Name="Gallows Humor" Requires="Novice, Taunt d6" Description="Use Taunt to resist fear" />
+    <Edge Name="Veteran O' the Weird West" Requires="Wild Card, Novice, Spirit d6, Occult d6" Description="See text">
+      <!-- TODO-22 Chart roll-->
+      <Trait Name="UnusedAdvances" Bonus="4" />
+    </Edge>
+    <Edge Name="Gallows Humor" Requires="Novice, Taunt d6" Description="Use Taunt to resist fear" />
+
+    <Edge Name="Don't Get 'Im Riled!" Requires="Novice" Description="When causing melee damage, he adds his Wound levels to the roll." />
+    <Edge Name="Duelist" Requires="Novice, Shooting d6" Description="In a duel, this hero receives two extra Hole Cards at the start of the throwdown." />
+    <Edge Name="Fan the Hammer" Requires="Seasoned, Agility d8, Shooting d8" Description="Fire 6 shots, all at -4. Hit a bystander on a 1 or 2." />
+    <Edge Name="Improved Fan the Hammer" Requires="Heroic, Agility d10, Fan the Hammer, Shooting d10" Description="Fire 6 shots, all at -2. Hit a bystander on a 1 or 2." />
+    <Edge Name="Quick Draw" Requires="Novice, Agility d8" Description="Draw 2 action cards when spending a Bennie. +2 to Athletics rolls made to interrupt." />
+    <Edge Name="Agent" Requires="Novice, Smarts d8, Fighting d6, Occult d6, Research d6, Shooting d6" Description="See text." UniqueGroup="Government">
+      <!-- TODO-23 Add gear-->
+      <Gear Name="Gatling pistol" Description="" />
+      <Gear Name="Badge" Description="+1 Persuasion to law-abiding types" />
+    </Edge>
+    <Edge Name="Born in the Saddle" Requires="Novice, Agility d8, Riding d6" Description="Free reroll on Riding roll. Horse pace +2, running +1 die type" />
+    <Edge Name="Card Sharp" Requires="Novice, Gambling d6" Description="Free reroll when making a Gambling roll" />
+    <Edge Name="Guts" Requires="Novice, Spirit d6" Description="Free reroll when making Fear checks" />
+    <Edge Name="Scout" Requires="Seasoned, Woodsman" Description="See text." />
+
+    <Edge Name="Soldier" Requires="Novice, Strength d6, Vigor d6" Description="Strength is one die type higher for Encumbrance and Min Str. Reroll Vigor rolls when resisting environmental Hazards." UniqueGroup="Government">
+      <Feature Name="Private in military." />
+      <Hindrance Name="Obligation" Type="Minor" Description="The character has a weekly obligation of 20 hours." />
+    </Edge>
+    <Edge Name="Soldier NCO" Requires="Novice, Strength d6, Vigor d6" Description="Strength is one die type higher for Encumbrance and Min Str. Reroll Vigor rolls when resisting environmental Hazards." UniqueGroup="Government">
+      <Feature Name="Sergeant in military." />
+      <Hindrance Name="Obligation" Type="Major" Description="The character has a weekly obligation of 40 hours." />
+    </Edge>
+    <Edge Name="Soldier Officer" Requires="Novice, Strength d6, Vigor d6, Academics d6, Battle d6" Description="Strength is one die type higher for Encumbrance and Min Str. Reroll Vigor rolls when resisting environmental Hazards." UniqueGroup="Government">
+      <Feature Name="2nd Lieutenant in military." />
+      <Hindrance Name="Obligation" Type="Major" Description="The character has a weekly obligation of 40 hours." />
+    </Edge>
+
+    <Edge Name="Tale-Teller" Requires="Novice, Performance d8 or Persuasion d8" Description="+2 Persuasion or Performance roll to lower the local Fear Level" />
+    <Edge Name="Territorial Ranger" Requires="Novice, Vigor d6, Fighting d6, Intimidation d6, Riding d6, Shooting d6, Survival d4" Description="See text." UniqueGroup="Government">
+      <!-- TODO-23 Add gear-->
+      <Gear Name="Armored duster" Description="Armor 2" />
+      <Gear Name="Shotgun" />
+      <Gear Name="Badge" Description="+1 Persuasion to law-abiding types, +1 Intimidation to outlaws" />
+    </Edge>
+    <Edge Name="Reputation (Good)" Requires="Veteran" Description="Free reroll on Persuasion rolls " UniqueGroup="Reputation">
+      <Feature Name="Reputation" />
+    </Edge>
+    <Edge Name="Reputation (Bad)" Requires="Veteran" Description="+2 to Intimidation rolls" UniqueGroup="Reputation">
+      <Feature Name="Reputation" />
+    </Edge>
+
+    <Edge Name="Grit" Requires="Veteran, Spirit d8, Guts" Description="Reduces penalties to the Fear check by 2" />
+    <Edge Name="Harrowed" Requires="Wild Card, Novice, Spirit d6" Description="See text.">
+      <Edge Name="Let the Devil Out" Description="See text." />
+      <Edge Name="Undead" Description="+2 to Toughness and Spirit rolls to recover from Shaken, ignore additional damage from Called Shots except to the head, ignore 1 point of Wound penalties, doesn’t breathe, immune to disease and poison, doesn’t Bleed Out, and is only permanently slain by destroying the brain." />
+      <Hindrance Name="Decay" Description="Smells of decay (Notice roll). Riding/animal handling -2." />
+      <Hindrance Name="Food and Drink" Description="Must eat 1 lb of raw meat per day." />
+      <Hindrance Name="Sleep" Description="The manitou requires 1d6 hours of rest every 24 hours to recharge its malevolent energies." />
+      <Hindrance Name="What the hell was that?" Description="Reactions start with Unfriendly and Persuasion rolls to bargain suffer a −2 penalty." />
+      <Hindrance Name="Healing" Description="May reattach body parts. Cannot use healing magic." />
+    </Edge>
+    <Edge Name="Knack Bastard" Requires="Novice" Description="" UniqueGroup="Knack" />
+    <Edge Name="Knack Born on All Hallows’ Eve" Requires="Novice" Description="" UniqueGroup="Knack" />
+    <Edge Name="Knack Born on Christmas" Requires="Novice" Description="" UniqueGroup="Knack" />
+    <Edge Name="Knack Breech Birth" Requires="Novice" Description="" UniqueGroup="Knack" />
+    <Edge Name="Knack Seventh Son" Requires="Novice" Description="" UniqueGroup="Knack" />
+    <Edge Name="Knack Shooting Star" Requires="Novice" Description="" UniqueGroup="Knack" />
+    <Edge Name="Knack Storm Born" Requires="Novice" Description="" UniqueGroup="Knack" />
+    <Edge Name="Behold A Pale Horse" Requires="Legendary" Description="" />
+    <Edge Name="Damned" Requires="Wild Card, Legendary, Spirit d6, Reputation" Description="" />
+    <Edge Name="Fast as Lightning" Requires="Legendary, Agility d10, Quick" Description="" />
+    <Edge Name="Right Hand of The Devil" Requires="Legendary, Trademark Weapon, Shooting d10 or Fighting d10 or Athletics d10" Description="" />
+    <Edge Name="True Grit" Requires="Legendary, Spirit d10, Grit" Description="" />
+
     <!-- Blessed -->
     <Edge Name="Arcane Background (Blessed)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Blessed">
       <Skill Name="Faith" Attribute="Spirit" Level="4" />
@@ -55,6 +128,9 @@
       <Trait Name="PowerPoints:Blessed" Bonus="15" />
       <Trait Name="UnusedPowers:Blessed" Bonus="2" />
       <Feature Name="Arcane Background" />
+
+      <Hindrance Name="Backlash (Blessed)" Description="Critical Failure on a Faith roll cause Fatigue and all powers are terminated." />
+      <Hindrance Name="Sinnin’" Description="Violate core beliefs causes powers to be lost." />
 
       <Trigger Name="Invocation" />
       <Trigger Name="Chant" />
@@ -124,12 +200,167 @@
     <Edge Name="Holy/Unholy Warrior (Blessed)" Requires="Seasoned, Arcane Background (Blessed), Faith d6" Description="Add +1 to +4 to Soak rolls for each Power Point spent." />
     <Edge Name="True Believer" Requires="Novice, Arcane Background (Blessed), Spirit d10, Faith d6" Description="Free reroll on Faith rolls" />
     <Edge Name="Flock" Requires="Veteran, Arcane Background (Blessed), Persuasion d8" Description="Flock gives your padre five followers who serve at his side in whatever capacity you choose." />
+
+    <!-- Chi Master -->
+    <Edge Name="Arcane Background (Chi Master)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Chi Master">
+      <Skill Name="Focus" Attribute="Spirit" Level="4" />
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints:Chi Master" Bonus="15" />
+      <Trait Name="UnusedPowers:Chi Master" Bonus="3" />
+      <Feature Name="Arcane Background" />
+
+      <Trigger Name="Invocation" />
+      <Trigger Name="Stare" />
+      <Trigger Name="Gesture" />
+      <Trigger Name="Transformation" />
+      <Trigger Name="Concentration" />
+      <Trigger Name="Touch" />
+
+      <Hindrance Name="Backlash (Chi Master)" Description="Critical Failure on a Faith roll cause Fatigue and all powers are terminated." />
+      <Hindrance Name="Internal Focus)" Description="Chi Master powers are limited to range self/touch." />
+
+      <AvailablePower Name="Arcane Protection" />
+      <AvailablePower Name="Boost/Lower Trait" />
+      <AvailablePower Name="Burrow" />
+      <AvailablePower Name="Curse" />
+      <AvailablePower Name="Darksight" />
+      <AvailablePower Name="Deflection" />
+      <AvailablePower Name="Detect Arcana" />
+      <AvailablePower Name="Empathy" />
+      <AvailablePower Name="Environmental Protection" />
+      <AvailablePower Name="Farsight" />
+      <AvailablePower Name="Healing" />
+      <AvailablePower Name="Numb" />
+      <AvailablePower Name="Protection" />
+      <AvailablePower Name="Relief" />
+      <AvailablePower Name="Sloth/Speed" />
+      <AvailablePower Name="Smite" />
+      <AvailablePower Name="Wall Walker" />
+      <AvailablePower Name="Warrior’s Gift" />
+    </Edge>
+
+    <!-- Chi Master Common Edges-->
+    <Edge Name="Artificer (Chi Master)" Requires="Seasoned, Arcane Background (Chi Master)" Description="Allows user to create Arcane Devices." />
+    <Edge Name="Channeling (Chi Master)" Requires="Seasoned, Arcane Background (Chi Master)" Description="Reduce Power Point cost by 1 with a raise on the activation roll." />
+    <Edge Name="Concentration (Chi Master)" Requires="Seasoned, Arcane Background (Chi Master)" Description="Double Duration of non-Instant powers." />
+    <Edge Name="New Power (Chi Master)" Requires="Novice, Arcane Background (Chi Master)" Description="Your character knows two new powers.">
+      <Trait Name="UnusedPowers:Chi Master" Bonus="2" />
+    </Edge>
+    <Edge Name="Power Points (Chi Master/Novice)" Requires="Novice, Arcane Background (Chi Master)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Chi Master" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Chi Master/Seasoned)" Requires="Seasoned, Arcane Background (Chi Master)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Chi Master" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Chi Master/Veteran)" Requires="Veteran, Arcane Background (Chi Master)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Chi Master" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Chi Master/Heroic)" Requires="Heroic, Arcane Background (Chi Master)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Chi Master" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Chi Master/Legendary)" Requires="Legendary, Arcane Background (Chi Master)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Chi Master" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Surge (Chi Master)" Requires="Wild Card, Novice, Arcane Background (Chi Master), Faith d8" Description="Recover 10 Power Points when dealt a Joker in combat." />
+    <Edge Name="Rapid Recharge (Chi Master)" Requires="Seasoned, Spirit d6, Arcane Background (Chi Master)" Description="Recover 10 Power Points per hour." />
+    <Edge Name="Improved Rapid Recharge (Chi Master)" Requires="Veteran, Rapid Recharge (Chi Master)" Description="Recover 20 Power Points per hour." />
+
+    <!-- Chi Master Arcane Background Specific Edges-->
+    <Edge Name="Extra Effort (Chi Master)" Requires="Seasoned, Arcane Background (Chi Master), Focus d6" Description="Increase Focus by +1 for 1 Power Point or +2 for 3 Power Points." />
+    <Edge Name="Superior Kung Fu Drunken Style" Requires="Novice, Arcane Background (Chi Master), Spirit d6, Fighting d8" Description="Opponents subtract 2 from attack rolls to hit her, but her Pace is reduced by 2.">
+      <Feature Name="Superior Kung Fu" />
+    </Edge>
+    <Edge Name="Superior Kung Fu Eagle Claw" Requires="Novice, Arcane Background (Chi Master), Spirit d6, Fighting d8" Description="Unarmed attacks are AP 4">
+      <Feature Name="Superior Kung Fu" />
+    </Edge>
+    <Edge Name="Superior Kung Fu Monkey" Requires="Novice, Arcane Background (Chi Master), Spirit d6, Fighting d8" Description="Parry +2. Athletics Test against all adjacent foes.">
+      <Feature Name="Superior Kung Fu" />
+    </Edge>
+    <Edge Name="Superior Kung Fu Shuai Chao" Requires="Novice, Arcane Background (Chi Master), Spirit d6, Fighting d8" Description=" Once per round, when a foe fails a Fighting attack, make a free grapple attempt.">
+      <Feature Name="Superior Kung Fu" />
+    </Edge>
+    <Edge Name="Superior Kung Fu Tan Tui" Requires="Novice, Arcane Background (Chi Master), Spirit d6, Fighting d8" Description="Once per round, damage +1 die type. Possible knock-back.">
+      <Feature Name="Superior Kung Fu" />
+    </Edge>
+    <Edge Name="Superior Kung Fu Wing Chun" Requires="Novice, Arcane Background (Chi Master), Spirit d6, Fighting d8" Description="+1 Parry and -2 damage from enemy melee attacks.">
+      <Feature Name="Superior Kung Fu" />
+    </Edge>
+    <!-- TODO-22 Edges that include a random table.-->
+    <Edge Name="Celestial Kung Fu Wing Chun" Requires="Veteran, Arcane Background (Chi Master), Spirit d8, Fighting d10, Superior Kung Fu" Description="One free Superior Kung Fu style. Use two styles at once." />
+
+    <!-- Harrowed Edges-->
+    <Edge Name="Cat Eyes"                            Requires="Novice, Harrowed" Description="Negate all Dim and Dark penalties." />
+    <Edge Name="Improved Cat Eyes"                   Requires="Seasoned, Cat Eyes, Harrowed" Description="See perfectly in the dark and ignores all penalties for lighting" />
+    <Edge Name="Chill O' The Grave"                  Requires="Seasoned, Harrowed" Description="Icy blast (LBT) causing Vulnerable (no save). Cost 1 Bennie." />
+    <Edge Name="Claws"                               Requires="Novice, Harrowed" Description="Str+d6 damage" />
+    <Edge Name="Improved Claws"                      Requires="Veteran, Claws, Harrowed" Description="Str+d8 damage, AP 2" />
+    <Edge Name="Ghost"                               Requires="Heroic, Harrowed" Description="See text." />
+    <Edge Name="Hellfire"                            Requires="Heroic, Harrowed" Description="Fire blast (Cone), Athletics skill, 3d6 damage." />
+    <Edge Name="Implacable"                          Requires="Heroic, Harrowed" Description="Extra wound.">
+      <Trait Name="Wounds" Bonus="1" />
+    </Edge>
+    <Edge Name="Infest"                              Requires="Novice, Harrowed" Description="Control insect swarms." />
+    <Edge Name="Soul Eater"                          Requires="Veteran, Harrowed" Description="Spirit -2 roll to heal one wound after causing an unarmed wound." />
+    <Edge Name="Spook"                               Requires="Novice, Harrowed" Description="Trigger a Fear check at −2. Extend to 12&quot; radius for 1 Fatigue." />
+    <Edge Name="Stitchin’"                           Requires="Novice, Harrowed" Description="Healing roll 1/day. Requires 1 lb raw meat." />
+    <Edge Name="Improved Stitchin’"                  Requires="Veteran, Harrowed, Stitchin’" Description="Healing roll 1/hour. Requires 1 lb raw meat." />
+    <Edge Name="Supernatural Attribute (Strength)"   Requires="Novice, Harrowed" Description="Trait/max trait increases by 2">
+      <Trait Name="Strength" Bonus="2" />
+      <Trait Name="MaxStrength" Bonus="2" />
+    </Edge>
+    <Edge Name="Supernatural Attribute (Agility)"    Requires="Novice, Harrowed" Description="Trait/max trait increases by 2">
+      <Trait Name="Agility" Bonus="2" />
+      <Trait Name="MaxAgility" Bonus="2" />
+    </Edge>
+    <Edge Name="Supernatural Attribute (Spirit)"     Requires="Novice, Harrowed" Description="Trait/max trait increases by 2">
+      <Trait Name="Spirit" Bonus="2" />
+      <Trait Name="MaxSpirit" Bonus="2" />
+    </Edge>
+    <Edge Name="Supernatural Attribute (Vigor)"      Requires="Novice, Harrowed" Description="Trait/max trait increases by 2">
+      <Trait Name="Vigor" Bonus="2" />
+      <Trait Name="MaxVigor" Bonus="2" />
+    </Edge>
+    <Edge Name="Supernatural Attribute (Smarts)"     Requires="Novice, Harrowed" Description="Trait/max trait increases by 2">
+      <Trait Name="Smarts" Bonus="2" />
+      <Trait Name="MaxSmarts" Bonus="2" />
+    </Edge>
+    <Edge Name="Wither" Requires="Novice, Harrowed" Description="Opposed Spirit roll to cause Strength/Vigor damage." />
   </Edges>
 
   <Archetypes>
-    <Archetype Name="Preacher"  Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="12">
+    <Archetype Name="Blessed"  Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="12">
       <Trait Name="UnusedEdges" Bonus ="-1" />
       <Edge Name="Arcane Background (Blessed)" />
+    </Archetype>
+    <Archetype Name="Chi Master"  Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="12">
+      <Trait Name="UnusedEdges" Bonus ="-1" />
+      <Edge Name="Arcane Background (Chi Master)" />
+    </Archetype>
+    <Archetype Name="Agent" Agility="4" Smarts="8" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="3" UnusedSkills="4">
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Occult" Level="6" />
+      <Skill Name="Research" Level="6" />
+      <Skill Name="Shooting" Level="6" />
+      <Edge Name="Agent" />
+      <Trait Name="UnusedEdges" Bonus ="-1" />
+    </Archetype>
+
+    <Archetype Name="Soldier"  Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="12">
+      <Edge Name="Soldier" />
+      <Trait Name="UnusedEdges" Bonus ="-1" />
+    </Archetype>
+    <Archetype Name="Soldier NCO"  Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="12">
+      <Edge Name="Soldier NCO" />
+      <Trait Name="UnusedEdges" Bonus ="-1" />
+    </Archetype>
+    <Archetype Name="Soldier Officer"  Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="8">
+      <Edge Name="Soldier Officer" />
+      <Skill Name="Academics" Level="6" />
+      <Skill Name="Battle" Level="6" />
+      <Trait Name="UnusedEdges" Bonus ="-1" />
+    </Archetype>
+    <Archetype Name="Harrowed"  Agility="4" Smarts="4" Spirit="6" Strength="4" Vigor="4" UnusedAttributes="4" UnusedSkills="12" IsWildCard="true">
+      <Edge Name="Harrowed" />
     </Archetype>
   </Archetypes>
 </Setting>

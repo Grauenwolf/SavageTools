@@ -410,6 +410,10 @@ namespace SavageTools.Characters
                 foreach (var item in edge.Features)
                     result.Features.Add(item.Name);
 
+            if (edge.Edges != null)
+                foreach (var item in edge.Edges)
+                    ApplyEdge(result, item, dice);
+
             if (edge.AvailablePowers != null)
                 foreach (var item in edge.AvailablePowers)
                     result.PowerGroups[edge.PowerType].AvailablePowers.Add(item.Name);
@@ -441,6 +445,17 @@ namespace SavageTools.Characters
             if (edge.Powers != null)
                 foreach (var item in edge.Powers)
                     ApplyPower(result, result.PowerGroups[edge.PowerType], item, dice);
+
+            if (edge.Hindrances != null)
+                foreach (var item in edge.Hindrances)
+                {
+                    int level = 0;
+                    if (item.IsMajor())
+                        level = 2;
+                    else if (item.IsMinor())
+                        level = 1;
+                    ApplyHindrance(result, item, level, dice);
+                }
         }
 
         private static void PickAdvancement(Character result, Dice dice)

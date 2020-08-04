@@ -237,7 +237,7 @@
     <Edge Name="McGyver" Requires="Novice, Smarts d6, Repair d6, Notice d8" Description="Quickly create improvised devices from scraps." />
     <Edge Name="Mr. Fix It" Requires="Novice, Repair d8" Description="+2 to Repair rolls, half the time required with a raise." />
     <Edge Name="Scholar" Requires="Novice, Research d8" Description="+2 to any one “knowledge” skill." />
-    <Edge Name="Soldier" Requires="Novice, Strength d6, Vigor d6" Description=" Strength is one die type higher for Encumbrance and Min Str. Reroll Vigor rolls when resisting environmental Hazards." />
+    <Edge Name="Soldier" Requires="Novice, Strength d6, Vigor d6" Description="Strength is one die type higher for Encumbrance and Min Str. Reroll Vigor rolls when resisting environmental Hazards." />
     <Edge Name="Thief" Requires="Novice, Agility d8, Stealth d6, Thievery d6" Description="+1 Thievery, Athletics rolls made to climb, Stealth in urban environments." />
     <Edge Name="Woodsman" Requires="Novice, Spirit d6, Survival d8" Description="+2 to Survival and Stealth in the wilds." />
 

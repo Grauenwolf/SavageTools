@@ -151,6 +151,14 @@ namespace SavageTools.Settings
         public SettingFeature[] Features { get; set; }
 
         /// <remarks/>
+        [XmlElement("Edge")]
+        public SettingEdge[] Edges { get; set; }
+
+        /// <remarks/>
+        [XmlElement("Hindrance")]
+        public SettingHindrance[] Hindrances { get; set; }
+
+        /// <remarks/>
         [XmlElement("AvailablePower")]
         public SettingAvailablePower[] AvailablePowers { get; set; }
 
