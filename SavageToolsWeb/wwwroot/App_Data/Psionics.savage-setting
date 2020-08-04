@@ -18,6 +18,7 @@
       <Trigger Name="Stare" />
       <Trigger Name="Gesture" />
       <Trigger Name="Concentration" />
+      <Trigger Name="Crystal" />
     </Edge>
 
     <!-- Common -->

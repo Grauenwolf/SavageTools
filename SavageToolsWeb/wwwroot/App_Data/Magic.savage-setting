@@ -22,6 +22,7 @@
       <Trigger Name="Wand/staff" />
       <Trigger Name="Talisman" />
       <Trigger Name="Ring" />
+      <Trigger Name="Crystal" />
       <Trigger Name="Concentration" />
     </Edge>
   </Edges>

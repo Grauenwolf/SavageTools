@@ -15,11 +15,13 @@
 
       <Trigger Name="Ray Gun" />
       <Trigger Name="Grenade" />
-      <Trigger Name="Powder" />
+      <Trigger Name="Electrical Probes" />
+      <Trigger Name="Chemicals" />
       <Trigger Name="Potion" />
       <Trigger Name="Pill" />
       <Trigger Name="Handheld Scanner" />
       <Trigger Name="Goggles/glasses" />
+      <Trigger Name="Crystal" />
     </Edge>
 
     <!-- Common -->

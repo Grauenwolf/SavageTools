@@ -84,6 +84,7 @@
     <Trapping Name="Light" />
     <Trapping Name="Necromantic" />
     <Trapping Name="Sound" />
+    <Trapping Name="Shadow" />
     <Trapping Name="Water" />
     <Trapping Name="Air" />
     <Trapping Name="Earth" />

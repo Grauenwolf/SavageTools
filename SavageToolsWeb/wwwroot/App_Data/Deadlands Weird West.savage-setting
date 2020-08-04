@@ -12,7 +12,6 @@
 
   <Skills>
     <Skill Name="Trade" Attribute="Smarts" NoAnimals="true" />
-    <!-- etc. -->
   </Skills>
 
   <Hindrances>
@@ -45,6 +44,8 @@
     <!-- Split powers. -->
     <Power Name="Detect Arcana" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="S" Description="Detects magic for Duration 5 or conceals it for one hour." />
     <Power Name="Light" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="10m" Description="Creates illumination." />
+    <Power Name="Shrink" Requires="Seasoned" PowerPoints="2" Range="Smarts" Duration="5" Description="Decreases Size." />
+    <Power Name="Growth" Requires="Seasoned" PowerPoints="2" Range="Smarts" Duration="5" Description="Increases Size." />
   </Powers>
 
   <Edges>
@@ -108,21 +109,21 @@
       <Hindrance Name="What the hell was that?" Description="Reactions start with Unfriendly and Persuasion rolls to bargain suffer a −2 penalty." />
       <Hindrance Name="Healing" Description="May reattach body parts. Cannot use healing magic." />
     </Edge>
-    <Edge Name="Knack Bastard" Requires="Novice" Description="" UniqueGroup="Knack" />
-    <Edge Name="Knack Born on All Hallows’ Eve" Requires="Novice" Description="" UniqueGroup="Knack" />
-    <Edge Name="Knack Born on Christmas" Requires="Novice" Description="" UniqueGroup="Knack" />
-    <Edge Name="Knack Breech Birth" Requires="Novice" Description="" UniqueGroup="Knack" />
-    <Edge Name="Knack Seventh Son" Requires="Novice" Description="" UniqueGroup="Knack" />
-    <Edge Name="Knack Shooting Star" Requires="Novice" Description="" UniqueGroup="Knack" />
-    <Edge Name="Knack Storm Born" Requires="Novice" Description="" UniqueGroup="Knack" />
-    <Edge Name="Behold A Pale Horse" Requires="Legendary" Description="" />
+    <Edge Name="Knack Bastard" Requires="Novice" Description="Spend a Benny to automatically be able to see invisible and hidden critters, or those that supernaturally blend in with their surroundings, for five rounds." UniqueGroup="Knack" />
+    <Edge Name="Knack Born on All Hallows’ Eve" Requires="Novice" Description="A hero who was Born on All Hallows’ Eve can spend Conviction to reroll a Critical Failure." UniqueGroup="Knack" />
+    <Edge Name="Knack Born on Christmas" Requires="Novice, Arcane Background (Blessed) or Arcane Background (Shaman)" Description="When targeted by a power from any other Arcane Background, a hero with this Knack can spend a Benny to negate the effect and force the caster to make a Spirit roll (−4) or be Shaken." UniqueGroup="Knack" />
+    <Edge Name="Knack Breech Birth" Requires="Novice" Description="Your hero is just such a person and can spend a Benny to use the healing power. He doesn’t need to roll and automatically gets a single success (thus healing one Wound)." UniqueGroup="Knack" />
+    <Edge Name="Knack Seventh Son" Requires="Novice" Description="Any time a Benny is used in his presence, he can spend a Benny of his own to negate its effect." UniqueGroup="Knack" />
+    <Edge Name="Knack Shooting Star" Requires="Novice" Description="At the beginning of any combat, you may spend a Benny to double the character’s Command Range. " UniqueGroup="Knack" />
+    <Edge Name="Knack Storm Born" Requires="Novice" Description="When you spend a Benny to reroll a Fear check, you ignore all Fear penalties, both from the critter and the local Fear Level." UniqueGroup="Knack" />
+    <Edge Name="Behold A Pale Horse" Requires="Legendary" Description="A war horse with Fearless, Danger Sense Edge, Wild Card, and two Bennies." />
     <Edge Name="Damned" Requires="Wild Card, Legendary, Spirit d6, Reputation" Description="" />
     <Edge Name="Fast as Lightning" Requires="Legendary, Agility d10, Quick" Description="" />
     <Edge Name="Right Hand of The Devil" Requires="Legendary, Trademark Weapon, Shooting d10 or Fighting d10 or Athletics d10" Description="" />
     <Edge Name="True Grit" Requires="Legendary, Spirit d10, Grit" Description="" />
 
     <!-- Blessed -->
-    <Edge Name="Arcane Background (Blessed)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Blessed">
+    <Edge Name="Arcane Background (Blessed)" Requires="Novice, Spirit 6" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Blessed">
       <Skill Name="Faith" Attribute="Spirit" Level="4" />
       <Trait Name="UnusedSkills" Bonus="-1" />
       <Trait Name="PowerPoints:Blessed" Bonus="15" />
@@ -138,6 +139,7 @@
       <Trigger Name="Gesture" />
       <Trigger Name="Holy Water" />
       <Trigger Name="Holy Object" />
+      <Trigger Name="Crystal" />
       <Trigger Name="Talisman" />
 
       <AvailablePower Name="Arcane Protection" />
@@ -202,11 +204,11 @@
     <Edge Name="Flock" Requires="Veteran, Arcane Background (Blessed), Persuasion d8" Description="Flock gives your padre five followers who serve at his side in whatever capacity you choose." />
 
     <!-- Chi Master -->
-    <Edge Name="Arcane Background (Chi Master)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Chi Master">
+    <Edge Name="Arcane Background (Chi Master)" Requires="Novice, Agility d6, Spirit d6, Martial Artist" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Chi Master">
       <Skill Name="Focus" Attribute="Spirit" Level="4" />
       <Trait Name="UnusedSkills" Bonus="-1" />
       <Trait Name="PowerPoints:Chi Master" Bonus="15" />
-      <Trait Name="UnusedPowers:Chi Master" Bonus="3" />
+      <Trait Name="UnusedPowers:Chi Master" Bonus="2" />
       <Feature Name="Arcane Background" />
 
       <Trigger Name="Invocation" />
@@ -216,8 +218,8 @@
       <Trigger Name="Concentration" />
       <Trigger Name="Touch" />
 
-      <Hindrance Name="Backlash (Chi Master)" Description="Critical Failure on a Faith roll cause Fatigue and all powers are terminated." />
-      <Hindrance Name="Internal Focus)" Description="Chi Master powers are limited to range self/touch." />
+      <Hindrance Name="Backlash (Chi Master)" Description="Critical Failure on a Focus roll cause Fatigue and all powers are terminated." />
+      <Hindrance Name="Internal Focus" Description="Chi Master powers are limited to range self/touch." />
 
       <AvailablePower Name="Arcane Protection" />
       <AvailablePower Name="Boost/Lower Trait" />
@@ -237,6 +239,8 @@
       <AvailablePower Name="Smite" />
       <AvailablePower Name="Wall Walker" />
       <AvailablePower Name="Warrior’s Gift" />
+
+      <Power Name="Deflection" />
     </Edge>
 
     <!-- Chi Master Common Edges-->
@@ -325,18 +329,319 @@
       <Trait Name="MaxSmarts" Bonus="2" />
     </Edge>
     <Edge Name="Wither" Requires="Novice, Harrowed" Description="Opposed Spirit roll to cause Strength/Vigor damage." />
+
+    <!-- Huckster -->
+    <Edge Name="Arcane Background (Huckster)" Requires="Novice, Gambling d6" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Huckster">
+      <Skill Name="Spellcasting" Attribute="Smarts" Level="4" />
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints:Huckster" Bonus="10" />
+      <Trait Name="UnusedPowers:Huckster" Bonus="3" />
+      <Feature Name="Arcane Background" />
+
+      <Hindrance Name="Backlash (Huckster)" Description="Critical Failure on a Spellcasting roll cause Fatigue and all powers are terminated." />
+      <Hindrance Name="Deal with the Devil’" Description="May not Short nor spend Bennies for Power Points (see Savage Worlds), but can Deal with the Devil for the ability to cast powers—even ones they don’t have and are above their Rank!" />
+
+      <Trigger Name="Deck of cards" />
+
+      <AvailablePower Name="Ammo Whammy" />
+      <AvailablePower Name="Arcane Protection" />
+      <AvailablePower Name="Barrier" />
+      <AvailablePower Name="Beast Friend" />
+      <AvailablePower Name="Blind" />
+      <AvailablePower Name="Bolt" />
+      <AvailablePower Name="Boost/Lower Trait" />
+      <AvailablePower Name="Burst" />
+      <AvailablePower Name="Confusion" />
+      <AvailablePower Name="Damage Field" />
+      <AvailablePower Name="Deflection" />
+      <AvailablePower Name="Detect/Conceal Arcana" />
+      <AvailablePower Name="Disguise" />
+      <AvailablePower Name="Dispel" />
+      <AvailablePower Name="Divination" />
+      <AvailablePower Name="Elemental Manipulation" />
+      <AvailablePower Name="Empathy" />
+      <AvailablePower Name="Entangle" />
+      <AvailablePower Name="Environmental Protection" />
+      <AvailablePower Name="Farsight" />
+      <AvailablePower Name="Fear" />
+      <AvailablePower Name="Havoc" />
+      <AvailablePower Name="Illusion" />
+      <AvailablePower Name="Intangibility" />
+      <AvailablePower Name="Invisibility" />
+      <AvailablePower Name="Light/Darkness" />
+      <AvailablePower Name="Numb" />
+      <AvailablePower Name="Object Reading" />
+      <AvailablePower Name="Protection" />
+      <AvailablePower Name="Puppet" />
+      <AvailablePower Name="Sloth/Speed" />
+      <AvailablePower Name="Slumber" />
+      <AvailablePower Name="Sound/Silence" />
+      <AvailablePower Name="Speak Language" />
+      <AvailablePower Name="Stun" />
+      <AvailablePower Name="Summon Ally" />
+      <AvailablePower Name="Telekinesis" />
+      <AvailablePower Name="Teleport" />
+      <AvailablePower Name="Trinkets" />
+      <AvailablePower Name="Wall Walker" />
+    </Edge>
+
+    <!-- Huckster Common Edges-->
+    <Edge Name="Artificer (Huckster)" Requires="Seasoned, Arcane Background (Huckster)" Description="Allows user to create Arcane Devices." />
+    <Edge Name="Channeling (Huckster)" Requires="Seasoned, Arcane Background (Huckster)" Description="Reduce Power Point cost by 1 with a raise on the activation roll." />
+    <Edge Name="Concentration (Huckster)" Requires="Seasoned, Arcane Background (Huckster)" Description="Double Duration of non-Instant powers." />
+    <Edge Name="New Power (Huckster)" Requires="Novice, Arcane Background (Huckster)" Description="Your character knows two new powers.">
+      <Trait Name="UnusedPowers:Huckster" Bonus="2" />
+    </Edge>
+    <Edge Name="Power Points (Huckster/Novice)" Requires="Novice, Arcane Background (Huckster)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Huckster" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Huckster/Seasoned)" Requires="Seasoned, Arcane Background (Huckster)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Huckster" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Huckster/Veteran)" Requires="Veteran, Arcane Background (Huckster)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Huckster" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Huckster/Heroic)" Requires="Heroic, Arcane Background (Huckster)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Huckster" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Huckster/Legendary)" Requires="Legendary, Arcane Background (Huckster)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Huckster" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Surge (Huckster)" Requires="Wild Card, Novice, Arcane Background (Huckster), Faith d8" Description="Recover 10 Power Points when dealt a Joker in combat." />
+    <Edge Name="Rapid Recharge (Huckster)" Requires="Seasoned, Spirit d6, Arcane Background (Huckster)" Description="Recover 10 Power Points per hour." />
+    <Edge Name="Improved Rapid Recharge (Huckster)" Requires="Veteran, Rapid Recharge (Huckster)" Description="Recover 20 Power Points per hour." />
+
+    <!-- Huckster Arcane Background Specific -->
+    <Edge Name="Huckster (Huckster)" Requires="Seasoned, Arcane Background (Huckster), Spellcasting d6" Description="Spend 1 extra Power Point to change a spell’s Trapping." />
+
+    <Edge Name="Hexslinging" Requires="Seasoned, Arcane Background (Huckster), Shooting d8" Description="Create a rune gun" PowerType="Huckster">
+      <Power Name="Ammo Whammy" />
+    </Edge>
+
+    <Edge Name="High Roller" Requires="Veteran, High Roller" Description="Draws an extra card anytime he Deals with the Devil" />
+    <Edge Name="Improved High Roller" Requires="Seasoned, Spirit d8, Arcane Background (Huckster), Spellcasting d6" Description="Draws two extra cards anytime he Deals with the Devil" />
+    <Edge Name="Old Hand" Requires="Heroic, Arcane Background (Huckster), Spellcasting d10" Description="When Dealing with the Devil, you can discard up to three cards and redraw" />
+    <Edge Name="Whateley Blood" Requires="Novice, Arcane Background (Huckster)" Description="Voluntarily suffer a Fatigue level for 5 Power Points, or a Wound for 10.">
+      <Hindrance Name="Whateley Blood Mark" Description="Unsettled feeling reduces the huckster’s Persuasion rolls by 1" />
+    </Edge>
+
+    <!-- Mad Scientist -->
+    <Edge Name="Arcane Background (Mad Scientist)" Requires="Novice, Smarts d8, Science d6" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Mad Scientist">
+      <Skill Name="Weird Science" Attribute="Smarts" Level="4" />
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints:Mad Scientist" Bonus="15" />
+      <Trait Name="UnusedPowers:Mad Scientist" Bonus="2" />
+      <Feature Name="Arcane Background" />
+
+      <Hindrance Name="Malfunction (Mad Scientist)" Description="Critical Failure on a Weird Science roll triggers a roll on the Malfunction table." />
+
+      <Trigger Name="Ray Gun" />
+      <Trigger Name="Grenade" />
+      <Trigger Name="Electrical Probes" />
+      <Trigger Name="Chemicals" />
+      <Trigger Name="Potion" />
+      <Trigger Name="Pill" />
+      <Trigger Name="Handheld Scanner" />
+      <Trigger Name="Goggles/glasses" />
+      <Trigger Name="Crystal" />
+
+      <AvailablePower Name="Arcane Protection" />
+      <AvailablePower Name="Barrier" />
+      <AvailablePower Name="Beast Friend" />
+      <AvailablePower Name="Blast" />
+      <AvailablePower Name="Blind" />
+      <AvailablePower Name="Bolt" />
+      <AvailablePower Name="Boost/Lower Trait" />
+      <AvailablePower Name="Burrow" />
+      <AvailablePower Name="Burst" />
+      <AvailablePower Name="Confusion" />
+      <AvailablePower Name="Damage Field" />
+      <AvailablePower Name="Darksight" />
+      <AvailablePower Name="Deflection" />
+      <AvailablePower Name="Detect/Conceal Arcana" />
+      <AvailablePower Name="Disguise" />
+      <AvailablePower Name="Dispel" />
+      <AvailablePower Name="Drain Power Points" />
+      <AvailablePower Name="Elemental Manipulation" />
+      <AvailablePower Name="Empathy" />
+      <AvailablePower Name="Entangle" />
+      <AvailablePower Name="Environmental Protection" />
+      <AvailablePower Name="Farsight" />
+      <AvailablePower Name="Fear" />
+      <AvailablePower Name="Fly" />
+      <AvailablePower Name="Havoc" />
+      <AvailablePower Name="Healing" />
+      <AvailablePower Name="Illusion" />
+      <AvailablePower Name="Intangibility" />
+      <AvailablePower Name="Invisibility" />
+      <AvailablePower Name="Light/Darkness" />
+      <AvailablePower Name="Mind Wipe" />
+      <AvailablePower Name="Numb" />
+      <AvailablePower Name="Protection" />
+      <AvailablePower Name="Puppet" />
+      <AvailablePower Name="Relief" />
+      <AvailablePower Name="Shrink" />
+      <AvailablePower Name="Sloth/Speed" />
+      <AvailablePower Name="Slumber" />
+      <AvailablePower Name="Smite" />
+      <AvailablePower Name="Sound/Silence" />
+      <AvailablePower Name="Speak Language" />
+      <AvailablePower Name="Stun" />
+      <AvailablePower Name="Telekinesis" />
+      <AvailablePower Name="Teleport" />
+      <AvailablePower Name="Wall Walker" />
+      <AvailablePower Name="Warrior’s Gift" />
+      <AvailablePower Name="Zombie" />
+    </Edge>
+
+    <!-- Mad Scientist Common Edges-->
+    <Edge Name="Artificer (Mad Scientist)" Requires="Seasoned, Arcane Background (Mad Scientist)" Description="Allows user to create Arcane Devices." />
+    <Edge Name="Channeling (Mad Scientist)" Requires="Seasoned, Arcane Background (Mad Scientist)" Description="Reduce Power Point cost by 1 with a raise on the activation roll." />
+    <Edge Name="Concentration (Mad Scientist)" Requires="Seasoned, Arcane Background (Mad Scientist)" Description="Double Duration of non-Instant powers." />
+    <Edge Name="New Power (Mad Scientist)" Requires="Novice, Arcane Background (Mad Scientist)" Description="Your character knows two new powers.">
+      <Trait Name="UnusedPowers:Mad Scientist" Bonus="2" />
+    </Edge>
+    <Edge Name="Power Points (Mad Scientist/Novice)" Requires="Novice, Arcane Background (Mad Scientist)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Mad Scientist" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Mad Scientist/Seasoned)" Requires="Seasoned, Arcane Background (Mad Scientist)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Mad Scientist" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Mad Scientist/Veteran)" Requires="Veteran, Arcane Background (Mad Scientist)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Mad Scientist" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Mad Scientist/Heroic)" Requires="Heroic, Arcane Background (Mad Scientist)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Mad Scientist" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Mad Scientist/Legendary)" Requires="Legendary, Arcane Background (Mad Scientist)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Mad Scientist" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Surge (Mad Scientist)" Requires="Wild Card, Novice, Arcane Background (Mad Scientist), Faith d8" Description="Recover 10 Power Points when dealt a Joker in combat." />
+    <Edge Name="Rapid Recharge (Mad Scientist)" Requires="Seasoned, Spirit d6, Arcane Background (Mad Scientist)" Description="Recover 10 Power Points per hour." />
+    <Edge Name="Improved Rapid Recharge (Mad Scientist)" Requires="Veteran, Rapid Recharge (Mad Scientist)" Description="Recover 20 Power Points per hour." />
+
+    <!-- Mad Scientist Arcane Background Specific -->
+    <Edge Name="Gadgeteer (Mad Scientist)" Requires="Seasoned, Arcane Background (Mad Scientist), Weird Science d6" Description="Spend 3 Power Points to create a device that replicates another power." />
+    <Edge Name="Alchemy" Requires="Seasoned, Arcane Background (Mad Scientist), Weird Science d8" Description="Create potions." />
+    <Edge Name="Iron Bound" Requires="Novice, Arcane Background (Mad Scientist)" Description="Access to equipment and supplies at a discounted price." />
+    <Edge Name="Ore Eater" Requires="Novice, Arcane Background (Mad Scientist), Weird Science d6" Description="Addicted to eating ghost rock.">
+      <Trait Name="PowerPoints:Mad Scientist" Bonus="5" />
+    </Edge>
+    <Edge Name="True Genius" Requires="Novice, Smarts d8+, Arcane Background (Mad Scientist)" Description="Spend a Benny to roll again on the Madness and Malfunction tables" />
+
+    <!-- Shaman -->
+    <Edge Name="Arcane Background (Shaman)" Requires="Novice, Spirit d8" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Shaman">
+      <Skill Name="Faith" Attribute="Spirit" Level="4" />
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints:Shaman" Bonus="15" />
+      <Trait Name="UnusedPowers:Shaman" Bonus="2" />
+      <Feature Name="Arcane Background" />
+
+      <Hindrance Name="Backlash (Shaman)" Description="Critical Failure on a Faith roll cause Fatigue and all powers are terminated." />
+
+      <Trigger Name="Invocation" />
+      <Trigger Name="Chant" />
+      <Trigger Name="Prayer" />
+      <Trigger Name="Gesture" />
+      <Trigger Name="Holy Water" />
+      <Trigger Name="Holy Object" />
+      <Trigger Name="Crystal" />
+      <Trigger Name="Talisman" />
+      <Trigger Name="Dream-catcher" />
+      <Trigger Name="Peace Pipe" />
+      <Trigger Name="Rattle" />
+
+      <AvailablePower Name="Arcane Protection" />
+      <AvailablePower Name="Banish" />
+      <AvailablePower Name="Beast Friend" />
+      <AvailablePower Name="Blind" />
+      <AvailablePower Name="Boost/Lower Trait" />
+      <AvailablePower Name="Burrow" />
+      <AvailablePower Name="Confusion" />
+      <AvailablePower Name="Curse" />
+      <AvailablePower Name="Darksight" />
+      <AvailablePower Name="Deflection" />
+      <AvailablePower Name="Detect/Conceal Arcana" />
+      <AvailablePower Name="Disguise" />
+      <AvailablePower Name="Dispel" />
+      <AvailablePower Name="Divination" />
+      <AvailablePower Name="Drain Power Points" />
+      <AvailablePower Name="Elemental Manipulation" />
+      <AvailablePower Name="Empathy" />
+      <AvailablePower Name="Entangle" />
+      <AvailablePower Name="Environmental Protection" />
+      <AvailablePower Name="Farsight" />
+      <AvailablePower Name="Fear" />
+      <AvailablePower Name="Growth" />
+      <AvailablePower Name="Havoc" />
+      <AvailablePower Name="Healing" />
+      <AvailablePower Name="Holy Symbol" />
+      <AvailablePower Name="Intangibility" />
+      <AvailablePower Name="Numb" />
+      <AvailablePower Name="Protection" />
+      <AvailablePower Name="Relief" />
+      <AvailablePower Name="Resurrection" />
+      <AvailablePower Name="Sanctify" />
+      <AvailablePower Name="Shape Change" />
+      <AvailablePower Name="Sloth/Speed" />
+      <AvailablePower Name="Slumber" />
+      <AvailablePower Name="Smite" />
+      <AvailablePower Name="Speak Language" />
+      <AvailablePower Name="Summon Ally" />
+      <AvailablePower Name="Teleport" />
+      <AvailablePower Name="Wall Walker" />
+      <AvailablePower Name="Warrior’s Gift" />
+      <AvailablePower Name="Wilderness Walk" />
+    </Edge>
+
+    <!-- Shaman Common Edges-->
+    <Edge Name="Artificer (Shaman)" Requires="Seasoned, Arcane Background (Shaman)" Description="Allows user to create Arcane Devices." />
+    <Edge Name="Channeling (Shaman)" Requires="Seasoned, Arcane Background (Shaman)" Description="Reduce Power Point cost by 1 with a raise on the activation roll." />
+    <Edge Name="Concentration (Shaman)" Requires="Seasoned, Arcane Background (Shaman)" Description="Double Duration of non-Instant powers." />
+    <Edge Name="New Power (Shaman)" Requires="Novice, Arcane Background (Shaman)" Description="Your character knows two new powers.">
+      <Trait Name="UnusedPowers:Shaman" Bonus="2" />
+    </Edge>
+    <Edge Name="Power Points (Shaman/Novice)" Requires="Novice, Arcane Background (Shaman)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Shaman" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Shaman/Seasoned)" Requires="Seasoned, Arcane Background (Shaman)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Shaman" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Shaman/Veteran)" Requires="Veteran, Arcane Background (Shaman)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Shaman" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Shaman/Heroic)" Requires="Heroic, Arcane Background (Shaman)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Shaman" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Shaman/Legendary)" Requires="Legendary, Arcane Background (Shaman)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Shaman" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Surge (Shaman)" Requires="Wild Card, Novice, Arcane Background (Shaman), Faith d8" Description="Recover 10 Power Points when dealt a Joker in combat." />
+    <Edge Name="Rapid Recharge (Shaman)" Requires="Seasoned, Spirit d6, Arcane Background (Shaman)" Description="Recover 10 Power Points per hour." />
+    <Edge Name="Improved Rapid Recharge (Shaman)" Requires="Veteran, Rapid Recharge (Shaman)" Description="Recover 20 Power Points per hour." />
+
+    <!-- Shaman Arcane Background Specific Edges-->
+    <Edge Name="Holy/Unholy Warrior (Shaman)" Requires="Seasoned, Arcane Background (Shaman), Faith d6" Description="Add +1 to +4 to Soak rolls for each Power Point spent." />
+    <Edge Name="Fetish" Requires="Novice, Arcane Background (Shaman), Faith d8" Description="One free reroll when she makes a Faith roll" />
+    <!-- TODO-5 May be taken muliple times-->
+    <Edge Name="Spirit's Favor" Requires="Seasoned, Arcane Background (Shaman), Faith d8" Description="Choose one power. May cast that power without incurring a Multi-Action penalty." />
   </Edges>
 
   <Archetypes>
-    <Archetype Name="Blessed"  Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="12">
+
+    <Archetype Name="Blessed"  Agility="4" Smarts="4" Spirit="6" Strength="4" Vigor="4" UnusedAttributes="4" UnusedSkills="12">
       <Trait Name="UnusedEdges" Bonus ="-1" />
       <Edge Name="Arcane Background (Blessed)" />
     </Archetype>
-    <Archetype Name="Chi Master"  Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="12">
-      <Trait Name="UnusedEdges" Bonus ="-1" />
+
+    <Archetype Name="Chi Master"  Agility="6" Smarts="4" Spirit="6" Strength="4" Vigor="4" UnusedAttributes="3" UnusedSkills="10">
+      <Trait Name="UnusedEdges" Bonus ="-2" />
       <Edge Name="Arcane Background (Chi Master)" />
+      <Edge Name="Martial Artist" />
+      <Skill Name="Fighting" Level="6" />
     </Archetype>
-    <Archetype Name="Agent" Agility="4" Smarts="8" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="3" UnusedSkills="4">
+
+    <Archetype Name="Agent" Agility="6" Smarts="8" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="2" UnusedSkills="4">
       <Skill Name="Fighting" Level="6" />
       <Skill Name="Occult" Level="6" />
       <Skill Name="Research" Level="6" />
@@ -345,20 +650,59 @@
       <Trait Name="UnusedEdges" Bonus ="-1" />
     </Archetype>
 
+    <Archetype Name="Territorial Ranger" Agility="6" Smarts="4" Spirit="6" Strength="4" Vigor="6" UnusedAttributes="2" UnusedSkills="3">
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Riding" Level="6" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Survival" Level="4" />
+      <Edge Name="Territorial Ranger" />
+      <Trait Name="UnusedEdges" Bonus ="-1" />
+    </Archetype>
+
+    <Archetype Name="Huckster"  Agility="4" Smarts="6" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="4" UnusedSkills="10">
+      <Trait Name="UnusedEdges" Bonus ="-1" />
+      <Edge Name="Arcane Background (Huckster)" />
+      <Skill Name="Gambling" Level="6" />
+    </Archetype>
+
+    <Archetype Name="Mad Scientist"  Agility="4" Smarts="8" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="3" UnusedSkills="10">
+      <Trait Name="UnusedEdges" Bonus ="-1" />
+      <Edge Name="Arcane Background (Mad Scientist)" />
+      <Skill Name="Science" Level="6" />
+    </Archetype>
+
+    <Archetype Name="Shaman"  Agility="4" Smarts="4" Spirit="8" Strength="4" Vigor="4" UnusedAttributes="3" UnusedSkills="12">
+      <Trait Name="UnusedEdges" Bonus ="-1" />
+      <Edge Name="Arcane Background (Shaman)" />
+      <Hindrance Name="Old Ways Oath" />
+    </Archetype>
+
+    <Archetype Name="Hexslinger"  Agility="8" Smarts="6" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="2" UnusedSkills="2">
+      <Trait Name="UnusedEdges" Bonus ="-2" />
+      <Edge Name="Arcane Background (Huckster)" />
+      <Edge Name="Hexslinging" />
+      <Skill Name="Shooting" Level="8" />
+      <Skill Name="Gambling" Level="6" />
+    </Archetype>
+
     <Archetype Name="Soldier"  Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="12">
       <Edge Name="Soldier" />
       <Trait Name="UnusedEdges" Bonus ="-1" />
     </Archetype>
+
     <Archetype Name="Soldier NCO"  Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="12">
       <Edge Name="Soldier NCO" />
       <Trait Name="UnusedEdges" Bonus ="-1" />
     </Archetype>
+
     <Archetype Name="Soldier Officer"  Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="8">
       <Edge Name="Soldier Officer" />
       <Skill Name="Academics" Level="6" />
       <Skill Name="Battle" Level="6" />
       <Trait Name="UnusedEdges" Bonus ="-1" />
     </Archetype>
+
     <Archetype Name="Harrowed"  Agility="4" Smarts="4" Spirit="6" Strength="4" Vigor="4" UnusedAttributes="4" UnusedSkills="12" IsWildCard="true">
       <Edge Name="Harrowed" />
     </Archetype>
