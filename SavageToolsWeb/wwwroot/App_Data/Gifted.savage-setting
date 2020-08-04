@@ -49,9 +49,5 @@
 
     <!-- Arcane Background Specific -->
     <Edge Name="Extra Effort (Gifted)" Requires="Seasoned, Arcane Background (Gifted), Focus d6" Description="Increase Focus by +1 for 1 Power Point or +2 for 3 Power Points." />
-    <Edge Name="Gadgeteer (Weird Science)" Requires="Seasoned, Arcane Background (Weird Science), Weird Science d6" Description="Spend 3 Power Points to create a device that replicates another power." />
-    <Edge Name="Holy/Unholy Warrior (Miracles)" Requires="Seasoned, Arcane Background (Miracles), Faith d6" Description="Add +1 to +4 to Soak rolls for each Power Point spent." />
-    <Edge Name="Mentalist (Psionics)" Requires="Seasoned, Arcane Background (Psionics), Psionics d6" Description="+2 to opposed Psionics rolls." />
-    <Edge Name="Wizard (Magic)" Requires="Seasoned, Arcane Background (Magic), Spellcasting d6" Description="Spend 1 extra Power Point to change a spell’s Trapping." />
   </Edges>
 </Setting>

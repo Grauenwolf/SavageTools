@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Deadlands Weird West">
+  <References>
+    <Reference Name="Core" />
+    <Reference Name="Arcana" />
+  </References>
+
+  <RemoveSkills>
+    <Skill Name="Electronics" />
+    <Skill Name="Hacking" />
+  </RemoveSkills>
+
+  <Skills>
+    <Skill Name="Trade" Attribute="Smarts" NoAnimals="true" />
+    <!-- etc. -->
+  </Skills>
+
+  <Hindrances>
+    <Hindrance Name="Ailin’" Type="Minor" Description="Subtract 1 from any roll made to resist Fatigue from any source." />
+    <Hindrance Name="Ailin’" Type="Major" Description="Subtract 2 from any roll made to resist Fatigue from any source." />
+    <Hindrance Name="Cursed" Type="Major" Description="For each player character with the Cursed Hindrance, the GM starts with one additional Benny." />
+    <!-- TODO-20 Wild card only hindrance-->
+    <Hindrance Name="Grim Servant O’ Death" Type="Major" Requires="Wild Card" Description="Adds +1 to every damage roll regardless of source. Anytime his attack roll is a Critical Failure, he hits the nearest ally in sight with a raise." />
+    <Hindrance Name="Heavy Sleeper" Type="Minor" Description="Make a Notice roll (−4) to wake up. He also suffers a −4 penalty to Vigor rolls made to stay awake." />
+    <Hindrance Name="Lyin’ Eyes" Type="Minor" Description="A −1 penalty to all Gambling, Intimidation, and Persuasion rolls where lies—even little ones—must be told." />
+    <Hindrance Name="Night Terrors" Type="Major" Description="He suffers a −1 penalty to all Spirit rolls." />
+    <Hindrance Name="Old Ways Oath" Type="Minor" Description="Free reroll on any Spirit roll. Using technology or ghost rock violates the oath." />
+    <Hindrance Name="Talisman" Type="Minor" Requires="Arcane Background" Description="–1 to all arcane skill rolls if talisman is not available." />
+    <Hindrance Name="Talisman" Type="Major" Requires="Arcane Background" Description="–2 to all arcane skill rolls if talisman is not available." />
+    <Hindrance Name="Tenderfoot" Type="Major" Description="If wounded, take an extra -1 penality to all actions." />
+    <Hindrance Name="Trouble Magnet" Type="Minor" Requires="Wild Card" Description="Critical failures are worse." />
+    <Hindrance Name="Trouble Magnet" Type="Major" Description="Any negative effect against a &quot;random character&quot; targets this character." />
+  </Hindrances>
+
+  <Powers>
+    <!-- New powers. -->
+    <Power Name="Ammo Whammy" Requires="Seasoned" PowerPoints="4" Range="Self" Duration="5" Description="See text." />
+    <Power Name="Curse" Requires="Seasoned" PowerPoints="5" Range="T" Duration="Permanent" Description="Victim suffers Fatigue." />
+    <Power Name="Holy Symbol" Requires="Novice" PowerPoints="3" Range="Self" Duration="5" Description="Supernaturally evil cannot attack" />
+    <Power Name="Numb" Requires="Novice" PowerPoints="2" Range="Spirit" Duration="5" Description="Ignore wound penalities and injuries" />
+    <Power Name="Sanctify" Requires="Veteran" PowerPoints="10" Range="Special" Duration="Until sunset" Description="Supernaturally evil cannot enter" />
+    <Power Name="Trinkets" Requires="Novice" PowerPoints="3" Range="Smarts" Duration="5" Description="Create small objects." />
+    <Power Name="Wilderness Walk" Requires="Novice" PowerPoints="2" Range="Self" Duration="One hour" Description="Triple long-distance speed. Conceal tracks." />
+
+    <!-- Split powers. -->
+    <Power Name="Detect Arcana" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="S" Description="Detects magic for Duration 5 or conceals it for one hour." />
+    <Power Name="Light" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="10m" Description="Creates illumination." />
+  </Powers>
+
+  <Edges>
+    <!-- Blessed -->
+    <Edge Name="Arcane Background (Blessed)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Blessed">
+      <Skill Name="Faith" Attribute="Spirit" Level="4" />
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints:Blessed" Bonus="15" />
+      <Trait Name="UnusedPowers:Blessed" Bonus="2" />
+      <Feature Name="Arcane Background" />
+
+      <Trigger Name="Invocation" />
+      <Trigger Name="Chant" />
+      <Trigger Name="Prayer" />
+      <Trigger Name="Gesture" />
+      <Trigger Name="Holy Water" />
+      <Trigger Name="Holy Object" />
+      <Trigger Name="Talisman" />
+
+      <AvailablePower Name="Arcane Protection" />
+      <AvailablePower Name="Banish" />
+      <AvailablePower Name="Barrier" />
+      <AvailablePower Name="Beast Friend" />
+      <AvailablePower Name="Blind" />
+      <AvailablePower Name="Boost/Lower Trait" />
+      <AvailablePower Name="Confusion" />
+      <AvailablePower Name="Deflection" />
+      <AvailablePower Name="Detect Arcana" />
+      <AvailablePower Name="Dispel" />
+      <AvailablePower Name="Divination" />
+      <AvailablePower Name="Elemental Manipulation" />
+      <AvailablePower Name="Empathy" />
+      <AvailablePower Name="Environmental Protection" />
+      <AvailablePower Name="Havoc" />
+      <AvailablePower Name="Healing" />
+      <AvailablePower Name="Light" />
+      <AvailablePower Name="Protection" />
+      <AvailablePower Name="Relief" />
+      <AvailablePower Name="Resurrection" />
+      <AvailablePower Name="Sanctify" />
+      <AvailablePower Name="Sloth/Speed" />
+      <AvailablePower Name="Smite" />
+      <AvailablePower Name="Speak Language" />
+      <AvailablePower Name="Stun" />
+      <AvailablePower Name="Warrior’s Gift" />
+
+      <Power Name="Holy Symbol" />
+    </Edge>
+
+    <!-- Blessed Common Edges-->
+    <Edge Name="Artificer (Blessed)" Requires="Seasoned, Arcane Background (Blessed)" Description="Allows user to create Arcane Devices." />
+    <Edge Name="Channeling (Blessed)" Requires="Seasoned, Arcane Background (Blessed)" Description="Reduce Power Point cost by 1 with a raise on the activation roll." />
+    <Edge Name="Concentration (Blessed)" Requires="Seasoned, Arcane Background (Blessed)" Description="Double Duration of non-Instant powers." />
+    <Edge Name="New Power (Blessed)" Requires="Novice, Arcane Background (Blessed)" Description="Your character knows two new powers.">
+      <Trait Name="UnusedPowers:Blessed" Bonus="2" />
+    </Edge>
+    <Edge Name="Power Points (Blessed/Novice)" Requires="Novice, Arcane Background (Blessed)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Blessed" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Blessed/Seasoned)" Requires="Seasoned, Arcane Background (Blessed)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Blessed" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Blessed/Veteran)" Requires="Veteran, Arcane Background (Blessed)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Blessed" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Blessed/Heroic)" Requires="Heroic, Arcane Background (Blessed)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Blessed" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Blessed/Legendary)" Requires="Legendary, Arcane Background (Blessed)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Blessed" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Surge (Blessed)" Requires="Wild Card, Novice, Arcane Background (Blessed), Faith d8" Description="Recover 10 Power Points when dealt a Joker in combat." />
+    <Edge Name="Rapid Recharge (Blessed)" Requires="Seasoned, Spirit d6, Arcane Background (Blessed)" Description="Recover 10 Power Points per hour." />
+    <Edge Name="Improved Rapid Recharge (Blessed)" Requires="Veteran, Rapid Recharge (Blessed)" Description="Recover 20 Power Points per hour." />
+
+    <!-- Blessed Arcane Background Specific Edges-->
+    <Edge Name="Holy/Unholy Warrior (Blessed)" Requires="Seasoned, Arcane Background (Blessed), Faith d6" Description="Add +1 to +4 to Soak rolls for each Power Point spent." />
+    <Edge Name="True Believer" Requires="Novice, Arcane Background (Blessed), Spirit d10, Faith d6" Description="Free reroll on Faith rolls" />
+    <Edge Name="Flock" Requires="Veteran, Arcane Background (Blessed), Persuasion d8" Description="Flock gives your padre five followers who serve at his side in whatever capacity you choose." />
+  </Edges>
+
+  <Archetypes>
+    <Archetype Name="Preacher"  Agility="4" Smarts="4" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="5" UnusedSkills="12">
+      <Trait Name="UnusedEdges" Bonus ="-1" />
+      <Edge Name="Arcane Background (Blessed)" />
+    </Archetype>
+  </Archetypes>
+</Setting>

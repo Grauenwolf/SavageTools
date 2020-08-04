@@ -18,7 +18,6 @@
 
   <Powers>
     <Power Name="Arcane Protection" Requires="Novice" PowerPoints="1" Range="Smarts" Duration="5" Description="Enemy casters subtract 2 (4 with a raise) when targeting this character; reduces damage a like amount." />
-    <Power Name="Banish" Requires="Veteran" PowerPoints="1" Range="Smarts" Duration="5" Description="Enemy casters subtract 2 (4 with a raise) when targeting this character; reduces damage a like amount." />
     <Power Name="Banish" Requires="Veteran" PowerPoints="3" Range="Smarts" Duration="I" Description="Opposed roll vs Spirit to banish entities." />
     <Power Name="Barrier" Requires="Seasoned" PowerPoints="2" Range="Smarts" Duration="5" Description="Creates 5″ (10 yards) long, 1″ (2 yards) tall, Hardness 10 barrier." />
     <Power Name="Beast Friend" Requires="Novice" PowerPoints="2" Range="Smarts" Duration="10m" Description="Controls animals." />

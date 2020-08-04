@@ -398,7 +398,7 @@ namespace SavageTools.Characters
             PickEdge(result, dice, null, null, bornAHero);
         }
 
-        public static void ApplyEdge(Character result, SettingEdge edge, Dice dice)
+        public void ApplyEdge(Character result, SettingEdge edge, Dice dice)
         {
             result.Edges.Add(new Edge() { Name = edge.Name, Description = edge.Description, UniqueGroup = edge.UniqueGroup });
 
@@ -437,6 +437,10 @@ namespace SavageTools.Characters
                     if (skill.MaxLevel < skill.Trait)
                         skill.MaxLevel = skill.Trait;
                 }
+
+            if (edge.Powers != null)
+                foreach (var item in edge.Powers)
+                    ApplyPower(result, result.PowerGroups[edge.PowerType], item, dice);
         }
 
         private static void PickAdvancement(Character result, Dice dice)
@@ -886,7 +890,7 @@ namespace SavageTools.Characters
             result.UnusedHindrances -= useMajor ? 2 : 1;
         }
 
-        private static void PickIconicEdge(Character result, Dice dice, SettingArchetype archetype, bool bornAHero)
+        private void PickIconicEdge(Character result, Dice dice, SettingArchetype archetype, bool bornAHero)
         {
             var table = new Table<SettingEdge>();
 
@@ -916,6 +920,41 @@ namespace SavageTools.Characters
 
                 result.UnusedIconicEdges -= 1;
             }
+        }
+
+        /// <summary>
+        /// Adds the indicated power to the character.
+        /// </summary>
+        /// <remarks>This does NOT deduct a power slot. Nor does it check requirements.</remarks>
+        private void ApplyPower(Character result, PowerGroup group, SettingPower power, Dice dice)
+        {
+            var trappings = new List<SettingTrapping>();
+
+            foreach (var item in Trappings)
+            {
+                if (group.AvailableTrappings.Count > 0 && !group.AvailableTrappings.Contains(item.Name))
+                    continue;
+
+                if (group.ProhibitedTrappings.Contains(item.Name))
+                    continue;
+
+                trappings.Add(item);
+            }
+
+            var trapping = dice.Choose(trappings);
+            var trigger = dice.Choose(group.AvailableTriggers);
+
+            var settingPower = Powers.FirstOrDefault(p => p.Name == power.Name);
+            if (settingPower != null) //copy missing fields
+            {
+                if (power.Description.IsNullOrEmpty())
+                    power.Description = settingPower.Description;
+
+                if (power.PowerPointsString.IsNullOrEmpty())
+                    power.PowerPointsString = settingPower.PowerPointsString;
+            }
+
+            group.Powers.Add(new Power(power, trapping.Name, trigger));
         }
 
         private void PickPower(Character result, PowerGroup group, Dice dice, bool bornAHero)
@@ -964,7 +1003,7 @@ namespace SavageTools.Characters
             group.UnusedPowers -= 1;
         }
 
-        private static void PickRacialEdge(Character result, Dice dice, SettingRace race, bool bornAHero)
+        private void PickRacialEdge(Character result, Dice dice, SettingRace race, bool bornAHero)
         {
             var table = new Table<SettingEdge>();
 

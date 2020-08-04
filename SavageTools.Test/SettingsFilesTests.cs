@@ -97,7 +97,7 @@ namespace SavageTools.Test
             };
 
             foreach (var edge in characterGenerator.Edges)
-                CharacterGenerator.ApplyEdge(character, edge, dice);
+                characterGenerator.ApplyEdge(character, edge, dice);
 
             Debug.WriteLine(character.ToMarkdownString(false));
         }

@@ -154,6 +154,9 @@ namespace SavageTools.Settings
         [XmlElement("AvailablePower")]
         public SettingAvailablePower[] AvailablePowers { get; set; }
 
+        [XmlElement("Power")]
+        public SettingPower[] Powers { get; set; }
+
         /// <remarks/>
         [XmlElement("Trigger")]
         public SettingTrigger[] Triggers { get; set; }

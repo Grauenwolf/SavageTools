@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using SavageTools.Characters;
+using SavageToolsWeb.Shared;
 using System.IO;
 
 namespace SavageToolsWeb.Pages
