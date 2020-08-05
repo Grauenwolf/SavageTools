@@ -86,8 +86,10 @@ else
                     <td colspan="2">
                         <label> <InputCheckbox @bind-Value="Options.MoreSkills" /> More Skills</label>
                     </td>
+                    <td />
                 </tr>
             </table>
+            <div>If the archetype is marked with "(PC)", then it follows standard character creation rules. Otherwise it may have more or less capabilities than a standard character.</div>
             <div>
                 Display Mode: <InputSelect id="parentSection" @bind-Value="DisplayMode" @onclick="OnClick" @onkeyup="OnKeyUp">
                     <option value="HTML" selected>HTML</option>
@@ -116,7 +118,7 @@ else
 
                 <table class="gridtable">
                     <tr><th>Gender</th><th>Archetype</th><th>Race</th><th>Rank</th><th>Personality</th></tr>
-                    <tr><td>@(chr.Gender)</td><td>@(chr.Archetype)</td><td>@(chr.Race)</td><td>@(chr.Rank)</td><td>@(string.Join(", ", chr.Personality.Select(x => x.Name)))</td></tr>
+                    <tr><td>@(chr.Gender)</td><td>@(chr.Archetype)</td><td>@(chr.Race)</td><td>@(chr.Rank + (chr.IsWildCard ? " Wild Card" : "")  )</td><td>@(string.Join(", ", chr.Personality.Select(x => x.Name)))</td></tr>
                 </table>
 
                 <table class="gridtable">

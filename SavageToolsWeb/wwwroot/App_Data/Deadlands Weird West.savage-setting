@@ -141,6 +141,7 @@
       <Trigger Name="Holy Object" />
       <Trigger Name="Crystal" />
       <Trigger Name="Talisman" />
+      <Trigger Name="Candle" />
 
       <AvailablePower Name="Arcane Protection" />
       <AvailablePower Name="Banish" />
@@ -199,7 +200,7 @@
     <Edge Name="Improved Rapid Recharge (Blessed)" Requires="Veteran, Rapid Recharge (Blessed)" Description="Recover 20 Power Points per hour." />
 
     <!-- Blessed Arcane Background Specific Edges-->
-    <Edge Name="Holy/Unholy Warrior (Blessed)" Requires="Seasoned, Arcane Background (Blessed), Faith d6" Description="Add +1 to +4 to Soak rolls for each Power Point spent." />
+    <Edge Name="Holy Warrior (Blessed)" Requires="Seasoned, Arcane Background (Blessed), Faith d6" Description="Add +1 to +4 to Soak rolls for each Power Point spent." />
     <Edge Name="True Believer" Requires="Novice, Arcane Background (Blessed), Spirit d10, Faith d6" Description="Free reroll on Faith rolls" />
     <Edge Name="Flock" Requires="Veteran, Arcane Background (Blessed), Persuasion d8" Description="Flock gives your padre five followers who serve at his side in whatever capacity you choose." />
 
@@ -625,23 +626,75 @@
     <Edge Name="Fetish" Requires="Novice, Arcane Background (Shaman), Faith d8" Description="One free reroll when she makes a Faith roll" />
     <!-- TODO-5 May be taken muliple times-->
     <Edge Name="Spirit's Favor" Requires="Seasoned, Arcane Background (Shaman), Faith d8" Description="Choose one power. May cast that power without incurring a Multi-Action penalty." />
+
+    <!-- Black Magic -->
+    <Edge Name="Arcane Background (Black Magic)" Requires="Novice, Spirit 6" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Black Magic">
+      <Skill Name="Spellcasting" Attribute="Smarts" Level="4" />
+      <Trait Name="UnusedSkills" Bonus="-1" />
+      <Trait Name="PowerPoints:Black Magic" Bonus="15" />
+      <Trait Name="UnusedPowers:Black Magic" Bonus="6" />
+      <Feature Name="Arcane Background" />
+
+      <Hindrance Name="Backlash (Black Magic)" Description="Critical Failure on a Spellcasting roll causes Punishment table roll." />
+
+      <Trigger Name="Invocation" />
+      <Trigger Name="Chant" />
+      <Trigger Name="Prayer" />
+      <Trigger Name="Gesture" />
+      <Trigger Name="Blood" />
+      <Trigger Name="Ritual Dagger" />
+      <Trigger Name="Crystal" />
+      <Trigger Name="Talisman" />
+      <Trigger Name="Candle" />
+    </Edge>
+
+    <!-- Black Magic Common Edges-->
+    <Edge Name="Artificer (Black Magic)" Requires="Seasoned, Arcane Background (Black Magic)" Description="Allows user to create Arcane Devices." />
+    <Edge Name="Channeling (Black Magic)" Requires="Seasoned, Arcane Background (Black Magic)" Description="Reduce Power Point cost by 1 with a raise on the activation roll." />
+    <Edge Name="Concentration (Black Magic)" Requires="Seasoned, Arcane Background (Black Magic)" Description="Double Duration of non-Instant powers." />
+    <Edge Name="New Power (Black Magic)" Requires="Novice, Arcane Background (Black Magic)" Description="Your character knows two new powers.">
+      <Trait Name="UnusedPowers:Black Magic" Bonus="2" />
+    </Edge>
+    <Edge Name="Power Points (Black Magic/Novice)" Requires="Novice, Arcane Background (Black Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Black Magic" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Black Magic/Seasoned)" Requires="Seasoned, Arcane Background (Black Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Black Magic" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Black Magic/Veteran)" Requires="Veteran, Arcane Background (Black Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Black Magic" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Black Magic/Heroic)" Requires="Heroic, Arcane Background (Black Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Black Magic" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Points (Black Magic/Legendary)" Requires="Legendary, Arcane Background (Black Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+      <Trait Name="PowerPoints:Black Magic" Bonus="5" />
+    </Edge>
+    <Edge Name="Power Surge (Black Magic)" Requires="Wild Card, Novice, Arcane Background (Black Magic), Faith d8" Description="Recover 10 Power Points when dealt a Joker in combat." />
+    <Edge Name="Rapid Recharge (Black Magic)" Requires="Seasoned, Spirit d6, Arcane Background (Black Magic)" Description="Recover 10 Power Points per hour." />
+    <Edge Name="Improved Rapid Recharge (Black Magic)" Requires="Veteran, Rapid Recharge (Black Magic)" Description="Recover 20 Power Points per hour." />
+
+    <!-- Black Magic Arcane Background Specific Edges-->
+    <Edge Name="Unholy Warrior (Black Magic)" Requires="Seasoned, Arcane Background (Black Magic), Spellcasting d6" Description="Add +1 to +4 to Soak rolls for each Power Point spent." />
+    <Edge Name="True Believer" Requires="Novice, Arcane Background (Black Magic), Spirit d10, Spellcasting d6" Description="Free reroll on Spellcasting rolls" />
+    <Edge Name="Flock" Requires="Veteran, Arcane Background (Black Magic), Persuasion d8" Description="Flock gives your padre five followers who serve at his side in whatever capacity you choose." />
   </Edges>
 
   <Archetypes>
 
-    <Archetype Name="Blessed"  Agility="4" Smarts="4" Spirit="6" Strength="4" Vigor="4" UnusedAttributes="4" UnusedSkills="12">
+    <Archetype Name="Blessed (PC)"  Agility="4" Smarts="4" Spirit="6" Strength="4" Vigor="4" UnusedAttributes="4" UnusedSkills="12">
       <Trait Name="UnusedEdges" Bonus ="-1" />
       <Edge Name="Arcane Background (Blessed)" />
     </Archetype>
 
-    <Archetype Name="Chi Master"  Agility="6" Smarts="4" Spirit="6" Strength="4" Vigor="4" UnusedAttributes="3" UnusedSkills="10">
+    <Archetype Name="Chi Master (PC)"  Agility="6" Smarts="4" Spirit="6" Strength="4" Vigor="4" UnusedAttributes="3" UnusedSkills="10">
       <Trait Name="UnusedEdges" Bonus ="-2" />
       <Edge Name="Arcane Background (Chi Master)" />
       <Edge Name="Martial Artist" />
       <Skill Name="Fighting" Level="6" />
     </Archetype>
 
-    <Archetype Name="Agent" Agility="6" Smarts="8" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="2" UnusedSkills="4">
+    <Archetype Name="Agent (PC)" Agility="6" Smarts="8" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="2" UnusedSkills="4">
       <Skill Name="Fighting" Level="6" />
       <Skill Name="Occult" Level="6" />
       <Skill Name="Research" Level="6" />
@@ -650,7 +703,7 @@
       <Trait Name="UnusedEdges" Bonus ="-1" />
     </Archetype>
 
-    <Archetype Name="Territorial Ranger" Agility="6" Smarts="4" Spirit="6" Strength="4" Vigor="6" UnusedAttributes="2" UnusedSkills="3">
+    <Archetype Name="Territorial Ranger (PC)" Agility="6" Smarts="4" Spirit="6" Strength="4" Vigor="6" UnusedAttributes="2" UnusedSkills="3">
       <Skill Name="Fighting" Level="6" />
       <Skill Name="Intimidation" Level="6" />
       <Skill Name="Riding" Level="6" />
@@ -660,25 +713,25 @@
       <Trait Name="UnusedEdges" Bonus ="-1" />
     </Archetype>
 
-    <Archetype Name="Huckster"  Agility="4" Smarts="6" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="4" UnusedSkills="10">
+    <Archetype Name="Huckster (PC)"  Agility="4" Smarts="6" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="4" UnusedSkills="10">
       <Trait Name="UnusedEdges" Bonus ="-1" />
       <Edge Name="Arcane Background (Huckster)" />
       <Skill Name="Gambling" Level="6" />
     </Archetype>
 
-    <Archetype Name="Mad Scientist"  Agility="4" Smarts="8" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="3" UnusedSkills="10">
+    <Archetype Name="Mad Scientist (PC)"  Agility="4" Smarts="8" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="3" UnusedSkills="10">
       <Trait Name="UnusedEdges" Bonus ="-1" />
       <Edge Name="Arcane Background (Mad Scientist)" />
       <Skill Name="Science" Level="6" />
     </Archetype>
 
-    <Archetype Name="Shaman"  Agility="4" Smarts="4" Spirit="8" Strength="4" Vigor="4" UnusedAttributes="3" UnusedSkills="12">
+    <Archetype Name="Shaman (PC)"  Agility="4" Smarts="4" Spirit="8" Strength="4" Vigor="4" UnusedAttributes="3" UnusedSkills="12">
       <Trait Name="UnusedEdges" Bonus ="-1" />
       <Edge Name="Arcane Background (Shaman)" />
       <Hindrance Name="Old Ways Oath" />
     </Archetype>
 
-    <Archetype Name="Hexslinger"  Agility="8" Smarts="6" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="2" UnusedSkills="2">
+    <Archetype Name="Hexslinger (PC)"  Agility="8" Smarts="6" Spirit="4" Strength="4" Vigor="4" UnusedAttributes="2" UnusedSkills="2">
       <Trait Name="UnusedEdges" Bonus ="-2" />
       <Edge Name="Arcane Background (Huckster)" />
       <Edge Name="Hexslinging" />
@@ -686,25 +739,635 @@
       <Skill Name="Gambling" Level="6" />
     </Archetype>
 
-    <Archetype Name="Soldier"  Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="12">
+    <Archetype Name="Soldier (PC)"  Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="12">
       <Edge Name="Soldier" />
       <Trait Name="UnusedEdges" Bonus ="-1" />
     </Archetype>
 
-    <Archetype Name="Soldier NCO"  Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="12">
+    <Archetype Name="Soldier NCO (PC)"  Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="12">
       <Edge Name="Soldier NCO" />
       <Trait Name="UnusedEdges" Bonus ="-1" />
     </Archetype>
 
-    <Archetype Name="Soldier Officer"  Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="8">
+    <Archetype Name="Soldier Officer (PC)"  Agility="4" Smarts="4" Spirit="4" Strength="6" Vigor="6" UnusedAttributes="3" UnusedSkills="8">
       <Edge Name="Soldier Officer" />
       <Skill Name="Academics" Level="6" />
       <Skill Name="Battle" Level="6" />
       <Trait Name="UnusedEdges" Bonus ="-1" />
     </Archetype>
 
-    <Archetype Name="Harrowed"  Agility="4" Smarts="4" Spirit="6" Strength="4" Vigor="4" UnusedAttributes="4" UnusedSkills="12" IsWildCard="true">
+    <Archetype Name="Harrowed (PC)"  Agility="4" Smarts="4" Spirit="6" Strength="4" Vigor="4" UnusedAttributes="4" UnusedSkills="12" IsWildCard="true">
       <Edge Name="Harrowed" />
+    </Archetype>
+
+    <Archetype Name="Agent" Agility="8" Smarts="8" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Academics" Level="6" />
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Occult" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Research" Level="6" />
+      <Skill Name="Shooting" Level="8" />
+      <Skill Name="Stealth" Level="8" />
+      <Skill Name="Survival" Level="4" />
+      <Hindrance Name="Cautious" />
+      <Hindrance Name="Vow" Type="Major" Description="Destroy or contain the supernatural" />
+      <Edge Name="Agent" />
+      <Edge Name="Guts" />
+      <Edge Name="Level Headed" />
+      <Edge Name="Rock and Roll!" />
+      <Gear Name="Gatling pistol" Description="Range 12/24/48, Damage 2d6, RoF 3, AP 1" />
+      <Gear Name="Disguise kit" />
+      <Gear Name="Agency badge" />
+    </Archetype>
+
+    <Archetype Name="Blessed" Agility="6" Smarts="6" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="4" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Faith" Level="8" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Healing" Level="6" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="8" />
+      <Skill Name="Stealth" Level="4" />
+      <Hindrance Name="Heroic" />
+      <Hindrance Name="Loyal" />
+      <Hindrance Name="Pacifist" />
+      <Edge Name="Arcane Background (Blessed)" />
+      <Edge Name="Champion" />
+      <Edge Name="Guts" />
+      <Gear Name="Hickory club" Description="Str+d6" />
+      <Gear Name="Bible" />
+      <Gear Name="Cross" />
+    </Archetype>
+
+    <Archetype Name="Chi Master" Agility="8" Smarts="6" Spirit="8" Strength="8" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Focus" Level="10" />
+      <Skill Name="Intimidation" Level="8" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+      <Hindrance Name="Code of Honor" />
+      <Edge Name="Arcane Background (Chi Master)" />
+      <Edge Name="Block" />
+      <Edge Name="Martial Artist" />
+      <Edge Name="Superior Kung Fu Eagle Claw" />
+      <Edge Name="Superior Kung Fu Monkey" />
+      <Gear Name="Cloak" />
+      <Gear Name="Straw hat" />
+    </Archetype>
+
+    <Archetype Name="Cowboy" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Gambling" Level="4" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Riding" Level="8" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Stealth" Level="4" />
+      <Skill Name="Survival" Level="6" />
+      <Skill Name="Taunt" Level="6" />
+      <Hindrance Name="Poverty" />
+      <Hindrance Name="Quirk" />
+      <Edge Name="Guts" />
+      <Edge Name="Steady Hands" />
+      <Gear Name="Colt Frontier" Description="Range 12/24/48, Damage 2d6+1, RoF 1, AP 1" />
+      <Gear Name="Lariat" Description="Parry −1, Reach 2" />
+      <Gear Name="Winchester ‘73" Description="Range 24/48/96, Damage 2d8–1, RoF 1, AP 2" />
+      <Gear Name="Steady horse" />
+      <Gear Name="Chaps" />
+      <Gear Name="Saddle" />
+    </Archetype>
+
+    <Archetype Name="Cowboy, Veteran" Agility="8" Smarts="6" Spirit="6" Strength="6" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Gambling" Level="6" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Riding" Level="10" />
+      <Skill Name="Shooting" Level="8" />
+      <Skill Name="Stealth" Level="4" />
+      <Skill Name="Survival" Level="6" />
+      <Skill Name="Taunt" Level="6" />
+      <Hindrance Name="Poverty" />
+      <Hindrance Name="Quirk" />
+      <Edge Name="Guts" />
+      <Edge Name="Level Headed" />
+      <Edge Name="Steady Hands" />
+      <Gear Name="Colt Frontier" Description="Range 12/24/48, Damage 2d6+1, RoF 1, AP 1" />
+      <Gear Name="Shotgun" Description="Range 12/24/48, Damage 1–3d6, RoF 1" />
+      <Gear Name="Lariat" Description="Parry −1, Reach 2" />
+      <Gear Name="Winchester ‘73" Description="Range 24/48/96, Damage 2d8–1, RoF 1, AP 2" />
+      <Gear Name="Damn fine horse" />
+      <Gear Name="Chaps" />
+      <Gear Name="Saddle" />
+    </Archetype>
+
+    <Archetype Name="Cultist" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="4" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Occult" Level="4" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Stealth" Level="4" />
+      <Skill Name="Thievery" Level="6" />
+      <Skill Name="Trade" Level="4" />
+      <Hindrance Name="Bloodthirsty" />
+      <Edge Name="Arcane Resistance" />
+      <Edge Name="Guts" />
+      <Gear Name="Ritual dagger" Description="Str+d4" />
+    </Archetype>
+
+    <Archetype Name="Cult Leader" Agility="8" Smarts="8" Spirit="8" Strength="8" Vigor="8" UnusedAttributes="0" UnusedSkills="0" IsWildCard="true">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Occult" Level="10" />
+      <Skill Name="Persuasion" Level="8" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Spellcasting" Level="10" />
+      <Skill Name="Stealth" Level="8" />
+      <Skill Name="Thievery" Level="8" />
+      <Skill Name="Trade" Level="8" />
+      <Hindrance Name="Bloodthirsty" />
+      <Hindrance Name="Overconfident" />
+      <Edge Name="Arcane Background (Black Magic)" />
+      <Edge Name="Improved Arcane Resistance" />
+      <Gear Name="Ritual dagger" Description="Str+2d4" />
+    </Archetype>
+
+    <Archetype Name="Duelist" Agility="8" Smarts="6" Spirit="8" Strength="6" Vigor="8" UnusedAttributes="0" UnusedSkills="0" IsWildCard="true">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Intimidation" Level="8" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Shooting" Level="10" />
+      <Skill Name="Stealth" Level="8" />
+      <Skill Name="Taunt" Level="6" />
+      <Hindrance Name="Greedy" />
+      <Hindrance Name="Ruthless" />
+      <Edge Name="Duelist" />
+      <Edge Name="Guts" />
+      <Edge Name="Marksman" />
+      <Edge Name="Quick Draw" />
+      <Gear Name="Colt Frontier" Description="Range 12/24/48, Damage 2d6+1, RoF 1, AP 1" />
+    </Archetype>
+
+    <Archetype Name="Gunman" Agility="8" Smarts="6" Spirit="8" Strength="6" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Shooting" Level="8" />
+      <Skill Name="Stealth" Level="6" />
+      <Skill Name="Taunt" Level="6" />
+      <Hindrance Name="Greedy" />
+      <Hindrance Name="Ruthless" />
+      <Edge Name="Guts" />
+      <Edge Name="Quick Draw" />
+      <Gear Name="Colt Frontier" Description="Range 12/24/48, Damage 2d6+1, RoF 1, AP 1" />
+    </Archetype>
+
+    <Archetype Name="Gunman, Veteran" Agility="8" Smarts="6" Spirit="8" Strength="6" Vigor="8" UnusedAttributes="0" UnusedSkills="0" IsWildCard="true">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Intimidation" Level="8" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Shooting" Level="10" />
+      <Skill Name="Stealth" Level="8" />
+
+      <Hindrance Name="Greedy" />
+      <Hindrance Name="Ruthless" />
+      <Edge Name="Guts" />
+      <Edge Name="Fan the Hammer" />
+      <Edge Name="Menacing" />
+      <Edge Name="Quick Draw" />
+      <Gear Name="Colt Peacemaker" Description="Range 12/24/48, Damage 2d6+1, RoF 1, AP 1" />
+    </Archetype>
+
+    <Archetype Name="Guardian Angel" Agility="8" Smarts="6" Spirit="8" Strength="8" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="8" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Intimidation" Level="8" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Stealth" Level="8" />
+      <Hindrance Name="Stubborn" />
+      <Hindrance Name="Ruthless" />
+      <Hindrance Name="Vow" Type="Major" Description="Serve the Church of Lost Angels" />
+      <Edge Name="Guts" />
+      <Edge Name="Menacing" />
+      <Gear Name="Colt Thunderer" Description="Range 12/24/48, Damage 2d6, AP 1" />
+      <Gear Name="Billy Club" Description="Str+d4" />
+    </Archetype>
+
+    <Archetype Name="Harrowed" Agility="8" Smarts="6" Spirit="10" Strength="6" Vigor="8" UnusedAttributes="0" UnusedSkills="0" IsWildCard="true">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Occult" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Shooting" Level="10" />
+      <Skill Name="Stealth" Level="8" />
+      <Skill Name="Thievery" Level="6" />
+      <Hindrance Name="Bloodthirsty" />
+      <Hindrance Name="Mean" />
+      <Edge Name="Danger Sense" />
+      <Edge Name="Guts" />
+      <Edge Name="Harrowed" />
+      <Edge Name="Marksman" />
+      <Edge Name="Stitchin’" />
+      <Edge Name="Supernatural Attribute (Strength)" />
+      <Gear Name="Bowie knife" Description="Str+d4+1, AP 1" />
+      <Gear Name="Bowie knife" Description="Range 12/24/48, Damage 1–3d6, RoF 1" />
+      <Gear Name="Needle and thread" />
+    </Archetype>
+
+    <Archetype Name="Hexslinger" Agility="8" Smarts="8" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Gambling" Level="6" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Occult" Level="6" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Shooting" Level="8" />
+      <Skill Name="Spellcasting" Level="8" />
+      <Skill Name="Stealth" Level="6" />
+      <Hindrance Name="Arrogant" />
+      <Hindrance Name="Curious" />
+      <Edge Name="Arcane Background (Huckster)" />
+      <Edge Name="Hexslinging" />
+      <Gear Name="Colt Frontiers ×2"  Description="Range 12/24/48, Damage 2d6+1, RoF 1, AP 1" />
+      <Gear Name="Bullet-making kit" />
+      <Gear Name="Adventures of Doc Holliday dime novel" />
+    </Archetype>
+
+    <Archetype Name="Huckster" Agility="6" Smarts="8" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="8" />
+      <Skill Name="Fighting" Level="4" />
+      <Skill Name="Gambling" Level="8" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Occult" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Shooting" Level="4" />
+      <Skill Name="Spellcasting" Level="8" />
+      <Skill Name="Stealth" Level="6" />
+      <Skill Name="Taunt" Level="6" />
+      <Hindrance Name="Curious" />
+      <Hindrance Name="Quirk" Description="Always shuffles cards" />
+      <Hindrance Name="Wanted" />
+      <Edge Name="Arcane Background (Huckster)" />
+      <Edge Name="High Roller" />
+      <Edge Name="Wizard" />
+      <Gear Name="Derringer"  Description="Range 3/6/12, Damage 2d4, RoF 1" />
+      <Gear Name="Deck of cards" />
+    </Archetype>
+
+    <Archetype Name="Indian Warrior" Agility="8" Smarts="6" Spirit="8" Strength="8" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Riding" Level="8" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+      <Skill Name="Survival" Level="6" />
+      <Hindrance Name="Old Ways Oath" />
+      <Hindrance Name="Stubborn" />
+      <Edge Name="Block" />
+      <Edge Name="Steady Hands" />
+      <Edge Name="Woodsman" />
+      <Gear Name="Bow"  Description="Range 12/24/48, Damage 2d6, RoF 1" />
+      <Gear Name="Tomahawk"  Description="Str+d6" />
+      <Gear Name="Horse" />
+      <Gear Name="Native shield (medium)"  Description="+2 Parry, –2 Cover, Min Str d4, Hardness 8." />
+      <Gear Name="Lance"  Description="Str+d6, Reach 2" />
+    </Archetype>
+
+    <Archetype Name="Indian Warrior, Veteran" Agility="8" Smarts="6" Spirit="8" Strength="10" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="10" />
+      <Skill Name="Intimidation" Level="8" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Riding" Level="10" />
+      <Skill Name="Shooting" Level="8" />
+      <Skill Name="Stealth" Level="8" />
+      <Skill Name="Survival" Level="8" />
+      <Hindrance Name="Old Ways Oath" />
+      <Hindrance Name="Stubborn" />
+      <Edge Name="Block" />
+      <Edge Name="Fleet-Footed" />
+      <Edge Name="Improved Frenzy" />
+      <Edge Name="Steady Hands" />
+      <Edge Name="Woodsman" />
+
+      <Gear Name="Tomahawk"  Description="Str+d6" />
+      <Gear Name="Horse" />
+      <Gear Name="Bow"  Description="Range 12/24/48, Damage 2d6, RoF 1" />
+      <Gear Name="Tomahawk"  Description="Str+d6" />
+      <Gear Name="Horse" />
+      <Gear Name="Native shield (medium)"  Description="+2 Parry, –2 Cover, Min Str d4, Hardness 8." />
+      <Gear Name="Lance"  Description="Str+d6, Reach 2" />
+    </Archetype>
+
+    <Archetype Name="Indian Shaman" Agility="6" Smarts="8" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Occult" Level="8" />
+      <Skill Name="Persuasion" Level="8" />
+      <Skill Name="Riding" Level="8" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Stealth" Level="8" />
+      <Skill Name="Survival" Level="8" />
+
+      <Hindrance Name="Old Ways Oath" Type="Major" />
+      <Edge Name="Arcane Background (Shaman)" />
+      <Edge Name="Brave" />
+      <Gear Name="Bow"  Description="Range 12/24/48, Damage 2d6, RoF 1" />
+      <Gear Name="Spear"  Description="Str+d6, Parry +1, Reach 1" />
+      <Gear Name="Native shield (small)"  Description="+1 Parry, –1 Cover, Min Str d4, Hardness 7" />
+
+      <Gear Name="Tomahawk"  Description="Str+d6" />
+      <Gear Name="Horse" />
+      <Gear Name="Tomahawk"  Description="Str+d6" />
+      <Gear Name="Horse" />
+      <Gear Name="Lance"  Description="Str+d6, Reach 2" />
+    </Archetype>
+
+    <Archetype Name="Mad Scientist" Agility="6" Smarts="10" Spirit="6" Strength="4" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Academics" Level="6" />
+      <Skill Name="Athletics" Level="4" />
+      <Skill Name="Common Knowledge" Level="8" />
+      <Skill Name="Driving" Level="6" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Repair" Level="8" />
+      <Skill Name="Science" Level="8" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Stealth" Level="4" />
+      <Skill Name="Weird Science" Level="10" />
+
+      <Hindrance Name="Curious" />
+      <Hindrance Name="Madness"  Description="Delusion" />
+      <Hindrance Name="Quirk"  Description="Expounds on theories" />
+
+      <Edge Name="Arcane Background (Mad Scientist)" />
+      <Edge Name="Gadgeteer" />
+
+      <Gear Name="Gadgets" />
+      <Gear Name="Lab coat" />
+      <Gear Name="Goggles" />
+      <Gear Name="Tool kit" />
+    </Archetype>
+
+    <Archetype Name="Martial Artist" Agility="8" Smarts="6" Spirit="6" Strength="8" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Common Knowledge" Level="4" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Intimidation" Level="8" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+      <Hindrance Name="Loyal" />
+      <Hindrance Name="Poverty" />
+
+      <Edge Name="Martial Artist" />
+
+      <Gear Name="Cloak" />
+      <Gear Name="Straw hat" />
+    </Archetype>
+
+    <Archetype Name="Maze Pirate" Agility="6" Smarts="4" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="4" />
+      <Skill Name="Boating" Level="6" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+      <Skill Name="Thievery" Level="4" />
+
+      <Hindrance Name="Greedy" />
+      <Hindrance Name="Mean" />
+
+      <Edge Name="Steady Hands" />
+
+      <Gear Name="Colt Thunderer"  Description="Range 12/24/48, Damage 2d6, RoF 1, AP 1" />
+      <Gear Name="Large knife"  Description="Str+d4" />
+    </Archetype>
+
+    <Archetype Name="Maze Rat" Agility="8" Smarts="4" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="4" />
+      <Skill Name="Boating" Level="6" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+      <Skill Name="Thievery" Level="4" />
+
+      <Hindrance Name="Greedy" />
+      <Hindrance Name="Mean" />
+
+      <Edge Name="Block" />
+      <Edge Name="First Strike" />
+      <Edge Name="Martial Artist" />
+
+      <Gear Name="Colt Navy"  Description="Range 12/24/48, Damage 2d6, RoF 1, AP 1" />
+      <Gear Name="Cutlass"  Description="Str+d6" />
+    </Archetype>
+
+    <Archetype Name="Soldier" Agility="6" Smarts="4" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Driving" Level="4" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Gambling" Level="4" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Riding" Level="6" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+      <Skill Name="Survival" Level="4" />
+
+      <Hindrance Name="Vow" Type="Major"  Description="US Army" />
+
+      <Edge Name="Soldier" />
+      <Edge Name="Steady Hands" />
+
+      <Gear Name="Winchester ’76"  Description="Range 24/48/96, Damage 2d8, RoF 1, AP 2" />
+      <Gear Name="Bayonet"  Description="Str+d6, Reach 1, Parry +1" />
+    </Archetype>
+
+    <Archetype Name="Soldier, Veteran" Agility="8" Smarts="6" Spirit="8" Strength="8" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Driving" Level="6" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Gambling" Level="6" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Riding" Level="6" />
+      <Skill Name="Shooting" Level="8" />
+      <Skill Name="Stealth" Level="6" />
+      <Skill Name="Survival" Level="6" />
+
+      <Hindrance Name="Vow" Type="Major"  Description="US Army" />
+
+      <Edge Name="Marksman" />
+      <Edge Name="Soldier" />
+      <Edge Name="Steady Hands" />
+
+      <Gear Name="Winchester ’73"  Description="Range 24/48/96, Damage 2d8–1, RoF 1, AP 2" />
+      <Gear Name="Bayonet"  Description="Str+d6, Reach 1, Parry +1" />
+    </Archetype>
+
+    <Archetype Name="Soldier, Officer" Agility="6" Smarts="8" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Battle" Level="8" />
+      <Skill Name="Common Knowledge" Level="8" />
+      <Skill Name="Driving" Level="6" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Gambling" Level="6" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Persuasion" Level="4" />
+      <Skill Name="Riding" Level="6" />
+      <Skill Name="Shooting" Level="8" />
+      <Skill Name="Stealth" Level="6" />
+      <Skill Name="Survival" Level="6" />
+
+      <Hindrance Name="Vow" Type="Major"  Description="US Army" />
+
+      <Edge Name="Command" />
+      <Edge Name="Hold the Line!" />
+      <Edge Name="Inspire" />
+      <Edge Name="Soldier" />
+
+      <Gear Name="Colt Army"  Description="Range 12/24/48, Damage 2d6+1, RoF 1, AP 1" />
+      <Gear Name="Saber"  Description="Str+d6" />
+    </Archetype>
+
+    <Archetype Name="Territorial Ranger" Agility="8" Smarts="8" Spirit="8" Strength="8" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Fighting" Level="10" />
+      <Skill Name="Intimidation" Level="8" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Occult" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Riding" Level="10" />
+      <Skill Name="Shooting" Level="10" />
+      <Skill Name="Stealth" Level="6" />
+      <Skill Name="Survival" Level="8" />
+
+      <Hindrance Name="Stubborn" />
+      <Hindrance Name="Vow" Type="Major"  Description="Destroy or contain the supernatural" />
+
+      <Edge Name="Brave" />
+      <Edge Name="Guts" />
+      <Edge Name="Territorial Ranger" />
+
+      <Gear Name="Armored duster"  Description="Armor +2" />
+      <Gear Name="Colt Frontier"  Description="Range 12/24/48, Damage 2d6+1, RoF 1, AP 1" />
+      <Gear Name="Bowie knife"  Description="Str+d4+1, AP 1" />
+      <Gear Name="Horse" />
+      <Gear Name="Ranger badge" />
+    </Archetype>
+
+    <Archetype Name="Townsfolk" Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="4" />
+      <Skill Name="Common Knowledge" Level="4" />
+      <Skill Name="Fighting" Level="4" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Shooting" Level="4" />
+      <Skill Name="Stealth" Level="4" />
+      <Skill Name="Trade" Level="8" />
+    </Archetype>
+
+    <Archetype Name="Wichita Witch" Agility="8" Smarts="8" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0" IsWildCard="true">
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Common Knowledge" Level="8" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Gambling" Level="6" />
+      <Skill Name="Intimidation" Level="8" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Persuasion" Level="8" />
+      <Skill Name="Riding" Level="8" />
+      <Skill Name="Shooting" Level="8" />
+      <Skill Name="Spellcasting" Level="8" />
+      <Skill Name="Stealth" Level="10" />
+      <Skill Name="Taunt" Level="10" />
+      <Skill Name="Thievery" Level="8" />
+      <Hindrance Name="Ruthless"  Type="Major" />
+
+      <Edge Name="Arcane Background (Black Magic)" />
+      <Edge Name="Attractive" />
+      <Edge Name="Menacing" />
+
+      <Gear Name="Black armored duster"  Description="Armor +2" />
+      <Gear Name="Colt Frontier"  Description="Range 12/24/48, Damage 2d6+1, RoF 1, AP 1)" />
+      <Gear Name="Whip"  Description="Str+d4, Parry −1, Reach 2)" />
+      <Gear Name="Black horse" />
+      <Gear Name="Chaps" />
+      <Gear Name="Saddle" />
+    </Archetype>
+
+    <Archetype Name="X-Squad" Agility="6" Smarts="6" Spirit="6" Strength="8" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Driving" Level="6" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Piloting" Level="6" />
+      <Skill Name="Repair" Level="6" />
+      <Skill Name="Riding" Level="6" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+      <Hindrance Name="Ruthless" Type="Major" />
+
+      <Edge Name="Rock and Roll!" />
+      <Edge Name="Steady Hands" />
+
+      <Gear Name="Devil aprons"  Description="Armor +2, −4 damage from fire" />
     </Archetype>
   </Archetypes>
 </Setting>

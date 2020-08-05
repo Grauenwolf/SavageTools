@@ -21,6 +21,7 @@
       <Trigger Name="Holy Object" />
       <Trigger Name="Talisman" />
       <Trigger Name="Crystal" />
+      <Trigger Name="Candle" />
     </Edge>
 
     <!-- Common -->
