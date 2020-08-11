@@ -14,7 +14,7 @@
   </RemoveSkills>
 
   <Races>
-    <Race Name ="Aquarian">
+    <Race Name ="Aquarian (PC)">
       <Edge Name="Aquatic" Description="Aquarians cannot drown in water and move at their full Pace when swimming." />
       <Hindrance Name="Dependency" Description="Must immerse themselves in water one hour out of every 24 or become automatically Fatigued." />
       <Edge Name="Low Light Vision" Description="Ignore penalties for Dim and Dark Illumination." />
@@ -23,7 +23,7 @@
       </Edge>
     </Race>
 
-    <Race Name="Avion">
+    <Race Name="Avion (PC)">
       <Hindrance Name="Can't Swim" Description="They subtract 2 from Athletics (swimming) rolls and each inch moved in water costs them 3″ of Pace." />
       <Edge Name="Flight" Description="Avions fly at Pace 12 per round. Use Athletics when maneuvering." />
       <Edge Name="Frail" Description="−1 Toughness due to their hollow bones.">
@@ -40,7 +40,7 @@
       </Hindrance>
     </Race>
 
-    <Race Name="Dwarf">
+    <Race Name="Dwarf (PC)">
       <Edge Name="Low Light Vision" Description="Ignore penalties for Dim and Dark Illumination." />
       <Hindrance Name="Reduced Pace" Description="Short legs compared to most races">
         <Trait Name="Pace" Bonus="-1" />
@@ -52,7 +52,7 @@
       </Edge>
     </Race>
 
-    <Race Name="Elf">
+    <Race Name="Elf (PC)">
       <Edge Name="Low Light Vision" Description="Ignore penalties for Dim and Dark Illumination." />
       <Hindrance Name="All Thumbs" Description="They shun most mechanical items and designs." />
       <Edge Name="Agile" Description="Add +1 to their Agility/Max Agility.">
@@ -61,7 +61,7 @@
       </Edge>
     </Race>
 
-    <Race Name="Half-elf (Elf-favored)">
+    <Race Name="Half-elf (Elf-favored, PC)">
       <Edge Name="Low Light Vision" Description="Ignore penalties for Dim and Dark Illumination." />
       <Hindrance Name="Outsider" Type="Minor" />
       <Edge Name="Agile" Description="Add +1 to their Agility/Max Agility.">
@@ -70,13 +70,13 @@
       </Edge>
     </Race>
 
-    <Race Name="Half-elf (Human-favored)">
+    <Race Name="Half-elf (Human-favored, PC)">
       <Edge Name="Low Light Vision" Description="Ignore penalties for Dim and Dark Illumination." />
       <Hindrance Name="Outsider" Type="Minor" />
       <Trait Name="UnusedEdges" Bonus="1" />
     </Race>
 
-    <Race Name="Half-folk">
+    <Race Name="Half-folk (PC)">
       <Edge Name="Luck" />
       <Hindrance Name="Reduced Pace" Description="Short legs compared to most races">
         <Trait Name="Pace" Bonus="-1" />
@@ -93,7 +93,7 @@
       </Edge>
     </Race>
 
-    <Race Name="Rakashan">
+    <Race Name="Rakashan (PC)">
       <Edge Name="Agile" Description="Add +1 to their Agility/Max Agility.">
         <Trait Name="Agility" Bonus="1" />
         <Trait Name="MaxAgility" Bonus="1" />
@@ -105,7 +105,7 @@
       <Hindrance Name="Racial Enemy" Description="Members of each culture subtract 2 from Persuasion when dealing with each other and often attack on sight." />
     </Race>
 
-    <Race Name="Saurian">
+    <Race Name="Saurian (PC)">
       <Edge Name="Scaly Skin">
         <Trait Name="Armor" Bonus="2" />
       </Edge>

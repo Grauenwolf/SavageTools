@@ -527,7 +527,7 @@ namespace SavageTools.Characters
                     AppendLine(string.Join(" ", additionTraits));
             }
 
-            AppendLine($"**Attributes:** Agility {Agility}, Smarts {Smarts}, Strength {Strength}, Spirt {Spirit}, Vigor {Vigor}");
+            AppendLine($"**Attributes:** Agility {Agility + (MaxAgility != 12 ? " (Max " + MaxAgility + ")" : null)}, Smarts {Smarts + (AnimalIntelligence ? " (A)" : "") + (MaxSmarts != 12 ? " (Max " + MaxSmarts + ")" : null)}, Spirt {Spirit + (MaxSpirit != 12 ? " (Max " + MaxSpirit + ")" : null)}, Strength {Strength + (MaxStrength != 12 ? " (Max " + MaxStrength + ")" : null)}, Vigor {Vigor + (MaxVigor != 12 ? " (Max " + MaxVigor + ")" : null)}");
 
             Append($"**Parry** {ParryTotal}, **Toughness** {ToughnessTotal}");
             if (Armor > 0)

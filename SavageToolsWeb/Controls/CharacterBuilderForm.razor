@@ -89,7 +89,7 @@ else
                     <td />
                 </tr>
             </table>
-            <div>If the archetype is marked with "(PC)", then it follows standard character creation rules. Otherwise it may have more or less capabilities than a standard character.</div>
+            <div>If the archetype or race is marked with "(PC)", then it follows standard character creation rules. Otherwise it may have more or less capabilities than a standard character.</div>
             <div>
                 Display Mode: <InputSelect id="parentSection" @bind-Value="DisplayMode" @onclick="OnClick" @onkeyup="OnKeyUp">
                     <option value="HTML" selected>HTML</option>
@@ -122,12 +122,12 @@ else
                 </table>
 
                 <table class="gridtable">
-                    <tr><th>Agility</th><th>Smarts</th><th>Strength</th><th>Spirit</th><th>Vigor</th></tr>
+                    <tr><th>Agility</th><th>Smarts</th><th>Spirit</th><th>Strength</th><th>Vigor</th></tr>
                     <tr>
                         <td>@(chr.Agility + (chr.MaxAgility != 12 ? " (Max " + chr.MaxAgility + ")" : null ))</td>
                         <td>@(chr.Smarts + (chr.AnimalIntelligence ? " (A)" : "") + (chr.MaxSmarts != 12 ? " (Max " + chr.MaxSmarts + ")" : null ))</td>
-                        <td>@(chr.Strength + (chr.MaxStrength != 12 ? " (Max " + chr.MaxStrength + ")" : null ))</td>
                         <td>@(chr.Spirit + (chr.MaxSpirit != 12 ? " (Max " + chr.MaxSpirit + ")" : null ))</td>
+                        <td>@(chr.Strength + (chr.MaxStrength != 12 ? " (Max " + chr.MaxStrength + ")" : null ))</td>
                         <td>@(chr.Vigor + (chr.MaxVigor != 12 ? " (Max " + chr.MaxVigor + ")" : null ))</td>
                     </tr>
                 </table>
