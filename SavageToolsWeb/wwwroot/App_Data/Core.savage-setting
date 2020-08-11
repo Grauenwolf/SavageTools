@@ -308,7 +308,7 @@
   </Archetypes>
 
   <Races>
-    <Race Name="Human">
+    <Race Name="Human (PC)">
       <Trait Name="UnusedEdges" Bonus="1" />
     </Race>
     <!--<Race Name="(Special)" />-->
