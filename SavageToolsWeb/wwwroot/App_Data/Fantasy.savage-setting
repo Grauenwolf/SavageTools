@@ -129,6 +129,11 @@
       <Edge Name="Infravision" Description="Halve penalties for Illumination when attacking warm targets." />
     </Race>
 
+    <Race Name="Lizardman" IsLimited="true">
+      <Edge Name="Keen Senses" Description="+2 to all Notice rolls. Always considered &quot;Active&quot; for stealth rolls" />
+      <Edge Name="Natural Swimmers" Description="+2 on all Swimming rolls. Swimming Pace to equal their Atheletics skill" />
+    </Race>
+
     <Race Name="Dragon" IsLimited="true">
       <Edge Name="Scaly Hide">
         <Trait Name="Armor" Bonus="4" />
@@ -300,6 +305,21 @@
       <Skill Name="Notice" Level="6" />
       <Skill Name="Stealth" Level="4" />
       <Gear Name="Spiked club" Description="Str+d8" />
+    </Archetype>
+
+    <Archetype Name="Lizardman" Race="Lizardman" Agility="8" Smarts="6" Spirit="8" Strength="8" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Feature Name="+2 Throwing" />
+      <Skill Name="Athletics" Level="8" />
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Gear Name="Leather armor" Description="Armor +2" />
+      <Gear Name="Stiff hide shield" Description="Parry +1" />
+      <Gear Name="Flint battle axe" Description="Str+d8" />
+
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
     </Archetype>
   </Archetypes>
 </Setting>
