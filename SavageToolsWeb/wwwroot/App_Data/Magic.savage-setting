@@ -1,59 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Setting Name="Magic">
-  <References>
-    <Reference Name="Core" />
-    <Reference Name="Arcana" />
-  </References>
+	<References>
+		<Reference Name="Core" />
+		<Reference Name="Arcana" />
+	</References>
 
-  <Edges>
-    <Edge Name="Arcane Background (Magic)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Magic">
-      <Skill Name="Spellcasting" Attribute="Smarts" Level="4" />
-      <Trait Name="UnusedSkills" Bonus="-1" />
-      <Trait Name="PowerPoints:Magic" Bonus="10" />
-      <Trait Name="UnusedPowers:Magic" Bonus="3" />
-      <Feature Name="Arcane Background" />
+	<Edges>
+		<Edge Name="Arcane Background (Magic)" Requires="Novice" Description="Allows access to supernatural powers" UniqueGroup="Arcane Background" PowerType="Magic">
+			<Skill Name="Spellcasting" Attribute="Smarts" Level="4" />
+			<Trait Name="UnusedSkills" Bonus="-1" />
+			<Trait Name="PowerPoints:Magic" Bonus="10" />
+			<Trait Name="UnusedPowers:Magic" Bonus="3" />
+			<Feature Name="Arcane Background" />
 
-      <Trigger Name="Invocation" />
-      <Trigger Name="Chant" />
-      <Trigger Name="Stare" />
-      <Trigger Name="Gesture" />
-      <Trigger Name="Powder" />
-      <Trigger Name="Potion" />
-      <Trigger Name="Wand/staff" />
-      <Trigger Name="Talisman" />
-      <Trigger Name="Ring" />
-      <Trigger Name="Crystal" />
-      <Trigger Name="Concentration" />
-    </Edge>
-  </Edges>
+			<Trigger Name="Invocation" />
+			<Trigger Name="Chant" />
+			<Trigger Name="Stare" />
+			<Trigger Name="Gesture" />
+			<Trigger Name="Powder" />
+			<Trigger Name="Potion" />
+			<Trigger Name="Wand/staff" />
+			<Trigger Name="Talisman" />
+			<Trigger Name="Ring" />
+			<Trigger Name="Crystal" />
+			<Trigger Name="Concentration" />
+		</Edge>
 
-  <!-- Common -->
-  <Edge Name="Artificer (Magic)" Requires="Seasoned, Arcane Background (Magic)" Description="Allows user to create Arcane Devices." />
-  <Edge Name="Channeling (Magic)" Requires="Seasoned, Arcane Background (Magic)" Description="Reduce Power Point cost by 1 with a raise on the activation roll." />
-  <Edge Name="Concentration (Magic)" Requires="Seasoned, Arcane Background (Magic)" Description="Double Duration of non-Instant powers." />
-  <Edge Name="New Power (Magic)" Requires="Novice, Arcane Background (Magic)" Description="Your character knows two new powers.">
-    <Trait Name="UnusedPowers:Magic" Bonus="2" />
-  </Edge>
-  <Edge Name="Power Points (Magic/Novice)" Requires="Novice, Arcane Background (Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
-    <Trait Name="PowerPoints:Magic" Bonus="5" />
-  </Edge>
-  <Edge Name="Power Points (Magic/Seasoned)" Requires="Seasoned, Arcane Background (Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
-    <Trait Name="PowerPoints:Magic" Bonus="5" />
-  </Edge>
-  <Edge Name="Power Points (Magic/Veteran)" Requires="Veteran, Arcane Background (Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
-    <Trait Name="PowerPoints:Magic" Bonus="5" />
-  </Edge>
-  <Edge Name="Power Points (Magic/Heroic)" Requires="Heroic, Arcane Background (Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
-    <Trait Name="PowerPoints:Magic" Bonus="5" />
-  </Edge>
-  <Edge Name="Power Points (Magic/Legendary)" Requires="Legendary, Arcane Background (Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
-    <Trait Name="PowerPoints:Magic" Bonus="5" />
-  </Edge>
-  <Edge Name="Power Surge (Magic)" Requires="Wild Card, Novice, Arcane Background (Magic), Spellcasting d8" Description="Recover 10 Power Points when dealt a Joker in combat." />
-  <Edge Name="Rapid Recharge (Magic)" Requires="Seasoned, Spirit d6, Arcane Background (Magic)" Description="Recover 10 Power Points per hour." />
-  <Edge Name="Improved Rapid Recharge (Magic)" Requires="Veteran, Rapid Recharge (Magic)" Description="Recover 20 Power Points per hour." />
-  <Edge Name="Soul Drain (Magic)" Requires="Seasoned, Arcane Background (Magic), Spellcasting d10" Description="Recover 5 Power Points for a level of Fatigue." />
 
-  <!-- Arcane Background Specific -->
-  <Edge Name="Wizard (Magic)" Requires="Seasoned, Arcane Background (Magic), Spellcasting d6" Description="Spend 1 extra Power Point to change a spell’s Trapping." />
+		<!-- Common -->
+		<Edge Name="Artificer (Magic)" Requires="Seasoned, Arcane Background (Magic)" Description="Allows user to create Arcane Devices." />
+		<Edge Name="Channeling (Magic)" Requires="Seasoned, Arcane Background (Magic)" Description="Reduce Power Point cost by 1 with a raise on the activation roll." />
+		<Edge Name="Concentration (Magic)" Requires="Seasoned, Arcane Background (Magic)" Description="Double Duration of non-Instant powers." />
+		<Edge Name="New Power (Magic)" Requires="Novice, Arcane Background (Magic)" Description="Your character knows two new powers.">
+			<Trait Name="UnusedPowers:Magic" Bonus="2" />
+		</Edge>
+		<Edge Name="Power Points (Magic/Novice)" Requires="Novice, Arcane Background (Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+			<Trait Name="PowerPoints:Magic" Bonus="5" />
+		</Edge>
+		<Edge Name="Power Points (Magic/Seasoned)" Requires="Seasoned, Arcane Background (Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+			<Trait Name="PowerPoints:Magic" Bonus="5" />
+		</Edge>
+		<Edge Name="Power Points (Magic/Veteran)" Requires="Veteran, Arcane Background (Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+			<Trait Name="PowerPoints:Magic" Bonus="5" />
+		</Edge>
+		<Edge Name="Power Points (Magic/Heroic)" Requires="Heroic, Arcane Background (Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+			<Trait Name="PowerPoints:Magic" Bonus="5" />
+		</Edge>
+		<Edge Name="Power Points (Magic/Legendary)" Requires="Legendary, Arcane Background (Magic)" Description="Gain 5 additional Power Points, no more than once per Rank.">
+			<Trait Name="PowerPoints:Magic" Bonus="5" />
+		</Edge>
+		<Edge Name="Power Surge (Magic)" Requires="Wild Card, Novice, Arcane Background (Magic), Spellcasting d8" Description="Recover 10 Power Points when dealt a Joker in combat." />
+		<Edge Name="Rapid Recharge (Magic)" Requires="Seasoned, Spirit d6, Arcane Background (Magic)" Description="Recover 10 Power Points per hour." />
+		<Edge Name="Improved Rapid Recharge (Magic)" Requires="Veteran, Rapid Recharge (Magic)" Description="Recover 20 Power Points per hour." />
+		<Edge Name="Soul Drain (Magic)" Requires="Seasoned, Arcane Background (Magic), Spellcasting d10" Description="Recover 5 Power Points for a level of Fatigue." />
+
+		<!-- Arcane Background Specific -->
+		<Edge Name="Wizard (Magic)" Requires="Seasoned, Arcane Background (Magic), Spellcasting d6" Description="Spend 1 extra Power Point to change a spell’s Trapping." />
+	</Edges>
+
 </Setting>
