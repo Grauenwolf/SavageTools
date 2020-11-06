@@ -349,6 +349,7 @@ namespace SavageTools.Characters
             //Check for ranks
             switch (name)
             {
+                //TODO-31: Load Experience values from settings files
                 case "Novice": return true;
                 case "Seasoned": return ignoreRank || Experience >= 20;
                 case "Veteran": return ignoreRank || Experience >= 40;
