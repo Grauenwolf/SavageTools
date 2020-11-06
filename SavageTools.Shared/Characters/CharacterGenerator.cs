@@ -140,7 +140,7 @@ namespace SavageTools.Characters
                 selectedRank = table.RandomChoose(dice);
             }
 
-            var result = new Character() { Rank = selectedRank.Name, IsWildCard = options.WildCard, UseReason = UseReason, UseStatus = UseStatus, UseStrain = UseStrain };
+            var result = new Character() { Rank = selectedRank.DisplayName ?? selectedRank.Name, IsWildCard = options.WildCard, UseReason = UseReason, UseStatus = UseStatus, UseStrain = UseStrain };
 
             var name = NameService.CreateRandomPerson(dice);
             result.Name = name.FullName;
@@ -370,11 +370,13 @@ namespace SavageTools.Characters
                 Races.Sort(r => r.Name);
             }
             if (book.Ranks != null)
+            {
+                Ranks.Clear();
                 foreach (var item in book.Ranks)
                 {
-                    Ranks.RemoveAll(s => s.Name == item.Name);
                     Ranks.Add(item);
                 }
+            }
 
             if (book.Trappings != null)
                 foreach (var item in book.Trappings)
@@ -1005,7 +1007,7 @@ namespace SavageTools.Characters
                 return;
             }
 
-        TryAgain:
+            TryAgain:
             var trapping = dice.Choose(trappings);
             var trigger = dice.Choose(group.AvailableTriggers);
             var power = dice.Choose(powers);

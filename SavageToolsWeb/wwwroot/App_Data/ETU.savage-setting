@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Setting Name="Horror">
+  <References>
+    <Reference Name="Core" />
+    <Reference Name="Horror" />
+  </References>
+
+  <Skills>
+    <Skill Name="Occult" Attribute="Smarts"></Skill>
+  </Skills>
+
+  <Hindrances>
+    <Hinderance Name="A.D.H.D." Type="Minor" Description="The character suffers a -2 to Academics and Notice rolls. But gain a +2 on tests of will." />
+    <Hinderance Name="Annoying Roommate" Type="Minor" Description="Your roommate (an extra) is an annoying tagalong. Roll on the table on page 14 for the hinderence he/she has." />
+    <Hinderance Name="Anti-Technology Aura" Type="Major" Description="Technology breaks easily in this characters hands. -1 to Scholarship and in a stressful situation you may need to roll on the table on page 14." />
+    <Hinderance Name="Cursed" Type="Major" Description="Draw a card at the beginning of each session to find the curse befalling your character. Consult the table on page 15." />
+    <Hinderance Name="Frady Cat" Type="Minor" Description="On a failed fear roll add +2 to the fright table." />
+    <Hinderance Name="Overprotective Parents" Type="Minor" Description="Parents call in at least four times a week, at the most inopportune moments." />
+    <Hinderance Name="Party Animal" Type="Minor" Description="This character overindulges, makes a vigor roll at -2 or gains Fatigue." />
+    <Hinderance Name="Poverty" Type="Major" Description="Only have $250 available per semister." />
+    <Hinderance Name="Second Fiddle" Type="Minor" Description="At the start of each session make a spirit roll at -2, otherwise start with one less benny." />
+    <Hinderance Name="Townie" Type="Minor" Description="Not a student, but a local resident." />
+    <Hinderance Name="Trouble Magnet" Type="Major" Description="Once per session trouble finds this character. In a major situation." />
+    <Hinderance Name="Trouble Magnet" Type="Minor" Description="Once per session trouble finds this character. This is a minor inconvienance." />
+  </Hindrances>
+
+  <Edges>
+    <!--Background Edges-->
+    <Edge Name="Devout" Requires="Novice, Spirit d6" Description="Devout heroes add +2 to all opposed spirit rolls where faith comes into play." />
+    <!-- Can only be taken at character creation -->
+    <Edge Name="Local Favorite" Requires="Novice" Description="Randomly determined initial reactions are one level higher." />
+    <Edge Name="Noble" Requires="Novice" Description="Gain the Noble Edge from Savage Worlds, but in addition must stay out of trouble." />
+    <Edge Name="Rich" Requires="Novice" Description="Semester allowance is $1000" />
+    <Edge Name="Filthy Rich" Requires="Novice" Description="Semester allowance is $1500" />
+    <Edge Name="Test Taker" Requires="Novice, Smarts d8" Description="Add +2 to Scholarship" />
+
+    <!--Combat Edges-->
+    <Edge Name="Be a zebra" Requires="Novice" Description="+2 parry when next to ally or fellow target." />
+    <!-- Replaced by Marksman-->
+    <!--<Edge Name="Gunslinger" Requires="Heroic, Shooting d10" Description="Ignore -2 in shooting penalties" />-->
+
+    <!--Professionl Edges-->
+    <Edge Name="Demon Slayer" Requires="Heroic" Description="+2 to fear against demonic sources." />
+    <Edge Name="Faithful" Requires="Heroic, Spirit d8" Description="Supernatural evil characters are at -2 effecting this student." />
+    <Edge Name="Fearless" Requires="Heroic, Brave, Guts, Spirit d8" Description="If you fail a fear roll, the GM rolls a d12 instead of a d20 on the fear table." />
+    <Edge Name="Guts" Requires="Seasoned, Spirit d6" Description="Ignore 2 points of fear penalties for spirit or fright rolls." />
+    <Edge Name="Multitasker" Requires="Novice, Spirit d6, Smarts d6" Description="You may choose two Etracurricular activities instead of one." />
+    <Edge Name="Sage" Requires="Heroic, Smarts d10" Description="+2 to Research and Common Knowledge rolls and may make an Research roll from memory at -2" />
+    <Edge Name="Witch/Warlock" Requires="Veteran, Occult d8" Description="Ignore up to 2 points of casting penalties" />
+
+    <!-- Weird Edges -->
+    <Edge Name="Aura Reader" Requires="Seasoned, Psychically Sensitive, Spirit d8" Description="Can read auras. Spirit roll within 10 feet, success: can get the general emotions of the target, a raise can give you health concerns. Faulure results in Fatigue and loss of ability for 24hrs." />
+    <Edge Name="Chosen" Requires="Heroic, Spirit d8" Description="When you spend a benny, you can reroll twice and take the best result." />
+    <Edge Name="Danger Sense" Requires="Novice, Psychically Sensitive" Description="Same as Danger Sense from savage worlds, but in addition Psychically Sensitive +2 bonus applies in supernatural situations." />
+    <Edge Name="I see dead people" Requires="Veteran, Aura Reader" Description="This student can see spirits" />
+    <Edge Name="Medium" Requires="Veteran, Spirit Guardian" Description="This student can hear their spirit guardian and has +2 Persuasion when dealing with spirits." />
+    <Edge Name="Memorized Ritual" Requires="Novice, Occult d6" Description="Choose a ritual, you can perform it from memory." />
+    <Edge Name="Precognitive Flashes" Requires="Novice, Psychically Sensitive, Danger Sense, Spirit d8" Description="Once per session get a vision. Make a spirit roll, on a failure gain a level of fatigue for 8 hours." />
+    <Edge Name="Psychically Sensitive" Requires="Novice, Spirit d6" Description="Add +2 to sense or communicate with supernatural beings." />
+    <Edge Name="Psychometry" Requires="Veteran, Spirit d10, Notice d8" Description="You can touch an object and attempt to sense an impression or vision related to it's past. Make a spirit roll at -2." />
+    <Edge Name="Spirit Guardian" Requires="Novice, Spirit d8" Description="You have a spirit guardian, it provides a +2 to opposed rolls against spirits." />
+  </Edges>
+
+  <Ranks>
+    <Rank DisplayName="Freshman" Name="Novice" Experience="0" UnusedAdvances="0" />
+    <Rank DisplayName="Sophmore" Name="Seasoned" Experience="20" UnusedAdvances="4" />
+    <Rank DisplayName="Junior" Name="Veteran" Experience="40" UnusedAdvances="8" />
+    <Rank DisplayName="Senior" Name="Heroic" Experience="60" UnusedAdvances="12" />
+  </Ranks>
+</Setting>

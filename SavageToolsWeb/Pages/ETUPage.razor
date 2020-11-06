@@ -1,0 +1,19 @@
+﻿@page "/setting/etu"
+@inherits SettingPage
+
+@if (Model != null)
+{
+    <SettingHeader CharacterOptions="@Model" />
+
+    <CharacterBuilderForm Options="@Model" />
+
+}
+else if (LoadFailed)
+{
+    <h1>Error loading page.</h1>
+    <pre>@(LastError)</pre>
+}
+else
+{
+    <h1>Loading</h1>
+}

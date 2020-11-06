@@ -436,6 +436,9 @@ namespace SavageTools.Settings
         [XmlAttribute()]
         public string Name { get; set; }
 
+        [XmlAttribute()]
+        public string DisplayName { get; set; }
+
         /// <remarks/>
         [XmlAttribute()]
         public int Experience { get; set; }
