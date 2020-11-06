@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Setting Name="Horror">
+<Setting Name="ETU">
   <References>
     <Reference Name="Core" />
     <Reference Name="Horror" />
