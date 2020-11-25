@@ -11,6 +11,7 @@ namespace SavageToolsWeb.Pages
         protected void CreateAdventure()
         {
             var gen = new EtuAdventureGenerator();
+            Adventures.Clear();
             Adventures.Add(gen.GenerateAdventure());
             StateHasChanged();
         }

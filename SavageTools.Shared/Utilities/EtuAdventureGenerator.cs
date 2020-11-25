@@ -174,7 +174,67 @@ namespace SavageTools.Utilities
 
         NameDescriptionPair HighStrangeness(Dice dice)
         {
-            return new("High Strangeness", ""); //TODO
+            switch (dice.PickCard())
+            {
+                case (Club, Two): return new("", "It begins raining rust-colored rain drops.");
+                case (Club, Three): return new("", "Water turns to blood.");
+                case (Club, Four): return new("", "An animal yelps in pain. Its carcass is found with the head turned backwards.");
+                case (Club, Five): return new("", "The sun or moon unexpectedly eclipses. No one else finds it particularly noteworthy.");
+                case (Club, Six): return new("", "A cat or dog approaches the characters and lays a small heart at their feet. Moments later it drops dead. A heart is missing from its body.");
+                case (Club, Seven): return new("", "A thick fog grows unnaturally and covers the entire town for 1d4 days.");
+                case (Club, Eight): return new("", "The wind picks up and the sounds of unintelligible whispered voices are heard in it.");
+                case (Club, Nine): return new("", "A strange mist fills a Large Burst Template area centered on the heroes or triggering source.");
+                case (Club, Ten): return new("", "Everything in a Large Burst Template area becomes as sticky as molasses: people, plants, objects, even the ground itself.");
+                case (Club, Jack): return new("", "Earthworms, grubworms, and maggots begin crawling from a nearby patch of ground.");
+                case (Club, Queen): return new("", $"A pet turns feral and vicious for {dice.D("1d10")} rounds.");
+                case (Club, King): return new("", "There is a sudden, very loud, thunderclap.");
+                case (Club, Ace): return new("", $"Every person in the next public area suddenly develops hiccups lasting {dice.D("1d10")} minutes.");
+
+                case (Heart, Two): return new("", "Somewhere nearby the awful screeching and crunching of a massive car wreck sounds, but no such accident can be found.");
+                case (Heart, Three): return new("", "Bark flakes off of a tree, revealing flesh. Exposed to air, the flesh toughens into bark.");
+                case (Heart, Four): return new("", "The heroes notice bloody footprints ending right behind them. They can be backtracked only twenty paces before mysteriously appearing as if in mid-stride.");
+                case (Heart, Five): return new("", $"Silence reigns as no sound escapes a Large Burst Template area for {dice.D("1d4")} minutes.");
+                case (Heart, Six): return new("", "An insect can be heard screaming for help from a spider web.");
+                case (Heart, Seven): return new("", "A siren’s song comes from a nearby patch of woods but stops when investigated.");
+                case (Heart, Eight): return new("", "The heroes discover tortillas with small holes punched through them all over the ground.");
+                case (Heart, Nine): return new("", "All pets and animals flee in terror from the heroes.");
+                case (Heart, Ten): return new("", "Shadows cast by the heroes move of their own accord.");
+                case (Heart, Jack): return new("", "An unusually large black bird seemingly follows one of the heroes. It continues to do so unless it is shot, killed, or captured.");
+                case (Heart, Queen): return new("", $"All cell phones in Golan County suddenly stop working for {dice.D("1d4")} days and no explanation is ever given.");
+                case (Heart, King): return new("", "Birds suddenly fill the sky by the thousands, all flying east.");
+                case (Heart, Ace): return new("", "One of the heroes vomits uncontrollably, producing a foul, purplish mass that seems to whine and squeal for a few seconds, then “dies.”");
+
+                case (Diamond, Two): return new("", "A series of knocks from interior walls have no visible source.");
+                case (Diamond, Three): return new("", "Someone screams for help from a closet, but no one is inside.");
+                case (Diamond, Four): return new("", "A nearby mirror splinters and crashes to the ground.");
+                case (Diamond, Five): return new("", $"{dice.D("1d6")} mice suddenly appear and scamper in the area looking for a place to hide.");
+                case (Diamond, Six): return new("", "All sounds in a Large Burst Template area become “screwed” so they are slow and deep and difficult to understand.");
+                case (Diamond, Seven): return new("", "All food or drink sours immediately.");
+                case (Diamond, Eight): return new("", "The water draining down a faucet begins to circle in the opposite direction.");
+                case (Diamond, Nine): return new("", $"For {dice.D("1d4")} rounds roaches and other creepy crawlies suddenly swarm in a Small Burst emplate.");
+                case (Diamond, Ten): return new("", "Something scratches at a door or window, but no cause is ever found.");
+                case (Diamond, Jack): return new("", "A bucket of human teeth is found nearby.");
+                case (Diamond, Queen): return new("", "A hero seemingly causes any device with a speaker to burst into static at her approach.");
+                case (Diamond, King): return new("", "Roll d100. The resulting number becomes a recurring theme for the heroes. It is everywhere they look—doors, phone numbers, ticket numbers, etc.");
+                case (Diamond, Ace): return new("", "A homeless person fixates on one of the heroes and begins following her. He is not mean or evil, only very curious and mysteriously drawn to the hero.");
+
+                case (Spade, Two): return new("", "A large owl flies to a nearby window, pecks the glass until it cracks, then flies away.");
+                case (Spade, Three): return new("", "An object suddenly falls from a shelf.");
+                case (Spade, Four): return new("", "A beverage (beer, wine, water, soda) suddenly boils.");
+                case (Spade, Five): return new("", "A beverage suddenly turns to solid ice.");
+                case (Spade, Six): return new("", "All glass (including eyeglasses) in a Large Burst Template area suddenly crack.");
+                case (Spade, Seven): return new("", "Nearby sinks and toilets turn on or flush.");
+                case (Spade, Eight): return new("", "A baby’s cry is heard nearby, but cannot be found.");
+                case (Spade, Nine): return new("", $"All clocks stop and cannot be restarted for {dice.D("1d6")} minutes.");
+                case (Spade, Ten): return new("", $"The heroes suddenly experience missing time. Roll {dice.D("1d100")} for the number of minutes. They have no memory of what just happened, but all their watches and time pieces are exactly the same and when compared to others they show the indicated time lapse.");
+                case (Spade, Jack): return new("", "A hero hears someone making a “Shhh!” noise, but no one did.");
+                case (Spade, Queen): return new("", "Characters controlled by the Dean only speak in questions. When this is pointed out to one of them, he screams in agony and blacks out. The phenomena stops afterward.");
+                case (Spade, King): return new("", "The heroes experience a moment of déjà vu. End the current scene, then repeat it.");
+                case (Spade, Ace): return new("", $"A hero begins having migraine headaches that cause him to suffer a –2 to all rolls for {dice.D("1d6")} hours. However, on a successful Spirit roll, he also has a brief glimpse of the future.");
+            }
+
+            //Redraw in the case of a Joker
+            return HighStrangeness(dice);
         }
 
         NameDescriptionPair Complications(Dice dice)
@@ -204,7 +264,7 @@ namespace SavageTools.Utilities
                 switch (card)
                 {
                     case (_, Two): return new("Pop Quiz", "A big test comes up in one of the student’s classes, determined randomly. Sometime in the next week of classes, he must make a roll as if taking Exams. If he fails, he suffers a –2 penalty to his actual Exams for his shortcomings. If he succeeds, there’s no penalty. If he gets a raise, he gets a +2 bonus on the next Exam.");
-                    case (_, Three): return new("Money Trouble", $"When it rains, it pours. Everyone has an unexpected expense of some sort (the player can describe what it is). The expense is equal to $10 × {dice.D(6)}, times the character’s wealth level (Poor=×1, Normal=×2, Rich=×4, Filthy Rich=×6).");
+                    case (_, Three): return new("Money Trouble", $"When it rains, it pours. Everyone has an unexpected expense of some sort (the player can describe what it is). The expense is equal to $10 × D6, times the character’s wealth level (Poor=×1, Normal=×2, Rich=×4, Filthy Rich=×6).");
                     case (Club, Four): return new("Media Attention", "A nosy reporter with the Raven’s Report smells a story concerning one of the party’s previous deeds.");
                     case (Spade, Four): return new("Media Attention", "A nosy reporter from out of town smells a story concerning one of the party’s previous deeds.");
                     case (Club, Five): return new("The Sniffles", "Is this just seasonal allergies or something more serious? Congestion and cold symptoms");
