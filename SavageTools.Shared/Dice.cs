@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Tortuga.Anchor;
@@ -9,26 +8,44 @@ namespace SavageTools
 {
     public class Dice : RandomExtended
     {
-        ImmutableArray<Card> m_Deck;
+        List<Card> m_Deck;
 
-        public Dice(int seed) : base(seed) => Setup();
+        public Dice(int seed) : base(seed) => ShuffleCards();
 
-        public Dice() => Setup();
+        public Dice() => ShuffleCards();
 
-        void Setup()
+        public void ShuffleCards()
         {
             var deck = new List<Card>();
             for (var rank = Rank.Two; rank <= Rank.Ace; rank++)
                 for (var suit = Suit.Spade; suit <= Suit.Diamond; suit++)
                     deck.Add(new Card(suit, rank));
-            deck.Add(new Card(Suit.Red, Rank.Joker));
-            deck.Add(new Card(Suit.Black, Rank.Joker));
-            m_Deck = deck.ToImmutableArray();
+            deck.Add(new Card(Suit.RedJ, Rank.Joker));
+            deck.Add(new Card(Suit.BlackJ, Rank.Joker));
+            m_Deck = deck;
         }
 
-        public Card Card()
+        /// <summary>
+        /// Chooses a card from the deck, then put it back.
+        /// </summary>
+        /// <returns>Card.</returns>
+        /// <remarks>If the card deck is empty, shuffle.</remarks>
+        public Card ChooseCard()
         {
+            if (m_Deck.Count == 0)
+                ShuffleCards();
             return Choose(m_Deck);
+        }
+
+        /// <summary>
+        /// Pick a card from the deck. This card may not be pulled again.
+        /// </summary>
+        /// <returns>Card.</returns>
+        /// <remarks>If the card deck is empty, shuffle.</remarks>
+        public Card PickCard()
+        {
+            if (m_Deck.Count == 0)
+                ShuffleCards(); return Pick(m_Deck);
         }
 
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "D")]

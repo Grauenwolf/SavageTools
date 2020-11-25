@@ -8,12 +8,18 @@ namespace SavageTools
     [Flags]
     public enum Suit
     {
-        Black = 0,
-        Red = 1,
+        BlackJ = 0,
+        RedJ = 1,
 
         Spade = 2,
         Heart = 3,
         Diamond = 5,
         Club = 4
+    }
+
+    public enum CardColor
+    {
+        Black = 0,
+        Red = 1
     }
 }
