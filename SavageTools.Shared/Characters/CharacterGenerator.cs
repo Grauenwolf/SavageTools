@@ -88,23 +88,35 @@ namespace SavageTools.Characters
         //    group.Powers.Add(new Power(power, trapping.Name));
         //}
 
-        //public void ApplyEdge(Character result, Dice dice, string edgeName, string description = null)
-        //{
-        //    if (result == null)
-        //        throw new ArgumentNullException(nameof(result), $"{nameof(result)} is null.");
+        public void ApplyEdge(Character result, Dice dice, string edgeName, string description = null)
+        {
+            if (result == null)
+                throw new ArgumentNullException(nameof(result), $"{nameof(result)} is null.");
 
-        //    if (string.IsNullOrEmpty(edgeName))
-        //        throw new ArgumentException($"{nameof(edgeName)} is null or empty.", nameof(edgeName));
+            if (string.IsNullOrEmpty(edgeName))
+                throw new ArgumentException($"{nameof(edgeName)} is null or empty.", nameof(edgeName));
 
-        //    if (dice == null)
-        //        throw new ArgumentNullException(nameof(dice), $"{nameof(dice)} is null.");
+            if (dice == null)
+                throw new ArgumentNullException(nameof(dice), $"{nameof(dice)} is null.");
 
-        //    var edge = Edges.SingleOrDefault(x => string.Equals(x.Name, edgeName, StringComparison.OrdinalIgnoreCase));
-        //    if (edge == null)
-        //        result.Edges.Add(edgeName, description);
-        //    else
-        //        ApplyEdge(result, edge, dice);
-        //}
+            var edge = Edges.SingleOrDefault(x => string.Equals(x.Name, edgeName, StringComparison.OrdinalIgnoreCase));
+            if (edge == null)
+                result.Edges.Add(edgeName, description);
+            else
+                ApplyEdge(result, edge, dice, description);
+        }
+
+        public Character CreateBlankCharacter(bool animalIntelligence = false, bool useCoreSkills = true)
+        {
+            var result = new Character();
+
+            //Add all possible skills (except ones created by edges)
+            //Filter out the ones not available to animal intelligences
+            foreach (var item in Skills.Where(s => !animalIntelligence || !s.NoAnimals))
+                result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = (item.IsCore && useCoreSkills) ? 4 : 0 });
+
+            return result;
+        }
 
         public Character GenerateCharacter(CharacterOptions options, Dice dice = null)
         {
@@ -249,24 +261,19 @@ namespace SavageTools.Characters
                 while (group.UnusedPowers > 0)
                     PickPower(result, group, dice, options.BornAHero);
 
-            //Remove the skills that were not chosen
-            foreach (var item in result.Skills.Where(s => s.Trait == 0).ToList())
-                result.Skills.Remove(item);
+            AddPersonality(result, dice);
 
+            result.Cleanup();
+
+            return result;
+        }
+
+        public void AddPersonality(Character result, Dice dice)
+        {
             //Add personality
             int personalityTraits = dice.D(3);
             for (var i = 0; i < personalityTraits; i++)
                 result.Personality.Add(PersonalityService.CreateRandomPersonality(dice));
-
-            //Sorting
-            result.Skills.Sort(s => s.Name);
-            result.Edges.Sort(e => e.Name);
-            result.Hindrances.Sort(h => h.Name);
-            result.Features.Sort(f => f.Name);
-            foreach (var group in result.PowerGroups)
-                group.Powers.Sort(p => p.LongName);
-
-            return result;
         }
 
         //public IEnumerable<SettingSkillOption> KnowledgeSkills()
@@ -400,9 +407,11 @@ namespace SavageTools.Characters
             PickEdge(result, dice, null, null, bornAHero);
         }
 
-        public void ApplyEdge(Character result, SettingEdge edge, Dice dice)
+        public void ApplyEdge(Character result, SettingEdge edge, Dice dice, string overrideDescription = null)
         {
-            result.Edges.Add(new Edge() { Name = edge.Name, Description = edge.Description, UniqueGroup = edge.UniqueGroup });
+            var description = overrideDescription.IsNullOrEmpty() ? edge.Description : overrideDescription;
+
+            result.Edges.Add(new Edge() { Name = edge.Name, Description = description, UniqueGroup = edge.UniqueGroup });
 
             if (edge.Traits != null)
                 foreach (var item in edge.Traits)
@@ -1007,7 +1016,7 @@ namespace SavageTools.Characters
                 return;
             }
 
-            TryAgain:
+        TryAgain:
             var trapping = dice.Choose(trappings);
             var trigger = dice.Choose(group.AvailableTriggers);
             var power = dice.Choose(powers);

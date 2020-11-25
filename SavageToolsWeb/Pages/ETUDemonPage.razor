@@ -1,0 +1,40 @@
+﻿@page "/setting/etu/demon"
+@inherits SettingPage
+
+@if (Model != null)
+{
+    <SettingHeader CharacterOptions="@Model" />
+
+    <div class="do-not-print">
+        <table class="gridtable">
+            <tr>
+                <th> Demon Generator</th>
+                <td><button @onclick="CreateDemon">Generate</button></td>
+            </tr>
+        </table>
+        <div>
+            <EditForm Model="@Model">
+                Display Mode: <InputSelect id="parentSection" @bind-Value="Model.DisplayMode">
+                    <option value="HTML" selected>HTML</option>
+                    <option value="Formatted">Formatted</option>
+                    <option value="Formatted_Compact">Formatted, Compact</option>
+                    <option value="Markdown">Markdown</option>
+                    <option value="Markdown_Compact">Markdown, Compact</option>
+                </InputSelect>
+            </EditForm>
+        </div>
+    </div>
+
+    <hr />
+    <CharacterBuilderDisplay Options="@Model" />
+
+}
+else if (LoadFailed)
+{
+    <h1>Error loading page.</h1>
+    <pre>@(LastError)</pre>
+}
+else
+{
+    <h1>Loading</h1>
+}

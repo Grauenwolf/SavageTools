@@ -288,6 +288,10 @@
     <Edge Name="Master of Arms" Requires="Legendary, Weapon Master" Description="Parry increases by another +1 and Fighting bonus damage die is d10.">
       <Trait Name="Parry" Bonus="1" />
     </Edge>
+
+    <!-- Monster Abilities -->
+    <Edge Name="Hardy" Requires="Monster" Description="A second Shaken result in combat does not cause a Wound." />
+    <Edge Name="Fast Regeneration" Requires="Monster" Description="Natural healing roll every round" />
   </Edges>
 
   <Archetypes>

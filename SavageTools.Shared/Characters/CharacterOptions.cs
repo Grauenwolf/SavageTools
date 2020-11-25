@@ -1,5 +1,6 @@
 ﻿using SavageTools.Settings;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Tortuga.Anchor.Modeling;
 
@@ -15,6 +16,10 @@ namespace SavageTools.Characters
             SelectedArchetype = characterGenerator.Archetypes.SingleOrDefault(a => a.Name == "(None)");
             //SelectedRank = characterGenerator.Ranks.SingleOrDefault(a => a.Name == "Novice");
         }
+
+        public List<Character> Squad { get; } = new List<Character>();
+
+        public string DisplayMode { get => GetDefault("HTML"); set => Set(value); }
 
         public bool BornAHero { get => GetDefault(false); set => Set(value); }
         public bool MoreSkills { get => GetDefault(false); set => Set(value); }

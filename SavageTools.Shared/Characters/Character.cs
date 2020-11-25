@@ -607,6 +607,21 @@ namespace SavageTools.Characters
             return output.ToString();
         }
 
+        public void Cleanup()
+        {
+            //Remove the skills that were not chosen
+            foreach (var item in Skills.Where(s => s.Trait == 0).ToList())
+                Skills.Remove(item);
+
+            //Sorting
+            Skills.Sort(s => s.Name);
+            Edges.Sort(e => e.Name);
+            Hindrances.Sort(h => h.Name);
+            Features.Sort(f => f.Name);
+            foreach (var group in PowerGroups)
+                group.Powers.Sort(p => p.LongName);
+        }
+
         //[Obsolete]
         //public void CopyToStory(StoryBuilder story, bool indentAfterName = false)
         //{

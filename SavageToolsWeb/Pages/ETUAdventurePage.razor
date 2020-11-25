@@ -1,0 +1,153 @@
+﻿@page "/setting/etu/adventure"
+@inherits SettingPage
+
+@if (Model != null)
+{
+    <SettingHeader CharacterOptions="@Model" />
+
+    <div class="do-not-print">
+        <table class="gridtable">
+            <tr>
+                <th> ETU Adventure Generator</th>
+                <td><button @onclick="CreateAdventure">Generate</button></td>
+                @*<td><button @onclick="ClearAdventures">Clear</button></td>*@
+            </tr>
+        </table>
+    </div>
+
+    @if (!string.IsNullOrEmpty(ErrorDisplay))
+    {
+        <p style="color:red">@ErrorDisplay</p>
+    }
+
+    @if (Adventures.Count > 0)
+    {
+        @foreach (var adventure in Adventures)
+        {
+            <table class="gridtable">
+                <tr><th>Who</th></tr>
+                @{
+                    var current = adventure.Who;
+                    while (current != null)
+                    {
+                        <tr>
+                            <td>
+                                <span style="font-weight:bold"> @(current.Name) </span> &nbsp;
+
+                                @if (current.IsMarkdown)
+                                {
+                                    <MarkdownView Content="@current.Description" />
+                                }
+                                else
+                                {
+                                    @(current.Description)
+                                }
+                            </td>
+                        </tr>
+                        current = current.LinkedItem;
+                    }
+                }
+                <tr><th>What</th></tr>
+                @{
+                    current = adventure.What;
+                    while (current != null)
+                    {
+                        <tr>
+                            <td>
+                                <span style="font-weight:bold"> @(current.Name) </span>&nbsp;
+
+                                @if (current.IsMarkdown)
+                                {
+                                    <MarkdownView Content="@current.Description" />
+                                }
+                                else
+                                {
+                                    @(current.Description)
+                                }
+                            </td>
+                        </tr>
+                        current = current.LinkedItem;
+                    }
+                }
+                <tr><th>Why</th></tr>
+                @{
+                    current = adventure.Why;
+                    while (current != null)
+                    {
+                        <tr>
+                            <td>
+                                <span style="font-weight:bold"> @(current.Name) </span>&nbsp;
+
+                                @if (current.IsMarkdown)
+                                {
+                                    <MarkdownView Content="@current.Description" />
+                                }
+                                else
+                                {
+                                    @(current.Description)
+                                }
+                            </td>
+                        </tr>
+                        current = current.LinkedItem;
+                    }
+                }
+                <tr><th>Where</th></tr>
+                @{
+                    current = adventure.Where;
+                    while (current != null)
+                    {
+                        <tr>
+                            <td>
+                                <span style="font-weight:bold"> @(current.Name) </span>&nbsp;
+
+                                @if (current.IsMarkdown)
+                                {
+                                    <MarkdownView Content="@current.Description" />
+                                }
+                                else
+                                {
+                                    @(current.Description)
+                                }
+                            </td>
+                        </tr>
+                        current = current.LinkedItem;
+                    }
+                }
+                <tr><th>Complications</th></tr>
+                @{
+                    current = adventure.Complications;
+                    while (current != null)
+                    {
+                        <tr>
+                            <td>
+                                <span style="font-weight:bold"> @(current.Name) </span>&nbsp;
+
+                                @if (current.IsMarkdown)
+                                {
+                                    <MarkdownView Content="@current.Description" />
+                                }
+                                else
+                                {
+                                    @(current.Description)
+                                }
+                            </td>
+                        </tr>
+                        current = current.LinkedItem;
+                    }
+                }
+            </table>
+
+            <hr />
+        }
+    }
+
+}
+else if (LoadFailed)
+{
+    <h1>Error loading page.</h1>
+    <pre>@(LastError)</pre>
+}
+else
+{
+    <h1>Loading</h1>
+}

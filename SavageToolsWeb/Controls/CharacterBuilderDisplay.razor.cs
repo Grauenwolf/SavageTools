@@ -5,12 +5,30 @@ using System;
 
 namespace SavageToolsWeb.Controls
 {
-    partial class CharacterBuilderForm
+    partial class CharacterBuilderDisplay
     {
-        [Parameter] public CharacterOptions? Options { get; set; }
+        CharacterOptions? options;
+
+        [Parameter]
+        public CharacterOptions? Options
+        {
+            get => options;
+            set
+            {
+                if (options != null)
+                    options.PropertyChanged -= Options_PropertyChanged;
+                options = value;
+                if (options != null)
+                    options.PropertyChanged += Options_PropertyChanged;
+            }
+        }
+
+        private void Options_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            StateHasChanged();
+        }
 
         public string? ErrorDisplay;
-        public string DisplayMode = "HTML";
 
         protected void SubmitChanges()
         {

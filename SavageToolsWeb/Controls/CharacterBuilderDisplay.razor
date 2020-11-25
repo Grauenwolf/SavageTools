@@ -1,0 +1,230 @@
+﻿@if (Options == null)
+{
+    <div>ERROR CharacterBuilderDisplay is missing the Options parameter.</div>
+}
+else
+{
+
+    if (Options.Squad.Count > 0)
+    {
+        @foreach (var chr in Options.Squad)
+        {
+            if (Options.DisplayMode == "HTML")
+            {
+                <h2 style="page-break-before: always">@(chr.Name)</h2>
+
+                <table class="gridtable">
+                    <tr><th>Gender</th><th>Archetype</th><th>Race</th><th>Rank</th><th>Personality</th></tr>
+                    <tr><td>@(chr.Gender)</td><td>@(chr.Archetype)</td><td>@(chr.Race)</td><td>@(chr.Rank + (chr.IsWildCard ? " Wild Card" : "")  )</td><td>@(string.Join(", ", chr.Personality.Select(x => x.Name)))</td></tr>
+                </table>
+
+                <table class="gridtable">
+                    <tr><th>Agility</th><th>Smarts</th><th>Spirit</th><th>Strength</th><th>Vigor</th></tr>
+                    <tr>
+                        <td>@(chr.Agility + (chr.MaxAgility != 12 ? " (Max " + chr.MaxAgility + ")" : null ))</td>
+                        <td>@(chr.Smarts + (chr.AnimalIntelligence ? " (A)" : "") + (chr.MaxSmarts != 12 ? " (Max " + chr.MaxSmarts + ")" : null ))</td>
+                        <td>@(chr.Spirit + (chr.MaxSpirit != 12 ? " (Max " + chr.MaxSpirit + ")" : null ))</td>
+                        <td>@(chr.Strength + (chr.MaxStrength != 12 ? " (Max " + chr.MaxStrength + ")" : null ))</td>
+                        <td>@(chr.Vigor + (chr.MaxVigor != 12 ? " (Max " + chr.MaxVigor + ")" : null ))</td>
+                    </tr>
+                </table>
+
+                <!-- Calculated Traits -->
+
+                <table class="gridtable">
+                    <tr>
+                        <th>Parry</th>
+                        <th>Toughness</th>
+                        @if (chr.TotalWounds.HasValue)
+                        {
+                            <th>Wounds</th>
+                        }
+                        <th>Pace</th>
+                        @if (chr.Size != 0)
+                        {
+                            <th>Size</th>
+                        }
+                    </tr>
+
+                    <tr>
+                        <td>@(chr.ParryTotal)</td>
+                        @if (chr.Armor == 0)
+                        {
+                            <td>@(chr.ToughnessTotal)</td>
+                        }
+                        else
+                        {
+                            <td>@(chr.ToughnessTotal) (@(chr.Armor))</td>
+                        }
+                        @if (chr.TotalWounds.HasValue)
+                        {
+                            <td>@(chr.TotalWounds)</td>
+                        }
+                        <td>@(chr.Pace)+@(chr.Running)</td>
+                        @if (chr.Size != 0)
+                        {
+                            <td>@(chr.Size + " (" + chr.HeightFromSize + " " + chr.WeightFromSize + ")")</td>
+                        }
+                    </tr>
+                </table>
+
+                <!-- Additional Traits -->
+                @if (chr.Fear.HasValue || chr.UseStrain || chr.UseStatus || chr.UseReason)
+                {
+
+                    <table class="gridtable">
+                        <tr>
+                            @if (chr.Fear.HasValue)
+                            {
+                                <th>Fear</th>
+                            }
+                            @if (chr.UseStrain)
+                            {
+                                <th>Strain/Max</th>
+                            }
+                            @if (chr.UseStatus)
+                            {
+                                <th>Status</th>
+                            }
+                            @if (chr.UseReason)
+                            {
+                                <th>Reason</th>
+                            }
+                        </tr>
+
+                        <tr>
+                            @if (chr.Fear.HasValue)
+                            {
+                                <td>@(chr.Fear)</td>
+                            }
+                            @if (chr.UseStrain)
+                            {
+                                <td>@(chr.Strain)/@(chr.MaximumStrainTotal)</td>
+                            }
+                            @if (chr.UseStatus)
+                            {
+                                <td>@(chr.Status)</td>
+                            }
+                            @if (chr.UseReason)
+                            {
+                                <td>@(chr.ReasonTotal)</td>
+                            }
+                        </tr>
+                    </table>
+                }
+
+                <div>&nbsp;</div>
+                <table>
+                    <tr>
+                        <td valign="top">
+                            <table class="gridtable">
+                                <tr><th>Skill</th> <th>Attribute</th><th>Rank</th></tr>
+
+                                @foreach (var skill in chr.Skills)
+                                {
+                                    <tr><td>@(skill.Name)</td> <td>@(skill.Attribute)</td><td>@(skill.Trait + (skill.MaxLevel != 12 ? " (Max " + skill.MaxLevel + ")" : null ) )</td></tr>
+                                }
+                            </table>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td valign="top">
+                            @if (chr.Edges.Count > 0)
+                            {<h4>Edges</h4>
+                                <ul>
+                                    @foreach (var item in chr.Edges)
+                                    {
+                                        <li><b>@(item.Name)</b> @(item.Description)</li>
+                                    }
+                                </ul>
+                            }
+
+                            @if (chr.Hindrances.Count > 0)
+                            {
+                                <h4>Hindrances</h4>
+                                <ul>
+                                    @foreach (var item in chr.Hindrances)
+                                    {
+                                        <li><b>@(item.Name)</b> @((item.Level == 2 ? "(major)" : "")) @(item.Description)</li>
+                                    }
+                                </ul>
+                            }
+
+                            @if (chr.Features.Count > 0)
+                            {<h4>Features</h4>
+                                <ul>
+                                    @foreach (var item in chr.Features)
+                                    {
+                                        <li> @(item.Name)</li>
+                                    }
+                                </ul>
+                            }
+
+                            @if (chr.PowerGroups.Count > 0)
+                            {
+                                <h4>Powers</h4>
+
+                                foreach (var item in chr.PowerGroups)
+                                {
+
+                                    <table class="gridtable">
+                                        <tr>
+                                            <th>@(item.PowerType)</th>
+                                            <th>Power Points (@(item.PowerPoints))</th>
+                                        </tr>
+                                        @foreach (var power in item.Powers)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @(power.LongName)
+                                                </td>
+                                                <td>
+                                                    @(power.PowerPoints)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">@(power.Description)</td>
+                                            </tr>
+                                        }
+                                    </table>
+                                    <div>&nbsp;</div>
+
+                                }
+                            }
+
+                            @if (chr.Gear.Count > 0)
+                            {<h4>Gear</h4>
+                                <ul>
+                                    @foreach (var item in chr.Gear)
+                                    {
+                                        <li><b>@(item.Name)</b> @(item.Description)</li>
+
+                                    }
+                                </ul>
+                            }
+                        </td>
+                    </tr>
+                </table>
+
+            }
+            else if (Options.DisplayMode == "Formatted")
+            {
+                <MarkdownView Content="@(chr.ToMarkdownString(false))" />
+            }
+            else if (Options.DisplayMode == "Formatted_Compact")
+            {
+                <MarkdownView Content="@(chr.ToMarkdownString(true))" />
+            }
+            else if (Options.DisplayMode == "Markdown")
+            {
+                <pre>@(chr.ToMarkdownString(false))</pre>
+            }
+            else if (Options.DisplayMode == "Markdown_Compact")
+            {
+                <pre>@(chr.ToMarkdownString(true))</pre>
+            }
+            <hr />
+
+        }
+
+    }
+}

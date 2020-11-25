@@ -1,4 +1,6 @@
-﻿using static SavageTools.CardColor;
+﻿using SavageTools.Characters;
+using System.Linq;
+using static SavageTools.CardColor;
 using static SavageTools.Rank;
 using static SavageTools.Suit;
 
@@ -6,10 +8,18 @@ namespace SavageTools.Utilities
 {
     public class EtuAdventureGenerator
     {
+        CharacterGenerator m_CharacterGenerator;
+        EtuDemonGenerator m_DemonGenerator;
+
+        public EtuAdventureGenerator(CharacterGenerator characterGenerator)
+        {
+            m_CharacterGenerator = characterGenerator;
+            m_DemonGenerator = new EtuDemonGenerator(characterGenerator);
+        }
+
         public EtuAdventure GenerateAdventure()
         {
             var dice = new Dice();
-
             return new EtuAdventure(Who(dice), What(dice), Why(dice), Where(dice), Complications(dice));
         }
 
@@ -74,32 +84,32 @@ namespace SavageTools.Utilities
         {
             switch (dice.PickCard())
             {
-                case (_, Two, Red): return new("Student", "A fraternity or sorority member (and perhaps some companions) are up to no good.");
-                case (_, Two): return new("Student", "A classmate (and perhaps some companions) are up to no good.");
+                case (_, Two, Red): return new("Student", "A fraternity or sorority member (and perhaps some companions) are up to no good.", GenerateCharacter(dice, "Student"));
+                case (_, Two): return new("Student", "A classmate (and perhaps some companions) are up to no good.", GenerateCharacter(dice, "Student"));
 
-                case (_, Three, Red): return new("Faculty", "One of ETU’s professors that a character knows.");
-                case (_, Three): return new("Faculty", "One of ETU’s professors that none of the characters know.");
+                case (_, Three, Red): return new("Faculty", "One of ETU’s professors that a character knows.", GenerateCharacter(dice, "Professor"));
+                case (_, Three): return new("Faculty", "One of ETU’s professors that none of the characters know.", GenerateCharacter(dice, "Professor"));
 
-                case (Heart, Four): return new("Townies", "The townies from Blackburn are up to mischief.");
-                case (Diamond, Four): return new("Townies", "The townies from Morganville are up to mischief.");
-                case (_, Four): return new("Townies", "The locals are up to mischief.");
+                case (Heart, Four): return new("Townies", "The townies from Blackburn are up to mischief.", GenerateCharacter(dice, RandomTownieType(dice)));
+                case (Diamond, Four): return new("Townies", "The townies from Morganville are up to mischief.", GenerateCharacter(dice, RandomTownieType(dice)));
+                case (_, Four): return new("Townies", "The locals are up to mischief.", GenerateCharacter(dice, RandomTownieType(dice)));
 
-                case (_, Five, Red): return new("Government", "The trouble comes from the local authorities.");
-                case (Club, Five): return new("Government", "The trouble comes from the military.");
-                case (Spade, Five): return new("Government", "The trouble comes from a secret government group.");
+                case (_, Five, Red): return new("Government", "The trouble comes from the local authorities.", GenerateCharacter(dice, "White Collar Worker"));
+                case (Club, Five): return new("Government", "The trouble comes from the military.", GenerateCharacter(dice, "White Collar Worker"));
+                case (Spade, Five): return new("Government", "The trouble comes from a secret government group.", GenerateCharacter(dice, "White Collar Worker"));
 
-                case (_, Six, Red): return new("Cult", "The bad guys are students in a weird cult looking to bring about some major change in the world—or destroy it!");
-                case (Club, Six): return new("Cult", "The bad guys are townies in a weird cult looking to bring about some major change in the world—or destroy it!");
-                case (Spade, Six): return new("Cult", "The bad guys are outsiders in a weird cult looking to bring about some major change in the world—or destroy it!");
+                case (_, Six, Red): return new("Cult", "The bad guys are students in a weird cult looking to bring about some major change in the world—or destroy it!", GenerateCharacter(dice, "Cultist"));
+                case (Club, Six): return new("Cult", "The bad guys are townies in a weird cult looking to bring about some major change in the world—or destroy it!", GenerateCharacter(dice, "Cultist"));
+                case (Spade, Six): return new("Cult", "The bad guys are outsiders in a weird cult looking to bring about some major change in the world—or destroy it!", GenerateCharacter(dice, "Cultist"));
 
                 case (_, Seven, Red): return new("Animal", "An animal that may be natural but somehow forced into the mystery by other circumstances");
                 case (_, Seven): return new("Animal", "An animal that has have been altered somehow—perhaps by drinking from weird chemicals or as the result of a miscast ritual");
 
-                case (_, Eight): return new("Scientist", "A technically-minded person is messing with forces beyond her control.");
+                case (_, Eight): return new("Scientist", "A technically-minded person is messing with forces beyond her control.", GenerateCharacter(dice, "White Collar Worker"));
 
-                case (_, Nine): return new("Corporation", "A company (or at least part of it) is the primary actor.");
+                case (_, Nine): return new("Corporation", "A company (or at least part of it) is the primary actor.", GenerateCharacter(dice, "White Collar Worker"));
 
-                case (_, Ten): return new("Criminal/Organized Crime", "A criminal or group of criminals, or gang, are involved.");
+                case (_, Ten): return new("Criminal/Organized Crime", "A criminal or group of criminals, or gang, are involved.", GenerateCharacter(dice, "Thug"));
 
                 case (_, Jack):
                 case (_, Queen):
@@ -139,9 +149,22 @@ namespace SavageTools.Utilities
             return new("", "");
         }
 
-        NameDescriptionPair DemonGenerator(Dice dice)
+        NameDescriptionPair GenerateDemon(Dice dice)
         {
-            return new("Demon Generator", ""); //TODO
+            var demon = m_DemonGenerator.GenerateDemon(dice);
+            var text = demon.ToMarkdownString(isCompact: false);
+            return new("Demon", text) { IsMarkdown = true };
+        }
+
+        NameDescriptionPair GenerateCharacter(Dice dice, string archetype)
+        {
+            var options = new CharacterOptions(m_CharacterGenerator);
+            options.SelectedArchetype = m_CharacterGenerator.Archetypes.Single(a => a.Name == archetype);
+            options.SelectedRace = m_CharacterGenerator.Races.Single(a => a.Name == "Human (PC)");
+
+            var character = m_CharacterGenerator.GenerateCharacter(options, dice);
+            var text = character.ToMarkdownString(isCompact: false);
+            return new("", text) { IsMarkdown = true };
         }
 
         NameDescriptionPair Supernatural(Dice dice)
@@ -158,7 +181,7 @@ namespace SavageTools.Utilities
                 case (_, Seven): return new("Vampire", "A bloodsucking fiend or similar parasitic humanoid has surfaced.");
                 case (_, Eight, Red): return new("Ghost", "Some unfortunate soul still lingers in our world. It was violent in life and continues its rage in the afterlife.");
                 case (_, Eight): return new("Ghost", "Some unfortunate soul still lingers in our world. The ghost was a victim and might only attack if threatened or confused.");
-                case (_, Nine): return new("Demon", "A vile creature from the pits of Hell roams the earth.", DemonGenerator(dice));
+                case (_, Nine): return new("Demon", "A vile creature from the pits of Hell roams the earth.", GenerateDemon(dice));
                 case (_, Ten): return new("Anomaly", "A completely unknown creature—perhaps from some other Savage Worlds setting—has somehow ended up in Pinebox.");
                 case (_, Jack): return new("Undead", "Some sort of undead (other than a vampire) rises. This could be a pack of zombies, a mummy, a horrible wight, and so on.");
                 case (_, Queen): return new("Animal", "A normal animal altered by science or sorcery is behind the event.");
@@ -289,25 +312,46 @@ namespace SavageTools.Utilities
             return new("", "");
         }
 
+        // , GenerateCharacter(dice, "Victim", "")
+        string RandomTownieType(Dice dice)
+        {
+            switch (dice.D(7))
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    return "Blue Collar Worker";
+
+                case 5:
+                case 6:
+                    return "White Collar Worker";
+
+                case 7:
+                    return "Soldier";
+            }
+            return "";
+        }
+
         NameDescriptionPair Victim(Dice dice)
         {
             switch (dice.PickCard())
             {
                 case (_, Two):
                 case (_, Three):
-                case (_, Four): return new("Student", "A fellow ETU student is in peril.");
-                case (_, Five, Red): return new("Faculty", "One of character's professors is the victim.");
-                case (_, Five): return new("Faculty", "One of ETU’s faculty is the victim.");
-                case (_, Six, Red): return new("Townies", "The danger is in a nearby town such as Blackburn or outlying ranches");
-                case (_, Six): return new("Townies", "The locals are in danger.");
+                case (_, Four): return new("Student", "A fellow ETU student is in peril.", GenerateCharacter(dice, "Student"));
+                case (_, Five, Red): return new("Faculty", "One of character's professors is the victim.", GenerateCharacter(dice, "Professor"));
+                case (_, Five): return new("Faculty", "One of ETU’s faculty is the victim.", GenerateCharacter(dice, "Professor"));
+                case (_, Six, Red): return new("Townies", "The danger is in a nearby town such as Blackburn or outlying ranches", GenerateCharacter(dice, RandomTownieType(dice)));
+                case (_, Six): return new("Townies", "The locals are in danger.", GenerateCharacter(dice, RandomTownieType(dice)));
 
-                case (_, Seven, Red): return new("Government", "A local government official is in danger.");
-                case (_, Seven): return new("Government", "A state or federal official is in danger.");
-                case (_, Eight): return new("Love Interest", "One of the characters’ love interests (or close friend) is in danger.");
+                case (_, Seven, Red): return new("Government", "A local government official is in danger.", GenerateCharacter(dice, "White Collar Worker"));
+                case (_, Seven): return new("Government", "A state or federal official is in danger.", GenerateCharacter(dice, "White Collar Worker"));
+                case (_, Eight): return new("Love Interest", "One of the characters’ love interests (or close friend) is in danger.", GenerateCharacter(dice, "Student"));
                 case (_, Nine): return new("Animal", "Wildlife or domesticated animals are the victims of this particular tale.");
-                case (_, Ten): return new("Scientist", "A team of researchers, doctors, or scientists are in danger.");
-                case (_, Jack): return new("Corporation", "Someone or some thing has targeted a company and its employees.");
-                case (_, Queen): return new("Criminal/Organized Crime", "Bad things are about to happen to bad people. Should the heroes help? Or let it happen?");
+                case (_, Ten): return new("Scientist", "A team of researchers, doctors, or scientists are in danger.", GenerateCharacter(dice, "White Collar Worker"));
+                case (_, Jack): return new("Corporation", "Someone or some thing has targeted a company and its employees.", GenerateCharacter(dice, "White Collar Worker"));
+                case (_, Queen): return new("Criminal/Organized Crime", "Bad things are about to happen to bad people. Should the heroes help? Or let it happen?", GenerateCharacter(dice, "Thug"));
                 case (_, King): return new("The Heroes", "One of the heroes is the target!");
                 case (_, Ace): return new("Paranormal", "The victim is a supernatural creature.", Supernatural(dice));
 
@@ -394,26 +438,6 @@ namespace SavageTools.Utilities
                 case (_, Joker): return new("Mass Event", "Something BIG is going to happen that could affect the whole town");
             }
             return new("", "");
-        }
-    }
-
-    public record EtuAdventure(NameDescriptionPair Who, NameDescriptionPair What, NameDescriptionPair Why, NameDescriptionPair Where, NameDescriptionPair Complications);
-
-    public record NameDescriptionPair(string Name, string Description)
-    {
-        public NameDescriptionPair(string name, string description, NameDescriptionPair linkedItem)
-            : this(name, description)
-            => LinkedItem = linkedItem;
-
-        public NameDescriptionPair LinkedItem { get; private set; }
-
-        public void AddLinkedItem(NameDescriptionPair item)
-        {
-            var current = this;
-            while (current.LinkedItem != null)
-                current = current.LinkedItem;
-            //Adds the item to the end of the chain;
-            current.LinkedItem = item;
         }
     }
 }

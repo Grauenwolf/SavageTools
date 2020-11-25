@@ -19,6 +19,7 @@ namespace SavageToolsWeb.Pages
                 var file = new FileInfo(Path.Combine(Environment.WebRootPath, "App_Data", SettingFileName));
                 var cg = new CharacterGenerator(file);
                 Model = new CharacterOptions(cg);
+                Model.PropertyChanged += (s, e) => StateHasChanged();
                 PageTitle = Model.CharacterGenerator.SettingName;
             }
         }
