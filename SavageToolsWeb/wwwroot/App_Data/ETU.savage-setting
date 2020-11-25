@@ -7,6 +7,9 @@
 
   <Skills>
     <Skill Name="Occult" Attribute="Smarts"></Skill>
+    <Skill Name="Journalism" Attribute="Smarts"></Skill>
+    <Skill Name="Knowledge (Field)" Attribute="Smarts"></Skill>
+    <Skill Name="Knowledge (Law)" Attribute="Smarts"></Skill>
   </Skills>
 
   <Hindrances>
@@ -67,4 +70,230 @@
     <Rank DisplayName="Junior" Name="Veteran" Experience="40" UnusedAdvances="8" />
     <Rank DisplayName="Senior" Name="Heroic" Experience="60" UnusedAdvances="12" />
   </Ranks>
+
+  <Archetypes>
+    <Archetype Name="Blue Collar Worker"  Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Fighting" Level="4" />
+      <Skill Name="Intimidation" Level="4" />
+      <Skill Name="Knowledge (Field)" Level="6" />
+      <Gear Name="Tool kit or multitool" />
+      <Gear Name="Pocketknife" Description="Str+d4" />
+    </Archetype>
+
+    <Archetype Name="Campus Security Officer"  Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Healing" Level="4" />
+      <Skill Name="Intimidation" Level="4" />
+      <Skill Name="Knowledge (Law)" Level="4" />
+
+      <Edge Name="Brawler" />
+
+      <Gear Name="Flashlight" />
+      <Gear Name="Handcuffs" />
+      <Gear Name="Radio" />
+    </Archetype>
+
+    <Archetype Name="Cultist"  Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Occult" Level="6" />
+      <Skill Name="Shooting" Level="4" />
+      <Edge Name="Devout" />
+
+      <Gear Name="Dagger" Description="Str+d4" />
+      <Gear Name="S&amp;W .357" Description="Range 12/24/48, Damage 2d6+1, RoF 1, Shots 6, AP 1" />
+    </Archetype>
+
+    <Archetype Name="County Sheriff’s Deputy"  Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Driving" Level="4" />
+      <Skill Name="Fighting" Level="6" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Knowledge (Law)" Level="4" />
+      <Skill Name="Shooting" Level="6" />
+
+      <Trait Name="UnusedEdges" Bonus="1" />
+
+      <Gear Name="Baton" Description="Str+d4" />
+      <Gear Name="Colt 1911" Description="Range 12/24/48, Damage 2d6+1, RoF 1, Shots 7, AP 1, Semi-Auto" />
+      <Gear Name="Pump Action Shotgun" Description="Range 12/24/48, Damage 1–3d6, RoF 1, Shots 6" />
+      <Gear Name="Kevlar vest" Description="Armor +2/+4, negates 4 AP" />
+    </Archetype>
+
+    <Archetype Name="Mercenary"  Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Fighting" Level="8" />
+      <Skill Name="Healing" Level="4" />
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Shooting" Level="8" />
+
+      <Edge Name="Combat Reflexes" />
+      <Edge Name="Dodge" />
+      <Edge Name="Rock and Roll!" />
+
+      <Gear Name="Colt 1911" Description="Range 12/24/48, Damage 2d6+1, RoF 1, Shots 7, AP 1, Semi-Auto" />
+      <Gear Name="H&amp;K MP5" Description="Range 12/24/48, Damage 2d6, RoF 3, Shots 30, AP 1, Auto" />
+      <Gear Name="Radio" />
+    </Archetype>
+
+    <Archetype Name="Professor"  Agility="6" Smarts="8" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Research" Level="6" />
+      <Skill Name="Academics" Level="12" />
+
+      <Edge Name="Scholar" />
+      <Hindrance Name="Loyal" />
+
+      <Gear Name="Smart Phone" />
+      <Gear Name="Briefcase" />
+    </Archetype>
+
+    <Archetype Name="Psychic"  Agility="6" Smarts="6" Spirit="8" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Fighting" Level="4" />
+      <Skill Name="Healing" Level="4" />
+      <Skill Name="Occult" Level="6" />
+      <Skill Name="Shooting" Level="4" />
+
+      <Edge Name="Psychically Sensitive" />
+
+      <Gear Name="Tarot Deck" />
+    </Archetype>
+
+    <Archetype Name="Reporter"  Agility="6" Smarts="8" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="8" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Research" Level="4" />
+      <Skill Name="Journalism" Level="6" />
+
+      <Hindrance Name="Vow" />
+      <Edge Name="Alertness" />
+
+      <Gear Name="Smart Phone" />
+      <Gear Name="Voice Recorder" />
+    </Archetype>
+
+    <Archetype Name="Ritualist"  Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Research" Level="4" />
+      <Skill Name="Journalism" Level="6" />
+
+      <Hindrance Name="Vow" />
+      <Edge Name="Witch/Warlock" />
+
+      <Gear Name="Dagger" Description="Str+d4" />
+      <Feature Name="Rituals" Description="Any as appropriate" />
+    </Archetype>
+
+    <Archetype Name="Student"  Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Academics" Level="4" />
+      <Skill Name="Driving" Level="6" />
+      <Skill Name="Taunt" Level="6" />
+
+      <Gear Name="Books" />
+      <Gear Name="Backpack" />
+      <Gear Name="Smart Phone" />
+      <Feature Name="Add +1 die type per year to Academics" />
+    </Archetype>
+
+    <Archetype Name="Student, Graduate"  Agility="6" Smarts="8" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Academics" Level="10" />
+      <Skill Name="Driving" Level="6" />
+      <Skill Name="Taunt" Level="6" />
+      <Edge Name="Scholar" />
+
+      <Gear Name="Books" />
+      <Gear Name="Backpack" />
+      <Gear Name="Smart Phone" />
+    </Archetype>
+
+    <Archetype Name="Thug"  Agility="6" Smarts="8" Spirit="4" Strength="8" Vigor="8" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Intimidation" Level="6" />
+      <Skill Name="Shooting" Level="6" />
+      <Skill Name="Taunt" Level="4" />
+      <Edge Name="Brawler" />
+
+      <Gear Name="Knife" Description="Str+d4" />
+      <Gear Name="Colt 1911" Description="Range 12/24/48, Damage 2d6+1, RoF 1, Shots 7, AP 1, Semi-Auto" />
+    </Archetype>
+
+    <Archetype Name="White Collar Worker"  Agility="6" Smarts="8" Spirit="6" Strength="4" Vigor="6" UnusedAttributes="0" UnusedSkills="0">
+      <Skill Name="Athletics" Level="6" />
+      <Skill Name="Common Knowledge" Level="6" />
+      <Skill Name="Notice" Level="6" />
+      <Skill Name="Persuasion" Level="6" />
+      <Skill Name="Stealth" Level="6" />
+
+      <Skill Name="Knowledge (Field)" Level="10" />
+      <Skill Name="Shooting" Level="4" />
+
+      <Gear Name="Smart Phone" />
+      <Gear Name="Tablet computer" />
+    </Archetype>
+  </Archetypes>
 </Setting>
