@@ -1,6 +1,5 @@
 ﻿using SavageTools.Settings;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Tortuga.Anchor.Modeling;
 
@@ -17,7 +16,7 @@ namespace SavageTools.Characters
             //SelectedRank = characterGenerator.Ranks.SingleOrDefault(a => a.Name == "Novice");
         }
 
-        public List<Character> Squad { get; } = new List<Character>();
+        public CharacterCollection Squad { get => GetNew<CharacterCollection>(); }
 
         public string DisplayMode { get => GetDefault("HTML"); set => Set(value); }
 

@@ -27,6 +27,7 @@ namespace SavageToolsWeb.Controls
                 {
                     Options.Squad.Insert(0, Options.CharacterGenerator.GenerateCharacter(Options, dice));
                 }
+                StateHasChanged();
             }
             catch (Exception ex)
             {

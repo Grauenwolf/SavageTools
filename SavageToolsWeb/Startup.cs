@@ -5,8 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-//using SavageToolsWeb.Data;
-
 namespace SavageToolsWeb
 {
     public class Startup

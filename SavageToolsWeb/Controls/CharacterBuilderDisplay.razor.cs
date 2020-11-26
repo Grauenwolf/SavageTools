@@ -16,11 +16,22 @@ namespace SavageToolsWeb.Controls
             set
             {
                 if (options != null)
+                {
                     options.PropertyChanged -= Options_PropertyChanged;
+                    options.Squad.CollectionChanged -= Squad_CollectionChanged;
+                }
                 options = value;
                 if (options != null)
+                {
                     options.PropertyChanged += Options_PropertyChanged;
+                    options.Squad.CollectionChanged += Squad_CollectionChanged;
+                }
             }
+        }
+
+        private void Squad_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            StateHasChanged();
         }
 
         private void Options_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
