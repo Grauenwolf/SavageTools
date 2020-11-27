@@ -319,10 +319,10 @@
   </Races>
 
   <Ranks>
-    <Rank Name="Novice" Experience="0" UnusedAdvances="0" />
-    <Rank Name="Seasoned" Experience="20" UnusedAdvances="4" />
-    <Rank Name="Veteran" Experience="40" UnusedAdvances="8" />
-    <Rank Name="Heroic" Experience="60" UnusedAdvances="12" />
-    <Rank Name="Legendary" Experience="80" UnusedAdvances="16" />
+    <Rank Name="Novice" DisplayName="Novice" Experience="0" UnusedAdvances="0" />
+    <Rank Name="Seasoned" DisplayName="Seasoned" Experience="20" UnusedAdvances="4" />
+    <Rank Name="Veteran" DisplayName="Veteran"  Experience="40" UnusedAdvances="8" />
+    <Rank Name="Heroic" DisplayName="Heroic"  Experience="60" UnusedAdvances="12" />
+    <Rank Name="Legendary" DisplayName="Legendary"  Experience="80" UnusedAdvances="16" />
   </Ranks>
 </Setting>
