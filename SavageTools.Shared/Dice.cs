@@ -8,17 +8,21 @@ namespace SavageTools
 {
     public class Dice : RandomExtended
     {
-        List<Card> m_Deck;
+        List<Card> m_Deck = new List<Card>();
 
-        public Dice(int seed) : base(seed) => ShuffleCards();
+        public Dice(int seed) : base(seed)
+        {
+        }
 
-        public Dice() => ShuffleCards();
+        public Dice()
+        {
+        }
 
-        public void ShuffleCards()
+        void ShuffleCards()
         {
             var deck = new List<Card>();
             for (var rank = Rank.Two; rank <= Rank.Ace; rank++)
-                for (var suit = Suit.Spade; suit <= Suit.Diamond; suit++)
+                for (var suit = Suit.Spades; suit <= Suit.Diamonds; suit++)
                     deck.Add(new Card(suit, rank));
             deck.Add(new Card(Suit.RedJ, Rank.Joker));
             deck.Add(new Card(Suit.BlackJ, Rank.Joker));

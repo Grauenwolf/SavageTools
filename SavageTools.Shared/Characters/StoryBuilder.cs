@@ -7,16 +7,6 @@ using Tortuga.Anchor.Modeling;
 
 namespace SavageTools.Characters
 {
-    public class MissionOptions
-    {
-        //public decimal DistancePerDay => Pace / 2.0M * 8M;
-        //public int Pace { get; set; } = 6;
-        public bool UseHtml { get; set; }
-
-        //public int EventFrequency { get; set; } = 3;
-        //public int NumberOfCharacters { get; set; } = 1;
-    }
-
     public class StoryBuilder
     {
         readonly MissionOptions m_Settings;
@@ -31,7 +21,7 @@ namespace SavageTools.Characters
         {
         }
 
-        public StoryBuilder(MissionOptions settings = null)
+        public StoryBuilder(MissionOptions? settings = null)
         {
             m_Settings = settings ?? new MissionOptions();
         }

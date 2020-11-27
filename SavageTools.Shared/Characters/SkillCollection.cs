@@ -5,7 +5,7 @@ namespace SavageTools.Characters
 {
     public class SkillCollection : ChangeTrackingModelCollection<Skill>
     {
-        public Skill this[string name] => this.FirstOrDefault(s => s.Name == name);
+        public Skill? this[string name] => this.FirstOrDefault(s => s.Name == name);
 
         public bool Contains(string name) => this.Any(s => s.Name == name);
 

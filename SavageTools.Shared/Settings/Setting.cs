@@ -2,6 +2,7 @@
 using Tortuga.Anchor;
 
 #pragma warning disable RCS1139 // Add summary element to documentation comment.
+#nullable disable
 
 namespace SavageTools.Settings
 {

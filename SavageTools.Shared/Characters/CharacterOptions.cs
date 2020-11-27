@@ -47,7 +47,7 @@ namespace SavageTools.Characters
         [CalculatedField("SelectedRank")]
         public bool RandomRank => SelectedRankString == "";
 
-        public SettingArchetype SelectedArchetype
+        public SettingArchetype? SelectedArchetype
         {
             get { return Get<SettingArchetype>(); }
             set
@@ -62,7 +62,7 @@ namespace SavageTools.Characters
         }
 
         [CalculatedField("SelectedArchetype")]
-        public string SelectedArchetypeString
+        public string? SelectedArchetypeString
         {
             get => SelectedArchetype?.Name ?? "";
             set
@@ -74,10 +74,10 @@ namespace SavageTools.Characters
             }
         }
 
-        public SettingRace SelectedRace { get { return Get<SettingRace>(); } set { Set(value); } }
+        public SettingRace? SelectedRace { get { return Get<SettingRace>(); } set { Set(value); } }
 
         [CalculatedField("SelectedRace")]
-        public string SelectedRaceString
+        public string? SelectedRaceString
         {
             get => SelectedRace?.Name ?? "";
             set
@@ -89,10 +89,10 @@ namespace SavageTools.Characters
             }
         }
 
-        public SettingRank SelectedRank { get { return Get<SettingRank>(); } set { Set(value); } }
+        public SettingRank? SelectedRank { get { return Get<SettingRank>(); } set { Set(value); } }
 
         [CalculatedField("SelectedRank")]
-        public string SelectedRankString
+        public string? SelectedRankString
         {
             get => SelectedRank?.Name ?? "";
             set
@@ -107,7 +107,7 @@ namespace SavageTools.Characters
         public bool UseCoreSkills { get => GetDefault(true); set => Set(value); }
         public bool WildCard { get => GetDefault(false); set => Set(value); }
 
-        public Character GenerateCharacter(Dice dice = null)
+        public Character GenerateCharacter(Dice? dice = null)
         {
             return CharacterGenerator.GenerateCharacter(this, dice);
         }

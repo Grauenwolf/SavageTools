@@ -31,8 +31,14 @@ namespace Tortuga.Anchor
                 m_GetKey = getKey;
             }
 
-            int IComparer<T>.Compare(T x, T y)
+            int IComparer<T>.Compare(T? x, T? y)
             {
+                if (x == null)
+                    throw new ArgumentNullException(nameof(x), $"{nameof(x)} is null.");
+
+                if (y == null)
+                    throw new ArgumentNullException(nameof(y), $"{nameof(y)} is null.");
+
                 return m_GetKey(x).CompareTo(m_GetKey(y));
             }
         }

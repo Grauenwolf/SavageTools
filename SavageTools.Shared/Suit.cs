@@ -11,10 +11,10 @@ namespace SavageTools
         BlackJ = 0,
         RedJ = 1,
 
-        Spade = 2,
-        Heart = 3,
-        Diamond = 5,
-        Club = 4
+        Spades = 2,
+        Hearts = 3,
+        Diamonds = 5,
+        Clubs = 4
     }
 
     public enum CardColor

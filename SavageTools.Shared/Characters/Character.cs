@@ -489,7 +489,7 @@ namespace SavageTools.Characters
             {
                 output.Append(content);
             }
-            void AppendLine(string content = null)
+            void AppendLine(string? content = null)
             {
                 output.AppendLine(content).AppendLine();
             }
@@ -497,10 +497,10 @@ namespace SavageTools.Characters
             {
                 output.AppendLine("* " + content);
             }
-            void AppendList<T>(string header, IEnumerable<T> items, Func<T, string> formatter = null)
+            void AppendList<T>(string? header, IEnumerable<T> items, Func<T, string>? formatter = null)
             {
                 if (formatter == null)
-                    AppendLine(header + string.Join(", ", items.Select(e => e.ToString())));
+                    AppendLine(header + string.Join(", ", items.Select(e => e?.ToString())));
                 else
                     AppendLine(header + string.Join(", ", items.Select(formatter)));
             }

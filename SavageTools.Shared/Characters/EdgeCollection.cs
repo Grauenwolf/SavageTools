@@ -2,7 +2,6 @@
 
 namespace SavageTools.Characters
 {
-
     public class EdgeCollection : ChangeTrackingModelCollection<Edge>
     {
         public void Add(string name)
@@ -10,12 +9,9 @@ namespace SavageTools.Characters
             Add(new Edge() { Name = name });
         }
 
-        public void Add(string name, string description)
+        public void Add(string name, string? description)
         {
             Add(new Edge() { Name = name, Description = description });
         }
     }
-
-
 }
-

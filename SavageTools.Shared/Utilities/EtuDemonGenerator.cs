@@ -39,69 +39,69 @@ namespace SavageTools.Utilities
                 case Rank.Two:
                 case Rank.Three:
                 case Rank.Four:
-                    character.Skills["Fighting"].Trait = 6;
-                    character.Skills["Notice"].Trait = 4;
-                    character.Skills["Stealth"].Trait = 6;
+                    character.Skills["Fighting"]!.Trait = 6;
+                    character.Skills["Notice"]!.Trait = 4;
+                    character.Skills["Stealth"]!.Trait = 6;
                     break;
 
                 case Rank.Five:
                 case Rank.Six:
                 case Rank.Seven:
-                    character.Skills["Fighting"].Trait = 6;
-                    character.Skills["Notice"].Trait = 6;
-                    character.Skills["Stealth"].Trait = 6;
-                    character.Skills["Taunt"].Trait = 6;
+                    character.Skills["Fighting"]!.Trait = 6;
+                    character.Skills["Notice"]!.Trait = 6;
+                    character.Skills["Stealth"]!.Trait = 6;
+                    character.Skills["Taunt"]!.Trait = 6;
                     break;
 
                 case Rank.Eight:
                 case Rank.Nine:
                 case Rank.Ten:
-                    character.Skills["Fighting"].Trait = 8;
-                    character.Skills["Notice"].Trait = 6;
-                    character.Skills["Intimidation"].Trait = 6;
-                    character.Skills["Stealth"].Trait = 6;
-                    character.Skills["Taunt"].Trait = 6;
+                    character.Skills["Fighting"]!.Trait = 8;
+                    character.Skills["Notice"]!.Trait = 6;
+                    character.Skills["Intimidation"]!.Trait = 6;
+                    character.Skills["Stealth"]!.Trait = 6;
+                    character.Skills["Taunt"]!.Trait = 6;
                     break;
 
                 case Rank.Jack:
-                    character.Skills["Fighting"].Trait = 8;
-                    character.Skills["Notice"].Trait = 8;
-                    character.Skills["Intimidation"].Trait = 8;
-                    character.Skills["Stealth"].Trait = 8;
-                    character.Skills["Taunt"].Trait = 8;
+                    character.Skills["Fighting"]!.Trait = 8;
+                    character.Skills["Notice"]!.Trait = 8;
+                    character.Skills["Intimidation"]!.Trait = 8;
+                    character.Skills["Stealth"]!.Trait = 8;
+                    character.Skills["Taunt"]!.Trait = 8;
                     break;
 
                 case Rank.Queen:
-                    character.Skills["Fighting"].Trait = 10;
-                    character.Skills["Notice"].Trait = 8;
-                    character.Skills["Intimidation"].Trait = 8;
-                    character.Skills["Stealth"].Trait = 8;
+                    character.Skills["Fighting"]!.Trait = 10;
+                    character.Skills["Notice"]!.Trait = 8;
+                    character.Skills["Intimidation"]!.Trait = 8;
+                    character.Skills["Stealth"]!.Trait = 8;
                     break;
 
                 case Rank.King:
-                    character.Skills["Fighting"].Trait = 10;
-                    character.Skills["Notice"].Trait = 10;
-                    character.Skills["Intimidation"].Trait = 8;
-                    character.Skills["Stealth"].Trait = 8;
+                    character.Skills["Fighting"]!.Trait = 10;
+                    character.Skills["Notice"]!.Trait = 10;
+                    character.Skills["Intimidation"]!.Trait = 8;
+                    character.Skills["Stealth"]!.Trait = 8;
                     break;
 
                 case Rank.Ace:
-                    character.Skills["Fighting"].Trait = 12;
-                    character.Skills["Notice"].Trait = 10;
-                    character.Skills["Intimidation"].Trait = 10;
-                    character.Skills["Stealth"].Trait = 10;
+                    character.Skills["Fighting"]!.Trait = 12;
+                    character.Skills["Notice"]!.Trait = 10;
+                    character.Skills["Intimidation"]!.Trait = 10;
+                    character.Skills["Stealth"]!.Trait = 10;
                     break;
 
                 case Rank.Joker:
-                    character.Skills["Fighting"].Trait = 14;
-                    character.Skills["Notice"].Trait = 10;
-                    character.Skills["Intimidation"].Trait = 10;
-                    character.Skills["Stealth"].Trait = 10;
+                    character.Skills["Fighting"]!.Trait = 14;
+                    character.Skills["Notice"]!.Trait = 10;
+                    character.Skills["Intimidation"]!.Trait = 10;
+                    character.Skills["Stealth"]!.Trait = 10;
                     break;
             }
 
             //SWADE Conversion
-            character.Skills["Athletics"].Trait = character.Skills["Fighting"].Trait;
+            character.Skills["Athletics"]!.Trait = character.Skills["Fighting"]!.Trait;
 
             var abilities = dice.D(4);
             for (var i = 1; i <= abilities; i++)
@@ -202,7 +202,7 @@ namespace SavageTools.Utilities
 
         void AddSpecialAbilities(Dice dice, Character character, CharacterGenerator generator)
         {
-            void AddEdge(string name, string description = null) => generator.ApplyEdge(character, dice, name, description);
+            void AddEdge(string name, string? description = null) => generator.ApplyEdge(character, dice, name, description);
 
             var card = dice.PickCard();
 

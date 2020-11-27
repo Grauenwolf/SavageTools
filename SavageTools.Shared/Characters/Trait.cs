@@ -2,7 +2,6 @@
 
 namespace SavageTools.Characters
 {
-
     public struct Trait : IEquatable<Trait>, IComparable, IComparable<Trait>
     {
         public Trait(int score)
@@ -31,11 +30,11 @@ namespace SavageTools.Characters
                 return;
             }
             throw new ArgumentException($"Cannot parse die code \"{dieCode}\" as a trait.");
-
         }
 
         public int HalfScore => (int)Math.Floor(Score / 2M);
         public int Score { get; }
+
         public static implicit operator Trait(int score) => new Trait(score);
 
         public static implicit operator Trait(string dieCode) => new Trait(dieCode);
@@ -46,7 +45,7 @@ namespace SavageTools.Characters
 
         public static Trait operator +(Trait original, int bonus)
         {
-            //The math is a bit wonky because of the combination of a die code and a bonus 
+            //The math is a bit wonky because of the combination of a die code and a bonus
             var score = original.Score;
 
             //Adds
@@ -81,7 +80,7 @@ namespace SavageTools.Characters
 
         public static bool operator >=(Trait first, Trait second) => first.Score >= second.Score;
 
-        public int CompareTo(object obj)
+        public int CompareTo(object? obj)
         {
             if (obj == null)
                 return 1;
@@ -93,12 +92,10 @@ namespace SavageTools.Characters
 
         public int CompareTo(Trait other)
         {
-            if (other == null)
-                return 1;
             return Score.CompareTo(other.Score);
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj is Trait)
                 return Equals((Trait)obj);
@@ -121,4 +118,3 @@ namespace SavageTools.Characters
         }
     }
 }
-

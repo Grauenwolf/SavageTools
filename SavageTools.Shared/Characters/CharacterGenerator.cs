@@ -24,8 +24,8 @@ namespace SavageTools.Characters
         {
             LoadSetting(setting, true);
 
-            NameService = new LocalNameService(setting.DirectoryName, NamePrefix);
-            PersonalityService = new PersonalityService(setting.DirectoryName);
+            NameService = new LocalNameService(setting.DirectoryName!, NamePrefix);
+            PersonalityService = new PersonalityService(setting.DirectoryName!);
         }
 
         public ObservableCollectionExtended<SettingArchetype> Archetypes => GetNew<ObservableCollectionExtended<SettingArchetype>>();
@@ -88,7 +88,7 @@ namespace SavageTools.Characters
         //    group.Powers.Add(new Power(power, trapping.Name));
         //}
 
-        public void ApplyEdge(Character result, Dice dice, string edgeName, string description = null)
+        public void ApplyEdge(Character result, Dice dice, string edgeName, string? description = null)
         {
             if (result == null)
                 throw new ArgumentNullException(nameof(result), $"{nameof(result)} is null.");
@@ -118,32 +118,47 @@ namespace SavageTools.Characters
             return result;
         }
 
-        public Character GenerateCharacter(CharacterOptions options, Dice dice = null)
+        public Character GenerateCharacter(CharacterOptions options, Dice? dice = null)
         {
             dice = dice ?? new Dice();
 
-            var selectedArchetype = options.SelectedArchetype;
-            var selectedRace = options.SelectedRace;
-            var selectedRank = options.SelectedRank;
+            SettingArchetype selectedArchetype;
+            SettingRace selectedRace;
+            SettingRank selectedRank;
 
-            if (options.RandomArchetype)
+            if (!options.RandomArchetype)
+            {
+                selectedArchetype = options.SelectedArchetype!;
+            }
+            else
             {
                 var list = Archetypes.Where(a => options.WildCard || !a.WildCard).ToList(); //Don't pick wildcard archetypes unless WildCard is checked.
                 selectedArchetype = dice.Choose(list);
             }
-            if (options.RandomRace)
+
+            if (!options.RandomRace)
             {
-                if (string.IsNullOrEmpty(selectedArchetype.Race))
+                selectedRace = options.SelectedRace!;
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(selectedArchetype?.Race))
                 {
                     //Limited races are only available for their matching Archetype
                     //For example, a Lion can't be a Wizard.
-                    selectedRace = dice.Choose(Races.Where(r => !r.IsLimited).ToList());
+                    selectedRace = Races.Single(r => r.Name == selectedArchetype.Race);
                 }
                 else
-                    selectedRace = Races.Single(r => r.Name == selectedArchetype.Race);
-                //var list = Races.Where(r => r.Name != "(Special)").ToList();
+                {
+                    selectedRace = dice.Choose(Races.Where(r => !r.IsLimited).ToList());
+                }
             }
-            if (options.RandomRank)
+
+            if (!options.RandomRank)
+            {
+                selectedRank = options.SelectedRank!;
+            }
+            else
             {
                 var table = new Table<SettingRank>();
                 foreach (var item in Ranks)
@@ -163,7 +178,7 @@ namespace SavageTools.Characters
             foreach (var item in Skills.Where(s => !selectedRace.AnimalIntelligence || !s.NoAnimals))
                 result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = (item.IsCore && options.UseCoreSkills) ? 4 : 0 });
 
-            ApplyArchetype(result, dice, selectedArchetype);
+            ApplyArchetype(result, dice, selectedArchetype!);
 
             ApplyRace(result, dice, selectedRace);
 
@@ -210,7 +225,7 @@ namespace SavageTools.Characters
                     PickRacialEdge(result, dice, selectedRace, options.BornAHero);
 
                 if (result.UnusedIconicEdges > 0)
-                    PickIconicEdge(result, dice, selectedArchetype, options.BornAHero);
+                    PickIconicEdge(result, dice, selectedArchetype!, options.BornAHero);
 
                 if (result.UnusedAttributes > 0)
                     PickAttribute(result, dice);
@@ -289,7 +304,7 @@ namespace SavageTools.Characters
             Setting book;
             // Open document
             using (var stream = file.OpenRead())
-                book = (Setting)s_SettingXmlSerializer.Deserialize(stream);
+                book = (Setting)s_SettingXmlSerializer.Deserialize(stream)!;
 
             if (isPrimarySetting)
                 SettingName = book.Name;
@@ -317,7 +332,7 @@ namespace SavageTools.Characters
             if (book.References != null)
                 foreach (var item in book.References.Where(r => !Settings.Any(s => s == r.Name)))
                 {
-                    var referencedBook = new FileInfo(Path.Combine(file.DirectoryName, item.Name + ".savage-setting"));
+                    var referencedBook = new FileInfo(Path.Combine(file.DirectoryName!, item.Name + ".savage-setting"));
                     if (referencedBook.Exists)
                         LoadSetting(referencedBook, false);
                 }
@@ -374,7 +389,7 @@ namespace SavageTools.Characters
                     Races.RemoveAll(s => s.Name == item.Name);
                     Races.Add(item);
                 }
-                Races.Sort(r => r.Name);
+                Races.Sort(r => r?.Name ?? "");
             }
             if (book.Ranks != null)
             {
@@ -407,7 +422,7 @@ namespace SavageTools.Characters
             PickEdge(result, dice, null, null, bornAHero);
         }
 
-        public void ApplyEdge(Character result, SettingEdge edge, Dice dice, string overrideDescription = null)
+        public void ApplyEdge(Character result, SettingEdge edge, Dice dice, string? overrideDescription = null)
         {
             var description = overrideDescription.IsNullOrEmpty() ? edge.Description : overrideDescription;
 
@@ -683,7 +698,7 @@ namespace SavageTools.Characters
                     else
                         result.Skills.Add(new Skill(item.Name, item.Attribute) { Trait = item.Level });
 
-                    if (skill.MaxLevel < skill.Trait)
+                    if (skill!.MaxLevel < skill.Trait)
                         skill.MaxLevel = skill.Trait;
                 }
             if (archetype.Traits != null)
@@ -827,7 +842,7 @@ namespace SavageTools.Characters
             return minor ?? major ?? prototype;
         }
 
-        private void PickEdge(Character result, Dice dice, SettingArchetype archetype, SettingRace race, bool bornAHero)
+        private void PickEdge(Character result, Dice dice, SettingArchetype? archetype, SettingRace? race, bool bornAHero)
         {
             var table = new Table<SettingEdge>();
             var edgeList = (IEnumerable<SettingEdge>)Edges;

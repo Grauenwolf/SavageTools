@@ -13,6 +13,14 @@
         public static implicit operator Suit(Card c) => c.Suit;
         public static implicit operator Rank(Card c) => c.Rank;
         public static implicit operator CardColor(Card c) => c.Color;
+
+        public override string ToString()
+        {
+            if (Rank == Rank.Joker)
+                return $"{Color} {Rank}";
+
+            return $"{Rank} of {Suit}";
+        }
     }
 
     //public record BlackRedCard(CardColor color, Rank Rank);
