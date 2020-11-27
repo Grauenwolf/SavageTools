@@ -9,8 +9,9 @@
         <table class="gridtable">
             <tr>
                 <th> ETU Adventure Generator</th>
-                <td><button @onclick="CreateAdventure">Generate</button></td>
-                @*<td><button @onclick="ClearAdventures">Clear</button></td>*@
+                <td><button @onclick="CreateHighStrangness">Generate High Strangeness</button></td>
+                <td><button @onclick="CreateAdventure">Generate Adventure</button></td>
+                <td><button @onclick="ClearAll">Clear</button></td>
             </tr>
         </table>
     </div>
@@ -20,125 +21,145 @@
         <p style="color:red">@ErrorDisplay</p>
     }
 
-    @if (Adventures.Count > 0)
+    @if (HighStrangness != null)
     {
-        @foreach (var adventure in Adventures)
-        {
-            <table class="gridtable">
-                <tr><th>Who</th></tr>
-                @{
-                    var current = adventure.Who;
-                    while (current != null)
+        <div>&nbsp;</div>
+        <table class="gridtable">
+            <tr><th>High Strangeness</th></tr>
+            <tr>
+                <td>
+                    <span style="font-weight:bold"> @(HighStrangness.Card) </span> &nbsp;
+
+                    @if (HighStrangness.IsMarkdown)
                     {
-                        <tr>
-                            <td>
-                                <span style="font-weight:bold"> @(current.Name) </span> &nbsp;
-
-                                @if (current.IsMarkdown)
-                                {
-                                    <MarkdownView Content="@current.Description" />
-                                }
-                                else
-                                {
-                                    @(current.Description)
-                                }
-                            </td>
-                        </tr>
-                        current = current.LinkedItem;
+                        <MarkdownView Content="@HighStrangness.Description" />
                     }
-                }
-                <tr><th>What</th></tr>
-                @{
-                    current = adventure.What;
-                    while (current != null)
+                    else
                     {
-                        <tr>
-                            <td>
-                                <span style="font-weight:bold"> @(current.Name) </span>&nbsp;
-
-                                @if (current.IsMarkdown)
-                                {
-                                    <MarkdownView Content="@current.Description" />
-                                }
-                                else
-                                {
-                                    @(current.Description)
-                                }
-                            </td>
-                        </tr>
-                        current = current.LinkedItem;
+                        @(HighStrangness.Description)
                     }
-                }
-                <tr><th>Why</th></tr>
-                @{
-                    current = adventure.Why;
-                    while (current != null)
-                    {
-                        <tr>
-                            <td>
-                                <span style="font-weight:bold"> @(current.Name) </span>&nbsp;
+                </td>
+            </tr>
+        </table>
+    }
 
-                                @if (current.IsMarkdown)
-                                {
-                                    <MarkdownView Content="@current.Description" />
-                                }
-                                else
-                                {
-                                    @(current.Description)
-                                }
-                            </td>
-                        </tr>
-                        current = current.LinkedItem;
-                    }
-                }
-                <tr><th>Where</th></tr>
-                @{
-                    current = adventure.Where;
-                    while (current != null)
-                    {
-                        <tr>
-                            <td>
-                                <span style="font-weight:bold"> @(current.Name) </span>&nbsp;
+    @if (Adventure != null)
+    {
+        <div>&nbsp;</div>
 
-                                @if (current.IsMarkdown)
-                                {
-                                    <MarkdownView Content="@current.Description" />
-                                }
-                                else
-                                {
-                                    @(current.Description)
-                                }
-                            </td>
-                        </tr>
-                        current = current.LinkedItem;
-                    }
-                }
-                <tr><th>Complications</th></tr>
-                @{
-                    current = adventure.Complications;
-                    while (current != null)
-                    {
-                        <tr>
-                            <td>
-                                <span style="font-weight:bold"> @(current.Name) </span>&nbsp;
+        <table class="gridtable">
+            <tr><th>Who</th></tr>
+            @{
+                var current = Adventure.Who;
+                while (current != null)
+                {
+                    <tr>
+                        <td>
+                            <span style="font-weight:bold"> @(current.Name) </span> &nbsp;
 
-                                @if (current.IsMarkdown)
-                                {
-                                    <MarkdownView Content="@current.Description" />
-                                }
-                                else
-                                {
-                                    @(current.Description)
-                                }
-                            </td>
-                        </tr>
-                        current = current.LinkedItem;
-                    }
+                            @if (current.IsMarkdown)
+                            {
+                                <MarkdownView Content="@current.Description" />
+                            }
+                            else
+                            {
+                                @(current.Description)
+                            }
+                        </td>
+                    </tr>
+                    current = current.LinkedItem;
                 }
-            </table>
+            }
+            <tr><th>What</th></tr>
+            @{
+                current = Adventure.What;
+                while (current != null)
+                {
+                    <tr>
+                        <td>
+                            <span style="font-weight:bold"> @(current.Name) </span>&nbsp;
 
-            <hr />
-        }
+                            @if (current.IsMarkdown)
+                            {
+                                <MarkdownView Content="@current.Description" />
+                            }
+                            else
+                            {
+                                @(current.Description)
+                            }
+                        </td>
+                    </tr>
+                    current = current.LinkedItem;
+                }
+            }
+            <tr><th>Why</th></tr>
+            @{
+                current = Adventure.Why;
+                while (current != null)
+                {
+                    <tr>
+                        <td>
+                            <span style="font-weight:bold"> @(current.Name) </span>&nbsp;
+
+                            @if (current.IsMarkdown)
+                            {
+                                <MarkdownView Content="@current.Description" />
+                            }
+                            else
+                            {
+                                @(current.Description)
+                            }
+                        </td>
+                    </tr>
+                    current = current.LinkedItem;
+                }
+            }
+            <tr><th>Where</th></tr>
+            @{
+                current = Adventure.Where;
+                while (current != null)
+                {
+                    <tr>
+                        <td>
+                            <span style="font-weight:bold"> @(current.Name) </span>&nbsp;
+
+                            @if (current.IsMarkdown)
+                            {
+                                <MarkdownView Content="@current.Description" />
+                            }
+                            else
+                            {
+                                @(current.Description)
+                            }
+                        </td>
+                    </tr>
+                    current = current.LinkedItem;
+                }
+            }
+            <tr><th>Complications</th></tr>
+            @{
+                current = Adventure.Complications;
+                while (current != null)
+                {
+                    <tr>
+                        <td>
+                            <span style="font-weight:bold"> @(current.Name) </span>&nbsp;
+
+                            @if (current.IsMarkdown)
+                            {
+                                <MarkdownView Content="@current.Description" />
+                            }
+                            else
+                            {
+                                @(current.Description)
+                            }
+                        </td>
+                    </tr>
+                    current = current.LinkedItem;
+                }
+            }
+        </table>
+
     }
 
 }
