@@ -2,6 +2,7 @@
 using SavageTools;
 using SavageTools.Utilities;
 using System;
+using System.Collections.Generic;
 
 namespace SavageToolsWeb.Pages
 {
@@ -26,13 +27,29 @@ namespace SavageToolsWeb.Pages
 
         protected EtuAdventure? Adventure = null;
 
-        protected NameDescriptionPair? HighStrangness = null;
+        protected NameDescriptionPair? HighStrangeness = null;
+        protected List<NameDescriptionPair>? RitualComponents = null;
 
         void ClearAll(MouseEventArgs args)
         {
             Adventure = null;
-            HighStrangness = null;
+            HighStrangeness = null;
             StateHasChanged();
+        }
+
+        void CreateRitual(MouseEventArgs args)
+        {
+            try
+            {
+                var gen = new EtuAdventureGenerator(Model!.CharacterGenerator);
+
+                RitualComponents = gen.CreateRitual(new Dice(), 0);
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                ErrorDisplay = ex.ToString();
+            }
         }
 
         void CreateHighStrangness(MouseEventArgs args)
@@ -41,7 +58,7 @@ namespace SavageToolsWeb.Pages
             {
                 var gen = new EtuAdventureGenerator(Model!.CharacterGenerator);
 
-                HighStrangness = gen.HighStrangeness(new Dice());
+                HighStrangeness = gen.HighStrangeness(new Dice());
                 StateHasChanged();
             }
             catch (Exception ex)

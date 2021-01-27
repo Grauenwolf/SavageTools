@@ -1,4 +1,6 @@
 ﻿using SavageTools.Characters;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using static SavageTools.CardColor;
 using static SavageTools.Rank;
@@ -193,6 +195,147 @@ namespace SavageTools.Utilities
                     return result;
             }
             return new("", "");
+        }
+
+        public List<NameDescriptionPair> CreateRitual(Dice dice, int powerPoints)
+        {
+            var common = new List<string>();
+            var exotic = new List<string>();
+            var result = new List<NameDescriptionPair>();
+
+            common.Add(CommonComponent(dice));
+            common.Add(CommonComponent(dice));
+            result.Add(new NameDescriptionPair("Power Points 1-2", string.Join(", ", common)));
+
+            for (var i = 3; i <= 20; i += 4)
+            {
+                if (common.Count == exotic.Count + 1)
+                    common.Add(CommonComponent(dice));
+                else
+                    exotic.Add(CommonComponent(dice));
+
+                result.Add(new NameDescriptionPair($"Power Points {i}-{i + 1}", string.Join(", ", common) + ", " + string.Join(", ", exotic)));
+            }
+
+            return result;
+        }
+
+        public string CommonComponent(Dice dice)
+        {
+            switch (dice.D(2))
+            {
+                case 1:
+                    switch (dice.D(20))
+                    {
+                        case 1: return "A cup of alcohol";
+                        case 2: return "A pinecone";
+                        case 3: return "A kitten’s tooth";
+                        case 4: return "A rat’s tail";
+                        case 5: return "A raven’s feather";
+                        case 6: return "A cup of human saliva";
+                        case 7: return "Seven black candles";
+                        case 8: return "Skunk pelt";
+                        case 9: return "A child’s toy";
+                        case 10: return "12 oz. of cemetery dirt";
+                        case 11: return "A pinch of arsenic";
+                        case 12: return "Catfish guts";
+                        case 13: return "A human tooth";
+                        case 14: return "Pebble from a running creek";
+                        case 15: return "Cow urine";
+                        case 16: return "A drop of blood from a disbeliever";
+                        case 17: return "A rattle of a rattlesnake";
+                        case 18: return "Chalk";
+                        case 19: return "Clove of garlic";
+                        case 20: return "A thimble full of earwax";
+                    }
+                    break;
+
+                case 2:
+                    switch (dice.D(20))
+                    {
+                        case 1: return "A rusted hinge";
+                        case 2: return "12 oz. of vomit";
+                        case 3: return "6 oz of tortoise (turtle) meat";
+                        case 4: return "1 pound of bat guano";
+                        case 5: return "6 oz. crushed red glass";
+                        case 6: return "A drop of human blood";
+                        case 7: return "A chicken’s foot";
+                        case 8: return "A scorpion tail";
+                        case 9: return "A chip of a tombstone older than 100 years";
+                        case 10: return "A teaspoon of gun powder";
+                        case 11: return "Burned incense";
+                        case 12: return "12 oz. beach sand";
+                        case 13: return "12 oz. river water";
+                        case 14: return "4 oz. whiskey";
+                        case 15: return "6 oz. of holy water";
+                        case 16: return "A lizard’s eye";
+                        case 17: return "Poisonous snake venom (½ teaspoon)";
+                        case 18: return "A broken mirror";
+                        case 19: return "Hair from a woman older than 100 years";
+                        case 20: return "Fresh cow’s milk (unpasteurized)";
+                    }
+                    break;
+            }
+            throw new Exception("This should never happen");
+        }
+
+        public string ExoticComponent(Dice dice)
+        {
+            switch (dice.D(2))
+            {
+                case 1:
+                    switch (dice.D(20))
+                    {
+                        case 1: return "A piece of scrimshaw";
+                        case 2: return "A severed finger";
+                        case 3: return "A blooming Nightflower";
+                        case 4: return "A cup of virgin’s blood (donor at least 18 years old)";
+                        case 5: return "A child’s tear";
+                        case 6: return "A strand of hair from a lion’s mane";
+                        case 7: return "An owl’s eye";
+                        case 8: return "A bear’s claw";
+                        case 9: return "A gallon of human blood";
+                        case 10: return "A human eye";
+                        case 11: return "½ oz. gold";
+                        case 12: return "20 cc of morphine";
+                        case 13: return "Cremated human ash";
+                        case 14: return "A brick from an occupied home";
+                        case 15: return "Radioactive material";
+                        case 16: return "Dirt from a freshly dug grave";
+                        case 17: return "Drop of blood from a priest/nun";
+                        case 18: return "A murderer’s weapon";
+                        case 19: return "Brain of a rabid animal";
+                        case 20: return "Human bones ground to powder";
+                    }
+                    break;
+
+                case 2:
+                    switch (dice.D(20))
+                    {
+                        case 1: return "Nitrous oxide (laughing gas)";
+                        case 2: return "Dust from decomposed undead creature";
+                        case 3: return "Unpolished jade";
+                        case 4: return "Ash from a forest fire";
+                        case 5: return "A wedding ring from a murdered bride";
+                        case 6: return "A hawk’s nest";
+                        case 7: return "A drop of demon’s blood";
+                        case 8: return "22 strands each of brunette, blonde, and red hair";
+                        case 9: return "Rhino tusk powder";
+                        case 10: return "An ostrich feather";
+                        case 11: return "Elephant tusk";
+                        case 12: return "A gorilla’s paw";
+                        case 13: return "Skin from a chameleon-like creature";
+                        case 14: return "Fresh shark fin";
+                        case 15: return "10 strands of hair from a bull’s tail";
+                        case 16: return "Crypt air";
+                        case 17: return "Bound evil spirit (exorcism and capture)*";
+                        case 18: return "1 small animal sacrifice (cat/bird)*";
+                        case 19: return "A medium animal sacrifice (large dog)*";
+                        case 20: return "A large animal sacrifice (horse/cow)*";
+                    }
+                    break;
+            }
+            throw new Exception("This should never happen");
         }
 
         public NameDescriptionPair HighStrangeness(Dice dice)

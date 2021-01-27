@@ -9,6 +9,7 @@
         <table class="gridtable">
             <tr>
                 <th> ETU Adventure Generator</th>
+                <td><button @onclick="CreateRitual">Generate Ritual Components</button></td>
                 <td><button @onclick="CreateHighStrangness">Generate High Strangeness</button></td>
                 <td><button @onclick="CreateAdventure">Generate Adventure</button></td>
                 <td><button @onclick="ClearAll">Clear</button></td>
@@ -21,22 +22,39 @@
         <p style="color:red">@ErrorDisplay</p>
     }
 
-    @if (HighStrangness != null)
+    @if (RitualComponents != null)
+    {
+        <div>&nbsp;</div>
+        <table class="gridtable">
+            <tr><th>Ritual Components</th></tr>
+            @foreach (var row in RitualComponents)
+            {
+                <tr>
+                    <td>
+                        <span style="font-weight:bold"> @(row.Name) </span> &nbsp;
+                        @row.Description
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+
+    @if (HighStrangeness != null)
     {
         <div>&nbsp;</div>
         <table class="gridtable">
             <tr><th>High Strangeness</th></tr>
             <tr>
                 <td>
-                    <span style="font-weight:bold"> @(HighStrangness.Card) </span> &nbsp;
+                    <span style="font-weight:bold"> @(HighStrangeness.Card) </span> &nbsp;
 
-                    @if (HighStrangness.IsMarkdown)
+                    @if (HighStrangeness.IsMarkdown)
                     {
-                        <MarkdownView Content="@HighStrangness.Description" />
+                        <MarkdownView Content="@HighStrangeness.Description" />
                     }
                     else
                     {
-                        @(HighStrangness.Description)
+                        @(HighStrangeness.Description)
                     }
                 </td>
             </tr>
