@@ -47,8 +47,8 @@ else
                                 }
                         </InputSelect>
                     </td>
-                    <th>Rank</th>
-                    <td>
+                    <th title="Rank is relative to other characters of the same archetype.">Rank</th>
+                    <td title="Rank is relative to other characters of the same archetype.">
                         <InputSelect id="parentSection" @bind-Value="Options.SelectedRankString">
                             <option value="">(Random)</option>
                             @foreach (var rank in Options.CharacterGenerator.Ranks)

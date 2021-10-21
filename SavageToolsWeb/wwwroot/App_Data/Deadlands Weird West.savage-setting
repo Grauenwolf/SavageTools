@@ -1252,7 +1252,7 @@
       <Hindrance Name="Vow" Type="Major"  Description="US Army" />
 
       <Edge Name="Marksman" />
-      <Edge Name="Soldier" />
+      <Edge Name="Soldier NCO" />
       <Edge Name="Steady Hands" />
 
       <Gear Name="Winchester ’73"  Description="Range 24/48/96, Damage 2d8–1, RoF 1, AP 2" />
@@ -1278,7 +1278,8 @@
       <Edge Name="Command" />
       <Edge Name="Hold the Line!" />
       <Edge Name="Inspire" />
-      <Edge Name="Soldier" />
+      <Edge Name="Soldier Officer" />
+
 
       <Gear Name="Colt Army"  Description="Range 12/24/48, Damage 2d6+1, RoF 1, AP 1" />
       <Gear Name="Saber"  Description="Str+d6" />

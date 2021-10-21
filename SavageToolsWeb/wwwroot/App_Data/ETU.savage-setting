@@ -64,12 +64,12 @@
     <Edge Name="Spirit Guardian" Requires="Novice, Spirit d8" Description="You have a spirit guardian, it provides a +2 to opposed rolls against spirits." />
   </Edges>
 
-  <Ranks>
+  <!--<Ranks>
     <Rank DisplayName="Freshman" Name="Novice" Experience="0" UnusedAdvances="0" />
     <Rank DisplayName="Sophmore" Name="Seasoned" Experience="20" UnusedAdvances="4" />
     <Rank DisplayName="Junior" Name="Veteran" Experience="40" UnusedAdvances="8" />
     <Rank DisplayName="Senior" Name="Heroic" Experience="60" UnusedAdvances="12" />
-  </Ranks>
+  </Ranks>-->
 
   <Archetypes>
     <Archetype Name="Blue Collar Worker"  Agility="6" Smarts="6" Spirit="6" Strength="6" Vigor="6" UnusedAttributes="0" UnusedSkills="0">

@@ -221,7 +221,7 @@
     <Edge Name="Command" Requires="Novice, Smarts d6" Description="+1 to Extras’ Shaken or Stunned recovery rolls. Range 5″ (10 yards)." />
     <Edge Name="Command Presence" Requires="Seasoned, Command" Description="Increase Command Range to 10″ (20 yards)" />
     <Edge Name="Fervor" Requires="Veteran, Spirit d8, Command" Description="Extras in range add +1 to their Fighting damage rolls" />
-    <Edge Name="Hold the Line" Requires="Seasoned, Smarts d8, Command" Description="+1 to Extras’ Toughness in Command Range." />
+    <Edge Name="Hold the Line!" Requires="Seasoned, Smarts d8, Command" Description="+1 to Extras’ Toughness in Command Range." />
     <Edge Name="Inspire" Requires="Seasoned, Command" Description="Once per turn, the hero may roll his Battle skill to Support one type of Trait roll, and apply it to everyone in Command Range" />
     <Edge Name="Natural Leader" Requires="Seasoned, Spirit d8, Command" Description="Leadership Edges now apply to Wild Cards." />
     <Edge Name="Tactician" Requires="Seasoned, Smarts d8, Command, Battle d6" Description="Draw an extra Action Card each turn that may be assigned to any allied Extra in Command Range." />
