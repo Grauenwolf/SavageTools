@@ -25,10 +25,10 @@ namespace SavageToolsWeb.Controls
 
         private MarkupString ConvertStringToMarkupString(string? value)
         {
-            if (!string.IsNullOrWhiteSpace(_content))
+            if (!string.IsNullOrWhiteSpace(value))
             {
                 // Convert markdown string to HTML
-                var html = Markdig.Markdown.ToHtml(value, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
+                var html = Markdown.ToHtml(value, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
 
                 // Sanitize HTML before rendering
                 var sanitizedHtml = HtmlSanitizer.Sanitize(html);
