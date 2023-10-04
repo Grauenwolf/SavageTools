@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Markdig" Version="0.26.0" />
     <ProjectReference Include="..\SavageTools.Shared\SavageTools.Shared.csproj" />
-    <PackageReference Include="HtmlSanitizer" Version="6.0.441" />
+    <PackageReference Include="HtmlSanitizer" Version="8.0.723" />
   </ItemGroup>
 
 </Project>
